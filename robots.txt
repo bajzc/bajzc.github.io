@@ -1,0 +1,4 @@
+Sitemap: https://bajzc.com/sitemapindex.xml
+
+User-Agent: *
+Host: bajzc.com
