@@ -34,7 +34,7 @@ This is a guide to install and config GTK4 library on Windows 11.
 	
 	.. hint::
 
-		`GTK offical guide <https://www.gtk.org/docs/installations/windows/#using-gtk-from-msys2-packages>`_
+		`GTK offcial guide <https://www.gtk.org/docs/installations/windows/#using-gtk-from-msys2-packages>`_
 
 1. Download and install Msys2
 -----------------------------
@@ -57,7 +57,7 @@ Enter(Y) to install
 2. Install GTK4 library and Mingw-toolchain
 -------------------------------------------
 
-In order to install GTK4, type in the the terminal:
+In order to install GTK4, type in the terminal:
 
 ``pacman -S mingw-w64-x86_64-gtk4``
 
@@ -65,7 +65,7 @@ To use GNU/make and other tools, type:
 
 ``pacman -S mingw-w64-x86_64-toolchain base-devel``
 
-And Enter unitl finished.
+Enter until finished.
 	.. image:: /images/Msys2_tool-chain.png
 		:align: center
 
@@ -75,9 +75,9 @@ And Enter unitl finished.
 
 Edit System Variable (Follow `here <https://www.java.com/en/download/help/path.html>`__)
 
-Add *Your path to msys2/\mingw64/\bin*, as default it's ``C:/\msys64/\mingw64/\bin``.
+Add *Your path to msys2\mingw64\bin*, as default it's ``C:\msys64\mingw64\bin``.
 
-Add *Your path to msys2/\usr/\bin*, as default it's ``C:/\msys64/\usr/\bin``.
+Add *Your path to msys2\usr\bin*, as default it's ``C:\msys64\usr\bin``.
 
 	.. note::
 		Follow the sequence above, as Windows will follow the sequence on PATH table. 
@@ -86,29 +86,31 @@ Add *Your path to msys2/\usr/\bin*, as default it's ``C:/\msys64/\usr/\bin``.
 		
 Given that we need to use ``make``, however, Msys2 will name it as "mingw32-make.exe".
 
-So we go to the directory we just put in PATH (``C:/\msys64/\mingw64/\bin``), find the "mingw32-make.exe" and rename to "make.exe" (or create copy).
+So we go to the directory we just put in PATH (``C:\msys64\mingw64\bin``), find the "mingw32-make.exe" and rename to "make.exe" (or create copy).
 
 Now, when we open ``cmd`` or ``powershell``, and type ``make -v``, it works!
 
   .. image:: /images/cmd_make.png
     :align: center
 
- Then, we try ``pkg-config --cflags --libs gtk4``. We expecte to have output like this:
+ Then, we try ``pkg-config --cflags --libs gtk4``. We expect to have output like this:
 
   .. image:: /images/cmd_pkg-config.png
     :align: center
 
   .. hint::
-    If not... Open Msys2 shell, run 
+    If not... `"Follow" this <https://img.devrant.com/devrant/rant/r_1093122_83dS9.jpg>`_
+    
+    then, open Msys2 shell, run 
 
     ``cp -r /mingw64/lib/pkgconfig/* /usr/share/pkgconfig/`` 
 
-    to copy "gtk4.pc" to the path that ``pkg-config`` can found.
+    to copy "gtk4.pc" to the path that ``pkg-config`` can find.
     
 4. Hello world
---------------
+---------------
 
-Open a new floder, and create a new file called ``demo.c``.
+Open a new folder, and create a new file called ``demo.c``.
 
 We use the demo from `GTK <gtk.org>`_:
 
@@ -156,13 +158,12 @@ Run ``make``, the .exe file will be generated under *./out*. (Ignore warning mes
 
 	.. image:: /images/GTK_hello_world.png
 		:align: center
-	
-Smuuary
-=======
 
-That's all the steps, looks like it's hard to config the basic environment for C developing.
+=========	
+Summary
+=========
 
-So, life is short, I choose gentoo :)
+That's all the steps, looks like it's hard to config the basic environment for C development.
 
-Thanks.
+So, life is short, I choose Linux :)
 

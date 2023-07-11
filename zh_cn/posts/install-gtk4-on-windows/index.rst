@@ -11,6 +11,7 @@
 
 .. figure:: https://docs.gtk.org/gtk4/hello-world.png
    :target: https://docs.gtk.org/gtk4/hello-world.png
+   :align: center
    :class: gkt
 
 =============================
@@ -48,7 +49,7 @@
 	.. note::
 		国内用户可能需要更换国内源提升下载速度，
 
-		这里我们使用`清华大学镜像站 <https://mirrors.tuna.tsinghua.edu.cn/help/msys2/>`_,在终端输入
+		这里我们使用 `清华大学镜像站  <https://mirrors.tuna.tsinghua.edu.cn/help/msys2/>`_ ,在终端输入
 
 		``sed -i "s#https\?://mirror.msys2.org/#https://mirrors.tuna.tsinghua.edu.cn/msys2/#g" /etc/pacman.d/mirrorlist*``
 
@@ -79,14 +80,17 @@
 
 都是一路回车选择默认
 
+	.. image:: /images/Msys2_tool-chain.png
+		:align: center
+
 3. 设置Path
 -------------------------------------
 
-打开`Path设置 <https://www.baidu.com/baidu?ie=utf-8&wd=path%E8%AE%BE%E7%BD%AE>`_ 细节不赘述
+打开 `Path设置   <https://www.baidu.com/baidu?ie=utf-8&wd=path%E8%AE%BE%E7%BD%AE>`_  细节不赘述
 
-在系统变量里找到Path,打开后加上你的安装路径 */\mingw64/\bin* ，（对我来说就是 ``C:/\msys64/\mingw64/\bin`` ）
+在系统变量里找到Path,打开后加上你的安装路径 *\mingw64\bin* ，（对我来说就是 ``C:\msys64\mingw64\bin`` ）
 
-再新建一个 ``C:/\msys64/\usr/\bin``，点击确定保存。
+再新建一个 ``C:\msys64\usr\bin``，点击确定保存。
 
 	.. note::
 
@@ -98,24 +102,20 @@
 
 接着再在cmd中试一下命令 ``pkg-config --cflags --libs gtk4`` ，如果有类似下面的输出，就说明成功了：
 
-	.. code-block:: console
+  	.. image:: /images/cmd_pkg-config.png
+    		:align: center
 	
-		-IC:/msys64/mingw64/bin/../include/gtk-4.0 -IC:/msys64/mingw64/bin/../include/pango-1.0
-		-IC:/msys64/mingw64/bin/../include -IC:/msys64/mingw64/bin/../include/glib-2.0 
-		-IC:/msys64/mingw64/bin/../lib/glib-2.0/include -IC:/msys64/mingw64/bin/../include/harfbuzz 
-		-IC:/msys64/mingw64/bin/../include/freetype2 -IC:/msys64/mingw64/bin/../include/libpng16
-		-IC:/msys64/mingw64/bin/../include/fribidi -IC:/msys64/mingw64/bin/../include/cairo
-		-IC:/msys64/mingw64/bin/../include/pixman-1 -IC:/msys64/mingw64/bin/../include/gdk-pixbuf-2.0
-		-IC:/msys64/mingw64/bin/../include/webp -DLIBDEFLATE_DLL -IC:/msys64/mingw64/bin/../include/graphene-1.0
-		-IC:/msys64/mingw64/bin/../lib/graphene-1.0/include -mfpmath=sse -msse -msse2 
-		-LC:/msys64/mingw64/bin/../lib -lgtk-4 -lpangowin32-1.0 -lpangocairo-1.0 -lpango-1.0 -lharfbuzz
-		-lgdk_pixbuf-2.0 -lcairo-gobject -lcairo -lgraphene-1.0 -lgio-2.0 -lgobject-2.0 -lglib-2.0 -lintl
-	
-  .. hint:: 
+ 	.. hint:: 
 
-    如果没有，那么可以说你不幸遇到了第一个坑,和作者一样（
+    		如果没有，那么可以说你不幸遇到了第一个坑,和作者一样（
+    	
+ 		首先给MS扣 `666 <https://img.devrant.com/devrant/rant/r_1093122_83dS9.jpg>`_ （菜
 
-    打开Msys2 Shell，运行 ``cp -r /mingw64/lib/pkgconfig/* /usr/share/pkgconfig/`` ，这就会把它提示的"gtk4.pc"以及其他一系列依赖，复制到 ``pkg-config`` 会自动扫描的文件夹下。
+		打开Msys2 Shell，运行 
+		
+		``cp -r /mingw64/lib/pkgconfig/* /usr/share/pkgconfig/`` 
+		
+		这就会把它提示的"gtk4.pc"以及其他一系列依赖，复制到 ``pkg-config`` 会自动扫描的文件夹下。
 
 
 4. Hello World
@@ -169,8 +169,9 @@
 
 保存后运行 ``make`` 命令，exe文件就会再 *./out* 文件夹下生成。
 
-  .. image:: /images/GTK_hello_world.png
-
+	.. image:: /images/GTK_hello_world.png
+		:align: center
+		
 总结
 ====
 

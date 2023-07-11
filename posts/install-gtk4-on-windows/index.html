@@ -26,14 +26,11 @@ Install GTK4 on Windows11
 3. Setting Path
 4. Hello world
 
-Smuuary
+
+Summary
 
 
-
-
-
-
-This is a guide ">
+This is a guide to ">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2023-07-11T12:39:46+07:00">
 <meta property="article:tag" content="GNU/make">
@@ -141,14 +138,10 @@ This is a guide ">
 <li><p><a class="reference internal" href="#download-and-install-msys2" id="toc-entry-2">1. Download and install Msys2</a></p></li>
 <li><p><a class="reference internal" href="#install-gtk4-library-and-mingw-toolchain" id="toc-entry-3">2. Install GTK4 library and Mingw-toolchain</a></p></li>
 <li><p><a class="reference internal" href="#setting-path" id="toc-entry-4">3. Setting Path</a></p></li>
-<li>
-<p><a class="reference internal" href="#hello-world" id="toc-entry-5">4. Hello world</a></p>
-<ul>
-<li><p><a class="reference internal" href="#smuuary" id="toc-entry-6">Smuuary</a></p></li>
+<li><p><a class="reference internal" href="#hello-world" id="toc-entry-5">4. Hello world</a></p></li>
 </ul>
 </li>
-</ul>
-</li>
+<li><p><a class="reference internal" href="#summary" id="toc-entry-6">Summary</a></p></li>
 </ul></nav><p>This is a guide to install and config GTK4 library on Windows 11.</p>
 <blockquote>
 <aside class="admonition note"><p class="admonition-title">Note</p>
@@ -157,7 +150,7 @@ This is a guide ">
 <p>Version 22H2</p>
 <p>OS build        22621.1848</p>
 </aside><aside class="admonition hint"><p class="admonition-title">Hint</p>
-<p><a class="reference external" href="https://www.gtk.org/docs/installations/windows/#using-gtk-from-msys2-packages">GTK offical guide</a></p>
+<p><a class="reference external" href="https://www.gtk.org/docs/installations/windows/#using-gtk-from-msys2-packages">GTK offcial guide</a></p>
 </aside>
 </blockquote>
 <section id="download-and-install-msys2"><h3><a class="toc-backref" href="#toc-entry-2" role="doc-backlink">1. Download and install Msys2</a></h3>
@@ -173,17 +166,17 @@ This is a guide ">
 </aside>
 </dd>
 </dl></section><section id="install-gtk4-library-and-mingw-toolchain"><h3><a class="toc-backref" href="#toc-entry-3" role="doc-backlink">2. Install GTK4 library and Mingw-toolchain</a></h3>
-<p>In order to install GTK4, type in the the terminal:</p>
+<p>In order to install GTK4, type in the terminal:</p>
 <p><code class="docutils literal">pacman <span class="pre">-S</span> <span class="pre">mingw-w64-x86_64-gtk4</span></code></p>
 <p>To use GNU/make and other tools, type:</p>
 <p><code class="docutils literal">pacman <span class="pre">-S</span> <span class="pre">mingw-w64-x86_64-toolchain</span> <span class="pre">base-devel</span></code></p>
 <dl>
-<dt>And Enter unitl finished.</dt>
+<dt>Enter until finished.</dt>
 <dd><img alt="/images/Msys2_tool-chain.png" class="align-center" src="../../images/Msys2_tool-chain.png"></dd>
 </dl></section><section id="setting-path"><h3><a class="toc-backref" href="#toc-entry-4" role="doc-backlink">3. Setting Path</a></h3>
 <p>Edit System Variable (Follow <a class="reference external" href="https://www.java.com/en/download/help/path.html">here</a>)</p>
-<p>Add <em>Your path to msys2/mingw64/bin</em>, as default it's <code class="docutils literal"><span class="pre">C:/\msys64/\mingw64/\bin</span></code>.</p>
-<p>Add <em>Your path to msys2/usr/bin</em>, as default it's <code class="docutils literal"><span class="pre">C:/\msys64/\usr/\bin</span></code>.</p>
+<p>Add <em>Your path to msys2mingw64bin</em>, as default it's <code class="docutils literal"><span class="pre">C:\msys64\mingw64\bin</span></code>.</p>
+<p>Add <em>Your path to msys2usrbin</em>, as default it's <code class="docutils literal"><span class="pre">C:\msys64\usr\bin</span></code>.</p>
 <blockquote>
 <aside class="admonition note"><p class="admonition-title">Note</p>
 <p>Follow the sequence above, as Windows will follow the sequence on PATH table.</p>
@@ -191,59 +184,60 @@ This is a guide ">
 </aside>
 </blockquote>
 <p>Given that we need to use <code class="docutils literal">make</code>, however, Msys2 will name it as "mingw32-make.exe".</p>
-<p>So we go to the directory we just put in PATH (<code class="docutils literal"><span class="pre">C:/\msys64/\mingw64/\bin</span></code>), find the "mingw32-make.exe" and rename to "make.exe" (or create copy).</p>
+<p>So we go to the directory we just put in PATH (<code class="docutils literal"><span class="pre">C:\msys64\mingw64\bin</span></code>), find the "mingw32-make.exe" and rename to "make.exe" (or create copy).</p>
 <p>Now, when we open <code class="docutils literal">cmd</code> or <code class="docutils literal">powershell</code>, and type <code class="docutils literal">make <span class="pre">-v</span></code>, it works!</p>
 <blockquote>
 <blockquote>
 <img alt="/images/cmd_make.png" class="align-center" src="../../images/cmd_make.png">
 </blockquote>
-<p>Then, we try <code class="docutils literal"><span class="pre">pkg-config</span> <span class="pre">--cflags</span> <span class="pre">--libs</span> gtk4</code>. We expecte to have output like this:</p>
+<p>Then, we try <code class="docutils literal"><span class="pre">pkg-config</span> <span class="pre">--cflags</span> <span class="pre">--libs</span> gtk4</code>. We expect to have output like this:</p>
 <blockquote>
 <img alt="/images/cmd_pkg-config.png" class="align-center" src="../../images/cmd_pkg-config.png"><aside class="admonition hint"><p class="admonition-title">Hint</p>
-<p>If not... Open Msys2 shell, run</p>
+<p>If not... <a class="reference external" href="https://img.devrant.com/devrant/rant/r_1093122_83dS9.jpg">"Follow" this</a></p>
+<p>then, open Msys2 shell, run</p>
 <p><code class="docutils literal">cp <span class="pre">-r</span> /mingw64/lib/pkgconfig/* /usr/share/pkgconfig/</code></p>
-<p>to copy "gtk4.pc" to the path that <code class="docutils literal"><span class="pre">pkg-config</span></code> can found.</p>
+<p>to copy "gtk4.pc" to the path that <code class="docutils literal"><span class="pre">pkg-config</span></code> can find.</p>
 </aside>
 </blockquote>
 </blockquote>
 </section><section id="hello-world"><h3><a class="toc-backref" href="#toc-entry-5" role="doc-backlink">4. Hello world</a></h3>
-<p>Open a new floder, and create a new file called <code class="docutils literal">demo.c</code>.</p>
+<p>Open a new folder, and create a new file called <code class="docutils literal">demo.c</code>.</p>
 <p>We use the demo from <a class="reference external" href="gtk.org">GTK</a>:</p>
 <blockquote>
-<div class="code"><pre class="code C"><a id="rest_code_f71a4ba49bbc459984df070cb26a7cab-1" name="rest_code_f71a4ba49bbc459984df070cb26a7cab-1" href="#rest_code_f71a4ba49bbc459984df070cb26a7cab-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;gtk/gtk.h&gt;</span>
-<a id="rest_code_f71a4ba49bbc459984df070cb26a7cab-2" name="rest_code_f71a4ba49bbc459984df070cb26a7cab-2" href="#rest_code_f71a4ba49bbc459984df070cb26a7cab-2"></a>
-<a id="rest_code_f71a4ba49bbc459984df070cb26a7cab-3" name="rest_code_f71a4ba49bbc459984df070cb26a7cab-3" href="#rest_code_f71a4ba49bbc459984df070cb26a7cab-3"></a><span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">activate</span><span class="p">(</span><span class="n">GtkApplication</span><span class="o">*</span><span class="w"> </span><span class="n">app</span><span class="p">,</span><span class="w"> </span><span class="n">gpointer</span><span class="w"> </span><span class="n">user_data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="rest_code_f71a4ba49bbc459984df070cb26a7cab-4" name="rest_code_f71a4ba49bbc459984df070cb26a7cab-4" href="#rest_code_f71a4ba49bbc459984df070cb26a7cab-4"></a><span class="w">        </span><span class="n">GtkWidget</span><span class="o">*</span><span class="w"> </span><span class="n">window</span><span class="p">;</span>
-<a id="rest_code_f71a4ba49bbc459984df070cb26a7cab-5" name="rest_code_f71a4ba49bbc459984df070cb26a7cab-5" href="#rest_code_f71a4ba49bbc459984df070cb26a7cab-5"></a>
-<a id="rest_code_f71a4ba49bbc459984df070cb26a7cab-6" name="rest_code_f71a4ba49bbc459984df070cb26a7cab-6" href="#rest_code_f71a4ba49bbc459984df070cb26a7cab-6"></a><span class="w">        </span><span class="n">window</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gtk_application_window_new</span><span class="p">(</span><span class="n">app</span><span class="p">);</span>
-<a id="rest_code_f71a4ba49bbc459984df070cb26a7cab-7" name="rest_code_f71a4ba49bbc459984df070cb26a7cab-7" href="#rest_code_f71a4ba49bbc459984df070cb26a7cab-7"></a><span class="w">        </span><span class="n">gtk_window_set_title</span><span class="p">(</span><span class="n">GTK_WINDOW</span><span class="p">(</span><span class="n">window</span><span class="p">),</span><span class="w"> </span><span class="s">"Window"</span><span class="p">);</span>
-<a id="rest_code_f71a4ba49bbc459984df070cb26a7cab-8" name="rest_code_f71a4ba49bbc459984df070cb26a7cab-8" href="#rest_code_f71a4ba49bbc459984df070cb26a7cab-8"></a><span class="w">        </span><span class="n">gtk_window_set_default_size</span><span class="p">(</span><span class="n">GTK_WINDOW</span><span class="p">(</span><span class="n">window</span><span class="p">),</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="mi">200</span><span class="p">);</span>
-<a id="rest_code_f71a4ba49bbc459984df070cb26a7cab-9" name="rest_code_f71a4ba49bbc459984df070cb26a7cab-9" href="#rest_code_f71a4ba49bbc459984df070cb26a7cab-9"></a><span class="w">        </span><span class="n">gtk_widget_show</span><span class="p">(</span><span class="n">window</span><span class="p">);</span>
-<a id="rest_code_f71a4ba49bbc459984df070cb26a7cab-10" name="rest_code_f71a4ba49bbc459984df070cb26a7cab-10" href="#rest_code_f71a4ba49bbc459984df070cb26a7cab-10"></a><span class="p">}</span>
-<a id="rest_code_f71a4ba49bbc459984df070cb26a7cab-11" name="rest_code_f71a4ba49bbc459984df070cb26a7cab-11" href="#rest_code_f71a4ba49bbc459984df070cb26a7cab-11"></a>
-<a id="rest_code_f71a4ba49bbc459984df070cb26a7cab-12" name="rest_code_f71a4ba49bbc459984df070cb26a7cab-12" href="#rest_code_f71a4ba49bbc459984df070cb26a7cab-12"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="o">**</span><span class="w"> </span><span class="n">argv</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="rest_code_f71a4ba49bbc459984df070cb26a7cab-13" name="rest_code_f71a4ba49bbc459984df070cb26a7cab-13" href="#rest_code_f71a4ba49bbc459984df070cb26a7cab-13"></a><span class="w">        </span><span class="n">GtkApplication</span><span class="o">*</span><span class="w"> </span><span class="n">app</span><span class="p">;</span>
-<a id="rest_code_f71a4ba49bbc459984df070cb26a7cab-14" name="rest_code_f71a4ba49bbc459984df070cb26a7cab-14" href="#rest_code_f71a4ba49bbc459984df070cb26a7cab-14"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">status</span><span class="p">;</span>
-<a id="rest_code_f71a4ba49bbc459984df070cb26a7cab-15" name="rest_code_f71a4ba49bbc459984df070cb26a7cab-15" href="#rest_code_f71a4ba49bbc459984df070cb26a7cab-15"></a>
-<a id="rest_code_f71a4ba49bbc459984df070cb26a7cab-16" name="rest_code_f71a4ba49bbc459984df070cb26a7cab-16" href="#rest_code_f71a4ba49bbc459984df070cb26a7cab-16"></a><span class="w">        </span><span class="n">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gtk_application_new</span><span class="p">(</span><span class="s">"org.gtk.example"</span><span class="p">,</span><span class="w"> </span><span class="n">G_APPLICATION_DEFAULT_FLAGS</span><span class="p">);</span>
-<a id="rest_code_f71a4ba49bbc459984df070cb26a7cab-17" name="rest_code_f71a4ba49bbc459984df070cb26a7cab-17" href="#rest_code_f71a4ba49bbc459984df070cb26a7cab-17"></a><span class="w">        </span><span class="n">g_signal_connect</span><span class="p">(</span><span class="n">app</span><span class="p">,</span><span class="w"> </span><span class="s">"activate"</span><span class="p">,</span><span class="w"> </span><span class="n">G_CALLBACK</span><span class="p">(</span><span class="n">activate</span><span class="p">),</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
-<a id="rest_code_f71a4ba49bbc459984df070cb26a7cab-18" name="rest_code_f71a4ba49bbc459984df070cb26a7cab-18" href="#rest_code_f71a4ba49bbc459984df070cb26a7cab-18"></a><span class="w">        </span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">g_application_run</span><span class="p">(</span><span class="n">G_APPLICATION</span><span class="p">(</span><span class="n">app</span><span class="p">),</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">);</span>
-<a id="rest_code_f71a4ba49bbc459984df070cb26a7cab-19" name="rest_code_f71a4ba49bbc459984df070cb26a7cab-19" href="#rest_code_f71a4ba49bbc459984df070cb26a7cab-19"></a><span class="w">        </span><span class="n">g_object_unref</span><span class="p">(</span><span class="n">app</span><span class="p">);</span>
-<a id="rest_code_f71a4ba49bbc459984df070cb26a7cab-20" name="rest_code_f71a4ba49bbc459984df070cb26a7cab-20" href="#rest_code_f71a4ba49bbc459984df070cb26a7cab-20"></a>
-<a id="rest_code_f71a4ba49bbc459984df070cb26a7cab-21" name="rest_code_f71a4ba49bbc459984df070cb26a7cab-21" href="#rest_code_f71a4ba49bbc459984df070cb26a7cab-21"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">status</span><span class="p">;</span>
-<a id="rest_code_f71a4ba49bbc459984df070cb26a7cab-22" name="rest_code_f71a4ba49bbc459984df070cb26a7cab-22" href="#rest_code_f71a4ba49bbc459984df070cb26a7cab-22"></a><span class="p">}</span>
+<div class="code"><pre class="code C"><a id="rest_code_fdd42921e14e4bee8f3899285416a28b-1" name="rest_code_fdd42921e14e4bee8f3899285416a28b-1" href="#rest_code_fdd42921e14e4bee8f3899285416a28b-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;gtk/gtk.h&gt;</span>
+<a id="rest_code_fdd42921e14e4bee8f3899285416a28b-2" name="rest_code_fdd42921e14e4bee8f3899285416a28b-2" href="#rest_code_fdd42921e14e4bee8f3899285416a28b-2"></a>
+<a id="rest_code_fdd42921e14e4bee8f3899285416a28b-3" name="rest_code_fdd42921e14e4bee8f3899285416a28b-3" href="#rest_code_fdd42921e14e4bee8f3899285416a28b-3"></a><span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">activate</span><span class="p">(</span><span class="n">GtkApplication</span><span class="o">*</span><span class="w"> </span><span class="n">app</span><span class="p">,</span><span class="w"> </span><span class="n">gpointer</span><span class="w"> </span><span class="n">user_data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="rest_code_fdd42921e14e4bee8f3899285416a28b-4" name="rest_code_fdd42921e14e4bee8f3899285416a28b-4" href="#rest_code_fdd42921e14e4bee8f3899285416a28b-4"></a><span class="w">        </span><span class="n">GtkWidget</span><span class="o">*</span><span class="w"> </span><span class="n">window</span><span class="p">;</span>
+<a id="rest_code_fdd42921e14e4bee8f3899285416a28b-5" name="rest_code_fdd42921e14e4bee8f3899285416a28b-5" href="#rest_code_fdd42921e14e4bee8f3899285416a28b-5"></a>
+<a id="rest_code_fdd42921e14e4bee8f3899285416a28b-6" name="rest_code_fdd42921e14e4bee8f3899285416a28b-6" href="#rest_code_fdd42921e14e4bee8f3899285416a28b-6"></a><span class="w">        </span><span class="n">window</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gtk_application_window_new</span><span class="p">(</span><span class="n">app</span><span class="p">);</span>
+<a id="rest_code_fdd42921e14e4bee8f3899285416a28b-7" name="rest_code_fdd42921e14e4bee8f3899285416a28b-7" href="#rest_code_fdd42921e14e4bee8f3899285416a28b-7"></a><span class="w">        </span><span class="n">gtk_window_set_title</span><span class="p">(</span><span class="n">GTK_WINDOW</span><span class="p">(</span><span class="n">window</span><span class="p">),</span><span class="w"> </span><span class="s">"Window"</span><span class="p">);</span>
+<a id="rest_code_fdd42921e14e4bee8f3899285416a28b-8" name="rest_code_fdd42921e14e4bee8f3899285416a28b-8" href="#rest_code_fdd42921e14e4bee8f3899285416a28b-8"></a><span class="w">        </span><span class="n">gtk_window_set_default_size</span><span class="p">(</span><span class="n">GTK_WINDOW</span><span class="p">(</span><span class="n">window</span><span class="p">),</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="mi">200</span><span class="p">);</span>
+<a id="rest_code_fdd42921e14e4bee8f3899285416a28b-9" name="rest_code_fdd42921e14e4bee8f3899285416a28b-9" href="#rest_code_fdd42921e14e4bee8f3899285416a28b-9"></a><span class="w">        </span><span class="n">gtk_widget_show</span><span class="p">(</span><span class="n">window</span><span class="p">);</span>
+<a id="rest_code_fdd42921e14e4bee8f3899285416a28b-10" name="rest_code_fdd42921e14e4bee8f3899285416a28b-10" href="#rest_code_fdd42921e14e4bee8f3899285416a28b-10"></a><span class="p">}</span>
+<a id="rest_code_fdd42921e14e4bee8f3899285416a28b-11" name="rest_code_fdd42921e14e4bee8f3899285416a28b-11" href="#rest_code_fdd42921e14e4bee8f3899285416a28b-11"></a>
+<a id="rest_code_fdd42921e14e4bee8f3899285416a28b-12" name="rest_code_fdd42921e14e4bee8f3899285416a28b-12" href="#rest_code_fdd42921e14e4bee8f3899285416a28b-12"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="o">**</span><span class="w"> </span><span class="n">argv</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="rest_code_fdd42921e14e4bee8f3899285416a28b-13" name="rest_code_fdd42921e14e4bee8f3899285416a28b-13" href="#rest_code_fdd42921e14e4bee8f3899285416a28b-13"></a><span class="w">        </span><span class="n">GtkApplication</span><span class="o">*</span><span class="w"> </span><span class="n">app</span><span class="p">;</span>
+<a id="rest_code_fdd42921e14e4bee8f3899285416a28b-14" name="rest_code_fdd42921e14e4bee8f3899285416a28b-14" href="#rest_code_fdd42921e14e4bee8f3899285416a28b-14"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">status</span><span class="p">;</span>
+<a id="rest_code_fdd42921e14e4bee8f3899285416a28b-15" name="rest_code_fdd42921e14e4bee8f3899285416a28b-15" href="#rest_code_fdd42921e14e4bee8f3899285416a28b-15"></a>
+<a id="rest_code_fdd42921e14e4bee8f3899285416a28b-16" name="rest_code_fdd42921e14e4bee8f3899285416a28b-16" href="#rest_code_fdd42921e14e4bee8f3899285416a28b-16"></a><span class="w">        </span><span class="n">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gtk_application_new</span><span class="p">(</span><span class="s">"org.gtk.example"</span><span class="p">,</span><span class="w"> </span><span class="n">G_APPLICATION_DEFAULT_FLAGS</span><span class="p">);</span>
+<a id="rest_code_fdd42921e14e4bee8f3899285416a28b-17" name="rest_code_fdd42921e14e4bee8f3899285416a28b-17" href="#rest_code_fdd42921e14e4bee8f3899285416a28b-17"></a><span class="w">        </span><span class="n">g_signal_connect</span><span class="p">(</span><span class="n">app</span><span class="p">,</span><span class="w"> </span><span class="s">"activate"</span><span class="p">,</span><span class="w"> </span><span class="n">G_CALLBACK</span><span class="p">(</span><span class="n">activate</span><span class="p">),</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
+<a id="rest_code_fdd42921e14e4bee8f3899285416a28b-18" name="rest_code_fdd42921e14e4bee8f3899285416a28b-18" href="#rest_code_fdd42921e14e4bee8f3899285416a28b-18"></a><span class="w">        </span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">g_application_run</span><span class="p">(</span><span class="n">G_APPLICATION</span><span class="p">(</span><span class="n">app</span><span class="p">),</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">);</span>
+<a id="rest_code_fdd42921e14e4bee8f3899285416a28b-19" name="rest_code_fdd42921e14e4bee8f3899285416a28b-19" href="#rest_code_fdd42921e14e4bee8f3899285416a28b-19"></a><span class="w">        </span><span class="n">g_object_unref</span><span class="p">(</span><span class="n">app</span><span class="p">);</span>
+<a id="rest_code_fdd42921e14e4bee8f3899285416a28b-20" name="rest_code_fdd42921e14e4bee8f3899285416a28b-20" href="#rest_code_fdd42921e14e4bee8f3899285416a28b-20"></a>
+<a id="rest_code_fdd42921e14e4bee8f3899285416a28b-21" name="rest_code_fdd42921e14e4bee8f3899285416a28b-21" href="#rest_code_fdd42921e14e4bee8f3899285416a28b-21"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">status</span><span class="p">;</span>
+<a id="rest_code_fdd42921e14e4bee8f3899285416a28b-22" name="rest_code_fdd42921e14e4bee8f3899285416a28b-22" href="#rest_code_fdd42921e14e4bee8f3899285416a28b-22"></a><span class="p">}</span>
 </pre></div>
 </blockquote>
 <p>And another file called <code class="docutils literal">makefile</code>:</p>
 <blockquote>
-<div class="code"><pre class="code makefile"><a id="rest_code_5e7d09dd1e4d43f29ab6e18044f17f9f-1" name="rest_code_5e7d09dd1e4d43f29ab6e18044f17f9f-1" href="#rest_code_5e7d09dd1e4d43f29ab6e18044f17f9f-1"></a><span class="nv">CC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>gcc
-<a id="rest_code_5e7d09dd1e4d43f29ab6e18044f17f9f-2" name="rest_code_5e7d09dd1e4d43f29ab6e18044f17f9f-2" href="#rest_code_5e7d09dd1e4d43f29ab6e18044f17f9f-2"></a><span class="nv">CFLAGS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>-O2<span class="w"> </span>-Wall
-<a id="rest_code_5e7d09dd1e4d43f29ab6e18044f17f9f-3" name="rest_code_5e7d09dd1e4d43f29ab6e18044f17f9f-3" href="#rest_code_5e7d09dd1e4d43f29ab6e18044f17f9f-3"></a><span class="nv">GTK_CFLAGS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`</span>pkg-config<span class="w"> </span>--cflags<span class="w"> </span>gtk4<span class="sb">`</span>
-<a id="rest_code_5e7d09dd1e4d43f29ab6e18044f17f9f-4" name="rest_code_5e7d09dd1e4d43f29ab6e18044f17f9f-4" href="#rest_code_5e7d09dd1e4d43f29ab6e18044f17f9f-4"></a><span class="nv">GTK_LIBS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`</span>pkg-config<span class="w"> </span>--libs<span class="w"> </span>gtk4<span class="sb">`</span>
-<a id="rest_code_5e7d09dd1e4d43f29ab6e18044f17f9f-5" name="rest_code_5e7d09dd1e4d43f29ab6e18044f17f9f-5" href="#rest_code_5e7d09dd1e4d43f29ab6e18044f17f9f-5"></a>
-<a id="rest_code_5e7d09dd1e4d43f29ab6e18044f17f9f-6" name="rest_code_5e7d09dd1e4d43f29ab6e18044f17f9f-6" href="#rest_code_5e7d09dd1e4d43f29ab6e18044f17f9f-6"></a><span class="nf">all</span><span class="o">:</span>
-<a id="rest_code_5e7d09dd1e4d43f29ab6e18044f17f9f-7" name="rest_code_5e7d09dd1e4d43f29ab6e18044f17f9f-7" href="#rest_code_5e7d09dd1e4d43f29ab6e18044f17f9f-7"></a><span class="w">        </span>@mkdir<span class="w"> </span>-p<span class="w"> </span>./out
-<a id="rest_code_5e7d09dd1e4d43f29ab6e18044f17f9f-8" name="rest_code_5e7d09dd1e4d43f29ab6e18044f17f9f-8" href="#rest_code_5e7d09dd1e4d43f29ab6e18044f17f9f-8"></a><span class="w">        </span><span class="k">$(</span>CC<span class="k">)</span><span class="w"> </span><span class="k">$(</span>GTK_CFLAGS<span class="k">)</span><span class="w"> </span>-o<span class="w"> </span>./out/demo.exe<span class="w"> </span>demo.c<span class="w"> </span><span class="k">$(</span>GTK_LIBS<span class="k">)</span>
+<div class="code"><pre class="code makefile"><a id="rest_code_63d1f8d14236411e91c3ca8bee7e9a94-1" name="rest_code_63d1f8d14236411e91c3ca8bee7e9a94-1" href="#rest_code_63d1f8d14236411e91c3ca8bee7e9a94-1"></a><span class="nv">CC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>gcc
+<a id="rest_code_63d1f8d14236411e91c3ca8bee7e9a94-2" name="rest_code_63d1f8d14236411e91c3ca8bee7e9a94-2" href="#rest_code_63d1f8d14236411e91c3ca8bee7e9a94-2"></a><span class="nv">CFLAGS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>-O2<span class="w"> </span>-Wall
+<a id="rest_code_63d1f8d14236411e91c3ca8bee7e9a94-3" name="rest_code_63d1f8d14236411e91c3ca8bee7e9a94-3" href="#rest_code_63d1f8d14236411e91c3ca8bee7e9a94-3"></a><span class="nv">GTK_CFLAGS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`</span>pkg-config<span class="w"> </span>--cflags<span class="w"> </span>gtk4<span class="sb">`</span>
+<a id="rest_code_63d1f8d14236411e91c3ca8bee7e9a94-4" name="rest_code_63d1f8d14236411e91c3ca8bee7e9a94-4" href="#rest_code_63d1f8d14236411e91c3ca8bee7e9a94-4"></a><span class="nv">GTK_LIBS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`</span>pkg-config<span class="w"> </span>--libs<span class="w"> </span>gtk4<span class="sb">`</span>
+<a id="rest_code_63d1f8d14236411e91c3ca8bee7e9a94-5" name="rest_code_63d1f8d14236411e91c3ca8bee7e9a94-5" href="#rest_code_63d1f8d14236411e91c3ca8bee7e9a94-5"></a>
+<a id="rest_code_63d1f8d14236411e91c3ca8bee7e9a94-6" name="rest_code_63d1f8d14236411e91c3ca8bee7e9a94-6" href="#rest_code_63d1f8d14236411e91c3ca8bee7e9a94-6"></a><span class="nf">all</span><span class="o">:</span>
+<a id="rest_code_63d1f8d14236411e91c3ca8bee7e9a94-7" name="rest_code_63d1f8d14236411e91c3ca8bee7e9a94-7" href="#rest_code_63d1f8d14236411e91c3ca8bee7e9a94-7"></a><span class="w">        </span>@mkdir<span class="w"> </span>-p<span class="w"> </span>./out
+<a id="rest_code_63d1f8d14236411e91c3ca8bee7e9a94-8" name="rest_code_63d1f8d14236411e91c3ca8bee7e9a94-8" href="#rest_code_63d1f8d14236411e91c3ca8bee7e9a94-8"></a><span class="w">        </span><span class="k">$(</span>CC<span class="k">)</span><span class="w"> </span><span class="k">$(</span>GTK_CFLAGS<span class="k">)</span><span class="w"> </span>-o<span class="w"> </span>./out/demo.exe<span class="w"> </span>demo.c<span class="w"> </span><span class="k">$(</span>GTK_LIBS<span class="k">)</span>
 </pre></div>
 </blockquote>
 <p>Remember to save them, and open a <code class="docutils literal">cmd</code> in this directory (Shift + Right click).</p>
@@ -251,11 +245,10 @@ This is a guide ">
 <blockquote>
 <img alt="/images/GTK_hello_world.png" class="align-center" src="../../images/GTK_hello_world.png">
 </blockquote>
-<section id="smuuary"><h4><a class="toc-backref" href="#toc-entry-6" role="doc-backlink">Smuuary</a></h4>
-<p>That's all the steps, looks like it's hard to config the basic environment for C developing.</p>
-<p>So, life is short, I choose gentoo :)</p>
-<p>Thanks.</p>
-</section></section></section>
+</section></section><section id="summary"><h2><a class="toc-backref" href="#toc-entry-6" role="doc-backlink">Summary</a></h2>
+<p>That's all the steps, looks like it's hard to config the basic environment for C development.</p>
+<p>So, life is short, I choose Linux :)</p>
+</section>
 </div>
     <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
 <li><a class="tag p-category" href="../../categories/gnumake/" rel="tag">GNU/make</a></li>
