@@ -11,6 +11,7 @@
 
 .. figure:: https://docs.gtk.org/gtk4/hello-world.png
    :target: https://docs.gtk.org/gtk4/hello-world.png
+   :class: gkt
 
 =============================
 在Win11上安装GTK4
@@ -36,7 +37,7 @@
 ==========
 
 1. 下载并安装Msys2
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+-------------------------------------
 
 *本教程使用默认安装路径，如使用自定义，在后文设置PATH时需要注意*
 
@@ -47,7 +48,7 @@
 	.. note::
 		国内用户可能需要更换国内源提升下载速度，
 
-		这里我们使用 `清华大学镜像站 <https://mirrors.tuna.tsinghua.edu.cn/help/msys2/>`_,在终端输入
+		这里我们使用`清华大学镜像站 <https://mirrors.tuna.tsinghua.edu.cn/help/msys2/>`_,在终端输入
 
 		``sed -i "s#https\?://mirror.msys2.org/#https://mirrors.tuna.tsinghua.edu.cn/msys2/#g" /etc/pacman.d/mirrorlist*``
 
@@ -55,7 +56,10 @@
 
 ``pacman -S mingw-w64-ucrt-x86_64-gcc``
 
-回车开始安装。
+.. image:: /images/Msys2_install.png
+	:align: center
+
+回车开始安装
 	.. hint::
 
 		在Msys2 Shell里的复制可以快捷键Shift+Ins
@@ -63,26 +67,26 @@
 
 
 2. 安装GKT4库和toolchain
-++++++++++++++++++++++++++++++++++++++
+--------------------------------------------------
 
 要安装GKT4，在终端输入
 
 ``pacman -S mingw-w64-x86_64-gtk4``
 
-为了在windows上使用GNU/Make，输入
+为了在windows上使用GNU/make，输入
 
 ``pacman -S mingw-w64-x86_64-toolchain base-devel``
 
 都是一路回车选择默认
 
 3. 设置Path
-++++++++++++++++++++++++++++++++++++++
+-------------------------------------
 
-打开 `Path设置 <https://www.baidu.com/baidu?ie=utf-8&wd=path%E8%AE%BE%E7%BD%AE>`_ 细节不赘述
+打开`Path设置 <https://www.baidu.com/baidu?ie=utf-8&wd=path%E8%AE%BE%E7%BD%AE>`_ 细节不赘述
 
-在系统变量里找到Path,打开后加上你的安装路径 */\mingw64/\bin* ，（对我来说就是 *C:/\msys64/\mingw64/\bin* ）
+在系统变量里找到Path,打开后加上你的安装路径 */\mingw64/\bin* ，（对我来说就是 ``C:/\msys64/\mingw64/\bin`` ）
 
-再新建一个 *C:/\msys64/\usr/\bin* ，点击确定保存。
+再新建一个 ``C:/\msys64/\usr/\bin``，点击确定保存。
 
 	.. note::
 
@@ -115,7 +119,7 @@
 
 
 4. Hello World
-++++++++++++++++++++++++++++++++++++++
+--------------
 
 新建一个文件夹，这里就叫demo,在里面创建demo.c (Shift+右键文件资源管理器，在该目录下打开powershell，输入 ``notepad demo.c`` )
 
@@ -159,13 +163,13 @@
 			$(CC) $(GTK_CFLAGS) -o ./out/demo.exe demo.c $(GTK_LIBS)
 
 	.. note::
-		这里的 ``mkdir`` 又是一个坑，安装Msys2后，在 *usr/bin* 下会有一个mkdir.exe，它是从linux移植来的，支持linux的一些参数。而powersehll的mkdir则 `不支持参数 <https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/mkdir#syntax>`_。所以我们将 *C:\msys64\usr\bin* 加入Path。
+		这里的 ``mkdir`` 又是一个坑，安装Msys2后，在 *usr/bin* 下会有一个mkdir.exe，它是从linux移植来的，支持linux的一些参数。而powersehll的mkdir则`不支持参数 <https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/mkdir#syntax>`_。所以我们将 *C:\msys64\usr\bin* 加入Path。
 
 		但这可能又会造成一些问题，比如在 *usr/bin* 目录下可能会有 *python.exe* ，这就可能会影响你使用 ``pip`` 安装。所以，PATH的顺序很重要，你可以将python的 */bin* 目录放在最上面。
 
 保存后运行 ``make`` 命令，exe文件就会再 *./out* 文件夹下生成。
 
-  .. image:: /images/GTK_hello_world.jpeg
+  .. image:: /images/GTK_hello_world.png
 
 总结
 ====
