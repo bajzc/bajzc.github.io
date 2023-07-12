@@ -12,7 +12,7 @@
 <link rel="alternate" type="application/rss+xml" title="RSS (en)" hreflang="en" href="rss.xml">
 <link rel="alternate" type="application/rss+xml" title="RSS (zh_cn)" hreflang="zh_cn" href="zh_cn/rss.xml">
 <link rel="canonical" href="https://bajzc.com/">
-<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/install-gtk4-on-windows/" type="text/html">
+<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/my-essay/" type="text/html">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -75,7 +75,29 @@
     
         
     <div class="postindex">
-            <article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="posts/install-gtk4-on-windows/" class="u-url">Install GTK4 on Windows</a></h1>
+            <article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="posts/my-essay/" class="u-url">My Physics Essay</a></h1>
+                <div class="metadata">
+                    <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                        bajzc
+                    </span></p>
+            <p class="dateline">
+            <a href="posts/my-essay/" rel="bookmark">
+            <time class="published dt-published" datetime="2023-07-11T21:55:28+07:00" itemprop="datePublished" title="2023-07-11 21:55">2023-07-11 21:55</time></a>
+            </p>
+                        <p class="commentline">
+    
+    <a href="posts/my-essay/#disqus_thread" data-disqus-identifier="cache/posts/my-essay-23-7.en.html">Comments</a>
+
+
+                </p>
+</div>
+            </header><div class="p-summary entry-summary">
+                    <div>
+<p>My physics essay</p>
+<p class="more"><a href="posts/my-essay/">Read more…</a></p>
+</div>
+                </div>
+            </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="posts/install-gtk4-on-windows/" class="u-url">Install GTK4 on Windows</a></h1>
                 <div class="metadata">
                     <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                         bajzc
@@ -91,136 +113,21 @@
 
                 </p>
 </div>
-            </header><div class="e-content entry-content">
-                    <figure class="align-center"><a class="reference external image-reference" href="https://docs.gtk.org/gtk4/hello-world.png"><img alt="https://docs.gtk.org/gtk4/hello-world.png" class="gkt" src="https://docs.gtk.org/gtk4/hello-world.png"></a>
-</figure><section id="install-gtk4-on-windows11"><h2><a class="toc-backref" href="posts/install-gtk4-on-windows/#toc-entry-1" role="doc-backlink">Install GTK4 on Windows11</a></h2>
-<nav class="contents" id="contents"><p class="topic-title">Contents</p>
-<ul class="simple">
-<li>
-<p><a class="reference internal" href="posts/install-gtk4-on-windows/#install-gtk4-on-windows11" id="toc-entry-1">Install GTK4 on Windows11</a></p>
-<ul>
-<li><p><a class="reference internal" href="posts/install-gtk4-on-windows/#download-and-install-msys2" id="toc-entry-2">1. Download and install Msys2</a></p></li>
-<li><p><a class="reference internal" href="posts/install-gtk4-on-windows/#install-gtk4-library-and-mingw-toolchain" id="toc-entry-3">2. Install GTK4 library and Mingw-toolchain</a></p></li>
-<li><p><a class="reference internal" href="posts/install-gtk4-on-windows/#setting-path" id="toc-entry-4">3. Setting Path</a></p></li>
-<li><p><a class="reference internal" href="posts/install-gtk4-on-windows/#hello-world" id="toc-entry-5">4. Hello world</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="posts/install-gtk4-on-windows/#summary" id="toc-entry-6">Summary</a></p></li>
-</ul></nav><p>This is a guide to install and config GTK4 library on Windows 11.</p>
-<blockquote>
-<aside class="admonition note"><p class="admonition-title">Note</p>
-<p>All steps have been tested in Sandbox:</p>
-<p>Edition Windows 11 Enterprise</p>
-<p>Version 22H2</p>
-<p>OS build        22621.1848</p>
-</aside><aside class="admonition hint"><p class="admonition-title">Hint</p>
-<p><a class="reference external" href="https://www.gtk.org/docs/installations/windows/#using-gtk-from-msys2-packages">GTK offcial guide</a></p>
-</aside>
-</blockquote>
-<section id="download-and-install-msys2"><h3><a class="toc-backref" href="posts/install-gtk4-on-windows/#toc-entry-2" role="doc-backlink">1. Download and install Msys2</a></h3>
-<p><em>This tutorial uses the default installation path, if you use a custom one, you need to pay attention when setting PATH later</em></p>
-<p>Download from <a class="reference external" href="https://www.msys2.org/">here</a>, and install</p>
-<p>After clicking Finish, the command line interface will pop up. According to the documentation of Msys2, we first install gcc:</p>
-<p><code class="docutils literal">pacman <span class="pre">-S</span> <span class="pre">mingw-w64-ucrt-x86_64-gcc</span></code></p>
-<dl>
-<dt>Enter(Y) to install</dt>
-<dd>
-<img alt="/images/Msys2_install.png" class="align-center" src="images/Msys2_install.png"><aside class="admonition hint"><p class="admonition-title">Hint</p>
-<p>Shift+Ins is the shortcut to paste in Msys2 Shell.</p>
-</aside>
-</dd>
-</dl></section><section id="install-gtk4-library-and-mingw-toolchain"><h3><a class="toc-backref" href="posts/install-gtk4-on-windows/#toc-entry-3" role="doc-backlink">2. Install GTK4 library and Mingw-toolchain</a></h3>
-<p>In order to install GTK4, type in the terminal:</p>
-<p><code class="docutils literal">pacman <span class="pre">-S</span> <span class="pre">mingw-w64-x86_64-gtk4</span></code></p>
-<p>To use GNU/make and other tools, type:</p>
-<p><code class="docutils literal">pacman <span class="pre">-S</span> <span class="pre">mingw-w64-x86_64-toolchain</span> <span class="pre">base-devel</span></code></p>
-<dl>
-<dt>Enter until finished.</dt>
-<dd><img alt="/images/Msys2_tool-chain.png" class="align-center" src="images/Msys2_tool-chain.png"></dd>
-</dl></section><section id="setting-path"><h3><a class="toc-backref" href="posts/install-gtk4-on-windows/#toc-entry-4" role="doc-backlink">3. Setting Path</a></h3>
-<p>Edit System Variable (Follow <a class="reference external" href="https://www.java.com/en/download/help/path.html">here</a>)</p>
-<p>Add <em>Your path to msys2mingw64bin</em>, as default it's <code class="docutils literal"><span class="pre">C:\msys64\mingw64\bin</span></code>.</p>
-<p>Add <em>Your path to msys2usrbin</em>, as default it's <code class="docutils literal"><span class="pre">C:\msys64\usr\bin</span></code>.</p>
-<blockquote>
-<aside class="admonition note"><p class="admonition-title">Note</p>
-<p>Follow the sequence above, as Windows will follow the sequence on PATH table.</p>
-<p>This will affect our latter input commands <code class="docutils literal"><span class="pre">pkg-config</span></code> and <code class="docutils literal">mkdir</code>.</p>
-</aside>
-</blockquote>
-<p>Given that we need to use <code class="docutils literal">make</code>, however, Msys2 will name it as "mingw32-make.exe".</p>
-<p>So we go to the directory we just put in PATH (<code class="docutils literal"><span class="pre">C:\msys64\mingw64\bin</span></code>), find the "mingw32-make.exe" and rename to "make.exe" (or create copy).</p>
-<p>Now, when we open <code class="docutils literal">cmd</code> or <code class="docutils literal">powershell</code>, and type <code class="docutils literal">make <span class="pre">-v</span></code>, it works!</p>
-<blockquote>
-<blockquote>
-<img alt="/images/cmd_make.png" class="align-center" src="images/cmd_make.png">
-</blockquote>
-<p>Then, we try <code class="docutils literal"><span class="pre">pkg-config</span> <span class="pre">--cflags</span> <span class="pre">--libs</span> gtk4</code>. We expect to have output like this:</p>
-<blockquote>
-<img alt="/images/cmd_pkg-config.png" class="align-center" src="images/cmd_pkg-config.png"><aside class="admonition hint"><p class="admonition-title">Hint</p>
-<p>If not... <a class="reference external" href="https://img.devrant.com/devrant/rant/r_1093122_83dS9.jpg">"Follow" this</a></p>
-<p>then, open Msys2 shell, run</p>
-<p><code class="docutils literal">cp <span class="pre">-r</span> /mingw64/lib/pkgconfig/* /usr/share/pkgconfig/</code></p>
-<p>to copy "gtk4.pc" to the path that <code class="docutils literal"><span class="pre">pkg-config</span></code> can find.</p>
-</aside>
-</blockquote>
-</blockquote>
-</section><section id="hello-world"><h3><a class="toc-backref" href="posts/install-gtk4-on-windows/#toc-entry-5" role="doc-backlink">4. Hello world</a></h3>
-<p>Open a new folder, and create a new file called <code class="docutils literal">demo.c</code>.</p>
-<p>We use the demo from <a class="reference external" href="posts/install-gtk4-on-windows/gtk.org">GTK</a>:</p>
-<blockquote>
-<div class="code"><pre class="code C"><a id="rest_code_fdd42921e14e4bee8f3899285416a28b-1" name="rest_code_fdd42921e14e4bee8f3899285416a28b-1" href="posts/install-gtk4-on-windows/#rest_code_fdd42921e14e4bee8f3899285416a28b-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;gtk/gtk.h&gt;</span>
-<a id="rest_code_fdd42921e14e4bee8f3899285416a28b-2" name="rest_code_fdd42921e14e4bee8f3899285416a28b-2" href="posts/install-gtk4-on-windows/#rest_code_fdd42921e14e4bee8f3899285416a28b-2"></a>
-<a id="rest_code_fdd42921e14e4bee8f3899285416a28b-3" name="rest_code_fdd42921e14e4bee8f3899285416a28b-3" href="posts/install-gtk4-on-windows/#rest_code_fdd42921e14e4bee8f3899285416a28b-3"></a><span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">activate</span><span class="p">(</span><span class="n">GtkApplication</span><span class="o">*</span><span class="w"> </span><span class="n">app</span><span class="p">,</span><span class="w"> </span><span class="n">gpointer</span><span class="w"> </span><span class="n">user_data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="rest_code_fdd42921e14e4bee8f3899285416a28b-4" name="rest_code_fdd42921e14e4bee8f3899285416a28b-4" href="posts/install-gtk4-on-windows/#rest_code_fdd42921e14e4bee8f3899285416a28b-4"></a><span class="w">        </span><span class="n">GtkWidget</span><span class="o">*</span><span class="w"> </span><span class="n">window</span><span class="p">;</span>
-<a id="rest_code_fdd42921e14e4bee8f3899285416a28b-5" name="rest_code_fdd42921e14e4bee8f3899285416a28b-5" href="posts/install-gtk4-on-windows/#rest_code_fdd42921e14e4bee8f3899285416a28b-5"></a>
-<a id="rest_code_fdd42921e14e4bee8f3899285416a28b-6" name="rest_code_fdd42921e14e4bee8f3899285416a28b-6" href="posts/install-gtk4-on-windows/#rest_code_fdd42921e14e4bee8f3899285416a28b-6"></a><span class="w">        </span><span class="n">window</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gtk_application_window_new</span><span class="p">(</span><span class="n">app</span><span class="p">);</span>
-<a id="rest_code_fdd42921e14e4bee8f3899285416a28b-7" name="rest_code_fdd42921e14e4bee8f3899285416a28b-7" href="posts/install-gtk4-on-windows/#rest_code_fdd42921e14e4bee8f3899285416a28b-7"></a><span class="w">        </span><span class="n">gtk_window_set_title</span><span class="p">(</span><span class="n">GTK_WINDOW</span><span class="p">(</span><span class="n">window</span><span class="p">),</span><span class="w"> </span><span class="s">"Window"</span><span class="p">);</span>
-<a id="rest_code_fdd42921e14e4bee8f3899285416a28b-8" name="rest_code_fdd42921e14e4bee8f3899285416a28b-8" href="posts/install-gtk4-on-windows/#rest_code_fdd42921e14e4bee8f3899285416a28b-8"></a><span class="w">        </span><span class="n">gtk_window_set_default_size</span><span class="p">(</span><span class="n">GTK_WINDOW</span><span class="p">(</span><span class="n">window</span><span class="p">),</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="mi">200</span><span class="p">);</span>
-<a id="rest_code_fdd42921e14e4bee8f3899285416a28b-9" name="rest_code_fdd42921e14e4bee8f3899285416a28b-9" href="posts/install-gtk4-on-windows/#rest_code_fdd42921e14e4bee8f3899285416a28b-9"></a><span class="w">        </span><span class="n">gtk_widget_show</span><span class="p">(</span><span class="n">window</span><span class="p">);</span>
-<a id="rest_code_fdd42921e14e4bee8f3899285416a28b-10" name="rest_code_fdd42921e14e4bee8f3899285416a28b-10" href="posts/install-gtk4-on-windows/#rest_code_fdd42921e14e4bee8f3899285416a28b-10"></a><span class="p">}</span>
-<a id="rest_code_fdd42921e14e4bee8f3899285416a28b-11" name="rest_code_fdd42921e14e4bee8f3899285416a28b-11" href="posts/install-gtk4-on-windows/#rest_code_fdd42921e14e4bee8f3899285416a28b-11"></a>
-<a id="rest_code_fdd42921e14e4bee8f3899285416a28b-12" name="rest_code_fdd42921e14e4bee8f3899285416a28b-12" href="posts/install-gtk4-on-windows/#rest_code_fdd42921e14e4bee8f3899285416a28b-12"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="o">**</span><span class="w"> </span><span class="n">argv</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="rest_code_fdd42921e14e4bee8f3899285416a28b-13" name="rest_code_fdd42921e14e4bee8f3899285416a28b-13" href="posts/install-gtk4-on-windows/#rest_code_fdd42921e14e4bee8f3899285416a28b-13"></a><span class="w">        </span><span class="n">GtkApplication</span><span class="o">*</span><span class="w"> </span><span class="n">app</span><span class="p">;</span>
-<a id="rest_code_fdd42921e14e4bee8f3899285416a28b-14" name="rest_code_fdd42921e14e4bee8f3899285416a28b-14" href="posts/install-gtk4-on-windows/#rest_code_fdd42921e14e4bee8f3899285416a28b-14"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">status</span><span class="p">;</span>
-<a id="rest_code_fdd42921e14e4bee8f3899285416a28b-15" name="rest_code_fdd42921e14e4bee8f3899285416a28b-15" href="posts/install-gtk4-on-windows/#rest_code_fdd42921e14e4bee8f3899285416a28b-15"></a>
-<a id="rest_code_fdd42921e14e4bee8f3899285416a28b-16" name="rest_code_fdd42921e14e4bee8f3899285416a28b-16" href="posts/install-gtk4-on-windows/#rest_code_fdd42921e14e4bee8f3899285416a28b-16"></a><span class="w">        </span><span class="n">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gtk_application_new</span><span class="p">(</span><span class="s">"org.gtk.example"</span><span class="p">,</span><span class="w"> </span><span class="n">G_APPLICATION_DEFAULT_FLAGS</span><span class="p">);</span>
-<a id="rest_code_fdd42921e14e4bee8f3899285416a28b-17" name="rest_code_fdd42921e14e4bee8f3899285416a28b-17" href="posts/install-gtk4-on-windows/#rest_code_fdd42921e14e4bee8f3899285416a28b-17"></a><span class="w">        </span><span class="n">g_signal_connect</span><span class="p">(</span><span class="n">app</span><span class="p">,</span><span class="w"> </span><span class="s">"activate"</span><span class="p">,</span><span class="w"> </span><span class="n">G_CALLBACK</span><span class="p">(</span><span class="n">activate</span><span class="p">),</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
-<a id="rest_code_fdd42921e14e4bee8f3899285416a28b-18" name="rest_code_fdd42921e14e4bee8f3899285416a28b-18" href="posts/install-gtk4-on-windows/#rest_code_fdd42921e14e4bee8f3899285416a28b-18"></a><span class="w">        </span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">g_application_run</span><span class="p">(</span><span class="n">G_APPLICATION</span><span class="p">(</span><span class="n">app</span><span class="p">),</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">);</span>
-<a id="rest_code_fdd42921e14e4bee8f3899285416a28b-19" name="rest_code_fdd42921e14e4bee8f3899285416a28b-19" href="posts/install-gtk4-on-windows/#rest_code_fdd42921e14e4bee8f3899285416a28b-19"></a><span class="w">        </span><span class="n">g_object_unref</span><span class="p">(</span><span class="n">app</span><span class="p">);</span>
-<a id="rest_code_fdd42921e14e4bee8f3899285416a28b-20" name="rest_code_fdd42921e14e4bee8f3899285416a28b-20" href="posts/install-gtk4-on-windows/#rest_code_fdd42921e14e4bee8f3899285416a28b-20"></a>
-<a id="rest_code_fdd42921e14e4bee8f3899285416a28b-21" name="rest_code_fdd42921e14e4bee8f3899285416a28b-21" href="posts/install-gtk4-on-windows/#rest_code_fdd42921e14e4bee8f3899285416a28b-21"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">status</span><span class="p">;</span>
-<a id="rest_code_fdd42921e14e4bee8f3899285416a28b-22" name="rest_code_fdd42921e14e4bee8f3899285416a28b-22" href="posts/install-gtk4-on-windows/#rest_code_fdd42921e14e4bee8f3899285416a28b-22"></a><span class="p">}</span>
-</pre></div>
-</blockquote>
-<p>And another file called <code class="docutils literal">makefile</code>:</p>
-<blockquote>
-<div class="code"><pre class="code makefile"><a id="rest_code_63d1f8d14236411e91c3ca8bee7e9a94-1" name="rest_code_63d1f8d14236411e91c3ca8bee7e9a94-1" href="posts/install-gtk4-on-windows/#rest_code_63d1f8d14236411e91c3ca8bee7e9a94-1"></a><span class="nv">CC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>gcc
-<a id="rest_code_63d1f8d14236411e91c3ca8bee7e9a94-2" name="rest_code_63d1f8d14236411e91c3ca8bee7e9a94-2" href="posts/install-gtk4-on-windows/#rest_code_63d1f8d14236411e91c3ca8bee7e9a94-2"></a><span class="nv">CFLAGS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>-O2<span class="w"> </span>-Wall
-<a id="rest_code_63d1f8d14236411e91c3ca8bee7e9a94-3" name="rest_code_63d1f8d14236411e91c3ca8bee7e9a94-3" href="posts/install-gtk4-on-windows/#rest_code_63d1f8d14236411e91c3ca8bee7e9a94-3"></a><span class="nv">GTK_CFLAGS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`</span>pkg-config<span class="w"> </span>--cflags<span class="w"> </span>gtk4<span class="sb">`</span>
-<a id="rest_code_63d1f8d14236411e91c3ca8bee7e9a94-4" name="rest_code_63d1f8d14236411e91c3ca8bee7e9a94-4" href="posts/install-gtk4-on-windows/#rest_code_63d1f8d14236411e91c3ca8bee7e9a94-4"></a><span class="nv">GTK_LIBS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`</span>pkg-config<span class="w"> </span>--libs<span class="w"> </span>gtk4<span class="sb">`</span>
-<a id="rest_code_63d1f8d14236411e91c3ca8bee7e9a94-5" name="rest_code_63d1f8d14236411e91c3ca8bee7e9a94-5" href="posts/install-gtk4-on-windows/#rest_code_63d1f8d14236411e91c3ca8bee7e9a94-5"></a>
-<a id="rest_code_63d1f8d14236411e91c3ca8bee7e9a94-6" name="rest_code_63d1f8d14236411e91c3ca8bee7e9a94-6" href="posts/install-gtk4-on-windows/#rest_code_63d1f8d14236411e91c3ca8bee7e9a94-6"></a><span class="nf">all</span><span class="o">:</span>
-<a id="rest_code_63d1f8d14236411e91c3ca8bee7e9a94-7" name="rest_code_63d1f8d14236411e91c3ca8bee7e9a94-7" href="posts/install-gtk4-on-windows/#rest_code_63d1f8d14236411e91c3ca8bee7e9a94-7"></a><span class="w">        </span>@mkdir<span class="w"> </span>-p<span class="w"> </span>./out
-<a id="rest_code_63d1f8d14236411e91c3ca8bee7e9a94-8" name="rest_code_63d1f8d14236411e91c3ca8bee7e9a94-8" href="posts/install-gtk4-on-windows/#rest_code_63d1f8d14236411e91c3ca8bee7e9a94-8"></a><span class="w">        </span><span class="k">$(</span>CC<span class="k">)</span><span class="w"> </span><span class="k">$(</span>GTK_CFLAGS<span class="k">)</span><span class="w"> </span>-o<span class="w"> </span>./out/demo.exe<span class="w"> </span>demo.c<span class="w"> </span><span class="k">$(</span>GTK_LIBS<span class="k">)</span>
-</pre></div>
-</blockquote>
-<p>Remember to save them, and open a <code class="docutils literal">cmd</code> in this directory (Shift + Right click).</p>
-<p>Run <code class="docutils literal">make</code>, the .exe file will be generated under <em>./out</em>. (Ignore warning message)</p>
-<blockquote>
-<img alt="/images/GTK_hello_world.png" class="align-center" src="images/GTK_hello_world.png">
-</blockquote>
-</section></section><section id="summary"><h2><a class="toc-backref" href="posts/install-gtk4-on-windows/#toc-entry-6" role="doc-backlink">Summary</a></h2>
-<p>That's all the steps, looks like it's hard to config the basic environment for C development.</p>
-<p>So, life is short, I choose Linux :)</p>
-</section>
+            </header><div class="p-summary entry-summary">
+                    <div>
+<figure class="align-center"><a class="reference external image-reference" href="https://docs.gtk.org/gtk4/hello-world.png"><img alt="https://docs.gtk.org/gtk4/hello-world.png" class="gkt" src="https://docs.gtk.org/gtk4/hello-world.png"></a>
+</figure><p class="more"><a href="posts/install-gtk4-on-windows/">Read more…</a></p>
 </div>
+                </div>
             </article>
 </div>
     
 
     
     
-       <script>var disqus_shortname="bajzc";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script><!--End of body content--><footer id="footer">
+       <script>var disqus_shortname="bajzc";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" integrity="sha384-3lJUsx1TJHt7BA4udB5KPnDrlkO8T6J6v/op7ui0BbCjvZ9WqV4Xm6DTP6kQ/iBH" crossorigin="anonymous"></script><script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$latex ','$'], ['\\(','\\)']]}});
+        </script><!--End of body content--><footer id="footer">
             Contents © 2023         <a href="mailto:lzecheng98@gmail.com">bajzc</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
             
             

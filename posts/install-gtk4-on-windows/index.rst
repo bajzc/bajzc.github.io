@@ -13,6 +13,8 @@
    :target: https://docs.gtk.org/gtk4/hello-world.png
    :align: center
    :class: gkt
+   
+.. TEASER_END
 
 =========================
 Install GTK4 on Windows11
@@ -21,6 +23,7 @@ Install GTK4 on Windows11
 .. contents::
 
 This is a guide to install and config GTK4 library on Windows 11.
+
 
 	.. note::
 

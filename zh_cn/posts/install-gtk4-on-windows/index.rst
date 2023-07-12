@@ -14,13 +14,19 @@
    :align: center
    :class: gkt
 
+.. TEASER_END:
+
 =============================
 在Win11上安装GTK4
 =============================
 
 .. contents::
 
-本文包括了作者在安装过程中遇到的坑...
+一个关于在Win 11上使用Msys2安装Gtk4,并且使用makefile生成一个Hello world的demo的指北
+
+并且包括了作者在安装过程中遇到的坑...
+
+
 
 安装过程在的Sandbox里经过测试:
 
@@ -163,7 +169,7 @@
 			$(CC) $(GTK_CFLAGS) -o ./out/demo.exe demo.c $(GTK_LIBS)
 
 	.. note::
-		这里的 ``mkdir`` 又是一个坑，安装Msys2后，在 *usr/bin* 下会有一个mkdir.exe，它是从linux移植来的，支持linux的一些参数。而powersehll的mkdir则`不支持参数 <https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/mkdir#syntax>`_。所以我们将 *C:\msys64\usr\bin* 加入Path。
+		这里的 ``mkdir`` 又是一个坑，安装Msys2后，在 *usr/bin* 下会有一个mkdir.exe，它是从linux移植来的，支持linux的一些参数。而powersehll的mkdir则 `不支持参数  <https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/mkdir#syntax>`_ 。所以我们将 *C:\msys64\usr\bin* 加入Path。
 
 		但这可能又会造成一些问题，比如在 *usr/bin* 目录下可能会有 *python.exe* ，这就可能会影响你使用 ``pip`` 安装。所以，PATH的顺序很重要，你可以将python的 */bin* 目录放在最上面。
 
