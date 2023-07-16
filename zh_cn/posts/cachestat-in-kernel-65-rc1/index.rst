@@ -1,8 +1,8 @@
 .. title: 初探cachestat接口——kernel 6.5-rc1
 .. slug: cachestat-in-kernel-65-rc1
 .. date: 2023-07-14 12:19:35 UTC+07:00
-.. tags: 
-.. category: 
+.. tags: kernel, sys_call, linux
+.. category:  Review 
 .. link: 
 .. description: 
 .. type: text

@@ -1,8 +1,8 @@
 .. title: Cachestat() in Kernel 6.5-rc1
 .. slug: cachestat-in-kernel-65-rc1
 .. date: 2023-07-14 12:19:35 UTC+07:00
-.. tags: 
-.. category: 
+.. tags: kernel, sys_call, linux
+.. category:  Review 
 .. link: 
 .. description: 
 .. type: text
@@ -51,7 +51,7 @@ If you want to try those demos below, you NEED to know：
 	
 		To remove the memory limit, **DO NOT** change the file to empty or 0,
 		
-		Instead, change it to **max**.
+		Instead, change it to **max**:
 		
 		``root# echo max > /sys/fs/cgroup/user.slice/memory.max``
 		
