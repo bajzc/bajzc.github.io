@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="zh_cn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>初探Cachestat接口——kernel 6.5-rc1 | Jason's Blog</title>
+<link href="../../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="alternate" type="application/rss+xml" title="RSS (zh_cn)" hreflang="zh_cn" href="../../rss.xml">
+<link rel="alternate" type="application/rss+xml" title="RSS (en)" hreflang="en" href="../../../rss.xml">
+<link rel="canonical" href="https://bajzc.com/zh_cn/posts/cachestat-in-kernel-65-rc1/">
+<!--[if lt IE 9]><script src="../../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Jason Li">
+<link rel="prev" href="../install-gtk4-on-windows/" title="在Windows 11上安装GTK4" type="text/html">
+<meta property="og:site_name" content="Jason's Blog">
+<meta property="og:title" content="初探Cachestat接口——kernel 6.5-rc1">
+<meta property="og:url" content="https://bajzc.com/zh_cn/posts/cachestat-in-kernel-65-rc1/">
+<meta property="og:description" content='注解
+本文系统环境：
+Linux gentoo 6.5.0-rc1
+
+如果你想自己尝试，你需要知道的几个命令：
+
+
+创建随机文件用于测试
+#signle random file "a"
+dd if=/dev/urandom of=a bs=1M count=128
+
+# random files "f1"-"f8"
+for i in {1..8}
+do
+dd if=/dev/urandom of='>
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2023-07-14T12:19:35+07:00">
+<link rel="alternate" hreflang="en" href="../../../posts/cachestat-in-kernel-65-rc1/">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">跳到主内容</a>
+
+<!-- Header and menu bar -->
+<div class="container">
+      <header class="blog-header py-3"><div class="row nbb-header align-items-center">
+          <div class="col-md-3 col-xs-2 col-sm-2" style="width: auto;">
+            <button class="navbar-toggler navbar-light bg-light nbb-navbar-toggler" type="button" data-toggle="collapse" data-target=".bs-nav-collapsible" aria-controls="bs-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse bs-nav-collapsible bootblog4-search-form-holder">
+                
+            </div>
+        </div>
+          <div class="col-md-6 col-xs-10 col-sm-10 bootblog4-brand" style="width: auto;">
+            <a class="navbar-brand blog-header-logo text-dark" href="../../">
+
+            <span id="blog-title">Jason's Blog</span>
+        </a>
+          </div>
+            <div class="col-md-3 justify-content-end align-items-center bs-nav-collapsible collapse flex-collapse bootblog4-right-nav">
+            <nav class="navbar navbar-light bg-white"><ul class="navbar-nav bootblog4-right-nav">
+<li class="nav-item"><a href="../../../" rel="alternate" hreflang="en" class="nav-link">English</a></li>
+
+                    
+                    
+    
+    <li class="nav-item">
+    <a href="index.rst" id="sourcelink" class="nav-link">源文件</a>
+    </li>
+
+
+                    
+            </ul></nav>
+</div>
+    </div>
+</header><nav class="navbar navbar-expand-md navbar-light bg-white static-top"><div class="collapse navbar-collapse bs-nav-collapsible" id="bs-navbar">
+            <ul class="navbar-nav nav-fill d-flex w-100">
+<li class="nav-item">
+<a href="../../archive.html" class="nav-link">文章归档</a>
+                </li>
+<li class="nav-item">
+<a href="../../categories/" class="nav-link">标签</a>
+                </li>
+<li class="nav-item">
+<a href="../../rss.xml" class="nav-link">RSS 源</a>
+
+                
+            </li>
+</ul>
+</div>
+<!-- /.navbar-collapse -->
+</nav>
+</div>
+
+<div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        
+        
+        
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">初探Cachestat接口——kernel 6.5-rc1</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard p-author h-card"><span class="byline-name fn p-name" itemprop="author">
+                    Jason Li
+            </span></p>
+            <p class="dateline">
+            <a href="." rel="bookmark">
+            <time class="published dt-published" datetime="2023-07-14T12:19:35+07:00" itemprop="datePublished" title="2023-07-14 12:19">2023-07-14 12:19</time></a>
+            </p>
+                <p class="commentline">
+    
+    <a href="#disqus_thread" data-disqus-identifier="cache/posts/cachestat-in-kernel-65-rc1.en.html">评论</a>
+
+
+            
+        </p>
+<p class="sourceline"><a href="index.rst" class="sourcelink">源文件</a></p>
+
+        </div>
+        
+        <div class="metadata posttranslations translations">
+            <h3 class="posttranslations-intro">也可用于：</h3>
+                <p><a href="../../../posts/cachestat-in-kernel-65-rc1/" rel="alternate" hreflang="en">English</a></p>
+        </div>
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <blockquote>
+<figure class="align-center"><img alt="/images/Tex_6.5.png" src="../../../images/Tex_6.5.png"></figure>
+</blockquote>
+<!-- TEASER_END -->
+<aside class="admonition note"><p class="admonition-title">注解</p>
+<p>本文系统环境：</p>
+<p>Linux gentoo 6.5.0-rc1</p>
+</aside><p>如果你想自己尝试，你需要知道的几个命令：</p>
+<ol class="arabic">
+<li><dl>
+<dt>创建随机文件用于测试</dt>
+<dd>
+<div class="code"><pre class="code bash"><a id="rest_code_7cfd6c351bc64c88b5e5a17b429faec5-1" name="rest_code_7cfd6c351bc64c88b5e5a17b429faec5-1" href="#rest_code_7cfd6c351bc64c88b5e5a17b429faec5-1"></a><span class="c1">#signle random file "a"</span>
+<a id="rest_code_7cfd6c351bc64c88b5e5a17b429faec5-2" name="rest_code_7cfd6c351bc64c88b5e5a17b429faec5-2" href="#rest_code_7cfd6c351bc64c88b5e5a17b429faec5-2"></a>dd<span class="w"> </span><span class="k">if</span><span class="o">=</span>/dev/urandom<span class="w"> </span><span class="nv">of</span><span class="o">=</span>a<span class="w"> </span><span class="nv">bs</span><span class="o">=</span>1M<span class="w"> </span><span class="nv">count</span><span class="o">=</span><span class="m">128</span>
+<a id="rest_code_7cfd6c351bc64c88b5e5a17b429faec5-3" name="rest_code_7cfd6c351bc64c88b5e5a17b429faec5-3" href="#rest_code_7cfd6c351bc64c88b5e5a17b429faec5-3"></a>
+<a id="rest_code_7cfd6c351bc64c88b5e5a17b429faec5-4" name="rest_code_7cfd6c351bc64c88b5e5a17b429faec5-4" href="#rest_code_7cfd6c351bc64c88b5e5a17b429faec5-4"></a><span class="c1"># random files "f1"-"f8"</span>
+<a id="rest_code_7cfd6c351bc64c88b5e5a17b429faec5-5" name="rest_code_7cfd6c351bc64c88b5e5a17b429faec5-5" href="#rest_code_7cfd6c351bc64c88b5e5a17b429faec5-5"></a><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="o">{</span><span class="m">1</span>..8<span class="o">}</span>
+<a id="rest_code_7cfd6c351bc64c88b5e5a17b429faec5-6" name="rest_code_7cfd6c351bc64c88b5e5a17b429faec5-6" href="#rest_code_7cfd6c351bc64c88b5e5a17b429faec5-6"></a><span class="k">do</span>
+<a id="rest_code_7cfd6c351bc64c88b5e5a17b429faec5-7" name="rest_code_7cfd6c351bc64c88b5e5a17b429faec5-7" href="#rest_code_7cfd6c351bc64c88b5e5a17b429faec5-7"></a>dd<span class="w"> </span><span class="k">if</span><span class="o">=</span>/dev/urandom<span class="w"> </span><span class="nv">of</span><span class="o">=</span>f<span class="si">${</span><span class="nv">i</span><span class="si">}</span><span class="w"> </span><span class="nv">bs</span><span class="o">=</span>1M<span class="w"> </span><span class="nv">count</span><span class="o">=</span><span class="m">128</span>
+<a id="rest_code_7cfd6c351bc64c88b5e5a17b429faec5-8" name="rest_code_7cfd6c351bc64c88b5e5a17b429faec5-8" href="#rest_code_7cfd6c351bc64c88b5e5a17b429faec5-8"></a><span class="k">done</span>
+</pre></div>
+</dd>
+</dl></li>
+<li><p>清除系统cache：</p></li>
+</ol>
+<dl>
+<dt><code class="docutils literal">root# echo 3 &gt; /proc/sys/vm/drop_caches</code></dt>
+<dd><aside class="admonition warning"><p class="admonition-title">警告</p>
+<p>在每一次运行测试程序之前都应该清除缓存，因为在生成文件时，它其实已经被写入cache了！同时，在运行过一次程序后，可能会有文件残留的cache</p>
+</aside></dd>
+</dl>
+<ol class="arabic">
+<li><dl>
+<dt>限制内存： <code class="docutils literal">root# echo 1073741824 &gt; /sys/fs/cgroup/user.slice/memory.max</code>
+</dt>
+<dd><aside class="admonition caution"><p class="admonition-title">小心</p>
+<p>要解除内存限制千万 <strong>不能</strong> 将文件改为空或者0，</p>
+<p>而应该将内容改为 <strong>max</strong></p>
+</aside></dd>
+</dl></li>
+</ol>
+<aside class="admonition note"><p class="admonition-title">注解</p>
+<p>由于glibc目前还没有支持最新的系统函数调用，这里我们先借用kernel里的函数实现：</p>
+<p>安装kernel的头文件， <a class="reference external" href="https://www.kernel.org/doc/Documentation/kbuild/headers_install.txt">参考这里</a> ：</p>
+<blockquote>
+<div class="code"><pre class="code bash"><a id="rest_code_a8ac0ee41e4c41a5a3287dc7c863ea3e-1" name="rest_code_a8ac0ee41e4c41a5a3287dc7c863ea3e-1" href="#rest_code_a8ac0ee41e4c41a5a3287dc7c863ea3e-1"></a><span class="c1"># run as root</span>
+<a id="rest_code_a8ac0ee41e4c41a5a3287dc7c863ea3e-2" name="rest_code_a8ac0ee41e4c41a5a3287dc7c863ea3e-2" href="#rest_code_a8ac0ee41e4c41a5a3287dc7c863ea3e-2"></a><span class="nb">cd</span><span class="w"> </span>/usr/src/linux-6.5-rc1<span class="w"> </span><span class="c1">#where the kernel source is</span>
+<a id="rest_code_a8ac0ee41e4c41a5a3287dc7c863ea3e-3" name="rest_code_a8ac0ee41e4c41a5a3287dc7c863ea3e-3" href="#rest_code_a8ac0ee41e4c41a5a3287dc7c863ea3e-3"></a>make<span class="w"> </span>headers_install<span class="w"> </span><span class="nv">ARCH</span><span class="o">=</span>x86<span class="w"> </span><span class="nv">INSTALL_HDR_PATH</span><span class="o">=</span>/usr
+</pre></div>
+</blockquote>
+</aside><section id="section-1"><h2>1. 如何使用？</h2>
+<p>读取一个128M的随机文件a,记录cache的使用情况：</p>
+<blockquote>
+<div class="code"><pre class="code C"><a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-1" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-1" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;fcntl.h&gt;</span>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-2" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-2" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-2"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;linux/mman.h&gt;</span>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-3" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-3" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-3"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-4" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-4" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-4"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-5" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-5" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-5"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;sys/stat.h&gt;</span>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-6" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-6" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-6"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;sys/types.h&gt;</span>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-7" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-7" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-7"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;syscall.h&gt;</span>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-8" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-8" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-8"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;unistd.h&gt;</span>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-9" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-9" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-9"></a>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-10" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-10" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-10"></a><span class="c1">// 自己来实现调用接口</span>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-11" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-11" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-11"></a><span class="kt">long</span><span class="w"> </span><span class="nf">sys_cachestat</span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-12" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-12" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-12"></a><span class="w">                </span><span class="k">struct</span><span class="w"> </span><span class="nc">cachestat_range</span><span class="w"> </span><span class="o">*</span><span class="n">cstat_range</span><span class="p">,</span>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-13" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-13" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-13"></a><span class="w">                </span><span class="k">struct</span><span class="w"> </span><span class="nc">cachestat</span><span class="w"> </span><span class="o">*</span><span class="n">cstat</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">flags</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-14" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-14" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-14"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">syscall</span><span class="p">(</span><span class="n">__NR_cachestat</span><span class="p">,</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="n">cstat_range</span><span class="p">,</span><span class="w"> </span><span class="n">cstat</span><span class="p">,</span><span class="w"> </span><span class="n">flags</span><span class="p">);</span>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-15" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-15" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-15"></a><span class="p">}</span>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-16" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-16" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-16"></a>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-17" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-17" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-17"></a><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-18" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-18" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-18"></a><span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">fn</span><span class="p">[</span><span class="mi">32</span><span class="p">];</span>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-19" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-19" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-19"></a><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">;</span>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-20" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-20" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-20"></a><span class="w">  </span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">fp</span><span class="p">;</span>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-21" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-21" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-21"></a><span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">cachestat</span><span class="w"> </span><span class="n">cs</span><span class="p">;</span>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-22" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-22" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-22"></a><span class="p">}</span><span class="w"> </span><span class="n">FNode</span><span class="p">;</span>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-23" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-23" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-23"></a>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-24" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-24" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-24"></a><span class="kt">int</span><span class="w"> </span><span class="nf">retrieve_cachestat</span><span class="p">(</span><span class="n">FNode</span><span class="w"> </span><span class="o">*</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-25" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-25" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-25"></a><span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">cachestat_range</span><span class="w"> </span><span class="n">cr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1024</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1024</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1024</span><span class="p">};</span>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-26" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-26" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-26"></a><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sys_cachestat</span><span class="p">(</span><span class="n">n</span><span class="o">-&gt;</span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">cr</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">n</span><span class="o">-&gt;</span><span class="n">cs</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-27" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-27" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-27"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">r</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-28" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-28" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-28"></a><span class="w">    </span><span class="n">perror</span><span class="p">(</span><span class="s">"Failt to call sys_cachestat</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-29" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-29" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-29"></a><span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-30" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-30" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-30"></a><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"File [%s] has %d pages in cache, %d evicted</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="o">-&gt;</span><span class="n">fn</span><span class="p">,</span>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-31" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-31" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-31"></a><span class="w">           </span><span class="p">(</span><span class="kt">int</span><span class="p">)(</span><span class="n">n</span><span class="o">-&gt;</span><span class="n">cs</span><span class="p">.</span><span class="n">nr_cache</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)(</span><span class="n">n</span><span class="o">-&gt;</span><span class="n">cs</span><span class="p">.</span><span class="n">nr_evicted</span><span class="p">));</span>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-32" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-32" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-32"></a><span class="w">  </span><span class="p">}</span>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-33" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-33" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-33"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">r</span><span class="p">;</span>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-34" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-34" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-34"></a><span class="p">}</span>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-35" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-35" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-35"></a>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-36" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-36" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-36"></a><span class="c1">// 间隔读取文件，使文件尽可能的被写入cache</span>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-37" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-37" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-37"></a><span class="kt">void</span><span class="w"> </span><span class="nf">fetch_fileecontent</span><span class="p">(</span><span class="n">FNode</span><span class="w"> </span><span class="o">*</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-38" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-38" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-38"></a><span class="w">  </span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">fp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="o">-&gt;</span><span class="n">fp</span><span class="p">;</span>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-39" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-39" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-39"></a><span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">buf</span><span class="p">[</span><span class="mi">8</span><span class="p">];</span>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-40" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-40" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-40"></a><span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-41" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-41" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-41"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">fread</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">buf</span><span class="p">),</span><span class="w"> </span><span class="n">fp</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-42" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-42" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-42"></a><span class="w">      </span><span class="k">break</span><span class="p">;</span>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-43" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-43" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-43"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">fseek</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span><span class="w"> </span><span class="mi">4096</span><span class="p">,</span><span class="w"> </span><span class="n">SEEK_CUR</span><span class="p">))</span>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-44" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-44" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-44"></a><span class="w">      </span><span class="k">break</span><span class="p">;</span>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-45" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-45" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-45"></a><span class="w">  </span><span class="p">}</span>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-46" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-46" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-46"></a><span class="p">}</span>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-47" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-47" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-47"></a><span class="kt">int</span><span class="w"> </span><span class="nf">openfile</span><span class="p">(</span><span class="n">FNode</span><span class="w"> </span><span class="o">*</span><span class="n">on</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-48" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-48" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-48"></a><span class="w">  </span><span class="n">on</span><span class="o">-&gt;</span><span class="n">fp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-49" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-49" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-49"></a><span class="w">  </span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">fp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fopen</span><span class="p">(</span><span class="n">on</span><span class="o">-&gt;</span><span class="n">fn</span><span class="p">,</span><span class="w"> </span><span class="s">"r"</span><span class="p">);</span>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-50" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-50" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-50"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">fp</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-51" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-51" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-51"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-52" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-52" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-52"></a><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fileno</span><span class="p">(</span><span class="n">fp</span><span class="p">);</span>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-53" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-53" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-53"></a><span class="w">  </span><span class="n">on</span><span class="o">-&gt;</span><span class="n">fd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fd</span><span class="p">;</span>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-54" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-54" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-54"></a><span class="w">  </span><span class="n">on</span><span class="o">-&gt;</span><span class="n">fp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fp</span><span class="p">;</span>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-55" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-55" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-55"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-56" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-56" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-56"></a><span class="p">}</span>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-57" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-57" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-57"></a>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-58" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-58" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-58"></a><span class="kt">void</span><span class="w"> </span><span class="nf">closefile</span><span class="p">(</span><span class="n">FNode</span><span class="w"> </span><span class="o">*</span><span class="n">on</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-59" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-59" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-59"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">on</span><span class="o">-&gt;</span><span class="n">fp</span><span class="p">)</span>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-60" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-60" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-60"></a><span class="w">    </span><span class="n">fclose</span><span class="p">(</span><span class="n">on</span><span class="o">-&gt;</span><span class="n">fp</span><span class="p">);</span>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-61" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-61" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-61"></a><span class="w">  </span><span class="n">on</span><span class="o">-&gt;</span><span class="n">fp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-62" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-62" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-62"></a><span class="p">}</span>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-63" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-63" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-63"></a>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-64" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-64" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-64"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-65" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-65" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-65"></a><span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">cachestat</span><span class="w"> </span><span class="n">cs</span><span class="p">;</span>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-66" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-66" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-66"></a><span class="w">  </span><span class="n">FNode</span><span class="w"> </span><span class="n">fn</span><span class="p">;</span>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-67" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-67" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-67"></a><span class="w">  </span><span class="n">sprintf</span><span class="p">(</span><span class="n">fn</span><span class="p">.</span><span class="n">fn</span><span class="p">,</span><span class="w"> </span><span class="s">"a"</span><span class="p">);</span>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-68" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-68" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-68"></a><span class="w">  </span><span class="n">openfile</span><span class="p">(</span><span class="o">&amp;</span><span class="n">fn</span><span class="p">);</span>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-69" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-69" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-69"></a><span class="w">  </span><span class="n">retrieve_cachestat</span><span class="p">(</span><span class="o">&amp;</span><span class="n">fn</span><span class="p">);</span>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-70" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-70" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-70"></a><span class="w">  </span><span class="n">fetch_fileecontent</span><span class="p">(</span><span class="o">&amp;</span><span class="n">fn</span><span class="p">);</span>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-71" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-71" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-71"></a><span class="w">  </span><span class="n">retrieve_cachestat</span><span class="p">(</span><span class="o">&amp;</span><span class="n">fn</span><span class="p">);</span>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-72" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-72" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-72"></a><span class="w">  </span><span class="n">closefile</span><span class="p">(</span><span class="o">&amp;</span><span class="n">fn</span><span class="p">);</span>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-73" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-73" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-73"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="rest_code_fe4b00cf04b1439aa17ae52a425d3417-74" name="rest_code_fe4b00cf04b1439aa17ae52a425d3417-74" href="#rest_code_fe4b00cf04b1439aa17ae52a425d3417-74"></a><span class="p">}</span>
+</pre></div>
+</blockquote>
+<p>输出：</p>
+<blockquote>
+<div class="code"><pre class="code bash"><a id="rest_code_c46df7335dd94dd7ba1386eaa4fdd1bf-1" name="rest_code_c46df7335dd94dd7ba1386eaa4fdd1bf-1" href="#rest_code_c46df7335dd94dd7ba1386eaa4fdd1bf-1"></a>❯<span class="w"> </span>./test1.out
+<a id="rest_code_c46df7335dd94dd7ba1386eaa4fdd1bf-2" name="rest_code_c46df7335dd94dd7ba1386eaa4fdd1bf-2" href="#rest_code_c46df7335dd94dd7ba1386eaa4fdd1bf-2"></a>File<span class="w"> </span><span class="o">[</span>a<span class="o">]</span><span class="w"> </span>has<span class="w"> </span><span class="m">0</span><span class="w"> </span>pages<span class="w"> </span><span class="k">in</span><span class="w"> </span>cache,<span class="w"> </span><span class="m">0</span><span class="w"> </span>evicted
+<a id="rest_code_c46df7335dd94dd7ba1386eaa4fdd1bf-3" name="rest_code_c46df7335dd94dd7ba1386eaa4fdd1bf-3" href="#rest_code_c46df7335dd94dd7ba1386eaa4fdd1bf-3"></a>File<span class="w"> </span><span class="o">[</span>a<span class="o">]</span><span class="w"> </span>has<span class="w"> </span><span class="m">32768</span><span class="w"> </span>pages<span class="w"> </span><span class="k">in</span><span class="w"> </span>cache,<span class="w"> </span><span class="m">0</span><span class="w"> </span>evicted
+</pre></div>
+</blockquote>
+<p>说明读取文件的过程中，载入了32768个cache pages</p>
+<dl>
+<dt>查看单位页缓存大小</dt>
+<dd>
+<div class="code"><pre class="code bash"><a id="rest_code_49d1477413c649a983f3342ad29325bc-1" name="rest_code_49d1477413c649a983f3342ad29325bc-1" href="#rest_code_49d1477413c649a983f3342ad29325bc-1"></a>❯<span class="w"> </span>getconf<span class="w"> </span>PAGESIZE
+<a id="rest_code_49d1477413c649a983f3342ad29325bc-2" name="rest_code_49d1477413c649a983f3342ad29325bc-2" href="#rest_code_49d1477413c649a983f3342ad29325bc-2"></a><span class="m">4096</span>
+</pre></div>
+</dd>
+</dl>
+<p>符合等式： (128*1024*1024)/4096 = 32768</p>
+</section><section id="section-2"><h2>2. 问题场景</h2>
+<p>现在我们有8个128M的随机文件f1-f8，循环打开128次：</p>
+<p>只需要修改main()函数</p>
+<blockquote>
+<div class="code"><pre class="code C"><a id="rest_code_5676554481814907b3a39dd835bba208-1" name="rest_code_5676554481814907b3a39dd835bba208-1" href="#rest_code_5676554481814907b3a39dd835bba208-1"></a><span class="cp">#define MAXN 8</span>
+<a id="rest_code_5676554481814907b3a39dd835bba208-2" name="rest_code_5676554481814907b3a39dd835bba208-2" href="#rest_code_5676554481814907b3a39dd835bba208-2"></a><span class="n">FNode</span><span class="w"> </span><span class="n">fns</span><span class="p">[</span><span class="n">MAXN</span><span class="p">];</span>
+<a id="rest_code_5676554481814907b3a39dd835bba208-3" name="rest_code_5676554481814907b3a39dd835bba208-3" href="#rest_code_5676554481814907b3a39dd835bba208-3"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="rest_code_5676554481814907b3a39dd835bba208-4" name="rest_code_5676554481814907b3a39dd835bba208-4" href="#rest_code_5676554481814907b3a39dd835bba208-4"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">;</span>
+<a id="rest_code_5676554481814907b3a39dd835bba208-5" name="rest_code_5676554481814907b3a39dd835bba208-5" href="#rest_code_5676554481814907b3a39dd835bba208-5"></a><span class="w">        </span><span class="kt">long</span><span class="w"> </span><span class="n">counter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">;</span>
+<a id="rest_code_5676554481814907b3a39dd835bba208-6" name="rest_code_5676554481814907b3a39dd835bba208-6" href="#rest_code_5676554481814907b3a39dd835bba208-6"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">128</span><span class="p">;</span><span class="w"> </span><span class="n">k</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="rest_code_5676554481814907b3a39dd835bba208-7" name="rest_code_5676554481814907b3a39dd835bba208-7" href="#rest_code_5676554481814907b3a39dd835bba208-7"></a><span class="w">                </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">MAXN</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="rest_code_5676554481814907b3a39dd835bba208-8" name="rest_code_5676554481814907b3a39dd835bba208-8" href="#rest_code_5676554481814907b3a39dd835bba208-8"></a><span class="w">                        </span><span class="n">sprintf</span><span class="p">(</span><span class="n">fns</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">fn</span><span class="p">,</span><span class="w"> </span><span class="s">"f%d"</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">);</span>
+<a id="rest_code_5676554481814907b3a39dd835bba208-9" name="rest_code_5676554481814907b3a39dd835bba208-9" href="#rest_code_5676554481814907b3a39dd835bba208-9"></a><span class="w">                        </span><span class="n">openfile</span><span class="p">(</span><span class="o">&amp;</span><span class="n">fns</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<a id="rest_code_5676554481814907b3a39dd835bba208-10" name="rest_code_5676554481814907b3a39dd835bba208-10" href="#rest_code_5676554481814907b3a39dd835bba208-10"></a><span class="w">                </span><span class="p">}</span>
+<a id="rest_code_5676554481814907b3a39dd835bba208-11" name="rest_code_5676554481814907b3a39dd835bba208-11" href="#rest_code_5676554481814907b3a39dd835bba208-11"></a><span class="w">                </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">MAXN</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="rest_code_5676554481814907b3a39dd835bba208-12" name="rest_code_5676554481814907b3a39dd835bba208-12" href="#rest_code_5676554481814907b3a39dd835bba208-12"></a><span class="w">                        </span><span class="n">retrieve_cachestat</span><span class="p">(</span><span class="o">&amp;</span><span class="n">fns</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<a id="rest_code_5676554481814907b3a39dd835bba208-13" name="rest_code_5676554481814907b3a39dd835bba208-13" href="#rest_code_5676554481814907b3a39dd835bba208-13"></a><span class="w">                        </span><span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fns</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">cs</span><span class="p">.</span><span class="n">nr_cache</span><span class="p">;</span>
+<a id="rest_code_5676554481814907b3a39dd835bba208-14" name="rest_code_5676554481814907b3a39dd835bba208-14" href="#rest_code_5676554481814907b3a39dd835bba208-14"></a><span class="w">                        </span><span class="n">fetch_fileecontent</span><span class="p">(</span><span class="o">&amp;</span><span class="n">fns</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<a id="rest_code_5676554481814907b3a39dd835bba208-15" name="rest_code_5676554481814907b3a39dd835bba208-15" href="#rest_code_5676554481814907b3a39dd835bba208-15"></a><span class="w">                        </span><span class="n">retrieve_cachestat</span><span class="p">(</span><span class="o">&amp;</span><span class="n">fns</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<a id="rest_code_5676554481814907b3a39dd835bba208-16" name="rest_code_5676554481814907b3a39dd835bba208-16" href="#rest_code_5676554481814907b3a39dd835bba208-16"></a><span class="w">                        </span><span class="n">counter</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">fns</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">cs</span><span class="p">.</span><span class="n">nr_cache</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">m</span><span class="p">;</span>
+<a id="rest_code_5676554481814907b3a39dd835bba208-17" name="rest_code_5676554481814907b3a39dd835bba208-17" href="#rest_code_5676554481814907b3a39dd835bba208-17"></a><span class="w">                </span><span class="p">}</span>
+<a id="rest_code_5676554481814907b3a39dd835bba208-18" name="rest_code_5676554481814907b3a39dd835bba208-18" href="#rest_code_5676554481814907b3a39dd835bba208-18"></a><span class="w">                </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">MAXN</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<a id="rest_code_5676554481814907b3a39dd835bba208-19" name="rest_code_5676554481814907b3a39dd835bba208-19" href="#rest_code_5676554481814907b3a39dd835bba208-19"></a><span class="w">                        </span><span class="n">closefile</span><span class="p">(</span><span class="o">&amp;</span><span class="n">fns</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<a id="rest_code_5676554481814907b3a39dd835bba208-20" name="rest_code_5676554481814907b3a39dd835bba208-20" href="#rest_code_5676554481814907b3a39dd835bba208-20"></a><span class="w">        </span><span class="p">}</span>
+<a id="rest_code_5676554481814907b3a39dd835bba208-21" name="rest_code_5676554481814907b3a39dd835bba208-21" href="#rest_code_5676554481814907b3a39dd835bba208-21"></a><span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"Total %ld pages loaded</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">counter</span><span class="p">);</span>
+<a id="rest_code_5676554481814907b3a39dd835bba208-22" name="rest_code_5676554481814907b3a39dd835bba208-22" href="#rest_code_5676554481814907b3a39dd835bba208-22"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="rest_code_5676554481814907b3a39dd835bba208-23" name="rest_code_5676554481814907b3a39dd835bba208-23" href="#rest_code_5676554481814907b3a39dd835bba208-23"></a><span class="p">}</span>
+</pre></div>
+</blockquote>
+<p>输出：</p>
+<img alt="/images/cache_test2.png" class="align-center" src="../../../images/cache_test2.png"><p>在内存足够的情况下，使用了 <strong>7.5</strong> 秒。</p>
+<p>但如果内存刚好不够用呢？比如我们只有1G内存，并且还需要给系统本身分配内存。这时，新的文件（比如f8）就会一直刷新cache（f1-f7的内容）,而一轮循环后，f1又会去抢占别的文件的cache。</p>
+<p>这时就会造成巨大的性能损失：</p>
+<img alt="/images/cache_test2_limited.png" src="../../../images/cache_test2_limited.png"><p>用时 <strong>50</strong> 秒！</p>
+</section><section id="cachestat"><h2>3.运用cachestat解决问题</h2>
+<dl>
+<dt>这时我们就可以更具cachestat提供的信息，在每一轮新循环时，依据文件在cache中的大小排序读取顺序。</dt>
+<dd>
+<div class="code"><pre class="code bash"><a id="rest_code_d24866bc66f442a18e8b375b34574fbd-1" name="rest_code_d24866bc66f442a18e8b375b34574fbd-1" href="#rest_code_d24866bc66f442a18e8b375b34574fbd-1"></a>❯<span class="w"> </span>diff<span class="w"> </span>test2.cpp<span class="w"> </span>test3.cpp
+<a id="rest_code_d24866bc66f442a18e8b375b34574fbd-2" name="rest_code_d24866bc66f442a18e8b375b34574fbd-2" href="#rest_code_d24866bc66f442a18e8b375b34574fbd-2"></a>9a10
+<a id="rest_code_d24866bc66f442a18e8b375b34574fbd-3" name="rest_code_d24866bc66f442a18e8b375b34574fbd-3" href="#rest_code_d24866bc66f442a18e8b375b34574fbd-3"></a>&gt;<span class="w"> </span>using<span class="w"> </span>std::sort<span class="p">;</span>
+<a id="rest_code_d24866bc66f442a18e8b375b34574fbd-4" name="rest_code_d24866bc66f442a18e8b375b34574fbd-4" href="#rest_code_d24866bc66f442a18e8b375b34574fbd-4"></a>60c61,65
+<a id="rest_code_d24866bc66f442a18e8b375b34574fbd-5" name="rest_code_d24866bc66f442a18e8b375b34574fbd-5" href="#rest_code_d24866bc66f442a18e8b375b34574fbd-5"></a>&lt;<span class="w"> </span>FNode<span class="w"> </span>fns<span class="o">[</span>MAXN<span class="o">]</span><span class="p">;</span>
+<a id="rest_code_d24866bc66f442a18e8b375b34574fbd-6" name="rest_code_d24866bc66f442a18e8b375b34574fbd-6" href="#rest_code_d24866bc66f442a18e8b375b34574fbd-6"></a>---
+<a id="rest_code_d24866bc66f442a18e8b375b34574fbd-7" name="rest_code_d24866bc66f442a18e8b375b34574fbd-7" href="#rest_code_d24866bc66f442a18e8b375b34574fbd-7"></a>&gt;<span class="w"> </span>FNode<span class="w"> </span>fns<span class="o">[</span>MAXN+4<span class="o">]</span><span class="p">;</span>
+<a id="rest_code_d24866bc66f442a18e8b375b34574fbd-8" name="rest_code_d24866bc66f442a18e8b375b34574fbd-8" href="#rest_code_d24866bc66f442a18e8b375b34574fbd-8"></a>&gt;<span class="w"> </span>int<span class="w"> </span>ix<span class="o">[</span>MAXN+4<span class="o">]</span><span class="p">;</span>
+<a id="rest_code_d24866bc66f442a18e8b375b34574fbd-9" name="rest_code_d24866bc66f442a18e8b375b34574fbd-9" href="#rest_code_d24866bc66f442a18e8b375b34574fbd-9"></a>&gt;<span class="w"> </span>bool<span class="w"> </span>mycmp<span class="o">(</span>int<span class="w"> </span>a,int<span class="w"> </span>b<span class="o">){</span>
+<a id="rest_code_d24866bc66f442a18e8b375b34574fbd-10" name="rest_code_d24866bc66f442a18e8b375b34574fbd-10" href="#rest_code_d24866bc66f442a18e8b375b34574fbd-10"></a>&gt;<span class="w">   </span><span class="k">return</span><span class="w"> </span>fns<span class="o">[</span>a<span class="o">]</span>.cs.nr_cache&gt;fns<span class="o">[</span>b<span class="o">]</span>.cs.nr_cache<span class="p">;</span>
+<a id="rest_code_d24866bc66f442a18e8b375b34574fbd-11" name="rest_code_d24866bc66f442a18e8b375b34574fbd-11" href="#rest_code_d24866bc66f442a18e8b375b34574fbd-11"></a>&gt;<span class="w"> </span><span class="o">}</span>
+<a id="rest_code_d24866bc66f442a18e8b375b34574fbd-12" name="rest_code_d24866bc66f442a18e8b375b34574fbd-12" href="#rest_code_d24866bc66f442a18e8b375b34574fbd-12"></a>70a76,80
+<a id="rest_code_d24866bc66f442a18e8b375b34574fbd-13" name="rest_code_d24866bc66f442a18e8b375b34574fbd-13" href="#rest_code_d24866bc66f442a18e8b375b34574fbd-13"></a>&gt;<span class="w">       </span>ix<span class="o">[</span>i-1<span class="o">]=</span>i<span class="p">;</span>
+<a id="rest_code_d24866bc66f442a18e8b375b34574fbd-14" name="rest_code_d24866bc66f442a18e8b375b34574fbd-14" href="#rest_code_d24866bc66f442a18e8b375b34574fbd-14"></a>&gt;<span class="w">     </span><span class="o">}</span>
+<a id="rest_code_d24866bc66f442a18e8b375b34574fbd-15" name="rest_code_d24866bc66f442a18e8b375b34574fbd-15" href="#rest_code_d24866bc66f442a18e8b375b34574fbd-15"></a>&gt;<span class="w">     </span>sort<span class="o">(</span>ix,ix+MAXN,mycmp<span class="o">)</span><span class="p">;</span>
+<a id="rest_code_d24866bc66f442a18e8b375b34574fbd-16" name="rest_code_d24866bc66f442a18e8b375b34574fbd-16" href="#rest_code_d24866bc66f442a18e8b375b34574fbd-16"></a>&gt;<span class="w">     </span><span class="k">for</span><span class="o">(</span>int<span class="w"> </span><span class="nv">j</span><span class="o">=</span><span class="m">0</span><span class="p">;</span>j&lt;MAXN<span class="p">;</span>j++<span class="o">){</span>
+<a id="rest_code_d24866bc66f442a18e8b375b34574fbd-17" name="rest_code_d24866bc66f442a18e8b375b34574fbd-17" href="#rest_code_d24866bc66f442a18e8b375b34574fbd-17"></a>&gt;<span class="w">       </span><span class="nv">i</span><span class="o">=</span>ix<span class="o">[</span>j<span class="o">]</span><span class="p">;</span>
+</pre></div>
+</dd>
+<dt>完整文件：</dt>
+<dd>
+<div class="code"><pre class="code C"><a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-1" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-1" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;fcntl.h&gt;</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-2" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-2" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-2"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;linux/mman.h&gt;</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-3" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-3" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-3"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-4" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-4" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-4"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-5" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-5" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-5"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;sys/stat.h&gt;</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-6" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-6" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-6"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;sys/types.h&gt;</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-7" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-7" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-7"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;syscall.h&gt;</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-8" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-8" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-8"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;unistd.h&gt;</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-9" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-9" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-9"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;algorithm&gt;</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-10" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-10" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-10"></a><span class="n">using</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">sort</span><span class="p">;</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-11" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-11" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-11"></a><span class="kt">long</span><span class="w"> </span><span class="nf">sys_cachestat</span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">cachestat_range</span><span class="w"> </span><span class="o">*</span><span class="n">cstat_range</span><span class="p">,</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-12" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-12" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-12"></a><span class="w">                </span><span class="k">struct</span><span class="w"> </span><span class="nc">cachestat</span><span class="w"> </span><span class="o">*</span><span class="n">cstat</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">flags</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-13" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-13" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-13"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">syscall</span><span class="p">(</span><span class="n">__NR_cachestat</span><span class="p">,</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="n">cstat_range</span><span class="p">,</span><span class="w"> </span><span class="n">cstat</span><span class="p">,</span><span class="w"> </span><span class="n">flags</span><span class="p">);</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-14" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-14" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-14"></a><span class="p">}</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-15" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-15" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-15"></a><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-16" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-16" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-16"></a><span class="w">        </span><span class="kt">char</span><span class="w"> </span><span class="n">fn</span><span class="p">[</span><span class="mi">32</span><span class="p">];</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-17" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-17" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-17"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">;</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-18" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-18" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-18"></a><span class="w">        </span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">fp</span><span class="p">;</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-19" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-19" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-19"></a><span class="w">        </span><span class="k">struct</span><span class="w"> </span><span class="nc">cachestat</span><span class="w"> </span><span class="n">cs</span><span class="p">;</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-20" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-20" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-20"></a><span class="p">}</span><span class="w"> </span><span class="n">FNode</span><span class="p">;</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-21" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-21" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-21"></a>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-22" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-22" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-22"></a><span class="kt">int</span><span class="w"> </span><span class="nf">retrieve_cachestat</span><span class="p">(</span><span class="n">FNode</span><span class="w"> </span><span class="o">*</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-23" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-23" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-23"></a><span class="w">        </span><span class="k">struct</span><span class="w"> </span><span class="nc">cachestat_range</span><span class="w"> </span><span class="n">cr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1024</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1024</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1024</span><span class="p">};</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-24" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-24" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-24"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sys_cachestat</span><span class="p">(</span><span class="n">n</span><span class="o">-&gt;</span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">cr</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">n</span><span class="o">-&gt;</span><span class="n">cs</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-25" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-25" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-25"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">r</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-26" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-26" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-26"></a><span class="w">                </span><span class="n">perror</span><span class="p">(</span><span class="s">"Failt to call sys_cachestat</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-27" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-27" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-27"></a><span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-28" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-28" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-28"></a><span class="w">                </span><span class="c1">// printf("File [%s] has %d pages in cache, %d evicted\n", n-&gt;fn,</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-29" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-29" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-29"></a><span class="w">                </span><span class="c1">//        (int)(n-&gt;cs.nr_cache), (int)(n-&gt;cs.nr_evicted));</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-30" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-30" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-30"></a><span class="w">        </span><span class="p">}</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-31" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-31" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-31"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">r</span><span class="p">;</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-32" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-32" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-32"></a><span class="p">}</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-33" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-33" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-33"></a><span class="kt">void</span><span class="w"> </span><span class="nf">fetch_fileecontent</span><span class="p">(</span><span class="n">FNode</span><span class="w"> </span><span class="o">*</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-34" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-34" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-34"></a><span class="w">        </span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">fp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="o">-&gt;</span><span class="n">fp</span><span class="p">;</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-35" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-35" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-35"></a><span class="w">        </span><span class="kt">char</span><span class="w"> </span><span class="n">buf</span><span class="p">[</span><span class="mi">8</span><span class="p">];</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-36" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-36" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-36"></a><span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-37" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-37" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-37"></a><span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">fread</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">buf</span><span class="p">),</span><span class="w"> </span><span class="n">fp</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-38" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-38" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-38"></a><span class="w">                        </span><span class="k">break</span><span class="p">;</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-39" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-39" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-39"></a><span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">fseek</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span><span class="w"> </span><span class="mi">4096</span><span class="p">,</span><span class="w"> </span><span class="n">SEEK_CUR</span><span class="p">))</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-40" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-40" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-40"></a><span class="w">                        </span><span class="k">break</span><span class="p">;</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-41" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-41" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-41"></a><span class="w">        </span><span class="p">}</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-42" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-42" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-42"></a><span class="p">}</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-43" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-43" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-43"></a><span class="kt">int</span><span class="w"> </span><span class="nf">openfile</span><span class="p">(</span><span class="n">FNode</span><span class="w"> </span><span class="o">*</span><span class="n">on</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-44" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-44" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-44"></a><span class="w">        </span><span class="n">on</span><span class="o">-&gt;</span><span class="n">fp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-45" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-45" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-45"></a><span class="w">        </span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">fp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fopen</span><span class="p">(</span><span class="n">on</span><span class="o">-&gt;</span><span class="n">fn</span><span class="p">,</span><span class="w"> </span><span class="s">"r"</span><span class="p">);</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-46" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-46" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-46"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">fp</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-47" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-47" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-47"></a><span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-48" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-48" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-48"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fileno</span><span class="p">(</span><span class="n">fp</span><span class="p">);</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-49" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-49" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-49"></a><span class="w">        </span><span class="n">on</span><span class="o">-&gt;</span><span class="n">fd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fd</span><span class="p">;</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-50" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-50" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-50"></a><span class="w">        </span><span class="n">on</span><span class="o">-&gt;</span><span class="n">fp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fp</span><span class="p">;</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-51" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-51" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-51"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-52" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-52" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-52"></a><span class="p">}</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-53" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-53" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-53"></a>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-54" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-54" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-54"></a><span class="kt">void</span><span class="w"> </span><span class="nf">closefile</span><span class="p">(</span><span class="n">FNode</span><span class="w"> </span><span class="o">*</span><span class="n">on</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-55" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-55" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-55"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">on</span><span class="o">-&gt;</span><span class="n">fp</span><span class="p">)</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-56" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-56" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-56"></a><span class="w">                </span><span class="n">fclose</span><span class="p">(</span><span class="n">on</span><span class="o">-&gt;</span><span class="n">fp</span><span class="p">);</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-57" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-57" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-57"></a><span class="w">        </span><span class="n">on</span><span class="o">-&gt;</span><span class="n">fp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-58" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-58" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-58"></a><span class="p">}</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-59" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-59" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-59"></a>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-60" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-60" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-60"></a><span class="cp">#define MAXN 8</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-61" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-61" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-61"></a><span class="n">FNode</span><span class="w"> </span><span class="n">fns</span><span class="p">[</span><span class="n">MAXN</span><span class="o">+</span><span class="mi">4</span><span class="p">];</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-62" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-62" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-62"></a><span class="kt">int</span><span class="w"> </span><span class="n">ix</span><span class="p">[</span><span class="n">MAXN</span><span class="o">+</span><span class="mi">4</span><span class="p">];</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-63" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-63" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-63"></a><span class="kt">bool</span><span class="w"> </span><span class="nf">mycmp</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">){</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-64" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-64" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-64"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">fns</span><span class="p">[</span><span class="n">a</span><span class="p">].</span><span class="n">cs</span><span class="p">.</span><span class="n">nr_cache</span><span class="o">&gt;</span><span class="n">fns</span><span class="p">[</span><span class="n">b</span><span class="p">].</span><span class="n">cs</span><span class="p">.</span><span class="n">nr_cache</span><span class="p">;</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-65" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-65" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-65"></a><span class="p">}</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-66" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-66" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-66"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-67" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-67" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-67"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">;</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-68" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-68" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-68"></a><span class="w">        </span><span class="kt">long</span><span class="w"> </span><span class="n">counter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">;</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-69" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-69" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-69"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">128</span><span class="p">;</span><span class="w"> </span><span class="n">k</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-70" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-70" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-70"></a><span class="w">                </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">MAXN</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-71" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-71" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-71"></a><span class="w">                        </span><span class="n">sprintf</span><span class="p">(</span><span class="n">fns</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">fn</span><span class="p">,</span><span class="w"> </span><span class="s">"f%d"</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">);</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-72" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-72" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-72"></a><span class="w">                        </span><span class="n">openfile</span><span class="p">(</span><span class="o">&amp;</span><span class="n">fns</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-73" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-73" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-73"></a><span class="w">                </span><span class="p">}</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-74" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-74" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-74"></a><span class="w">                </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">MAXN</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-75" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-75" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-75"></a><span class="w">                        </span><span class="n">retrieve_cachestat</span><span class="p">(</span><span class="o">&amp;</span><span class="n">fns</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-76" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-76" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-76"></a><span class="w">      </span><span class="n">ix</span><span class="p">[</span><span class="n">i</span><span class="mi">-1</span><span class="p">]</span><span class="o">=</span><span class="n">i</span><span class="p">;</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-77" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-77" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-77"></a><span class="w">    </span><span class="p">}</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-78" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-78" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-78"></a><span class="w">    </span><span class="n">sort</span><span class="p">(</span><span class="n">ix</span><span class="p">,</span><span class="n">ix</span><span class="o">+</span><span class="n">MAXN</span><span class="p">,</span><span class="n">mycmp</span><span class="p">);</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-79" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-79" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-79"></a><span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">j</span><span class="o">&lt;</span><span class="n">MAXN</span><span class="p">;</span><span class="n">j</span><span class="o">++</span><span class="p">){</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-80" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-80" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-80"></a><span class="w">      </span><span class="n">i</span><span class="o">=</span><span class="n">ix</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-81" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-81" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-81"></a><span class="w">                        </span><span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fns</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">cs</span><span class="p">.</span><span class="n">nr_cache</span><span class="p">;</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-82" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-82" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-82"></a><span class="w">                        </span><span class="n">fetch_fileecontent</span><span class="p">(</span><span class="o">&amp;</span><span class="n">fns</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-83" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-83" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-83"></a><span class="w">                        </span><span class="n">retrieve_cachestat</span><span class="p">(</span><span class="o">&amp;</span><span class="n">fns</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-84" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-84" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-84"></a><span class="w">                        </span><span class="n">counter</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">fns</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">cs</span><span class="p">.</span><span class="n">nr_cache</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">m</span><span class="p">;</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-85" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-85" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-85"></a><span class="w">                </span><span class="p">}</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-86" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-86" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-86"></a><span class="w">                </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">MAXN</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-87" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-87" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-87"></a><span class="w">                        </span><span class="n">closefile</span><span class="p">(</span><span class="o">&amp;</span><span class="n">fns</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-88" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-88" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-88"></a><span class="w">        </span><span class="p">}</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-89" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-89" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-89"></a><span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"Total %ld pages loaded</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">counter</span><span class="p">);</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-90" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-90" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-90"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-91" name="rest_code_bb7dfd3e7c1840c681d203c0232e4d39-91" href="#rest_code_bb7dfd3e7c1840c681d203c0232e4d39-91"></a><span class="p">}</span>
+</pre></div>
+</dd>
+</dl>
+<p>输出：</p>
+<blockquote>
+<img alt="/images/cache_test3.png" src="../../../images/cache_test3.png">
+</blockquote>
+<p>此时可用内存仍然是1G,但只用了 <strong>30</strong> 秒！</p>
+</section><section id="section-3"><h2>4. 总结</h2>
+<p>综上，对于总大小1G的f1-f8文件的循环读取：</p>
+<p>内存充足 &gt; 内存不足，但根据cachestat优化读取策略 &gt;&gt; 内存不足，且无优化</p>
+<p>的时间消耗。</p>
+<p>看得出，cachestat()对于服务器在资源有限时，提供动态规划读写策略很有帮助。这次6.5的这个更新其实也是将以前提供的接口统一成一个数据结构，更方便我们调用。</p>
+<p>目前文档有限，可以参考git log中提交时附带的说明：</p>
+<p><code class="docutils literal">git log cf264e1329fb0307e044f7675849f9f38b44c11a</code></p>
+<p>概要：</p>
+<blockquote>
+<div class="code"><pre class="code C"><a id="rest_code_723e760e0c194c9b82bdd263173c1d0e-1" name="rest_code_723e760e0c194c9b82bdd263173c1d0e-1" href="#rest_code_723e760e0c194c9b82bdd263173c1d0e-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;sys/mman.h&gt;</span>
+<a id="rest_code_723e760e0c194c9b82bdd263173c1d0e-2" name="rest_code_723e760e0c194c9b82bdd263173c1d0e-2" href="#rest_code_723e760e0c194c9b82bdd263173c1d0e-2"></a>
+<a id="rest_code_723e760e0c194c9b82bdd263173c1d0e-3" name="rest_code_723e760e0c194c9b82bdd263173c1d0e-3" href="#rest_code_723e760e0c194c9b82bdd263173c1d0e-3"></a><span class="k">struct</span><span class="w"> </span><span class="nc">cachestat_range</span><span class="w"> </span><span class="p">{</span>
+<a id="rest_code_723e760e0c194c9b82bdd263173c1d0e-4" name="rest_code_723e760e0c194c9b82bdd263173c1d0e-4" href="#rest_code_723e760e0c194c9b82bdd263173c1d0e-4"></a><span class="w">    </span><span class="n">__u64</span><span class="w"> </span><span class="n">off</span><span class="p">;</span>
+<a id="rest_code_723e760e0c194c9b82bdd263173c1d0e-5" name="rest_code_723e760e0c194c9b82bdd263173c1d0e-5" href="#rest_code_723e760e0c194c9b82bdd263173c1d0e-5"></a><span class="w">    </span><span class="n">__u64</span><span class="w"> </span><span class="n">len</span><span class="p">;</span>
+<a id="rest_code_723e760e0c194c9b82bdd263173c1d0e-6" name="rest_code_723e760e0c194c9b82bdd263173c1d0e-6" href="#rest_code_723e760e0c194c9b82bdd263173c1d0e-6"></a><span class="p">};</span>
+<a id="rest_code_723e760e0c194c9b82bdd263173c1d0e-7" name="rest_code_723e760e0c194c9b82bdd263173c1d0e-7" href="#rest_code_723e760e0c194c9b82bdd263173c1d0e-7"></a>
+<a id="rest_code_723e760e0c194c9b82bdd263173c1d0e-8" name="rest_code_723e760e0c194c9b82bdd263173c1d0e-8" href="#rest_code_723e760e0c194c9b82bdd263173c1d0e-8"></a><span class="k">struct</span><span class="w"> </span><span class="nc">cachestat</span><span class="w"> </span><span class="p">{</span>
+<a id="rest_code_723e760e0c194c9b82bdd263173c1d0e-9" name="rest_code_723e760e0c194c9b82bdd263173c1d0e-9" href="#rest_code_723e760e0c194c9b82bdd263173c1d0e-9"></a><span class="w">    </span><span class="n">__u64</span><span class="w"> </span><span class="n">nr_cache</span><span class="p">;</span>
+<a id="rest_code_723e760e0c194c9b82bdd263173c1d0e-10" name="rest_code_723e760e0c194c9b82bdd263173c1d0e-10" href="#rest_code_723e760e0c194c9b82bdd263173c1d0e-10"></a><span class="w">    </span><span class="n">__u64</span><span class="w"> </span><span class="n">nr_dirty</span><span class="p">;</span>
+<a id="rest_code_723e760e0c194c9b82bdd263173c1d0e-11" name="rest_code_723e760e0c194c9b82bdd263173c1d0e-11" href="#rest_code_723e760e0c194c9b82bdd263173c1d0e-11"></a><span class="w">    </span><span class="n">__u64</span><span class="w"> </span><span class="n">nr_writeback</span><span class="p">;</span>
+<a id="rest_code_723e760e0c194c9b82bdd263173c1d0e-12" name="rest_code_723e760e0c194c9b82bdd263173c1d0e-12" href="#rest_code_723e760e0c194c9b82bdd263173c1d0e-12"></a><span class="w">    </span><span class="n">__u64</span><span class="w"> </span><span class="n">nr_evicted</span><span class="p">;</span>
+<a id="rest_code_723e760e0c194c9b82bdd263173c1d0e-13" name="rest_code_723e760e0c194c9b82bdd263173c1d0e-13" href="#rest_code_723e760e0c194c9b82bdd263173c1d0e-13"></a><span class="w">    </span><span class="n">__u64</span><span class="w"> </span><span class="n">nr_recently_evicted</span><span class="p">;</span>
+<a id="rest_code_723e760e0c194c9b82bdd263173c1d0e-14" name="rest_code_723e760e0c194c9b82bdd263173c1d0e-14" href="#rest_code_723e760e0c194c9b82bdd263173c1d0e-14"></a><span class="p">};</span>
+<a id="rest_code_723e760e0c194c9b82bdd263173c1d0e-15" name="rest_code_723e760e0c194c9b82bdd263173c1d0e-15" href="#rest_code_723e760e0c194c9b82bdd263173c1d0e-15"></a>
+<a id="rest_code_723e760e0c194c9b82bdd263173c1d0e-16" name="rest_code_723e760e0c194c9b82bdd263173c1d0e-16" href="#rest_code_723e760e0c194c9b82bdd263173c1d0e-16"></a><span class="kt">int</span><span class="w"> </span><span class="nf">cachestat</span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">cachestat_range</span><span class="w"> </span><span class="o">*</span><span class="n">cstat_range</span><span class="p">,</span>
+<a id="rest_code_723e760e0c194c9b82bdd263173c1d0e-17" name="rest_code_723e760e0c194c9b82bdd263173c1d0e-17" href="#rest_code_723e760e0c194c9b82bdd263173c1d0e-17"></a><span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">cachestat</span><span class="w"> </span><span class="o">*</span><span class="n">cstat</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">flags</span><span class="p">);</span>
+</pre></div>
+</blockquote>
+<aside class="admonition note"><p class="admonition-title">注解</p>
+<p>参考
+B站博主@lddlinan的 <a class="reference external" href="https://www.bilibili.com/video/BV1xj411d7yc/?share_source=copy_web&amp;vd_source=97fae6e3f40019d75299f7c145705b5a">视频</a></p>
+</aside></section>
+</div>
+    <aside class="postpromonav"><nav><ul class="pager hidden-print">
+<li class="previous">
+                <a href="../install-gtk4-on-windows/" rel="prev" title="在Windows 11上安装GTK4">上一篇文章</a>
+            </li>
+        </ul></nav></aside><section class="comments hidden-print"><h2>评论</h2>
+        
+    
+        <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="bajzc",
+            disqus_url="https://bajzc.com/zh_cn/posts/cachestat-in-kernel-65-rc1/",
+        disqus_title="\u521d\u63a2Cachestat\u63a5\u53e3\u2014\u2014kernel 6.5-rc1",
+        disqus_identifier="cache/posts/cachestat-in-kernel-65-rc1.en.html",
+        disqus_config = function () {
+            this.language = "zh_cn";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="https://disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+        </section></article><script>var disqus_shortname="bajzc";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script><!--End of body content--><footer id="footer">
+            Contents © 2023         <a href="mailto:lzecheng98@gmail.com">Jason Li</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            
+            
+        </footer>
+</div>
+</div>
+
+
+        <script src="../../../assets/js/all-nocdn.js"></script><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element){var i=element.getElementsByTagName('img')[0];return i===undefined?'':i.alt;}});
+    </script>
+</body>
+</html>

@@ -17,10 +17,11 @@ My physics essay
 ===========================================================
 What are the contributing factors to use AC rather than DC?
 ===========================================================
+
 .. contents::
 
 .. note::
-	Zecheng Li (Jason)
+	Author: Zecheng Li (Jason)
 
 1  **Introduction**
 ===================
