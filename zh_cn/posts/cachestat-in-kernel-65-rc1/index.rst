@@ -1,4 +1,4 @@
-.. title: 初探Cachestat接口——kernel 6.5-rc1
+.. title: 初探cachestat接口——kernel 6.5-rc1
 .. slug: cachestat-in-kernel-65-rc1
 .. date: 2023-07-14 12:19:35 UTC+07:00
 .. tags: 
