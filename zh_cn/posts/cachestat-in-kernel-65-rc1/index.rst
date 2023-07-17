@@ -59,7 +59,9 @@
 
 读取一个128M的随机文件a,记录cache的使用情况：
 
-	.. code-block:: C
+``test1.cpp``:
+
+	.. code-block:: C++
 	
 		#include <fcntl.h>
 		#include <linux/mman.h>
@@ -161,7 +163,9 @@
 
 只需要修改main()函数
 
-	.. code-block:: C
+``test2.cpp``:
+
+	.. code-block:: C++
 	
 		#define MAXN 8
 		FNode fns[MAXN];
@@ -227,7 +231,9 @@
 		>       i=ix[j];
 
 完整文件：
-	.. code-block:: C
+
+``test3.cpp``:
+	.. code-block:: C++
 		
 		#include <fcntl.h>
 		#include <linux/mman.h>

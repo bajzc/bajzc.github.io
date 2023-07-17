@@ -73,7 +73,9 @@ If you want to try those demos below, you need to know：
 Given there is a 128M random file ``a``.
 Read ``a`` and record the usage of cache
 
-	.. code-block:: C
+``test1.cpp``:
+
+	.. code-block:: C++
 	
 		#include <fcntl.h>
 		#include <linux/mman.h>
@@ -173,9 +175,9 @@ matches our expectation, as ``(128*1024*1024)/4096 = 32768``
 
 Now we have 8 random files f1-f8 of 128M, which are read 128 times in a loop:
 
-(Just change the main() function)
+``test2.cpp`` (Just change the main() function)
 
-	.. code-block:: C
+	.. code-block:: C++
 	
 		#define MAXN 8
 		FNode fns[MAXN];
@@ -243,9 +245,9 @@ At this time, we can use the information provided by cachestat(), and in each ne
 		>     for(int j=0;j<MAXN;j++){
 		>       i=ix[j];
 
-The whole file:
+The whole file, ``test3.cpp`` :
 
-	.. code-block:: C
+	.. code-block:: C++
 		
 		#include <fcntl.h>
 		#include <linux/mman.h>
