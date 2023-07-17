@@ -1,4 +1,4 @@
-.. title: Cachestat() in Kernel 6.5-rc1
+.. title: cachestat(), a new syscall in Kernel 6.5-rc1
 .. slug: cachestat-in-kernel-65-rc1
 .. date: 2023-07-14 12:19:35 UTC+07:00
 .. tags: kernel, sys_call, linux
@@ -17,7 +17,7 @@
 	
 	Linux gentoo 6.5.0-rc1
 
-If you want to try those demos below, you NEED to know：
+If you want to try those demos below, you need to know：
 
 1. generate random files for test
 	.. code-block:: bash
@@ -49,9 +49,9 @@ If you want to try those demos below, you NEED to know：
 
 	.. caution::
 	
-		To remove the memory limit, **DO NOT** rewrite the file to empty or 0,
+		To remove the memory limit, DO NOT rewrite the file into empty or 0,
 		
-		Instead, rewrite it to **max**:
+		Instead, rewrite it into max:
 		
 		``root# echo max > /sys/fs/cgroup/user.slice/memory.max``
 		
