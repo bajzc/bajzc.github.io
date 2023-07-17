@@ -49,15 +49,15 @@ If you want to try those demos below, you NEED to know：
 
 	.. caution::
 	
-		To remove the memory limit, **DO NOT** change the file to empty or 0,
+		To remove the memory limit, **DO NOT** rewrite the file to empty or 0,
 		
-		Instead, change it to **max**:
+		Instead, rewrite it to **max**:
 		
 		``root# echo max > /sys/fs/cgroup/user.slice/memory.max``
 		
 
 .. note::
-	Since glibc does not yet support the latest sys_call(), here we first borrow the functions in the kernel to implement:
+	Since Glibc does not yet support the latest sys_call(), here we first borrow the functions in the kernel to implement:
 	
 	Install the header files from Kernel, `refer to here <https://www.kernel.org/doc/Documentation/kbuild/headers_install.txt>`_ 
 
@@ -383,4 +383,4 @@ SYNOPSIS:
 .. note::
 	Reference:
 	
-	`Chinese Viedo <https://www.bilibili.com/video/BV1xj411d7yc/?share_source=copy_web&vd_source=97fae6e3f40019d75299f7c145705b5a>`_ 
+	`Chinese Video <https://www.bilibili.com/video/BV1xj411d7yc/?share_source=copy_web&vd_source=97fae6e3f40019d75299f7c145705b5a>`_ 
