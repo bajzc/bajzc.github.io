@@ -12,7 +12,7 @@
 .. figure:: https://docs.gtk.org/gtk4/hello-world.png
    :target: https://docs.gtk.org/gtk4/hello-world.png
    :align: center
-   :class: gkt
+   :class: gtk
 
 .. TEASER_END:
 
@@ -38,7 +38,7 @@
 		OS build	22621.1848
 
 	.. hint::
-		`GKT官网的安装指南 <https://www.gtk.org/docs/installations/windows/#using-gtk-from-msys2-packages>`_
+		`GTK官网的安装指南 <https://www.gtk.org/docs/installations/windows/#using-gtk-from-msys2-packages>`_
 
 安装过程
 ==========
@@ -73,10 +73,10 @@
 
 
 
-2. 安装GKT4库和toolchain
+2. 安装GTK4库和toolchain
 --------------------------------------------------
 
-要安装GKT4，在终端输入
+要安装GTK4，在终端输入
 
 ``pacman -S mingw-w64-x86_64-gtk4``
 

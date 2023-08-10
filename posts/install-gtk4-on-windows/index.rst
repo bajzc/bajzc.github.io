@@ -12,7 +12,7 @@
 .. figure:: https://docs.gtk.org/gtk4/hello-world.png
    :target: https://docs.gtk.org/gtk4/hello-world.png
    :align: center
-   :class: gkt
+   :class: gtk
    
 .. TEASER_END
 
