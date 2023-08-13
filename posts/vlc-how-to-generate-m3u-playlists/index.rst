@@ -6,7 +6,7 @@
 .. link: 
 .. description: 
 .. type: text
-.. lang: zh_cn
+.. lang: en
 
 .. figure:: https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/VLC_Icon.svg/1920px-VLC_Icon.svg.png
    :target: https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/VLC_Icon.svg/1920px-VLC_Icon.svg.png
@@ -23,7 +23,7 @@ VLC: how to generate .m3u playlists
 
 VLC is a free and open-source media player, and it is PORTABLE and CROSS-PLATFROM.
 
-To have a better user experience, without paying a penny, it is the best choice.
+In order to have a better user experience, without paying a penny, it is the best choice.
 
   "M3U (MP3 URL or Moving Picture Experts Group Audio Layer 3 Uniform Resource Locator in full) is a computer file format for a multimedia playlist.
   One common use of the M3U file format is creating a single-entry playlist file pointing to a stream on the Internet. 
@@ -74,6 +74,9 @@ And all those files are published on the Internet, so they can be accessed by **
 
 3 Script
 ========
+
+.. note::
+	This script is only fit for my needs, you can alter it by following the explanation for each function.
 
 .. code-block:: bash
 	:linenos:
@@ -147,6 +150,9 @@ And all those files are published on the Internet, so they can be accessed by **
 	compress
 	unset ListPath
 
+.. note::
+	You may need to install ``ffmpeg``, ``zip`` on your host system.
+	
 
 Backup()
 
@@ -185,9 +191,16 @@ The output can be seen `here <http://ipv4.bajzc.com:81/PlayLists/>`_
 4 Summary
 =========
 
-This script still has some limitations, such as it cannot deal with the SPACE in directories' name. 
+This script still has some limitations, such as it cannot deal with the ``SPACE`` in directories' name. 
 Because ``find`` won't return the path in C-style (but ``ls`` can do it). For example: ``The Music of Grand Theft Auto V [FLAC]``, should be ``The\ Music\ of\ Grand\ Theft\ Auto\ V\ \[FLAC\]``.
 Otherwise ``Bash`` cannot locate it.
+
+However, if the file name contains those characters will be fine. Thanks to ffmpeg, path can be passed as a string. (Line 21)
+
+	After all, open .m3u in VLC:
+	
+	.. image:: /images/VLC-Playlist.png
+		:align: center
 
 .. note::
   Copyright (C) 2023 Jason Li
