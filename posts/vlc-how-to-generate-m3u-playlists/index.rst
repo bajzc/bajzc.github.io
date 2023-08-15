@@ -52,23 +52,17 @@ All the syntax for .m3u can be checked on `Wikipedia <https://en.wikipedia.org/w
 ========================
 ``tree Music -L 1``
 
-Music/
- 
-├── Dr._Dre
-  
-│   ├── 02 - Deep Cover.flac
-  
-│   ├── ...
-  
-├── Imagine_Dragons
-  
-├── LOL_BGM
-  
-├── OneRepublic
-  
-├── The_Fat_Rat
-  
-└── The_Music_of_Grand_Theft_Auto_V
+::
+
+        Music/
+        ├── Dr._Dre
+        │   ├── 02 - Deep Cover.flac
+        │   ├── ...
+        ├── Imagine_Dragons
+        ├── LOL_BGM
+        ├── OneRepublic
+        ├── The_Fat_Rat
+        └── The_Music_of_Grand_Theft_Auto_V
 
 And all those files are published on the Internet, so they can be accessed by **http://ipv4.bajzc.com:81/Music/...** (use port 81 as the network operators blocked the default port: 80)
 
@@ -76,7 +70,7 @@ And all those files are published on the Internet, so they can be accessed by **
 ========
 
 .. note::
-	This script is only fit for my needs, you can alter it by following the explanation for each function.
+	This script is only fit for my needs, you can modify it by following the explanation for each function.
 
 .. code-block:: bash
 	:linenos:
