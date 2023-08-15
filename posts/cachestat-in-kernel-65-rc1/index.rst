@@ -383,6 +383,6 @@ SYNOPSIS:
 			    struct cachestat *cstat, unsigned int flags);
 			    
 .. note::
-	Reference:
+  See also:
 	
 	`Chinese Video <https://www.bilibili.com/video/BV1xj411d7yc/?share_source=copy_web&vd_source=97fae6e3f40019d75299f7c145705b5a>`_ 

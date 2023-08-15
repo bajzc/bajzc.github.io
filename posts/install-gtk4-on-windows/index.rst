@@ -22,7 +22,7 @@ Install GTK4 on Windows11
 
 .. contents::
 
-This is a guide to install and config GTK4 library on Windows 11.
+This is a guide to install and config GTK4 on Windows 11.
 
 
 	.. note::
@@ -57,7 +57,7 @@ Enter(Y) to install
 		
 		Shift+Ins is the shortcut to paste in Msys2 Shell.
 
-2. Install GTK4 library and Mingw-toolchain
+2. Install GTK4 and Mingw-toolchain
 -------------------------------------------
 
 In order to install GTK4, type in the terminal:
