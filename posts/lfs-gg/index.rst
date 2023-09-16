@@ -53,3 +53,4 @@ And finally, after 3 days struggling:
 
 The purpose of building LFS for me is to have an in-depth understanding of the Linux development toolchain (gcc glibc libs auto*),
 the configuration of some important software(ssh init grub) and kernel, and the use of the bash environment(sed echo bc).
+

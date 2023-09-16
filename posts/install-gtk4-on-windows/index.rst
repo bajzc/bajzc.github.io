@@ -37,7 +37,7 @@ This is a guide to install and config GTK4 on Windows 11.
 	
 	.. hint::
 
-		`GTK offcial guide <https://www.gtk.org/docs/installations/windows/#using-gtk-from-msys2-packages>`_
+		`GTK official guide <https://www.gtk.org/docs/installations/windows/#using-gtk-from-msys2-packages>`_
 
 1. Download and install Msys2
 -----------------------------
