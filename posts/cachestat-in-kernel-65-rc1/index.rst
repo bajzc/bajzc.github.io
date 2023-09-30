@@ -31,21 +31,23 @@ If you want to try those demos below, you need to know：
 		dd if=/dev/urandom of=f${i} bs=1M count=128
 		done
 		
-#. clean all the cache：
+2. clean all the cache：
 
-``root# echo 3 > /proc/sys/vm/drop_caches``
+``# echo 3 > /proc/sys/vm/drop_caches``
 
 	.. warning::
 	
-		The cache MUST be cleared every time before running the test program, if you want to get accurate results. Because,
+		The cache must be cleared every time before running the test program, if you want to get accurate results. Because,
 		
-		when the file is generated, it has actually been written to the cache!
+		1. when the file is generated, it has actually been written to the cache!
 		
-		after running any demo once, there may be cache remaining
+		2. after running any demo once, there may be cache remaining
 
-#. limit memory： 
+3. limit memory： 
 
-``root# echo 1073741824 > /sys/fs/cgroup/user.slice/memory.max``
+For most systemd users, limit your memory to 1G can be done by:
+
+``# echo 1073741824 > /sys/fs/cgroup/user.slice/memory.max``
 
 	.. caution::
 	
@@ -53,7 +55,7 @@ If you want to try those demos below, you need to know：
 		
 		Instead, rewrite it into max:
 		
-		``root# echo max > /sys/fs/cgroup/user.slice/memory.max``
+		``# echo max > /sys/fs/cgroup/user.slice/memory.max``
 		
 
 .. note::
