@@ -3,8 +3,8 @@
 .. date: 2023-08-12 16:42:50 UTC+07:00
 .. tags: VLC
 .. category: Review
-.. link: 
-.. description: 
+.. link:
+.. description:
 .. type: text
 .. lang: en
 
@@ -19,6 +19,15 @@
 VLC: how to generate .m3u playlists
 ===================================
 
+.. note::
+	The new C language version can be found here: (13.12.2023 update)
+
+	It's 30% faster than the bash script (8:10/11:08)
+
+		.. raw:: html
+
+			<script src="https://gist.github.com/bajzc/9f3d06154fee7c1f527654672b59a5cf.js"></script>
+
 .. contents::
 
 VLC is a free and open-source media player, and it is PORTABLE and CROSS-PLATFROM.
@@ -26,9 +35,9 @@ VLC is a free and open-source media player, and it is PORTABLE and CROSS-PLATFRO
 In order to have a better user experience, without paying a penny, it is the best choice.
 
   "M3U (MP3 URL or Moving Picture Experts Group Audio Layer 3 Uniform Resource Locator in full) is a computer file format for a multimedia playlist.
-  One common use of the M3U file format is creating a single-entry playlist file pointing to a stream on the Internet. 
+  One common use of the M3U file format is creating a single-entry playlist file pointing to a stream on the Internet.
   The created file provides easy access to that stream and is often used in downloads from a website, for emailing, and for listening to Internet radio."
-  
+
   --- Wikipedia
 
 As .m3u is one of the playlist format that VLC supports, and its format can be easily followed by a shell script, I chose it to make a list of all my Internet media files.
@@ -64,7 +73,7 @@ All the syntax for .m3u can be checked on `Wikipedia <https://en.wikipedia.org/w
         ├── The_Fat_Rat
         └── The_Music_of_Grand_Theft_Auto_V
 
-And all those files are published on the Internet, so they can be accessed by **http://ipv4.bajzc.com:81/Music/...** (use port 81 as the network operators blocked the default port: 80)
+And all those files are published on the Internet, so they can be accessed by **http://ipv4.bajzc.com:81/Music/...** (use port 81 as the NSP blocked the default port: 80)
 
 3 Script
 ========

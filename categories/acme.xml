@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Jason's Blog (Posts about acme)</title><link>https://bajzc.com/</link><description></description><atom:link href="https://bajzc.com/categories/acme.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2023 &lt;a href="mailto:lzecheng98@gmail.com"&gt;Jason Li&lt;/a&gt; </copyright><lastBuildDate>Wed, 13 Dec 2023 10:45:21 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Let's Encrypt (Gentoo)</title><link>https://bajzc.com/posts/lets-encrypt-gentoo/</link><dc:creator>Jason Li</dc:creator><description>&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;figure class="align-center"&gt;
+&lt;img alt="/images/https.png" src="https://bajzc.com/images/https.png"&gt;
+&lt;/figure&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://bajzc.com/posts/lets-encrypt-gentoo/"&gt;Read more…&lt;/a&gt; (4 min remaining to read)&lt;/p&gt;&lt;/blockquote&gt;</description><category>acme</category><category>Gentoo</category><category>SSL</category><guid>https://bajzc.com/posts/lets-encrypt-gentoo/</guid><pubDate>Sat, 11 Nov 2023 05:29:09 GMT</pubDate></item></channel></rss>
