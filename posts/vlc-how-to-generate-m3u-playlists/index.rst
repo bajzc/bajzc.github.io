@@ -20,9 +20,9 @@ VLC: how to generate .m3u playlists
 ===================================
 
 .. note::
-	The new C language version can be found here: (13.12.2023 update)
+	The new C language version can be found here: (30.12.2023 update)
 
-	It's 30% faster than the bash script (8:10/11:08)
+	It's 6x faster than the bash script (1:52/11:08)
 
 		.. raw:: html
 
