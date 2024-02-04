@@ -3,14 +3,14 @@
 .. date: 2023-09-02 16:27:13 UTC+07:00
 .. tags: linux
 .. category: Review
-.. link: 
+.. link:
 .. description: The way to get your Linux
 .. type: text
 
-  .. figure:: /images/NEOFETCH.jpeg
-    :align: center
+.. figure:: /images/NEOFETCH.jpeg
+   :align: center
 
- .. TEASER_END
+.. TEASER_END
 
 Here are some problems you may find even if you follow the `LFS <https://www.linuxfromscratch.org/lfs/view/stable/>`_ (Linux From Scratch) book LINE BY LINE:
 
@@ -23,7 +23,7 @@ Device Drivers->NVME Support
 
 .. image:: /images/NVME_SSD.jpeg
    :align: center
-  
+
 
 .. image:: /images/NVME_ERROR.jpeg
    :align: center

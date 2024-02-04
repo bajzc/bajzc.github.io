@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Let's Encrypt (Gentoo) | Jason's Blog</title>
+<title>Let's Encrypt (Gentoo) | Random Geek</title>
 <link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
 <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
 <meta name="theme-color" content="#5670d4">
@@ -11,10 +11,10 @@
 <link rel="alternate" type="application/rss+xml" title="RSS (en)" hreflang="en" href="../../rss.xml">
 <link rel="alternate" type="application/rss+xml" title="RSS (zh_cn)" hreflang="zh_cn" href="../../zh_cn/rss.xml">
 <link rel="canonical" href="https://bajzc.com/posts/lets-encrypt-gentoo/">
-<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Jason Li">
+<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Zecheng Li">
 <link rel="prev" href="../lfs-gg/" title="LFS? GG!" type="text/html">
 <link rel="next" href="../home-nas-deployment/" title="Home NAS deployment" type="text/html">
-<meta property="og:site_name" content="Jason's Blog">
+<meta property="og:site_name" content="Random Geek">
 <meta property="og:title" content="Let's Encrypt (Gentoo)">
 <meta property="og:url" content="https://bajzc.com/posts/lets-encrypt-gentoo/">
 <meta property="og:description" content="Note
@@ -48,7 +48,7 @@ emerge --ask dcron, acme-sh need this ">
           <div class="col-md-6 col-xs-10 col-sm-10 bootblog4-brand" style="width: auto;">
             <a class="navbar-brand blog-header-logo text-dark" href="../../">
 
-            <span id="blog-title">Jason's Blog</span>
+            <span id="blog-title">Random Geek</span>
         </a>
           </div>
             <div class="col-md-3 justify-content-end align-items-center bs-nav-collapsible collapse flex-collapse bootblog4-right-nav">
@@ -96,7 +96,7 @@ emerge --ask dcron, acme-sh need this ">
 
         <div class="metadata">
             <p class="byline author vcard p-author h-card"><span class="byline-name fn p-name" itemprop="author">
-                    Jason Li
+                    Zecheng Li
             </span></p>
             <p class="dateline">
             <a href="." rel="bookmark">
@@ -115,13 +115,7 @@ emerge --ask dcron, acme-sh need this ">
         
 
     </header><div class="e-content entry-content" itemprop="articleBody text">
-    <blockquote>
-<blockquote>
-<figure class="align-center"><img alt="/images/https.png" src="../../images/https.png"></figure>
-</blockquote>
-<!-- TEASER_END -->
-</blockquote>
-<aside class="admonition note"><p class="admonition-title">Note</p>
+    <figure class="align-center"><img alt="/images/https.png" src="../../images/https.png"></figure><!-- TEASER_END --><aside class="admonition note"><p class="admonition-title">Note</p>
 <p>My domain is provided from Google, the method of getting the API token could be different for other provider</p>
 </aside><section id="get-certificates"><h2>Get certificates</h2>
 <ol class="arabic simple">
@@ -130,87 +124,87 @@ emerge --ask dcron, acme-sh need this ">
 <li><p>Get your domain access token from the provider (<a class="reference external" href="https://domains.google.com/registrar/">Google Domain</a>)</p></li>
 <li><p>For Google Domains:</p></li>
 </ol>
-<div class="code"><pre class="code bash"><a id="rest_code_fa041c67a010446ab1ce5752cbb97a5f-1" name="rest_code_fa041c67a010446ab1ce5752cbb97a5f-1" href="#rest_code_fa041c67a010446ab1ce5752cbb97a5f-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">GOOGLEDOMAINS_ACCESS_TOKEN</span><span class="o">=</span><span class="s2">"&lt;generated-access-token&gt;"</span>
+<div class="code"><pre class="code bash"><a id="rest_code_6a063fa2fffa4dd7a8031ef12c2b18b5-1" name="rest_code_6a063fa2fffa4dd7a8031ef12c2b18b5-1" href="#rest_code_6a063fa2fffa4dd7a8031ef12c2b18b5-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">GOOGLEDOMAINS_ACCESS_TOKEN</span><span class="o">=</span><span class="s2">"&lt;generated-access-token&gt;"</span>
 </pre></div>
 <ol class="arabic simple" start="5">
 <li><p>run acme-sh as <strong>root</strong></p></li>
 </ol>
-<div class="code"><pre class="code bash"><a id="rest_code_4a05d478973f4fa2b77fd08e154648e7-1" name="rest_code_4a05d478973f4fa2b77fd08e154648e7-1" href="#rest_code_4a05d478973f4fa2b77fd08e154648e7-1"></a>acme.sh<span class="w"> </span>--issue<span class="w"> </span>--dns<span class="w"> </span>dns_googledomains<span class="w"> </span>-d<span class="w"> </span>bajzc.com<span class="w"> </span>-d<span class="w"> </span>ipv4.bajzc.com<span class="w"> </span>-k<span class="w"> </span>ec-384<span class="w"> </span>--ecc
+<div class="code"><pre class="code bash"><a id="rest_code_4909cea25fcf4be6827dd29a3a2b9f06-1" name="rest_code_4909cea25fcf4be6827dd29a3a2b9f06-1" href="#rest_code_4909cea25fcf4be6827dd29a3a2b9f06-1"></a>acme.sh<span class="w"> </span>--issue<span class="w"> </span>--dns<span class="w"> </span>dns_googledomains<span class="w"> </span>-d<span class="w"> </span>bajzc.com<span class="w"> </span>-d<span class="w"> </span>ipv4.bajzc.com<span class="w"> </span>-k<span class="w"> </span>ec-384<span class="w"> </span>--ecc
 </pre></div>
 <p>Log:</p>
-<div class="code"><pre class="code text"><a id="rest_code_1f4072f0230b41ecaa1780c341dc6660-1" name="rest_code_1f4072f0230b41ecaa1780c341dc6660-1" href="#rest_code_1f4072f0230b41ecaa1780c341dc6660-1"></a>[Sat Nov 11 13:58:34 CST 2023] Using CA: https://acme.zerossl.com/v2/DV90
-<a id="rest_code_1f4072f0230b41ecaa1780c341dc6660-2" name="rest_code_1f4072f0230b41ecaa1780c341dc6660-2" href="#rest_code_1f4072f0230b41ecaa1780c341dc6660-2"></a>[Sat Nov 11 13:58:34 CST 2023] Creating domain key
-<a id="rest_code_1f4072f0230b41ecaa1780c341dc6660-3" name="rest_code_1f4072f0230b41ecaa1780c341dc6660-3" href="#rest_code_1f4072f0230b41ecaa1780c341dc6660-3"></a>[Sat Nov 11 13:58:34 CST 2023] The domain key is here: /etc/acme-sh//bajzc.com_ecc/bajzc.com.key
-<a id="rest_code_1f4072f0230b41ecaa1780c341dc6660-4" name="rest_code_1f4072f0230b41ecaa1780c341dc6660-4" href="#rest_code_1f4072f0230b41ecaa1780c341dc6660-4"></a>[Sat Nov 11 13:58:34 CST 2023] Multi domain='DNS:bajzc.com,DNS:ipv4.bajzc.com'
-<a id="rest_code_1f4072f0230b41ecaa1780c341dc6660-5" name="rest_code_1f4072f0230b41ecaa1780c341dc6660-5" href="#rest_code_1f4072f0230b41ecaa1780c341dc6660-5"></a>[Sat Nov 11 13:58:34 CST 2023] Getting domain auth token for each domain
-<a id="rest_code_1f4072f0230b41ecaa1780c341dc6660-6" name="rest_code_1f4072f0230b41ecaa1780c341dc6660-6" href="#rest_code_1f4072f0230b41ecaa1780c341dc6660-6"></a>[Sat Nov 11 13:58:42 CST 2023] Getting webroot for domain='bajzc.com'
-<a id="rest_code_1f4072f0230b41ecaa1780c341dc6660-7" name="rest_code_1f4072f0230b41ecaa1780c341dc6660-7" href="#rest_code_1f4072f0230b41ecaa1780c341dc6660-7"></a>[Sat Nov 11 13:58:42 CST 2023] Getting webroot for domain='ipv4.bajzc.com'
-<a id="rest_code_1f4072f0230b41ecaa1780c341dc6660-8" name="rest_code_1f4072f0230b41ecaa1780c341dc6660-8" href="#rest_code_1f4072f0230b41ecaa1780c341dc6660-8"></a>[Sat Nov 11 13:58:43 CST 2023] Adding txt value: eegpTUjIL53Nvy0ES6sS-W3LZA4vVBfQQ for domain:  _acme-challenge.bajzc.com
-<a id="rest_code_1f4072f0230b41ecaa1780c341dc6660-9" name="rest_code_1f4072f0230b41ecaa1780c341dc6660-9" href="#rest_code_1f4072f0230b41ecaa1780c341dc6660-9"></a>[Sat Nov 11 13:58:43 CST 2023] Invoking Google Domains ACME DNS API.
-<a id="rest_code_1f4072f0230b41ecaa1780c341dc6660-10" name="rest_code_1f4072f0230b41ecaa1780c341dc6660-10" href="#rest_code_1f4072f0230b41ecaa1780c341dc6660-10"></a>[Sat Nov 11 13:58:44 CST 2023] Adding TXT record for _acme-challenge.bajzc.com.
-<a id="rest_code_1f4072f0230b41ecaa1780c341dc6660-11" name="rest_code_1f4072f0230b41ecaa1780c341dc6660-11" href="#rest_code_1f4072f0230b41ecaa1780c341dc6660-11"></a>[Sat Nov 11 13:58:47 CST 2023] TXT record added.
-<a id="rest_code_1f4072f0230b41ecaa1780c341dc6660-12" name="rest_code_1f4072f0230b41ecaa1780c341dc6660-12" href="#rest_code_1f4072f0230b41ecaa1780c341dc6660-12"></a>[Sat Nov 11 13:58:47 CST 2023] The txt record is added: Success.
-<a id="rest_code_1f4072f0230b41ecaa1780c341dc6660-13" name="rest_code_1f4072f0230b41ecaa1780c341dc6660-13" href="#rest_code_1f4072f0230b41ecaa1780c341dc6660-13"></a>[Sat Nov 11 13:58:47 CST 2023] Adding txt value: .. for domain:  _acme-challenge.ipv4.bajzc.com
-<a id="rest_code_1f4072f0230b41ecaa1780c341dc6660-14" name="rest_code_1f4072f0230b41ecaa1780c341dc6660-14" href="#rest_code_1f4072f0230b41ecaa1780c341dc6660-14"></a>[Sat Nov 11 13:58:47 CST 2023] Invoking Google Domains ACME DNS API.
-<a id="rest_code_1f4072f0230b41ecaa1780c341dc6660-15" name="rest_code_1f4072f0230b41ecaa1780c341dc6660-15" href="#rest_code_1f4072f0230b41ecaa1780c341dc6660-15"></a>[Sat Nov 11 13:58:50 CST 2023] Adding TXT record for _acme-challenge.ipv4.bajzc.com.
-<a id="rest_code_1f4072f0230b41ecaa1780c341dc6660-16" name="rest_code_1f4072f0230b41ecaa1780c341dc6660-16" href="#rest_code_1f4072f0230b41ecaa1780c341dc6660-16"></a>[Sat Nov 11 13:58:52 CST 2023] TXT record added.
-<a id="rest_code_1f4072f0230b41ecaa1780c341dc6660-17" name="rest_code_1f4072f0230b41ecaa1780c341dc6660-17" href="#rest_code_1f4072f0230b41ecaa1780c341dc6660-17"></a>[Sat Nov 11 13:58:52 CST 2023] The txt record is added: Success.
-<a id="rest_code_1f4072f0230b41ecaa1780c341dc6660-18" name="rest_code_1f4072f0230b41ecaa1780c341dc6660-18" href="#rest_code_1f4072f0230b41ecaa1780c341dc6660-18"></a>[Sat Nov 11 13:58:52 CST 2023] Let's check each DNS record now. Sleep 20 seconds first.
-<a id="rest_code_1f4072f0230b41ecaa1780c341dc6660-19" name="rest_code_1f4072f0230b41ecaa1780c341dc6660-19" href="#rest_code_1f4072f0230b41ecaa1780c341dc6660-19"></a>[Sat Nov 11 13:59:13 CST 2023] You can use '--dnssleep' to disable public dns checks.
-<a id="rest_code_1f4072f0230b41ecaa1780c341dc6660-20" name="rest_code_1f4072f0230b41ecaa1780c341dc6660-20" href="#rest_code_1f4072f0230b41ecaa1780c341dc6660-20"></a>[Sat Nov 11 13:59:13 CST 2023] See: https://github.com/acmesh-official/acme.sh/wiki/dnscheck
-<a id="rest_code_1f4072f0230b41ecaa1780c341dc6660-21" name="rest_code_1f4072f0230b41ecaa1780c341dc6660-21" href="#rest_code_1f4072f0230b41ecaa1780c341dc6660-21"></a>[Sat Nov 11 13:59:14 CST 2023] Checking bajzc.com for _acme-challenge.bajzc.com
-<a id="rest_code_1f4072f0230b41ecaa1780c341dc6660-22" name="rest_code_1f4072f0230b41ecaa1780c341dc6660-22" href="#rest_code_1f4072f0230b41ecaa1780c341dc6660-22"></a>[Sat Nov 11 13:59:14 CST 2023] Domain bajzc.com '_acme-challenge.bajzc.com' success.
-<a id="rest_code_1f4072f0230b41ecaa1780c341dc6660-23" name="rest_code_1f4072f0230b41ecaa1780c341dc6660-23" href="#rest_code_1f4072f0230b41ecaa1780c341dc6660-23"></a>[Sat Nov 11 13:59:14 CST 2023] Checking ipv4.bajzc.com for _acme-challenge.ipv4.bajzc.com
-<a id="rest_code_1f4072f0230b41ecaa1780c341dc6660-24" name="rest_code_1f4072f0230b41ecaa1780c341dc6660-24" href="#rest_code_1f4072f0230b41ecaa1780c341dc6660-24"></a>[Sat Nov 11 13:59:15 CST 2023] Domain ipv4.bajzc.com '_acme-challenge.ipv4.bajzc.com' success.
-<a id="rest_code_1f4072f0230b41ecaa1780c341dc6660-25" name="rest_code_1f4072f0230b41ecaa1780c341dc6660-25" href="#rest_code_1f4072f0230b41ecaa1780c341dc6660-25"></a>[Sat Nov 11 13:59:15 CST 2023] All success, let's return
-<a id="rest_code_1f4072f0230b41ecaa1780c341dc6660-26" name="rest_code_1f4072f0230b41ecaa1780c341dc6660-26" href="#rest_code_1f4072f0230b41ecaa1780c341dc6660-26"></a>[Sat Nov 11 13:59:15 CST 2023] Verifying: bajzc.com
-<a id="rest_code_1f4072f0230b41ecaa1780c341dc6660-27" name="rest_code_1f4072f0230b41ecaa1780c341dc6660-27" href="#rest_code_1f4072f0230b41ecaa1780c341dc6660-27"></a>[Sat Nov 11 13:59:17 CST 2023] Processing, The CA is processing your order, please just wait. (1/30)
-<a id="rest_code_1f4072f0230b41ecaa1780c341dc6660-28" name="rest_code_1f4072f0230b41ecaa1780c341dc6660-28" href="#rest_code_1f4072f0230b41ecaa1780c341dc6660-28"></a>[Sat Nov 11 13:59:22 CST 2023] Success
-<a id="rest_code_1f4072f0230b41ecaa1780c341dc6660-29" name="rest_code_1f4072f0230b41ecaa1780c341dc6660-29" href="#rest_code_1f4072f0230b41ecaa1780c341dc6660-29"></a>[Sat Nov 11 13:59:22 CST 2023] Verifying: ipv4.bajzc.com
-<a id="rest_code_1f4072f0230b41ecaa1780c341dc6660-30" name="rest_code_1f4072f0230b41ecaa1780c341dc6660-30" href="#rest_code_1f4072f0230b41ecaa1780c341dc6660-30"></a>[Sat Nov 11 13:59:24 CST 2023] Processing, The CA is processing your order, please just wait. (1/30)
-<a id="rest_code_1f4072f0230b41ecaa1780c341dc6660-31" name="rest_code_1f4072f0230b41ecaa1780c341dc6660-31" href="#rest_code_1f4072f0230b41ecaa1780c341dc6660-31"></a>[Sat Nov 11 13:59:28 CST 2023] Success
-<a id="rest_code_1f4072f0230b41ecaa1780c341dc6660-32" name="rest_code_1f4072f0230b41ecaa1780c341dc6660-32" href="#rest_code_1f4072f0230b41ecaa1780c341dc6660-32"></a>[Sat Nov 11 13:59:28 CST 2023] Removing DNS records.
-<a id="rest_code_1f4072f0230b41ecaa1780c341dc6660-33" name="rest_code_1f4072f0230b41ecaa1780c341dc6660-33" href="#rest_code_1f4072f0230b41ecaa1780c341dc6660-33"></a>[Sat Nov 11 13:59:28 CST 2023] Removing txt: eegpTUjIL53Nvy0ES6sS-W3LZA4vVBfQQ for domain: _acme-challenge.bajzc.com
-<a id="rest_code_1f4072f0230b41ecaa1780c341dc6660-34" name="rest_code_1f4072f0230b41ecaa1780c341dc6660-34" href="#rest_code_1f4072f0230b41ecaa1780c341dc6660-34"></a>[Sat Nov 11 13:59:28 CST 2023] Invoking Google Domains ACME DNS API.
-<a id="rest_code_1f4072f0230b41ecaa1780c341dc6660-35" name="rest_code_1f4072f0230b41ecaa1780c341dc6660-35" href="#rest_code_1f4072f0230b41ecaa1780c341dc6660-35"></a>[Sat Nov 11 13:59:30 CST 2023] Removing TXT record for _acme-challenge.bajzc.com.
-<a id="rest_code_1f4072f0230b41ecaa1780c341dc6660-36" name="rest_code_1f4072f0230b41ecaa1780c341dc6660-36" href="#rest_code_1f4072f0230b41ecaa1780c341dc6660-36"></a>[Sat Nov 11 13:59:32 CST 2023] TXT record removed.
-<a id="rest_code_1f4072f0230b41ecaa1780c341dc6660-37" name="rest_code_1f4072f0230b41ecaa1780c341dc6660-37" href="#rest_code_1f4072f0230b41ecaa1780c341dc6660-37"></a>[Sat Nov 11 13:59:32 CST 2023] Removed: Success
-<a id="rest_code_1f4072f0230b41ecaa1780c341dc6660-38" name="rest_code_1f4072f0230b41ecaa1780c341dc6660-38" href="#rest_code_1f4072f0230b41ecaa1780c341dc6660-38"></a>[Sat Nov 11 13:59:32 CST 2023] Removing txt: .. for domain: _acme-challenge.ipv4.bajzc.com
-<a id="rest_code_1f4072f0230b41ecaa1780c341dc6660-39" name="rest_code_1f4072f0230b41ecaa1780c341dc6660-39" href="#rest_code_1f4072f0230b41ecaa1780c341dc6660-39"></a>[Sat Nov 11 13:59:32 CST 2023] Invoking Google Domains ACME DNS API.
-<a id="rest_code_1f4072f0230b41ecaa1780c341dc6660-40" name="rest_code_1f4072f0230b41ecaa1780c341dc6660-40" href="#rest_code_1f4072f0230b41ecaa1780c341dc6660-40"></a>[Sat Nov 11 13:59:36 CST 2023] Removing TXT record for _acme-challenge.ipv4.bajzc.com.
-<a id="rest_code_1f4072f0230b41ecaa1780c341dc6660-41" name="rest_code_1f4072f0230b41ecaa1780c341dc6660-41" href="#rest_code_1f4072f0230b41ecaa1780c341dc6660-41"></a>[Sat Nov 11 13:59:38 CST 2023] TXT record removed.
-<a id="rest_code_1f4072f0230b41ecaa1780c341dc6660-42" name="rest_code_1f4072f0230b41ecaa1780c341dc6660-42" href="#rest_code_1f4072f0230b41ecaa1780c341dc6660-42"></a>[Sat Nov 11 13:59:38 CST 2023] Removed: Success
-<a id="rest_code_1f4072f0230b41ecaa1780c341dc6660-43" name="rest_code_1f4072f0230b41ecaa1780c341dc6660-43" href="#rest_code_1f4072f0230b41ecaa1780c341dc6660-43"></a>[Sat Nov 11 13:59:38 CST 2023] Verify finished, start to sign.
-<a id="rest_code_1f4072f0230b41ecaa1780c341dc6660-44" name="rest_code_1f4072f0230b41ecaa1780c341dc6660-44" href="#rest_code_1f4072f0230b41ecaa1780c341dc6660-44"></a>[Sat Nov 11 13:59:38 CST 2023] Lets finalize the order.
-<a id="rest_code_1f4072f0230b41ecaa1780c341dc6660-45" name="rest_code_1f4072f0230b41ecaa1780c341dc6660-45" href="#rest_code_1f4072f0230b41ecaa1780c341dc6660-45"></a>[Sat Nov 11 13:59:38 CST 2023] Le_OrderFinalize='https://acme.zerossl.com/v2/DV90/order/BFZaIPs9kuec-R1zsU1Cqw/finalize'
-<a id="rest_code_1f4072f0230b41ecaa1780c341dc6660-46" name="rest_code_1f4072f0230b41ecaa1780c341dc6660-46" href="#rest_code_1f4072f0230b41ecaa1780c341dc6660-46"></a>[Sat Nov 11 13:59:40 CST 2023] Order status is processing, lets sleep and retry.
-<a id="rest_code_1f4072f0230b41ecaa1780c341dc6660-47" name="rest_code_1f4072f0230b41ecaa1780c341dc6660-47" href="#rest_code_1f4072f0230b41ecaa1780c341dc6660-47"></a>[Sat Nov 11 13:59:40 CST 2023] Retry after: 15
-<a id="rest_code_1f4072f0230b41ecaa1780c341dc6660-48" name="rest_code_1f4072f0230b41ecaa1780c341dc6660-48" href="#rest_code_1f4072f0230b41ecaa1780c341dc6660-48"></a>[Sat Nov 11 13:59:56 CST 2023] Polling order status: https://acme.zerossl.com/v2/DV90/order/BFZaIPs9kuec-R1zsU1Cqw
-<a id="rest_code_1f4072f0230b41ecaa1780c341dc6660-49" name="rest_code_1f4072f0230b41ecaa1780c341dc6660-49" href="#rest_code_1f4072f0230b41ecaa1780c341dc6660-49"></a>[Sat Nov 11 13:59:58 CST 2023] Downloading cert.
-<a id="rest_code_1f4072f0230b41ecaa1780c341dc6660-50" name="rest_code_1f4072f0230b41ecaa1780c341dc6660-50" href="#rest_code_1f4072f0230b41ecaa1780c341dc6660-50"></a>[Sat Nov 11 13:59:58 CST 2023] Le_LinkCert='https://acme.zerossl.com/v2/DV90/cert/gGev2hxpZhQ5UbpPGdiNsA'
-<a id="rest_code_1f4072f0230b41ecaa1780c341dc6660-51" name="rest_code_1f4072f0230b41ecaa1780c341dc6660-51" href="#rest_code_1f4072f0230b41ecaa1780c341dc6660-51"></a>[Sat Nov 11 14:00:00 CST 2023] Cert success.
-<a id="rest_code_1f4072f0230b41ecaa1780c341dc6660-52" name="rest_code_1f4072f0230b41ecaa1780c341dc6660-52" href="#rest_code_1f4072f0230b41ecaa1780c341dc6660-52"></a>-----BEGIN CERTIFICATE-----
-<a id="rest_code_1f4072f0230b41ecaa1780c341dc6660-53" name="rest_code_1f4072f0230b41ecaa1780c341dc6660-53" href="#rest_code_1f4072f0230b41ecaa1780c341dc6660-53"></a>...
-<a id="rest_code_1f4072f0230b41ecaa1780c341dc6660-54" name="rest_code_1f4072f0230b41ecaa1780c341dc6660-54" href="#rest_code_1f4072f0230b41ecaa1780c341dc6660-54"></a>-----END CERTIFICATE-----
-<a id="rest_code_1f4072f0230b41ecaa1780c341dc6660-55" name="rest_code_1f4072f0230b41ecaa1780c341dc6660-55" href="#rest_code_1f4072f0230b41ecaa1780c341dc6660-55"></a>[Sat Nov 11 14:00:00 CST 2023] Your cert is in: /etc/acme-sh//bajzc.com_ecc/bajzc.com.cer
-<a id="rest_code_1f4072f0230b41ecaa1780c341dc6660-56" name="rest_code_1f4072f0230b41ecaa1780c341dc6660-56" href="#rest_code_1f4072f0230b41ecaa1780c341dc6660-56"></a>[Sat Nov 11 14:00:00 CST 2023] Your cert key is in: /etc/acme-sh//bajzc.com_ecc/bajzc.com.key
-<a id="rest_code_1f4072f0230b41ecaa1780c341dc6660-57" name="rest_code_1f4072f0230b41ecaa1780c341dc6660-57" href="#rest_code_1f4072f0230b41ecaa1780c341dc6660-57"></a>[Sat Nov 11 14:00:00 CST 2023] The intermediate CA cert is in: /etc/acme-sh//bajzc.com_ecc/ca.cer
-<a id="rest_code_1f4072f0230b41ecaa1780c341dc6660-58" name="rest_code_1f4072f0230b41ecaa1780c341dc6660-58" href="#rest_code_1f4072f0230b41ecaa1780c341dc6660-58"></a>[Sat Nov 11 14:00:00 CST 2023] And the full chain certs is there: /etc/acme-sh//bajzc.com_ecc/fullchain.cer
+<div class="code"><pre class="code text"><a id="rest_code_7a12c46918c34e7b9189f73639bd6cbb-1" name="rest_code_7a12c46918c34e7b9189f73639bd6cbb-1" href="#rest_code_7a12c46918c34e7b9189f73639bd6cbb-1"></a>[Sat Nov 11 13:58:34 CST 2023] Using CA: https://acme.zerossl.com/v2/DV90
+<a id="rest_code_7a12c46918c34e7b9189f73639bd6cbb-2" name="rest_code_7a12c46918c34e7b9189f73639bd6cbb-2" href="#rest_code_7a12c46918c34e7b9189f73639bd6cbb-2"></a>[Sat Nov 11 13:58:34 CST 2023] Creating domain key
+<a id="rest_code_7a12c46918c34e7b9189f73639bd6cbb-3" name="rest_code_7a12c46918c34e7b9189f73639bd6cbb-3" href="#rest_code_7a12c46918c34e7b9189f73639bd6cbb-3"></a>[Sat Nov 11 13:58:34 CST 2023] The domain key is here: /etc/acme-sh//bajzc.com_ecc/bajzc.com.key
+<a id="rest_code_7a12c46918c34e7b9189f73639bd6cbb-4" name="rest_code_7a12c46918c34e7b9189f73639bd6cbb-4" href="#rest_code_7a12c46918c34e7b9189f73639bd6cbb-4"></a>[Sat Nov 11 13:58:34 CST 2023] Multi domain='DNS:bajzc.com,DNS:ipv4.bajzc.com'
+<a id="rest_code_7a12c46918c34e7b9189f73639bd6cbb-5" name="rest_code_7a12c46918c34e7b9189f73639bd6cbb-5" href="#rest_code_7a12c46918c34e7b9189f73639bd6cbb-5"></a>[Sat Nov 11 13:58:34 CST 2023] Getting domain auth token for each domain
+<a id="rest_code_7a12c46918c34e7b9189f73639bd6cbb-6" name="rest_code_7a12c46918c34e7b9189f73639bd6cbb-6" href="#rest_code_7a12c46918c34e7b9189f73639bd6cbb-6"></a>[Sat Nov 11 13:58:42 CST 2023] Getting webroot for domain='bajzc.com'
+<a id="rest_code_7a12c46918c34e7b9189f73639bd6cbb-7" name="rest_code_7a12c46918c34e7b9189f73639bd6cbb-7" href="#rest_code_7a12c46918c34e7b9189f73639bd6cbb-7"></a>[Sat Nov 11 13:58:42 CST 2023] Getting webroot for domain='ipv4.bajzc.com'
+<a id="rest_code_7a12c46918c34e7b9189f73639bd6cbb-8" name="rest_code_7a12c46918c34e7b9189f73639bd6cbb-8" href="#rest_code_7a12c46918c34e7b9189f73639bd6cbb-8"></a>[Sat Nov 11 13:58:43 CST 2023] Adding txt value: eegpTUjIL53Nvy0ES6sS-W3LZA4vVBfQQ for domain:  _acme-challenge.bajzc.com
+<a id="rest_code_7a12c46918c34e7b9189f73639bd6cbb-9" name="rest_code_7a12c46918c34e7b9189f73639bd6cbb-9" href="#rest_code_7a12c46918c34e7b9189f73639bd6cbb-9"></a>[Sat Nov 11 13:58:43 CST 2023] Invoking Google Domains ACME DNS API.
+<a id="rest_code_7a12c46918c34e7b9189f73639bd6cbb-10" name="rest_code_7a12c46918c34e7b9189f73639bd6cbb-10" href="#rest_code_7a12c46918c34e7b9189f73639bd6cbb-10"></a>[Sat Nov 11 13:58:44 CST 2023] Adding TXT record for _acme-challenge.bajzc.com.
+<a id="rest_code_7a12c46918c34e7b9189f73639bd6cbb-11" name="rest_code_7a12c46918c34e7b9189f73639bd6cbb-11" href="#rest_code_7a12c46918c34e7b9189f73639bd6cbb-11"></a>[Sat Nov 11 13:58:47 CST 2023] TXT record added.
+<a id="rest_code_7a12c46918c34e7b9189f73639bd6cbb-12" name="rest_code_7a12c46918c34e7b9189f73639bd6cbb-12" href="#rest_code_7a12c46918c34e7b9189f73639bd6cbb-12"></a>[Sat Nov 11 13:58:47 CST 2023] The txt record is added: Success.
+<a id="rest_code_7a12c46918c34e7b9189f73639bd6cbb-13" name="rest_code_7a12c46918c34e7b9189f73639bd6cbb-13" href="#rest_code_7a12c46918c34e7b9189f73639bd6cbb-13"></a>[Sat Nov 11 13:58:47 CST 2023] Adding txt value: .. for domain:  _acme-challenge.ipv4.bajzc.com
+<a id="rest_code_7a12c46918c34e7b9189f73639bd6cbb-14" name="rest_code_7a12c46918c34e7b9189f73639bd6cbb-14" href="#rest_code_7a12c46918c34e7b9189f73639bd6cbb-14"></a>[Sat Nov 11 13:58:47 CST 2023] Invoking Google Domains ACME DNS API.
+<a id="rest_code_7a12c46918c34e7b9189f73639bd6cbb-15" name="rest_code_7a12c46918c34e7b9189f73639bd6cbb-15" href="#rest_code_7a12c46918c34e7b9189f73639bd6cbb-15"></a>[Sat Nov 11 13:58:50 CST 2023] Adding TXT record for _acme-challenge.ipv4.bajzc.com.
+<a id="rest_code_7a12c46918c34e7b9189f73639bd6cbb-16" name="rest_code_7a12c46918c34e7b9189f73639bd6cbb-16" href="#rest_code_7a12c46918c34e7b9189f73639bd6cbb-16"></a>[Sat Nov 11 13:58:52 CST 2023] TXT record added.
+<a id="rest_code_7a12c46918c34e7b9189f73639bd6cbb-17" name="rest_code_7a12c46918c34e7b9189f73639bd6cbb-17" href="#rest_code_7a12c46918c34e7b9189f73639bd6cbb-17"></a>[Sat Nov 11 13:58:52 CST 2023] The txt record is added: Success.
+<a id="rest_code_7a12c46918c34e7b9189f73639bd6cbb-18" name="rest_code_7a12c46918c34e7b9189f73639bd6cbb-18" href="#rest_code_7a12c46918c34e7b9189f73639bd6cbb-18"></a>[Sat Nov 11 13:58:52 CST 2023] Let's check each DNS record now. Sleep 20 seconds first.
+<a id="rest_code_7a12c46918c34e7b9189f73639bd6cbb-19" name="rest_code_7a12c46918c34e7b9189f73639bd6cbb-19" href="#rest_code_7a12c46918c34e7b9189f73639bd6cbb-19"></a>[Sat Nov 11 13:59:13 CST 2023] You can use '--dnssleep' to disable public dns checks.
+<a id="rest_code_7a12c46918c34e7b9189f73639bd6cbb-20" name="rest_code_7a12c46918c34e7b9189f73639bd6cbb-20" href="#rest_code_7a12c46918c34e7b9189f73639bd6cbb-20"></a>[Sat Nov 11 13:59:13 CST 2023] See: https://github.com/acmesh-official/acme.sh/wiki/dnscheck
+<a id="rest_code_7a12c46918c34e7b9189f73639bd6cbb-21" name="rest_code_7a12c46918c34e7b9189f73639bd6cbb-21" href="#rest_code_7a12c46918c34e7b9189f73639bd6cbb-21"></a>[Sat Nov 11 13:59:14 CST 2023] Checking bajzc.com for _acme-challenge.bajzc.com
+<a id="rest_code_7a12c46918c34e7b9189f73639bd6cbb-22" name="rest_code_7a12c46918c34e7b9189f73639bd6cbb-22" href="#rest_code_7a12c46918c34e7b9189f73639bd6cbb-22"></a>[Sat Nov 11 13:59:14 CST 2023] Domain bajzc.com '_acme-challenge.bajzc.com' success.
+<a id="rest_code_7a12c46918c34e7b9189f73639bd6cbb-23" name="rest_code_7a12c46918c34e7b9189f73639bd6cbb-23" href="#rest_code_7a12c46918c34e7b9189f73639bd6cbb-23"></a>[Sat Nov 11 13:59:14 CST 2023] Checking ipv4.bajzc.com for _acme-challenge.ipv4.bajzc.com
+<a id="rest_code_7a12c46918c34e7b9189f73639bd6cbb-24" name="rest_code_7a12c46918c34e7b9189f73639bd6cbb-24" href="#rest_code_7a12c46918c34e7b9189f73639bd6cbb-24"></a>[Sat Nov 11 13:59:15 CST 2023] Domain ipv4.bajzc.com '_acme-challenge.ipv4.bajzc.com' success.
+<a id="rest_code_7a12c46918c34e7b9189f73639bd6cbb-25" name="rest_code_7a12c46918c34e7b9189f73639bd6cbb-25" href="#rest_code_7a12c46918c34e7b9189f73639bd6cbb-25"></a>[Sat Nov 11 13:59:15 CST 2023] All success, let's return
+<a id="rest_code_7a12c46918c34e7b9189f73639bd6cbb-26" name="rest_code_7a12c46918c34e7b9189f73639bd6cbb-26" href="#rest_code_7a12c46918c34e7b9189f73639bd6cbb-26"></a>[Sat Nov 11 13:59:15 CST 2023] Verifying: bajzc.com
+<a id="rest_code_7a12c46918c34e7b9189f73639bd6cbb-27" name="rest_code_7a12c46918c34e7b9189f73639bd6cbb-27" href="#rest_code_7a12c46918c34e7b9189f73639bd6cbb-27"></a>[Sat Nov 11 13:59:17 CST 2023] Processing, The CA is processing your order, please just wait. (1/30)
+<a id="rest_code_7a12c46918c34e7b9189f73639bd6cbb-28" name="rest_code_7a12c46918c34e7b9189f73639bd6cbb-28" href="#rest_code_7a12c46918c34e7b9189f73639bd6cbb-28"></a>[Sat Nov 11 13:59:22 CST 2023] Success
+<a id="rest_code_7a12c46918c34e7b9189f73639bd6cbb-29" name="rest_code_7a12c46918c34e7b9189f73639bd6cbb-29" href="#rest_code_7a12c46918c34e7b9189f73639bd6cbb-29"></a>[Sat Nov 11 13:59:22 CST 2023] Verifying: ipv4.bajzc.com
+<a id="rest_code_7a12c46918c34e7b9189f73639bd6cbb-30" name="rest_code_7a12c46918c34e7b9189f73639bd6cbb-30" href="#rest_code_7a12c46918c34e7b9189f73639bd6cbb-30"></a>[Sat Nov 11 13:59:24 CST 2023] Processing, The CA is processing your order, please just wait. (1/30)
+<a id="rest_code_7a12c46918c34e7b9189f73639bd6cbb-31" name="rest_code_7a12c46918c34e7b9189f73639bd6cbb-31" href="#rest_code_7a12c46918c34e7b9189f73639bd6cbb-31"></a>[Sat Nov 11 13:59:28 CST 2023] Success
+<a id="rest_code_7a12c46918c34e7b9189f73639bd6cbb-32" name="rest_code_7a12c46918c34e7b9189f73639bd6cbb-32" href="#rest_code_7a12c46918c34e7b9189f73639bd6cbb-32"></a>[Sat Nov 11 13:59:28 CST 2023] Removing DNS records.
+<a id="rest_code_7a12c46918c34e7b9189f73639bd6cbb-33" name="rest_code_7a12c46918c34e7b9189f73639bd6cbb-33" href="#rest_code_7a12c46918c34e7b9189f73639bd6cbb-33"></a>[Sat Nov 11 13:59:28 CST 2023] Removing txt: eegpTUjIL53Nvy0ES6sS-W3LZA4vVBfQQ for domain: _acme-challenge.bajzc.com
+<a id="rest_code_7a12c46918c34e7b9189f73639bd6cbb-34" name="rest_code_7a12c46918c34e7b9189f73639bd6cbb-34" href="#rest_code_7a12c46918c34e7b9189f73639bd6cbb-34"></a>[Sat Nov 11 13:59:28 CST 2023] Invoking Google Domains ACME DNS API.
+<a id="rest_code_7a12c46918c34e7b9189f73639bd6cbb-35" name="rest_code_7a12c46918c34e7b9189f73639bd6cbb-35" href="#rest_code_7a12c46918c34e7b9189f73639bd6cbb-35"></a>[Sat Nov 11 13:59:30 CST 2023] Removing TXT record for _acme-challenge.bajzc.com.
+<a id="rest_code_7a12c46918c34e7b9189f73639bd6cbb-36" name="rest_code_7a12c46918c34e7b9189f73639bd6cbb-36" href="#rest_code_7a12c46918c34e7b9189f73639bd6cbb-36"></a>[Sat Nov 11 13:59:32 CST 2023] TXT record removed.
+<a id="rest_code_7a12c46918c34e7b9189f73639bd6cbb-37" name="rest_code_7a12c46918c34e7b9189f73639bd6cbb-37" href="#rest_code_7a12c46918c34e7b9189f73639bd6cbb-37"></a>[Sat Nov 11 13:59:32 CST 2023] Removed: Success
+<a id="rest_code_7a12c46918c34e7b9189f73639bd6cbb-38" name="rest_code_7a12c46918c34e7b9189f73639bd6cbb-38" href="#rest_code_7a12c46918c34e7b9189f73639bd6cbb-38"></a>[Sat Nov 11 13:59:32 CST 2023] Removing txt: .. for domain: _acme-challenge.ipv4.bajzc.com
+<a id="rest_code_7a12c46918c34e7b9189f73639bd6cbb-39" name="rest_code_7a12c46918c34e7b9189f73639bd6cbb-39" href="#rest_code_7a12c46918c34e7b9189f73639bd6cbb-39"></a>[Sat Nov 11 13:59:32 CST 2023] Invoking Google Domains ACME DNS API.
+<a id="rest_code_7a12c46918c34e7b9189f73639bd6cbb-40" name="rest_code_7a12c46918c34e7b9189f73639bd6cbb-40" href="#rest_code_7a12c46918c34e7b9189f73639bd6cbb-40"></a>[Sat Nov 11 13:59:36 CST 2023] Removing TXT record for _acme-challenge.ipv4.bajzc.com.
+<a id="rest_code_7a12c46918c34e7b9189f73639bd6cbb-41" name="rest_code_7a12c46918c34e7b9189f73639bd6cbb-41" href="#rest_code_7a12c46918c34e7b9189f73639bd6cbb-41"></a>[Sat Nov 11 13:59:38 CST 2023] TXT record removed.
+<a id="rest_code_7a12c46918c34e7b9189f73639bd6cbb-42" name="rest_code_7a12c46918c34e7b9189f73639bd6cbb-42" href="#rest_code_7a12c46918c34e7b9189f73639bd6cbb-42"></a>[Sat Nov 11 13:59:38 CST 2023] Removed: Success
+<a id="rest_code_7a12c46918c34e7b9189f73639bd6cbb-43" name="rest_code_7a12c46918c34e7b9189f73639bd6cbb-43" href="#rest_code_7a12c46918c34e7b9189f73639bd6cbb-43"></a>[Sat Nov 11 13:59:38 CST 2023] Verify finished, start to sign.
+<a id="rest_code_7a12c46918c34e7b9189f73639bd6cbb-44" name="rest_code_7a12c46918c34e7b9189f73639bd6cbb-44" href="#rest_code_7a12c46918c34e7b9189f73639bd6cbb-44"></a>[Sat Nov 11 13:59:38 CST 2023] Lets finalize the order.
+<a id="rest_code_7a12c46918c34e7b9189f73639bd6cbb-45" name="rest_code_7a12c46918c34e7b9189f73639bd6cbb-45" href="#rest_code_7a12c46918c34e7b9189f73639bd6cbb-45"></a>[Sat Nov 11 13:59:38 CST 2023] Le_OrderFinalize='https://acme.zerossl.com/v2/DV90/order/BFZaIPs9kuec-R1zsU1Cqw/finalize'
+<a id="rest_code_7a12c46918c34e7b9189f73639bd6cbb-46" name="rest_code_7a12c46918c34e7b9189f73639bd6cbb-46" href="#rest_code_7a12c46918c34e7b9189f73639bd6cbb-46"></a>[Sat Nov 11 13:59:40 CST 2023] Order status is processing, lets sleep and retry.
+<a id="rest_code_7a12c46918c34e7b9189f73639bd6cbb-47" name="rest_code_7a12c46918c34e7b9189f73639bd6cbb-47" href="#rest_code_7a12c46918c34e7b9189f73639bd6cbb-47"></a>[Sat Nov 11 13:59:40 CST 2023] Retry after: 15
+<a id="rest_code_7a12c46918c34e7b9189f73639bd6cbb-48" name="rest_code_7a12c46918c34e7b9189f73639bd6cbb-48" href="#rest_code_7a12c46918c34e7b9189f73639bd6cbb-48"></a>[Sat Nov 11 13:59:56 CST 2023] Polling order status: https://acme.zerossl.com/v2/DV90/order/BFZaIPs9kuec-R1zsU1Cqw
+<a id="rest_code_7a12c46918c34e7b9189f73639bd6cbb-49" name="rest_code_7a12c46918c34e7b9189f73639bd6cbb-49" href="#rest_code_7a12c46918c34e7b9189f73639bd6cbb-49"></a>[Sat Nov 11 13:59:58 CST 2023] Downloading cert.
+<a id="rest_code_7a12c46918c34e7b9189f73639bd6cbb-50" name="rest_code_7a12c46918c34e7b9189f73639bd6cbb-50" href="#rest_code_7a12c46918c34e7b9189f73639bd6cbb-50"></a>[Sat Nov 11 13:59:58 CST 2023] Le_LinkCert='https://acme.zerossl.com/v2/DV90/cert/gGev2hxpZhQ5UbpPGdiNsA'
+<a id="rest_code_7a12c46918c34e7b9189f73639bd6cbb-51" name="rest_code_7a12c46918c34e7b9189f73639bd6cbb-51" href="#rest_code_7a12c46918c34e7b9189f73639bd6cbb-51"></a>[Sat Nov 11 14:00:00 CST 2023] Cert success.
+<a id="rest_code_7a12c46918c34e7b9189f73639bd6cbb-52" name="rest_code_7a12c46918c34e7b9189f73639bd6cbb-52" href="#rest_code_7a12c46918c34e7b9189f73639bd6cbb-52"></a>-----BEGIN CERTIFICATE-----
+<a id="rest_code_7a12c46918c34e7b9189f73639bd6cbb-53" name="rest_code_7a12c46918c34e7b9189f73639bd6cbb-53" href="#rest_code_7a12c46918c34e7b9189f73639bd6cbb-53"></a>...
+<a id="rest_code_7a12c46918c34e7b9189f73639bd6cbb-54" name="rest_code_7a12c46918c34e7b9189f73639bd6cbb-54" href="#rest_code_7a12c46918c34e7b9189f73639bd6cbb-54"></a>-----END CERTIFICATE-----
+<a id="rest_code_7a12c46918c34e7b9189f73639bd6cbb-55" name="rest_code_7a12c46918c34e7b9189f73639bd6cbb-55" href="#rest_code_7a12c46918c34e7b9189f73639bd6cbb-55"></a>[Sat Nov 11 14:00:00 CST 2023] Your cert is in: /etc/acme-sh//bajzc.com_ecc/bajzc.com.cer
+<a id="rest_code_7a12c46918c34e7b9189f73639bd6cbb-56" name="rest_code_7a12c46918c34e7b9189f73639bd6cbb-56" href="#rest_code_7a12c46918c34e7b9189f73639bd6cbb-56"></a>[Sat Nov 11 14:00:00 CST 2023] Your cert key is in: /etc/acme-sh//bajzc.com_ecc/bajzc.com.key
+<a id="rest_code_7a12c46918c34e7b9189f73639bd6cbb-57" name="rest_code_7a12c46918c34e7b9189f73639bd6cbb-57" href="#rest_code_7a12c46918c34e7b9189f73639bd6cbb-57"></a>[Sat Nov 11 14:00:00 CST 2023] The intermediate CA cert is in: /etc/acme-sh//bajzc.com_ecc/ca.cer
+<a id="rest_code_7a12c46918c34e7b9189f73639bd6cbb-58" name="rest_code_7a12c46918c34e7b9189f73639bd6cbb-58" href="#rest_code_7a12c46918c34e7b9189f73639bd6cbb-58"></a>[Sat Nov 11 14:00:00 CST 2023] And the full chain certs is there: /etc/acme-sh//bajzc.com_ecc/fullchain.cer
 </pre></div>
 </section><section id="apache-config"><h2>Apache Config</h2>
 <p>/etc/apache2/vhost.d/ssl.conf:</p>
-<div class="code"><pre class="code cfg"><a id="rest_code_307ddd6e1ce34906858cdc4998b9cb0e-1" name="rest_code_307ddd6e1ce34906858cdc4998b9cb0e-1" href="#rest_code_307ddd6e1ce34906858cdc4998b9cb0e-1"></a><span class="na">Listen 443</span>
-<a id="rest_code_307ddd6e1ce34906858cdc4998b9cb0e-2" name="rest_code_307ddd6e1ce34906858cdc4998b9cb0e-2" href="#rest_code_307ddd6e1ce34906858cdc4998b9cb0e-2"></a><span class="na">&lt;VirtualHost *</span><span class="o">:</span><span class="s">443&gt;</span>
-<a id="rest_code_307ddd6e1ce34906858cdc4998b9cb0e-3" name="rest_code_307ddd6e1ce34906858cdc4998b9cb0e-3" href="#rest_code_307ddd6e1ce34906858cdc4998b9cb0e-3"></a><span class="w">  </span><span class="na">ServerName bajzc.com</span>
-<a id="rest_code_307ddd6e1ce34906858cdc4998b9cb0e-4" name="rest_code_307ddd6e1ce34906858cdc4998b9cb0e-4" href="#rest_code_307ddd6e1ce34906858cdc4998b9cb0e-4"></a><span class="w">  </span><span class="na">Include /etc/apache2/vhosts.d/default_vhost.include</span>
-<a id="rest_code_307ddd6e1ce34906858cdc4998b9cb0e-5" name="rest_code_307ddd6e1ce34906858cdc4998b9cb0e-5" href="#rest_code_307ddd6e1ce34906858cdc4998b9cb0e-5"></a>
-<a id="rest_code_307ddd6e1ce34906858cdc4998b9cb0e-6" name="rest_code_307ddd6e1ce34906858cdc4998b9cb0e-6" href="#rest_code_307ddd6e1ce34906858cdc4998b9cb0e-6"></a><span class="w">  </span><span class="na">SSLCertificateFile /etc/acme-sh/bajzc.com_ecc/bajzc.com.cer</span>
-<a id="rest_code_307ddd6e1ce34906858cdc4998b9cb0e-7" name="rest_code_307ddd6e1ce34906858cdc4998b9cb0e-7" href="#rest_code_307ddd6e1ce34906858cdc4998b9cb0e-7"></a><span class="w">  </span><span class="na">SSLCertificateKeyFile /etc/acme-sh/bajzc.com_ecc/bajzc.com.key</span>
-<a id="rest_code_307ddd6e1ce34906858cdc4998b9cb0e-8" name="rest_code_307ddd6e1ce34906858cdc4998b9cb0e-8" href="#rest_code_307ddd6e1ce34906858cdc4998b9cb0e-8"></a><span class="w">  </span><span class="na">SSLCertificateChainFile /etc/acme-sh//bajzc.com_ecc/ca.cer</span>
-<a id="rest_code_307ddd6e1ce34906858cdc4998b9cb0e-9" name="rest_code_307ddd6e1ce34906858cdc4998b9cb0e-9" href="#rest_code_307ddd6e1ce34906858cdc4998b9cb0e-9"></a>
-<a id="rest_code_307ddd6e1ce34906858cdc4998b9cb0e-10" name="rest_code_307ddd6e1ce34906858cdc4998b9cb0e-10" href="#rest_code_307ddd6e1ce34906858cdc4998b9cb0e-10"></a><span class="w">  </span><span class="na">...</span>
-<a id="rest_code_307ddd6e1ce34906858cdc4998b9cb0e-11" name="rest_code_307ddd6e1ce34906858cdc4998b9cb0e-11" href="#rest_code_307ddd6e1ce34906858cdc4998b9cb0e-11"></a>
-<a id="rest_code_307ddd6e1ce34906858cdc4998b9cb0e-12" name="rest_code_307ddd6e1ce34906858cdc4998b9cb0e-12" href="#rest_code_307ddd6e1ce34906858cdc4998b9cb0e-12"></a><span class="na">&lt;/VirtualHost&gt;</span>
+<div class="code"><pre class="code cfg"><a id="rest_code_96a66c9ee5dc4600911dddd761f86ad1-1" name="rest_code_96a66c9ee5dc4600911dddd761f86ad1-1" href="#rest_code_96a66c9ee5dc4600911dddd761f86ad1-1"></a><span class="na">Listen 443</span>
+<a id="rest_code_96a66c9ee5dc4600911dddd761f86ad1-2" name="rest_code_96a66c9ee5dc4600911dddd761f86ad1-2" href="#rest_code_96a66c9ee5dc4600911dddd761f86ad1-2"></a><span class="na">&lt;VirtualHost *</span><span class="o">:</span><span class="s">443&gt;</span>
+<a id="rest_code_96a66c9ee5dc4600911dddd761f86ad1-3" name="rest_code_96a66c9ee5dc4600911dddd761f86ad1-3" href="#rest_code_96a66c9ee5dc4600911dddd761f86ad1-3"></a><span class="w">  </span><span class="na">ServerName bajzc.com</span>
+<a id="rest_code_96a66c9ee5dc4600911dddd761f86ad1-4" name="rest_code_96a66c9ee5dc4600911dddd761f86ad1-4" href="#rest_code_96a66c9ee5dc4600911dddd761f86ad1-4"></a><span class="w">  </span><span class="na">Include /etc/apache2/vhosts.d/default_vhost.include</span>
+<a id="rest_code_96a66c9ee5dc4600911dddd761f86ad1-5" name="rest_code_96a66c9ee5dc4600911dddd761f86ad1-5" href="#rest_code_96a66c9ee5dc4600911dddd761f86ad1-5"></a>
+<a id="rest_code_96a66c9ee5dc4600911dddd761f86ad1-6" name="rest_code_96a66c9ee5dc4600911dddd761f86ad1-6" href="#rest_code_96a66c9ee5dc4600911dddd761f86ad1-6"></a><span class="w">  </span><span class="na">SSLCertificateFile /etc/acme-sh/bajzc.com_ecc/bajzc.com.cer</span>
+<a id="rest_code_96a66c9ee5dc4600911dddd761f86ad1-7" name="rest_code_96a66c9ee5dc4600911dddd761f86ad1-7" href="#rest_code_96a66c9ee5dc4600911dddd761f86ad1-7"></a><span class="w">  </span><span class="na">SSLCertificateKeyFile /etc/acme-sh/bajzc.com_ecc/bajzc.com.key</span>
+<a id="rest_code_96a66c9ee5dc4600911dddd761f86ad1-8" name="rest_code_96a66c9ee5dc4600911dddd761f86ad1-8" href="#rest_code_96a66c9ee5dc4600911dddd761f86ad1-8"></a><span class="w">  </span><span class="na">SSLCertificateChainFile /etc/acme-sh//bajzc.com_ecc/ca.cer</span>
+<a id="rest_code_96a66c9ee5dc4600911dddd761f86ad1-9" name="rest_code_96a66c9ee5dc4600911dddd761f86ad1-9" href="#rest_code_96a66c9ee5dc4600911dddd761f86ad1-9"></a>
+<a id="rest_code_96a66c9ee5dc4600911dddd761f86ad1-10" name="rest_code_96a66c9ee5dc4600911dddd761f86ad1-10" href="#rest_code_96a66c9ee5dc4600911dddd761f86ad1-10"></a><span class="w">  </span><span class="na">...</span>
+<a id="rest_code_96a66c9ee5dc4600911dddd761f86ad1-11" name="rest_code_96a66c9ee5dc4600911dddd761f86ad1-11" href="#rest_code_96a66c9ee5dc4600911dddd761f86ad1-11"></a>
+<a id="rest_code_96a66c9ee5dc4600911dddd761f86ad1-12" name="rest_code_96a66c9ee5dc4600911dddd761f86ad1-12" href="#rest_code_96a66c9ee5dc4600911dddd761f86ad1-12"></a><span class="na">&lt;/VirtualHost&gt;</span>
 </pre></div>
 <p>Reference:</p>
 <ol class="arabic simple">
@@ -253,7 +247,7 @@ emerge --ask dcron, acme-sh need this ">
 
 
         </section></article><script>var disqus_shortname="bajzc";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script><!--End of body content--><footer id="footer">
-            Contents © 2024         <a href="mailto:lzecheng98@gmail.com">Jason Li</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            Contents © 2024         <a href="mailto:lzecheng98@gmail.com">Zecheng Li</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
             
             
         </footer>

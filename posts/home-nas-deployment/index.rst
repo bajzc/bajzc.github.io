@@ -35,17 +35,17 @@ So, be kind to yourself at this stage. Power and noise worth be considered as pa
 
 This is my current hardware, just for reference:
 
-  .. code-block::
+.. code-block::
 
-    cpu:
-                          Intel(R) Celeron(R) N5105 @ 2.00GHz, 2800 MHz
-    graphics card:
-                          Intel JasperLake [UHD Graphics]
-    disk:
-      /dev/nvme0n1         KIOXIA NVMe SSD  # root disk
-      /dev/sda             TOSHIBA MG08ADA8 # data disk
-    memory:
-                          Memory Size: 15 GB
+  cpu:
+                        Intel(R) Celeron(R) N5105 @ 2.00GHz, 2800 MHz
+  graphics card:
+                        Intel JasperLake [UHD Graphics]
+  disk:
+    /dev/nvme0n1         KIOXIA NVMe SSD  # root disk
+    /dev/sda             TOSHIBA MG08ADA8 # data disk
+  memory:
+                        Memory Size: 15 GB
 
 Choice of Operating System
 ==========================
@@ -79,10 +79,10 @@ I believe there are thousands of tutorials for beginners.
 **Part II - Network**
 =====================
 
-  .. figure:: /images/NAS-network.svg
-    :align: center
+.. figure:: /images/NAS-network.svg
+  :align: center
 
-    Network structure
+  Network structure
 
 As far as I know, most ISPs (Internet Service Provider) block **Port** 80 and 443, which basically means you can not access directily to the web page and.
 There are many workaround: use anther port instead and specify it when you access; use IPv6 instead but 80 and 443 may still be blocked; use a reverse proxy server but with higher delay.
@@ -95,26 +95,26 @@ To be clear, frpc is still an application behind the firewall and inside docker.
 
 Here is my frpc config file:
 
-  .. code-block::
+.. code-block::
 
-    [common]
-    server_addr = frp2.freefrp.net  # proxy server you are using
-    server_port = 7000              # port given by the server holder, default: 7000
-    token = freefrp.net             # password, here the server is for public: https://freefrp.net/
+  [common]
+  server_addr = frp2.freefrp.net  # proxy server you are using
+  server_port = 7000              # port given by the server holder, default: 7000
+  token = freefrp.net             # password, here the server is for public: https://freefrp.net/
 
-    [ipv4_bajzc_com_http]           # a unique entity
-    type = http                     # proxy type
-    local_ip = 10.5.0.3             # local server address
-    local_port = 80                 # local server port
-    custom_domains = ipv4.bajzc.com # URL you use to access this application
+  [ipv4_bajzc_com_http]           # a unique entity
+  type = http                     # proxy type
+  local_ip = 10.5.0.3             # local server address
+  local_port = 80                 # local server port
+  custom_domains = ipv4.bajzc.com # URL you use to access this application
 
-    [ipv4_bajzc_com_https]
-    type = https
-    local_ip = 10.5.0.3
-    local_port = 443
-    custom_domains = ipv4.bajzc.com
+  [ipv4_bajzc_com_https]
+  type = https
+  local_ip = 10.5.0.3
+  local_port = 443
+  custom_domains = ipv4.bajzc.com
 
-    ......
+  ......
 
 A single frpc cannot stand, you need a **frps** (server) and correct DNS records.
 A frp server could be a VPS you buy from big cloud computing company, or from **"kind"** people share their resources for free.
@@ -122,10 +122,10 @@ A frp server could be a VPS you buy from big cloud computing company, or from **
 
 My DNS records as reference:
 
-  .. figure:: /images/DNS-records.png
-    :align: center
+.. figure:: /images/DNS-records.png
+  :align: center
 
-    DNS-records
+  DNS-records
 
 =====================
 **Part III - Docker**
@@ -134,10 +134,10 @@ Suppose you overcome all difficulties and get your network and disk working now.
 
 This article is mainly focusing on a Linux environment. Thanks to the portability of `Docker <https://www.docker.com/>`_, it could also apply to a Windows server, but comes at the expense of performance.
 
-  .. figure:: /images/Docker-structure.svg
-    :align: center
+.. figure:: /images/Docker-structure.svg
+  :align: center
 
-    Doker applications structures
+  Doker applications structures
 
 Here, address in yellow show the IP behind local subnet, which can only be access by local applications.
 The NPM (nginx proxy manager) is used to handle all access for all domains and warp them with HTTPS.
@@ -202,14 +202,17 @@ Nginx Proxy manager
 
 After you login to the WebUI, setup a proxy like this:
 
-  .. image:: /images/NPM-sample.png
-    :width: 400
-    :align: center
+.. image:: /images/NPM-sample.png
+  :width: 400
+  :align: center
+
 
 HTTPS:
-  .. image:: /images/NPM-SSL.png
-    :width: 400
-    :align: center
+
+.. image:: /images/NPM-SSL.png
+  :width: 400
+  :align: center
+
 
 Nextcloud
 =========

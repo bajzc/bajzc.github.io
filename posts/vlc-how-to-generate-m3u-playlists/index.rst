@@ -188,7 +188,7 @@ compress()
    line 60: compress into .zip
 
    line 61: compress into .tar.gz
-   
+
 The output can be seen `here <http://ipv4.bajzc.com:81/PlayLists/>`_
 
 4 Summary
@@ -200,10 +200,10 @@ Otherwise ``Bash`` cannot locate it.
 
 However, if the file name contains those characters will be fine. Thanks to ffmpeg, path can be passed as a string. (Line 21)
 
-	After all, open .m3u in VLC:
-	
-	.. image:: /images/VLC-Playlist.png
-		:align: center
+After all, open a m3u file in VLC:
+
+.. image:: /images/VLC-Playlist.png
+	:align: center
 
 .. note::
   Copyright (C) 2023 Jason Li

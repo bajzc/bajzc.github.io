@@ -7,10 +7,10 @@
 .. description:
 .. type: text
 
-  .. figure:: /images/https.png
-    :align: center
+.. figure:: /images/https.png
+  :align: center
 
- .. TEASER_END
+.. TEASER_END
 
 .. note::
 
