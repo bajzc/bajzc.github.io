@@ -13,7 +13,7 @@
    :target: https://docs.gtk.org/gtk4/hello-world.png
    :align: center
    :class: gtk
-   
+
 .. TEASER_END
 
 =========================
