@@ -84,7 +84,7 @@ I believe there are thousands of tutorials for beginners.
 
   Network structure
 
-As far as I know, most ISPs (Internet Service Provider) block **Port** 80 and 443, which basically means you can not access directily to the web page and.
+As far as I know, many ISPs (Internet Service Provider) block **Port** 80 and 443, which basically means you can not access directily to the web page.
 There are many workaround: use anther port instead and specify it when you access; use IPv6 instead but 80 and 443 may still be blocked; use a reverse proxy server but with higher delay.
 
 I'm using `frp <https://github.com/fatedier/frp>`_ as my reverse proxy software. A reverse proxy server means all your data will pass through a server held by others, so for those highly concerned about security, check out my previous post `here <https://bajzc.com/posts/lets-encrypt-gentoo/>`_
@@ -117,7 +117,7 @@ Here is my frpc config file:
   ......
 
 A single frpc cannot stand, you need a **frps** (server) and correct DNS records.
-A frp server could be a VPS you buy from big cloud computing company, or from **"kind"** people share their resources for free.
+A frp server could be a VPS you buy from big cloud computing company, or from **"kind"** people share their resources.
 (Again, people concerned about security should check out my previous post `here <https://bajzc.com/posts/lets-encrypt-gentoo/>`_)
 
 My DNS records as reference:
