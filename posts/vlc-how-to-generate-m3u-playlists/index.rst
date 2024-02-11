@@ -30,7 +30,7 @@ VLC: how to generate .m3u playlists
 
 .. contents::
 
-VLC is a free and open-source media player, and it is PORTABLE and CROSS-PLATFROM.
+VLC is a free and open-source media player, and it is PORTABLE and CROSS-PLATFORM.
 
 In order to have a better user experience, without paying a penny, it is the best choice.
 
@@ -173,7 +173,7 @@ ListMovie()
 
    line 19: use regular expression to get the name of directory
 
-   line 21: use ffmpeg to get the duration of a media file in sedconds
+   line 21: use ffmpeg to get the duration of a media file in seconds
 
    line 28: use regex again to convert the relative path into URL
 

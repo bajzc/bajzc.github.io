@@ -31,7 +31,7 @@ Any kind of popular architecture (x86, amd64, arm64) CPU, with high-speed networ
 
 Because technically I used such a server for more than 6 months, a Raspberry Pi 4. I had developed a habit to reboot it regularly every 2 days and bear the risk of losing all data.
 
-So, be kind to yourself at this stage. Power and noise worth be considered as part of the budget, and also extension capibility.
+So, be kind to yourself at this stage. Power and noise worth be considered as part of the budget, and also extension capability.
 
 This is my current hardware, just for reference:
 
@@ -72,7 +72,7 @@ I believe there are thousands of tutorials for beginners.
 
 `I don't trust any binary distro, I want to compile everything, where should I start? <https://wiki.gentoo.org/wiki/Handbook:Main_Page>`_
 
-`I just want a nromal and stable one <https://www.debian.org/releases/stable/installmanual>`_
+`I just want a normal and stable one <https://www.debian.org/releases/stable/installmanual>`_
 
 
 =====================
@@ -84,8 +84,8 @@ I believe there are thousands of tutorials for beginners.
 
   Network structure
 
-As far as I know, many ISPs (Internet Service Provider) block **Port** 80 and 443, which basically means you can not access directily to the web page.
-There are many workaround: use anther port instead and specify it when you access; use IPv6 instead but 80 and 443 may still be blocked; use a reverse proxy server but with higher delay.
+As far as I know, many ISPs (Internet Service Provider) block **Port** 80 and 443, which basically means you can not access directly to the web page.
+There are many workarounds: use another port instead and specify it when you access; use IPv6 instead but 80 and 443 may still be blocked; use a reverse proxy server but with higher delay.
 
 I'm using `frp <https://github.com/fatedier/frp>`_ as my reverse proxy software. A reverse proxy server means all your data will pass through a server held by others, so for those highly concerned about security, check out my previous post `here <https://bajzc.com/posts/lets-encrypt-gentoo/>`_
 
@@ -127,6 +127,14 @@ My DNS records as reference:
 
   DNS-records
 
+.. note::
+  2024.2.11 Update:
+
+  I switched to use **cloudflare** as my domain host, they provided some useful features:
+  I can create a tunnel between cloudflare server and my server, which means when I enable cloudflare WARP on my client, the delay can very much reduce to 50ms.
+
+  DDoS-protection, although I don't think there is any point to attract a personal Blog.
+
 =====================
 **Part III - Docker**
 =====================
@@ -137,7 +145,7 @@ This article is mainly focusing on a Linux environment. Thanks to the portabilit
 .. figure:: /images/Docker-structure.svg
   :align: center
 
-  Doker applications structures
+  Docker applications structures
 
 Here, address in yellow show the IP behind local subnet, which can only be access by local applications.
 The NPM (nginx proxy manager) is used to handle all access for all domains and warp them with HTTPS.

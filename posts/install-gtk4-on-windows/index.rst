@@ -82,11 +82,11 @@ Add *Your path to msys2\mingw64\bin*, as default it's ``C:\msys64\mingw64\bin``.
 
 Add *Your path to msys2\usr\bin*, as default it's ``C:\msys64\usr\bin``.
 
-	.. note::
-		Follow the sequence above, as Windows will follow the sequence on PATH table. 
-		
-		This will affect our latter input commands ``pkg-config`` and ``mkdir``.
-		
+.. note::
+	Follow the sequence above, as Windows will follow the sequence on PATH table.
+
+	This will affect our latter input commands ``pkg-config`` and ``mkdir``.
+
 Given that we need to use ``make``, however, Msys2 will name it as "mingw32-make.exe".
 
 So we go to the directory we just put in PATH (``C:\msys64\mingw64\bin``), find the "mingw32-make.exe" and rename to "make.exe" (or create copy).
