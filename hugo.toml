@@ -1,0 +1,5 @@
+baseURL = 'https://bajzc.org/'
+languageCode = 'en-us'
+title = 'Random Geek'
+theme = 'FixIt'
+defaultContentLanguage = 'zh-cn'

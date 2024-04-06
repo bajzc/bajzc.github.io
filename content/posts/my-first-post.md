@@ -3,7 +3,7 @@ title: My First Post
 subtitle:
 date: 2024-04-06T20:47:58+07:00
 slug: 583bc6c
-draft: true
+draft: false
 author:
   name:
   link:
