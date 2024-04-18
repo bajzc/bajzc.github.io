@@ -1,0 +1,211 @@
+My Physics Essay
+################
+:slug: my-essay
+:date: 2023-07-11 21:55:28 UTC+07:00
+:tags: essay
+:category: essay
+:description: What are the contributing factors to use AC rather than DC? 
+
+===========================================================
+What are the contributing factors to use AC rather than DC?
+===========================================================
+
+.. contents::
+
+.. note::
+	Author: Zecheng Li (Jason)
+
+1  **Introduction**
+===================
+
+Going back to 1870s, the time arc lamp was invented [1]_ , a public power station
+was urgently needed. The first power station was the Edison Electric Light Station,
+which offered DC power. DC has its own advantages; however, we use AC in
+everyday life. Why we changed it? Furthermore, what are the reasons to use AC rather
+than DC?
+
+
+
+2  **Factors**
+==============
+
+2.1 **History**
+---------------
+
+The war of the currents was a series of events surrounding the introduction of
+competing electric power transmission systems in the late 1880s and early 1890s. It
+was between two companies: Thomas Edison’s DC company and George
+Westinghouse's AC company. [2]_
+
+**DC**:Thomas Edison developed direct current by bringing electricity directly into
+customer’s business or home. He designed his utility which was based on low 110-
+volt direct current, to supply lamps all around the United States. But the drawback of
+this is that it can only supply customers less than a mile from the factory. [3]_
+
+**AC**:Alternating current was developed in Europe by Guillaume Duchenne. In
+1880s AC gained its key advantage which was transformers. Transformers allowed
+AC to transmit in a quite high voltage and then dropped down to a lower user voltage.
+This supported the generating station to supply a larger area (up to 11km long
+circuits) [4]_ than DC.
+
+2.2 **Power generation**
+------------------------
+
+The principles of AC and DC generator are quite similar according to the picture
+above. One significant difference is that: for an AC generator, each coil only is
+connected to one brush, so the current will change its direction. But for DC, it has
+commutators, to make the current flows only in one direction.
+
+.. figure:: /images/AC_generator.png
+	:width: 300
+	:align: center
+	
+	AC generator (Federal AA [5]_ )
+
+	
+.. figure:: /images/DC_generator.jpg
+	:width: 300
+	:align: center
+		
+	DC generator(SERC [6]_ )
+
+
+
+AC generators are usually better than DC generators. According to
+the pictures above, and as AC generators have smooth and uninterrupted
+slip-rings surface, they do not wear quickly and are highly efficient.
+However, DC generators’ brushes and commutators wear out quickly
+and thus are less efficient. Meanwhile, DC generators are less efficient
+due to sparking and other losses like copper, eddy current, mechanical,
+and hysteresis losses.
+
+.. figure:: /images/Three-phase_electric_machine.png
+	:align: right
+	
+	Three-phase electric machine (Wikipedia [7]_ ) 
+
+Also, AC can be generated in multiple phases so for 3 phases you
+get 3 times the power of a single phase generator. [7]_
+
+
+ 		
+2.3 **Power transmission**
+---------------------------
+
+The focus point of the war is about power transmission. During the transmission,
+there will be lots of problems about the energy loss, change between different voltage,
+and safety.
+
+2.3.1Energy loss
+>>>>>>>>>>>>>>>>
+
+According to Joule effect formula:
+
+.. math::
+	P=I^2R \tag{1}
+	
+	
+Assuming the element behaves as a perfect resistor and that the power is
+completely converted into heat, the formula can be re-written by substituting Ohm's
+law:
+
+.. math::
+	P=I^2R=IV= \frac{V^2}R\tag{2}
+
+As the total power from the power station is constant, we can have high voltage
+but low current, or low voltage but high current.
+
+For R, it’s not dependent on this formula. R won’t be influenced by V or I (when
+we ignore the temperature factor), it can be calculated by:
+
+.. math::
+	R=\rho \frac l A\tag{3}
+
+When we first look at formula (2) , you may find that V and I have the same
+relation with P. **But here V denotes for** :math:`\bf{V_A − V_B}` . Where :math:`V_A` is the voltage at the
+power station and :math:`V_B` is the voltage at the end of transmission.
+
+So now, we can have a conclusion: if R is constant, high voltage will lose much
+less energy in transmission compared to low voltage. For instance, when V is 10 times
+larger, P will be 100 times smaller.
+
+2.3.2Transformer
+>>>>>>>>>>>>>>>>
+
+	.. figure:: /images/Transformer.png
+		:align: center
+		
+		Transformer (Wikipedia [8]_ ) 
+
+One thing that we did mention is transformer
+boosted the development of AC. A transformer is a
+passive component that transfers electrical energy
+from one electrical circuit to another circuit, or
+multiple circuits. High-voltage lines usually use
+an alternating current of around 100kV, but the
+user voltage is 220V(110V). So, we use
+transformers to reduce the voltage, usually it takes
+several steps: 100kV (from the power station) to
+10kV (in the city), then 10kV to 380V (factory) or
+220V (common user). [9]_
+
+The efficiency of typical distribution transformers is between about 98% and 99%.
+The 1% losses are dominated by winding and core losses. And its efficiency tends to
+improve with increasing transformer capacity. [10]_
+
+2.4 **Safety**
+--------------
+
+Electrical injury is a physiological reaction caused by electric current passing
+through the body. [11]_ This means both AC and DC power can cause huge damage
+towards humans. When a domestic supply power (110 or 220 V, 50 or 60Hz) through
+2the chest for less than one second may induce ventricular fibrillation at current is
+about 30mA. But in the same case of DC, it will require 300 to 500mA. [12]_
+
+There were deaths caused by AC power during the war of the currents. One
+notable one was in 1889, a lineman called John Feeks, was killed by the high-voltage
+AC line. His body fell into the tangle of wire, sparking, burning, and smoldering for
+the better part of an hour while a horrified crowd of thousands gathered below. His
+death led to laws finally being passed to move AC lines underground in New York
+City. [13]_ It highlighted the dangers of high-voltage AC power lines and the need for
+protective measures to prevent such accidents in the future.
+
+2.5 **Economic Considerations**
+-------------------------------
+
+Over time, the infrastructure for AC power transmission and distribution has
+become more extensive and cost-effective compared to DC systems. The widespread
+adoption of AC power in worldwide has led to the development of standardized
+equipment and components. On November 14, 2007, the last DC distribution by
+Edison was shut down, as there were no more than 100 customers use DC from the
+plant since 2006. [14]_
+
+3 **Conclusion**
+================
+
+Today, there are some usages of DC power, such as high-voltage direct current
+(HVDC) systems, which are used for bulk transmission of energy from distant
+generating stations, for underwater lines, and for interconnection of separate
+alternating-current systems. In addition, when we use domestic power supply to
+charge phones or laptops, the current will be converted into DC by AC-DC converter
+as direct current is easier to control.
+
+All in all, the key contributing factors to the use of AC rather than DC include the
+historical development of AC systems with the invention of transformers, the
+advantages of using AC are reflected in power generation, transmission efficiency,
+and safety considerations.
+
+.. [1] “Arc Lamps.” Arc Lamps - How They Work - History, web.archive.org/web/20141110140158/www.edisontechcenter.org/ArcLamps.html. Accessed 21 June 2023.
+.. [2] “War of the Currents.” Wikipedia, 8 June 2023, en.wikipedia.org/wiki/War_of_the_currents#cite_ref-FOOTNOTESkrabec201286_1-0.
+.. [3] McNichol, Tom. AC/DC: The Savage Tale of the First Standards War. Jossey-Bass, 2006.
+.. [4] Ronalds, Francis. “Letter to the Secretary of the ‘Society of Telegraph Engineers.’” Journal ofthe Society of Telegraph Engineers, vol. 1, no. 2, 1872, pp. 243–244, https://doi.org/10.1049/jste-1.1872.0018.
+.. [5] Direct current generator, https://serc.carleton.edu/download/images/46570/direct_current_generator.v2.jpg
+.. [6] Elementary generator, Federal Aviation Administration, https://commons.wikimedia.org/wiki/File:Elementary_generator.svg
+.. [7] “Polyphase System.” Wikipedia, 16 Mar. 2023, en.wikipedia.org/wiki/Polyphase_system.
+.. [8] “Transformer.” Wikipedia, 10 July 2023, en.wikipedia.org/wiki/Transformer. 
+.. [9] “High Voltage.” Wikipedia, 16 June 2023, en.wikipedia.org/wiki/High_voltage.
+.. [10] “Opportunities for New Appliance and Equipment Efficiency Standards: En.” ACEEE, www.aceee.org/research-report/a016. Accessed 21 June 2023.
+.. [11] Boon, Elizabeth; Parr, Rebecca; 20,000Dayananda, Samarawickrama (2012). Oxford Handbook of Dental Nursing. Oxford University Press. p. 132.
+.. [12] Waldmann, Victor, et al. “Electrical Cardiac Injuries: Current Concepts and Management.” European Heart Journal, vol. 39, no. 16, 2017, pp. 1459–1465, https://doi.org/10.1093/eurheartj/ehx142.
+.. [13] Stross, Randall E. (2007). The Wizard of Menlo Park: How Thomas Alva Edison Invented the Modern World. New York: Crown Publishers. P.179
+.. [14] Fairley, Peter (15 November 2012). "San Francisco's Secret DC Grid"

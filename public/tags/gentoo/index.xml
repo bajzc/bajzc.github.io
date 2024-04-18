@@ -1,0 +1,19 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>Gentoo - 标签 - Random Geek</title>
+    <link>https://bajzc.org/tags/gentoo/</link>
+    <description>Gentoo - 标签 | Random Geek</description>
+    <generator>Hugo -- gohugo.io</generator><language>en-us</language><atom:link href="https://bajzc.org/tags/gentoo/" rel="self" type="application/rss+xml" /><item>
+  <title>Let\&#39;s Encrypt</title>
+  <link>https://bajzc.org/posts/lets-encrypt-gentoo/</link>
+  <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate>
+  <author>作者</author>
+  <guid>https://bajzc.org/posts/lets-encrypt-gentoo/</guid>
+  <description><![CDATA[{.align-center}
+:::: note ::: title Note :::
+My domain is provided from Google, the method of getting the API token could be different for other provider ::::
+::: contents :::
+Get certificates emerge -a app-crypt/acme-sh emerge --ask dcron, acme-sh need this to set cron job to renew the certs automatically Get your domain access token from the provider (Google Domain) For Google Domains: 1 export GOOGLEDOMAINS_ACCESS_TOKEN=&#34;&lt;generated-access-token&gt;&#34; run acme-sh as root 1 acme.]]></description>
+</item>
+</channel>
+</rss>

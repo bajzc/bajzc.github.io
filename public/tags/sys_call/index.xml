@@ -1,0 +1,36 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>sys_call - 标签 - Random Geek</title>
+    <link>https://bajzc.org/tags/sys_call/</link>
+    <description>sys_call - 标签 | Random Geek</description>
+    <generator>Hugo -- gohugo.io</generator><language>en-us</language><atom:link href="https://bajzc.org/tags/sys_call/" rel="self" type="application/rss+xml" /><item>
+  <title>cachestat(), a new syscall in Kernel 6.5-rc1</title>
+  <link>https://bajzc.org/posts/cachestat-in-kernel-65-rc1/</link>
+  <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate>
+  <author>作者</author>
+  <guid>https://bajzc.org/posts/cachestat-in-kernel-65-rc1/</guid>
+  <description><![CDATA[{.align-center}
+:::: note ::: title Note :::
+The environment we are in:
+Linux gentoo 6.5.0-rc1 ::::
+::: contents :::
+If you want to try those demos below, you need to know:
+generate random files for test 1 2 3 4 5 6 7 8 #signle random file &#34;a&#34; dd if=/dev/urandom of=a bs=1M count=128 # random files &#34;f1&#34;-&#34;f8&#34; for i in {1..8} do dd if=/dev/urandom of=f${i} bs=1M count=128 done clean all the cache: # echo 3 &gt; /proc/sys/vm/drop_caches]]></description>
+</item>
+<item>
+  <title>初探cachestat接口------kernel 6.5-rc1</title>
+  <link>https://bajzc.org/posts/cachestat-in-kernel-65-rc1/</link>
+  <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate>
+  <author>作者</author>
+  <guid>https://bajzc.org/posts/cachestat-in-kernel-65-rc1/</guid>
+  <description><![CDATA[{.align-center}
+:::: note ::: title Note :::
+本文系统环境：
+Linux gentoo 6.5.0-rc1 ::::
+如果你想自己尝试，你需要知道的几个命令：
+创建随机文件用于测试 : ``` bash #signle random file &quot;a&quot; dd if=/dev/urandom of=a bs=1M count=128 # random files &quot;f1&quot;-&quot;f8&quot; for i in {1..8} do dd if=/dev/urandom of=f${i} bs=1M count=128 done ``` 清除系统cache： root# echo 3 &gt; /proc/sys/vm/drop_caches :::: warning ::: title Warning :::
+在每一次运行测试程序之前都应该清除缓存，因为在生成文件时，它其实已经被写入cache了！同时，在运行过一次程序后，可能会有文件残留的cache ::::
+#. 限制内存： root# echo 1073741824 &gt; /sys/fs/cgroup/user.slice/memory.max :::: caution ::: title Caution :::]]></description>
+</item>
+</channel>
+</rss>
