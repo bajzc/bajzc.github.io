@@ -810,9 +810,9 @@ enableEmoji = true
         versionCheck = true
       # Disqus comment config (https://disqus.com)
       [params.page.comment.disqus]
-        enable = false
+        enable = true
         # Disqus shortname to use Disqus in posts
-        shortname = ""
+        shortname = "bajzc"
       # Gitalk comment config (https://github.com/gitalk/gitalk)
       [params.page.comment.gitalk]
         enable = false
