@@ -3,11 +3,12 @@
     <title>GNU/Make - 标签 - 随笔技</title>
     <link>http://localhost:1313/zh-cn/tags/gnu/make/</link>
     <description>GNU/Make - 标签 | 随笔技</description>
-    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 11 Jul 2023 12:39:46 &#43;0700</lastBuildDate><atom:link href="http://localhost:1313/zh-cn/tags/gnu/make/" rel="self" type="application/rss+xml" /><item>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>lzecheng98@gmail.com (Jason Li)</managingEditor>
+      <webMaster>lzecheng98@gmail.com (Jason Li)</webMaster><lastBuildDate>Tue, 11 Jul 2023 12:39:46 &#43;0700</lastBuildDate><atom:link href="http://localhost:1313/zh-cn/tags/gnu/make/" rel="self" type="application/rss+xml" /><item>
   <title>在Windows上安装Gtk4</title>
   <link>http://localhost:1313/zh-cn/posts/install-gtk4-on-windows/</link>
   <pubDate>Tue, 11 Jul 2023 12:39:46 &#43;0700</pubDate>
-  <author>作者</author>
+  <author>Jason Li</author>
   <guid>http://localhost:1313/zh-cn/posts/install-gtk4-on-windows/</guid>
   <description><![CDATA[在Win11上安装GTK4 Contents 在Win11上安装GTK4 安装过程 1. 下载并安装Msys2 2. 安装GTK4库和toolchain 3. 设置Path 4. Hello World]]></description>
 </item>

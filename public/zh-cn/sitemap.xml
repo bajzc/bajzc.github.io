@@ -2,7 +2,7 @@
   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml"
   ><url>
-      <loc>http://localhost:1313/zh-cn/categories/</loc><lastmod>2023-07-14T12:19:35&#43;07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+      <loc>http://localhost:1313/zh-cn/categories/</loc><lastmod>2024-04-27T08:48:00&#43;07:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
             rel="alternate"
             hreflang="en"
             href="http://localhost:1313/categories/"
@@ -10,6 +10,53 @@
           rel="alternate"
           hreflang="zh-cn"
           href="http://localhost:1313/zh-cn/categories/"
+          /></url><url>
+      <loc>http://localhost:1313/zh-cn/tags/debug/</loc><lastmod>2024-04-27T08:48:00&#43;07:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+      <loc>http://localhost:1313/zh-cn/tags/linux/</loc><lastmod>2024-04-27T08:48:00&#43;07:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            rel="alternate"
+            hreflang="en"
+            href="http://localhost:1313/tags/linux/"
+            /><xhtml:link
+          rel="alternate"
+          hreflang="zh-cn"
+          href="http://localhost:1313/zh-cn/tags/linux/"
+          /></url><url>
+      <loc>http://localhost:1313/zh-cn/posts/</loc><lastmod>2024-04-27T08:48:00&#43;07:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            rel="alternate"
+            hreflang="en"
+            href="http://localhost:1313/posts/"
+            /><xhtml:link
+          rel="alternate"
+          hreflang="zh-cn"
+          href="http://localhost:1313/zh-cn/posts/"
+          /></url><url>
+      <loc>http://localhost:1313/zh-cn/categories/review/</loc><lastmod>2024-04-27T08:48:00&#43;07:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            rel="alternate"
+            hreflang="en"
+            href="http://localhost:1313/categories/review/"
+            /><xhtml:link
+          rel="alternate"
+          hreflang="zh-cn"
+          href="http://localhost:1313/zh-cn/categories/review/"
+          /></url><url>
+      <loc>http://localhost:1313/zh-cn/tags/</loc><lastmod>2024-04-27T08:48:00&#43;07:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            rel="alternate"
+            hreflang="en"
+            href="http://localhost:1313/tags/"
+            /><xhtml:link
+          rel="alternate"
+          hreflang="zh-cn"
+          href="http://localhost:1313/zh-cn/tags/"
+          /></url><url>
+      <loc>http://localhost:1313/zh-cn/posts/2296229/</loc><lastmod>2024-04-27T08:48:00&#43;07:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+      <loc>http://localhost:1313/zh-cn/</loc><lastmod>2024-04-27T08:48:00&#43;07:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            rel="alternate"
+            hreflang="en"
+            href="http://localhost:1313/"
+            /><xhtml:link
+          rel="alternate"
+          hreflang="zh-cn"
+          href="http://localhost:1313/zh-cn/"
           /></url><url>
       <loc>http://localhost:1313/zh-cn/tags/kernel/</loc><lastmod>2023-07-14T12:19:35&#43;07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
             rel="alternate"
@@ -20,33 +67,6 @@
           hreflang="zh-cn"
           href="http://localhost:1313/zh-cn/tags/kernel/"
           /></url><url>
-      <loc>http://localhost:1313/zh-cn/tags/linux/</loc><lastmod>2023-07-14T12:19:35&#43;07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
-            rel="alternate"
-            hreflang="en"
-            href="http://localhost:1313/tags/linux/"
-            /><xhtml:link
-          rel="alternate"
-          hreflang="zh-cn"
-          href="http://localhost:1313/zh-cn/tags/linux/"
-          /></url><url>
-      <loc>http://localhost:1313/zh-cn/posts/</loc><lastmod>2023-07-14T12:19:35&#43;07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
-            rel="alternate"
-            hreflang="en"
-            href="http://localhost:1313/posts/"
-            /><xhtml:link
-          rel="alternate"
-          hreflang="zh-cn"
-          href="http://localhost:1313/zh-cn/posts/"
-          /></url><url>
-      <loc>http://localhost:1313/zh-cn/categories/review/</loc><lastmod>2023-07-14T12:19:35&#43;07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
-            rel="alternate"
-            hreflang="en"
-            href="http://localhost:1313/categories/review/"
-            /><xhtml:link
-          rel="alternate"
-          hreflang="zh-cn"
-          href="http://localhost:1313/zh-cn/categories/review/"
-          /></url><url>
       <loc>http://localhost:1313/zh-cn/tags/sys_call/</loc><lastmod>2023-07-14T12:19:35&#43;07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
             rel="alternate"
             hreflang="en"
@@ -56,15 +76,6 @@
           hreflang="zh-cn"
           href="http://localhost:1313/zh-cn/tags/sys_call/"
           /></url><url>
-      <loc>http://localhost:1313/zh-cn/tags/</loc><lastmod>2023-07-14T12:19:35&#43;07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
-            rel="alternate"
-            hreflang="en"
-            href="http://localhost:1313/tags/"
-            /><xhtml:link
-          rel="alternate"
-          hreflang="zh-cn"
-          href="http://localhost:1313/zh-cn/tags/"
-          /></url><url>
       <loc>http://localhost:1313/zh-cn/posts/cachestat-in-kernel-65/</loc><lastmod>2023-07-14T12:19:35&#43;07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
             rel="alternate"
             hreflang="en"
@@ -73,15 +84,6 @@
           rel="alternate"
           hreflang="zh-cn"
           href="http://localhost:1313/zh-cn/posts/cachestat-in-kernel-65/"
-          /></url><url>
-      <loc>http://localhost:1313/zh-cn/</loc><lastmod>2023-07-14T12:19:35&#43;07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
-            rel="alternate"
-            hreflang="en"
-            href="http://localhost:1313/"
-            /><xhtml:link
-          rel="alternate"
-          hreflang="zh-cn"
-          href="http://localhost:1313/zh-cn/"
           /></url><url>
       <loc>http://localhost:1313/zh-cn/tags/gnu/make/</loc><lastmod>2023-07-11T12:39:46&#43;07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
             rel="alternate"

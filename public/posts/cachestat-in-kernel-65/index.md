@@ -382,6 +382,6 @@ SYNOPSIS:
 
 ---
 
-> Author:   
+> Author: Jason Li  
 > URL: http://localhost:1313/posts/cachestat-in-kernel-65/  
 

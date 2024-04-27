@@ -313,6 +313,6 @@ To be continued...
 
 ---
 
-> Author:   
+> Author: Jason Li  
 > URL: http://localhost:1313/posts/home-nas-deployment/  
 

@@ -313,10 +313,8 @@ enableEmoji = true
 
   # Author Configuration
   [params.author]
-    name = ""
-    email = ""
-    link = ""
-    avatar = ""
+    name = "Jason Li"
+    email = "lzecheng98@gmail.com"
 
   # FixIt 0.3.0 | NEW public Git repository information only then enableGitInfo is true
   [params.gitInfo]
@@ -519,7 +517,7 @@ enableEmoji = true
 
   # FixIt 0.2.16 | CHANGED Social config about the author
   [params.social]
-    GitHub = ""
+    GitHub = "https://github.com/bajzc"
     Linkedin = ""
     Twitter = ""
     Instagram = ""

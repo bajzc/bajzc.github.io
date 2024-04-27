@@ -121,6 +121,6 @@ Reference:
 
 ---
 
-> Author:   
+> Author: Jason Li  
 > URL: http://localhost:1313/posts/lets-encrypt-gentoo/  
 

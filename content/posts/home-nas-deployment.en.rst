@@ -7,7 +7,7 @@ tags:
 - docker
 - linux
 categories: 
-- Review
+- Tutorial
 ---
 
 .. contents::

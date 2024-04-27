@@ -183,6 +183,6 @@
 
 ---
 
-> 作者:   
+> 作者: Jason Li  
 > URL: http://localhost:1313/zh-cn/posts/install-gtk4-on-windows/  
 

@@ -198,6 +198,6 @@ After all, open a m3u file in VLC:
 
 ---
 
-> Author:   
+> Author: Jason Li  
 > URL: http://localhost:1313/posts/vlc-how-to-generate-m3u-playlists/  
 
