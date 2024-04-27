@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
   <channel>
-    <title>Windows - 标签 - 随笔技 🚧 (rst格式转向md)</title>
-    <link>https://bajzc.org/zh-cn/tags/windows/</link>
-    <description>Windows - 标签 | 随笔技 🚧 (rst格式转向md)</description>
-    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><atom:link href="https://bajzc.org/zh-cn/tags/windows/" rel="self" type="application/rss+xml" /><item>
-  <title>在Windows 11上安装GTK4</title>
-  <link>https://bajzc.org/zh-cn/posts/install-gtk4-on-windows/</link>
-  <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate>
+    <title>Windows - 标签 - 随笔技</title>
+    <link>http://localhost:1313/zh-cn/tags/windows/</link>
+    <description>Windows - 标签 | 随笔技</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 11 Jul 2023 12:39:46 &#43;0700</lastBuildDate><atom:link href="http://localhost:1313/zh-cn/tags/windows/" rel="self" type="application/rss+xml" /><item>
+  <title>在Windows上安装Gtk4</title>
+  <link>http://localhost:1313/zh-cn/posts/install-gtk4-on-windows/</link>
+  <pubDate>Tue, 11 Jul 2023 12:39:46 &#43;0700</pubDate>
   <author>作者</author>
-  <guid>https://bajzc.org/zh-cn/posts/install-gtk4-on-windows/</guid>
-  <description><![CDATA[{.gtk .gtkalign-center} 在Win11上安装GTK4::: contents ::: 一个关于在Win 11上使用Msys2安装Gtk4,并且使用makefile生成一个Hello worl]]></description>
+  <guid>http://localhost:1313/zh-cn/posts/install-gtk4-on-windows/</guid>
+  <description><![CDATA[在Win11上安装GTK4 Contents 在Win11上安装GTK4 安装过程 1. 下载并安装Msys2 2. 安装GTK4库和toolchain 3. 设置Path 4. Hello World]]></description>
 </item>
 </channel>
 </rss>

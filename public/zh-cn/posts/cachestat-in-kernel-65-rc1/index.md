@@ -400,5 +400,5 @@ Note
 ---
 
 > 作者:   
-> URL: https://bajzc.org/zh-cn/posts/cachestat-in-kernel-65-rc1/  
+> URL: http://localhost:1313/zh-cn/posts/cachestat-in-kernel-65-rc1/  
 

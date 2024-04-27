@@ -1,60 +1,48 @@
 <!DOCTYPE html>
 <html itemscope itemtype="http://schema.org/WebPage" lang="en">
-  <head>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
     <meta name="robots" content="noodp" />
-    <title>VLC: how to generate .m3u playlists - Random Geek 🚧 (merging rst files to md)</title><meta name="author" content="">
+    <title>VLC: how to generate .m3u playlists - Random Geek</title><meta name="author" content="">
 <meta name="author-link" content="">
-<meta name="description" content="{.align-center width=&ldquo;100px&rdquo;}
-VLC: how to generate .m3u playlists::: contents :::
-:::: note ::: title Note :::
+<meta name="description" content="VLC: how to generate .m3u playlists Contents
+VLC: how to generate .m3u playlists 1 Syntax of .m3u 2 My file system 3 Script 4 Summary Note
 The new C language version can be found here: (30.12.2023 update)
 It&#39;s 6x faster than the bash script (1:52/11:08)
-::::
 VLC is a free and open-source media player, and it is PORTABLE and CROSS-PLATFORM.
-In order to have a better user experience, without paying a penny, it is the best choice.
-&quot;M3U (MP3 URL or Moving Picture Experts Group Audio Layer 3 Uniform Resource Locator in full) is a computer file format for a multimedia playlist." /><meta name="keywords" content='VLC' /><meta itemprop="name" content="VLC: how to generate .m3u playlists">
-<meta itemprop="description" content="{.align-center width=&ldquo;100px&rdquo;}
-VLC: how to generate .m3u playlists::: contents :::
-:::: note ::: title Note :::
+In order to have a better user experience, without paying a penny, it is the best choice." /><meta name="keywords" content='VLC' /><meta itemprop="name" content="VLC: how to generate .m3u playlists">
+<meta itemprop="description" content="VLC: how to generate .m3u playlists Contents
+VLC: how to generate .m3u playlists 1 Syntax of .m3u 2 My file system 3 Script 4 Summary Note
 The new C language version can be found here: (30.12.2023 update)
 It&#39;s 6x faster than the bash script (1:52/11:08)
-::::
 VLC is a free and open-source media player, and it is PORTABLE and CROSS-PLATFORM.
-In order to have a better user experience, without paying a penny, it is the best choice.
-&quot;M3U (MP3 URL or Moving Picture Experts Group Audio Layer 3 Uniform Resource Locator in full) is a computer file format for a multimedia playlist.">
-
-<meta itemprop="wordCount" content="1041">
+In order to have a better user experience, without paying a penny, it is the best choice."><meta itemprop="datePublished" content="2023-08-12T16:42:50+07:00" />
+<meta itemprop="dateModified" content="2023-08-12T16:42:50+07:00" />
+<meta itemprop="wordCount" content="856">
 <meta itemprop="keywords" content="VLC," /><meta property="og:title" content="VLC: how to generate .m3u playlists" />
-<meta property="og:description" content="{.align-center width=&ldquo;100px&rdquo;}
-VLC: how to generate .m3u playlists::: contents :::
-:::: note ::: title Note :::
+<meta property="og:description" content="VLC: how to generate .m3u playlists Contents
+VLC: how to generate .m3u playlists 1 Syntax of .m3u 2 My file system 3 Script 4 Summary Note
 The new C language version can be found here: (30.12.2023 update)
 It&#39;s 6x faster than the bash script (1:52/11:08)
-::::
 VLC is a free and open-source media player, and it is PORTABLE and CROSS-PLATFORM.
-In order to have a better user experience, without paying a penny, it is the best choice.
-&quot;M3U (MP3 URL or Moving Picture Experts Group Audio Layer 3 Uniform Resource Locator in full) is a computer file format for a multimedia playlist." />
+In order to have a better user experience, without paying a penny, it is the best choice." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://bajzc.org/posts/vlc-how-to-generate-m3u-playlists/" /><meta property="article:section" content="posts" />
-
-
+<meta property="og:url" content="http://localhost:1313/posts/vlc-how-to-generate-m3u-playlists/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-08-12T16:42:50+07:00" />
+<meta property="article:modified_time" content="2023-08-12T16:42:50+07:00" />
 <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="VLC: how to generate .m3u playlists"/>
-<meta name="twitter:description" content="{.align-center width=&ldquo;100px&rdquo;}
-VLC: how to generate .m3u playlists::: contents :::
-:::: note ::: title Note :::
+<meta name="twitter:description" content="VLC: how to generate .m3u playlists Contents
+VLC: how to generate .m3u playlists 1 Syntax of .m3u 2 My file system 3 Script 4 Summary Note
 The new C language version can be found here: (30.12.2023 update)
 It&#39;s 6x faster than the bash script (1:52/11:08)
-::::
 VLC is a free and open-source media player, and it is PORTABLE and CROSS-PLATFORM.
-In order to have a better user experience, without paying a penny, it is the best choice.
-&quot;M3U (MP3 URL or Moving Picture Experts Group Audio Layer 3 Uniform Resource Locator in full) is a computer file format for a multimedia playlist."/>
+In order to have a better user experience, without paying a penny, it is the best choice."/>
 <meta name="application-name" content="FixIt">
 <meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://bajzc.org/posts/vlc-how-to-generate-m3u-playlists/" /><link rel="next" href="https://bajzc.org/posts/lfs-gg/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="http://localhost:1313/posts/vlc-how-to-generate-m3u-playlists/" /><link rel="prev" href="http://localhost:1313/posts/cachestat-in-kernel-65/" /><link rel="next" href="http://localhost:1313/posts/lfs-gg/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
   {
@@ -64,9 +52,9 @@ In order to have a better user experience, without paying a penny, it is the bes
     "inLanguage": "en",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": "https:\/\/bajzc.org\/posts\/vlc-how-to-generate-m3u-playlists\/"
-    },"genre": "posts","keywords": "VLC","wordcount":  1041 ,
-    "url": "https:\/\/bajzc.org\/posts\/vlc-how-to-generate-m3u-playlists\/","publisher": {
+      "@id": "http:\/\/localhost:1313\/posts\/vlc-how-to-generate-m3u-playlists\/"
+    },"genre": "posts","keywords": "VLC","wordcount":  856 ,
+    "url": "http:\/\/localhost:1313\/posts\/vlc-how-to-generate-m3u-playlists\/","datePublished": "2023-08-12T16:42:50+07:00","dateModified": "2023-08-12T16:42:50+07:00","publisher": {
       "@type": "Organization",
       "name": ""},"author": {
         "@type": "Person",
@@ -77,7 +65,7 @@ In order to have a better user experience, without paying a penny, it is the bes
   <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper" data-page-style="normal"><header class="desktop animate__faster" id="header-desktop">
   <div class="header-wrapper">
     <div class="header-title">
-      <a href="/" title="Random Geek 🚧 (merging rst files to md)"><span class="header-title-text">Random Geek 🚧 (merging rst files to md)</span></a><span class="header-subtitle"></span></div>
+      <a href="/" title="Random Geek"><span class="header-title-text">Random Geek</span></a><span class="header-subtitle"></span></div>
     <nav>
       <ul class="menu"><li class="menu-item">
               <a
@@ -109,7 +97,7 @@ In order to have a better user experience, without paying a penny, it is the bes
   <div class="header-container">
     <div class="header-wrapper">
       <div class="header-title">
-        <a href="/" title="Random Geek 🚧 (merging rst files to md)"><span class="header-title-text">Random Geek 🚧 (merging rst files to md)</span></a><span class="header-subtitle"></span></div>
+        <a href="/" title="Random Geek"><span class="header-title-text">Random Geek</span></a><span class="header-subtitle"></span></div>
       <div class="menu-toggle" id="menu-toggle-mobile">
         <span></span><span></span><span></span>
       </div>
@@ -150,66 +138,67 @@ In order to have a better user experience, without paying a penny, it is the bes
     <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>VLC: how to generate .m3u playlists</span>
       </h1></div><div class="post-meta">
       <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
-      Anonymous</span></span></div><div class="post-meta-line"><span title="published on 0001-01-01 00:00:00"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="0001-01-01">0001-01-01</time></span>&nbsp;<span title="1041 words"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>About 1100 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>5 minutes</span>&nbsp;</div>
+      Anonymous</span></span><span class="post-included-in">&nbsp;included in <a href="/categories/review/" class="post-category" title="Category - Review"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> Review</a></span></div><div class="post-meta-line"><span title="published on 2023-08-12 16:42:50"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2023-08-12">2023-08-12</time></span>&nbsp;<span title="856 words"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>About 900 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>5 minutes</span>&nbsp;</div>
     </div><div class="details toc" id="toc-static" data-kept="false">
         <div class="details-summary toc-title">
           <span>Contents</span>
           <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
         </div>
-        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
-  <ul>
-    <li><a href="#1-syntax-of-m3u">1 Syntax of .m3u</a></li>
-    <li><a href="#2-my-file-system">2 My file system</a></li>
-    <li><a href="#3-script">3 Script</a></li>
-    <li><a href="#4-summary">4 Summary</a></li>
-  </ul>
-</nav></div>
-      </div><div class="content" id="content"><p><img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/VLC_Icon.svg/1920px-VLC_Icon.svg.png" alt="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/VLC_Icon.svg/1920px-VLC_Icon.svg.png" srcset="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/VLC_Icon.svg/1920px-VLC_Icon.svg.png?size=small, https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/VLC_Icon.svg/1920px-VLC_Icon.svg.png?size=medium 1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/VLC_Icon.svg/1920px-VLC_Icon.svg.png?size=large 2x" data-title="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/VLC_Icon.svg/1920px-VLC_Icon.svg.png" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/>{.align-center
-width=&ldquo;100px&rdquo;}</p>
-<h1 id="vlc-how-to-generate-.m3u-playlists-1" class="heading-element">
-  <a href="#vlc-how-to-generate-.m3u-playlists-1" class="heading-mark"></a>VLC: how to generate .m3u playlists</h1><p>::: contents
-:::</p>
-<p>:::: note
-::: title
-Note
-:::</p>
+        <div class="details-content toc-content" id="toc-content-static"></div>
+      </div><div class="content" id="content"><div class="document">
+
+
+<div class="figure align-center">
+<a class="reference external image-reference" href="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/VLC_Icon.svg/1920px-VLC_Icon.svg.png"><img alt="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/VLC_Icon.svg/1920px-VLC_Icon.svg.png" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/VLC_Icon.svg/1920px-VLC_Icon.svg.png" style="width: 100px;" /></a>
+</div>
+<div class="section" id="vlc-how-to-generate-m3u-playlists">
+<h2><a class="toc-backref" href="#toc-entry-1">VLC: how to generate .m3u playlists</a></h2>
+<div class="contents topic" id="contents">
+<p class="topic-title">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#vlc-how-to-generate-m3u-playlists" id="toc-entry-1">VLC: how to generate .m3u playlists</a><ul>
+<li><a class="reference internal" href="#syntax-of-m3u" id="toc-entry-2">1 Syntax of .m3u</a></li>
+<li><a class="reference internal" href="#my-file-system" id="toc-entry-3">2 My file system</a></li>
+<li><a class="reference internal" href="#script" id="toc-entry-4">3 Script</a></li>
+<li><a class="reference internal" href="#summary" id="toc-entry-5">4 Summary</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
 <p>The new C language version can be found here: (30.12.2023 update)</p>
 <p>It's 6x faster than the bash script (1:52/11:08)</p>
-<script src="https://gist.github.com/bajzc/9f3d06154fee7c1f527654672b59a5cf.js"></script>
-<p>::::</p>
-<p>VLC is a free and open-source media player, and it is PORTABLE and
-CROSS-PLATFORM.</p>
-<p>In order to have a better user experience, without paying a penny, it is
-the best choice.</p>
+<blockquote class="last">
+<script src="https://gist.github.com/bajzc/9f3d06154fee7c1f527654672b59a5cf.js"></script></blockquote>
+</div>
+<p>VLC is a free and open-source media player, and it is PORTABLE and CROSS-PLATFORM.</p>
+<p>In order to have a better user experience, without paying a penny, it is the best choice.</p>
 <blockquote>
-<p>&quot;M3U (MP3 URL or Moving Picture Experts Group Audio Layer 3 Uniform
-Resource Locator in full) is a computer file format for a multimedia
-playlist. One common use of the M3U file format is creating a
-single-entry playlist file pointing to a stream on the Internet. The
-created file provides easy access to that stream and is often used in
-downloads from a website, for emailing, and for listening to Internet
-radio.&quot;</p>
-<p>--- Wikipedia</p>
+<p>&quot;M3U (MP3 URL or Moving Picture Experts Group Audio Layer 3 Uniform Resource Locator in full) is a computer file format for a multimedia playlist.
+One common use of the M3U file format is creating a single-entry playlist file pointing to a stream on the Internet.
+The created file provides easy access to that stream and is often used in downloads from a website, for emailing, and for listening to Internet radio.&quot;</p>
+<p class="attribution">&mdash;Wikipedia</p>
 </blockquote>
-<p>As .m3u is one of the playlist format that VLC supports, and its format
-can be easily followed by a shell script, I chose it to make a list of
-all my Internet media files.</p>
-<h2 id="1-syntax-of-m3u" class="heading-element">
-  <a href="#1-syntax-of-m3u" class="heading-mark"></a>1 Syntax of .m3u</h2><p>An .m3u file is a plain text file that specifies the locations of one or
-more media files. Each entry carries one specification, which can be:</p>
-<ol>
-<li>an absolute local path:<code>C:\Music\I_love_this_one.mp3</code></li>
-<li>a relative path: <code>This_one_as_well.mp4</code></li>
-<li>an URL: <code>www.music.com/123.mkv</code></li>
+<p>As .m3u is one of the playlist format that VLC supports, and its format can be easily followed by a shell script, I chose it to make a list of all my Internet media files.</p>
+<div class="section" id="syntax-of-m3u">
+<h3><a class="toc-backref" href="#toc-entry-2">1 Syntax of .m3u</a></h3>
+<p>An .m3u file is a plain text file that specifies the locations of one or more media files. Each entry carries one specification, which can be:</p>
+<ol class="arabic simple">
+<li>an absolute local path:<tt class="docutils literal"><span class="pre">C:\Music\I_love_this_one.mp3</span></tt></li>
+<li>a relative path: <tt class="docutils literal">This_one_as_well.mp4</tt></li>
+<li>an URL: <tt class="docutils literal">www.music.com/123.mkv</tt></li>
 </ol>
-<p>The extended .m3u syntax we will use in the script: 1. #EXTM3U: file
-header, should be the first line 2. #EXTINF: track information:
-<code>#EXTINF:123,Title</code></p>
-<p>All the syntax for .m3u can be checked on
-<a href="https://en.wikipedia.org/wiki/M3U"target="_blank" rel="external nofollow noopener noreferrer">Wikipedia</a>.</p>
-<h2 id="2-my-file-system" class="heading-element">
-  <a href="#2-my-file-system" class="heading-mark"></a>2 My file system</h2><p><code>tree Music -L 1</code></p>
-<pre><code>Music/
+<p>The extended .m3u syntax we will use in the script:
+1. #EXTM3U: file header, should be the first line
+2. #EXTINF: track information: <tt class="docutils literal">#EXTINF:123,Title</tt></p>
+<p>All the syntax for .m3u can be checked on <a class="reference external" href="https://en.wikipedia.org/wiki/M3U">Wikipedia</a>.</p>
+</div>
+<div class="section" id="my-file-system">
+<h3><a class="toc-backref" href="#toc-entry-3">2 My file system</a></h3>
+<p><tt class="docutils literal">tree Music <span class="pre">-L</span> 1</tt></p>
+<pre class="literal-block">
+Music/
 ├── Dr._Dre
 │   ├── 02 - Deep Cover.flac
 │   ├── ...
@@ -218,176 +207,98 @@ header, should be the first line 2. #EXTINF: track information:
 ├── OneRepublic
 ├── The_Fat_Rat
 └── The_Music_of_Grand_Theft_Auto_V
-</code></pre>
-<p>And all those files are published on the Internet, so they can be
-accessed by <strong><a href="http://ipv4.bajzc.com:81/Music/"target="_blank" rel="external nofollow noopener noreferrer">http://ipv4.bajzc.com:81/Music/</a>...</strong> (use port 81 as the
-NSP blocked the default port: 80)</p>
-<h2 id="3-script" class="heading-element">
-  <a href="#3-script" class="heading-mark"></a>3 Script</h2><p>:::: note
-::: title
-Note
-:::</p>
-<p>This script is only fit for my needs, you can modify it by following the
-explanation for each function.
-::::</p>
-<div class="highlight" id="id-1"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span><span class="lnt">34
-</span><span class="lnt">35
-</span><span class="lnt">36
-</span><span class="lnt">37
-</span><span class="lnt">38
-</span><span class="lnt">39
-</span><span class="lnt">40
-</span><span class="lnt">41
-</span><span class="lnt">42
-</span><span class="lnt">43
-</span><span class="lnt">44
-</span><span class="lnt">45
-</span><span class="lnt">46
-</span><span class="lnt">47
-</span><span class="lnt">48
-</span><span class="lnt">49
-</span><span class="lnt">50
-</span><span class="lnt">51
-</span><span class="lnt">52
-</span><span class="lnt">53
-</span><span class="lnt">54
-</span><span class="lnt">55
-</span><span class="lnt">56
-</span><span class="lnt">57
-</span><span class="lnt">58
-</span><span class="lnt">59
-</span><span class="lnt">60
-</span><span class="lnt">61
-</span><span class="lnt">62
-</span><span class="lnt">63
-</span><span class="lnt">64
-</span><span class="lnt">65
-</span><span class="lnt">66
-</span><span class="lnt">67
-</span><span class="lnt">68
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#! /bin/bash
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="nb">set</span> -e
-</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">ListPath</span><span class="o">=</span>/var/www/html/PlayLists
-</span></span><span class="line"><span class="cl">Backup<span class="o">(){</span>
-</span></span><span class="line"><span class="cl">  <span class="nb">cd</span> <span class="nv">$ListPath</span>
-</span></span><span class="line"><span class="cl">  <span class="k">for</span> name in <span class="k">$(</span>ls -c<span class="k">)</span>
-</span></span><span class="line"><span class="cl">  <span class="k">do</span>
-</span></span><span class="line"><span class="cl">    mv <span class="nv">$name</span> ./.<span class="nv">$name</span>.bak
-</span></span><span class="line"><span class="cl">  <span class="k">done</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">ListMovie<span class="o">(){</span>
-</span></span><span class="line"><span class="cl"><span class="nb">cd</span> <span class="nv">$ListPath</span>/../
-</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;#EXTM3U&#34;</span> &gt;&gt; <span class="nv">$ListPath</span>/ALL.m3u
-</span></span><span class="line"><span class="cl">find Movie/ -mindepth <span class="m">1</span> -maxdepth <span class="m">2</span> <span class="p">|</span> <span class="k">while</span> <span class="nb">read</span> line
-</span></span><span class="line"><span class="cl"><span class="k">do</span>
-</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="o">[</span> -d <span class="s2">&#34;</span><span class="nv">$line</span><span class="s2">&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
-</span></span><span class="line"><span class="cl">    <span class="nb">echo</span> -n <span class="s2">&#34;#EXTGRP &#34;</span> &gt;&gt; <span class="nv">$ListPath</span>/ALL.m3u
-</span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="k">$(</span><span class="nb">echo</span> <span class="s2">&#34;</span><span class="nv">$line</span><span class="s2">&#34;</span> <span class="p">|</span> sed -e <span class="s2">&#34;s/\([[:print:]]*\/\)*//g&#34;</span><span class="k">)</span> &gt;&gt; <span class="nv">$ListPath</span>/ALL.m3u
-</span></span><span class="line"><span class="cl">  <span class="k">else</span>
-</span></span><span class="line"><span class="cl">    <span class="nv">duration</span><span class="o">=</span><span class="k">$(</span>ffmpeg -i <span class="s2">&#34;</span><span class="nv">$line</span><span class="s2">&#34;</span> 2&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> grep <span class="s2">&#34;Duration&#34;</span><span class="p">|</span> cut -d <span class="s1">&#39; &#39;</span> -f <span class="m">4</span> <span class="p">|</span> sed s/,// <span class="p">|</span> sed <span class="s1">&#39;s@\..*@@g&#39;</span> <span class="p">|</span> awk <span class="s1">&#39;{ split($1, A, &#34;:&#34;); split(A[3], B, &#34;.&#34;); print 3600*A[1] + 60*A[2] + B[1] }&#39;</span><span class="k">)</span>
-</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="o">[</span> <span class="s2">&#34;</span><span class="nv">$duration</span><span class="s2">&#34;</span> <span class="o">==</span> <span class="s2">&#34;0&#34;</span> <span class="o">]</span> <span class="o">||</span> <span class="o">[</span> <span class="s2">&#34;</span><span class="nv">$duration</span><span class="s2">&#34;</span> <span class="o">==</span> <span class="s2">&#34;&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
-</span></span><span class="line"><span class="cl">      <span class="nb">printf</span> <span class="s2">&#34;</span><span class="nv">$line</span><span class="s2"> is not a media file, duration: </span><span class="nv">$duration</span><span class="s2">\n&#34;</span>
-</span></span><span class="line"><span class="cl">      <span class="k">continue</span>
-</span></span><span class="line"><span class="cl">    <span class="k">fi</span>
-</span></span><span class="line"><span class="cl">        <span class="nb">echo</span> -n <span class="s2">&#34;#EXTINF:</span><span class="nv">$duration</span><span class="s2">,&#34;</span> &gt;&gt; <span class="nv">$ListPath</span>/ALL.m3u
-</span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="k">$(</span><span class="nb">echo</span> <span class="s2">&#34;</span><span class="nv">$line</span><span class="s2">&#34;</span> <span class="p">|</span> sed -e <span class="s2">&#34;s/\([[:print:]]*\/\)*//g&#34;</span><span class="k">)</span> &gt;&gt; <span class="nv">$ListPath</span>/ALL.m3u
-</span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="k">$(</span><span class="nb">echo</span> <span class="s2">&#34;</span><span class="nv">$line</span><span class="s2">&#34;</span> <span class="p">|</span> sed -e <span class="s1">&#39;s/^/http:\/\/ipv4.bajzc.com:81\//&#39;</span><span class="k">)</span> &gt;&gt; <span class="nv">$ListPath</span>/ALL.m3u
-</span></span><span class="line"><span class="cl">    <span class="nb">echo</span> &gt;&gt; <span class="nv">$ListPath</span>/ALL.m3u
-</span></span><span class="line"><span class="cl">    <span class="k">fi</span>
-</span></span><span class="line"><span class="cl"><span class="k">done</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">ListAlbum<span class="o">(){</span>
-</span></span><span class="line"><span class="cl">  <span class="nb">cd</span> /var/www/html/
-</span></span><span class="line"><span class="cl">  find Music/ -maxdepth <span class="m">1</span> -mindepth <span class="m">1</span> -type d <span class="p">|</span> <span class="k">while</span> <span class="nb">read</span> line
-</span></span><span class="line"><span class="cl">  <span class="k">do</span>
-</span></span><span class="line"><span class="cl">    <span class="nv">Album</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="s2">&#34;</span><span class="nv">$line</span><span class="s2">&#34;</span> <span class="p">|</span> sed -e <span class="s2">&#34;s/\([[:print:]]*\/\)*//g&#34;</span><span class="k">)</span>
-</span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="nv">$Album</span>
-</span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;#EXTM3U&#34;</span> &gt; <span class="nv">$ListPath</span>/<span class="nv">$Album</span>.m3u
-</span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;#EXTGRP&#34;</span> &gt;&gt; <span class="nv">$ListPath</span>/<span class="nv">$Album</span>.m3u
-</span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;#EXTGRP&#34;</span> &gt;&gt; <span class="nv">$ListPath</span>/ALL.m3u
-</span></span><span class="line"><span class="cl">    find <span class="nv">$line</span> -type f <span class="p">|</span> <span class="k">while</span> <span class="nb">read</span> path
-</span></span><span class="line"><span class="cl">    <span class="k">do</span>
-</span></span><span class="line"><span class="cl">      <span class="nv">duration</span><span class="o">=</span><span class="k">$(</span>ffmpeg -i <span class="s2">&#34;</span><span class="nv">$path</span><span class="s2">&#34;</span> 2&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> grep <span class="s2">&#34;Duration&#34;</span><span class="p">|</span> cut -d <span class="s1">&#39; &#39;</span> -f <span class="m">4</span> <span class="p">|</span> sed s/,// <span class="p">|</span> sed <span class="s1">&#39;s@\..*@@g&#39;</span> <span class="p">|</span> awk <span class="s1">&#39;{ split($1, A, &#34;:&#34;); split(A[3], B, &#34;.&#34;); print 3600*A[1] + 60*A[2] + B[1] }&#39;</span><span class="k">)</span>
-</span></span><span class="line"><span class="cl">      <span class="k">if</span> <span class="o">[</span> <span class="s2">&#34;</span><span class="nv">$duration</span><span class="s2">&#34;</span> <span class="o">==</span> <span class="s2">&#34;0&#34;</span> <span class="o">]</span> <span class="o">||</span> <span class="o">[</span> <span class="s2">&#34;</span><span class="nv">$duration</span><span class="s2">&#34;</span> <span class="o">==</span> <span class="s2">&#34;&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
-</span></span><span class="line"><span class="cl">        <span class="nb">printf</span> <span class="s2">&#34;</span><span class="nv">$path</span><span class="s2"> is not a media file, duration: </span><span class="nv">$duration</span><span class="s2">\n&#34;</span>
-</span></span><span class="line"><span class="cl">        <span class="k">continue</span>
-</span></span><span class="line"><span class="cl">      <span class="k">fi</span>
-</span></span><span class="line"><span class="cl">    <span class="nv">header</span><span class="o">=</span><span class="s2">&#34;#EXTINF:</span><span class="nv">$duration</span><span class="s2">,</span><span class="k">$(</span><span class="nb">echo</span> <span class="s2">&#34;</span><span class="nv">$path</span><span class="s2">&#34;</span> <span class="p">|</span> sed -e <span class="s2">&#34;s/\([[:print:]]*\/\)*//g&#34;</span><span class="k">)</span><span class="s2">&#34;</span>
-</span></span><span class="line"><span class="cl">    <span class="nv">url</span><span class="o">=</span><span class="s2">&#34;</span><span class="k">$(</span><span class="nb">echo</span> <span class="s2">&#34;</span><span class="nv">$path</span><span class="s2">&#34;</span> <span class="p">|</span> sed -e <span class="s1">&#39;s/^/http:\/\/ipv4.bajzc.com:81\//&#39;</span><span class="k">)</span><span class="s2">&#34;</span>
-</span></span><span class="line"><span class="cl">    <span class="nb">printf</span> <span class="s2">&#34;</span><span class="nv">$header</span><span class="s2">\n</span><span class="nv">$url</span><span class="s2">\n\n&#34;</span> &gt;&gt; <span class="nv">$ListPath</span>/<span class="nv">$Album</span>.m3u
-</span></span><span class="line"><span class="cl">    <span class="nb">printf</span> <span class="s2">&#34;</span><span class="nv">$header</span><span class="s2">\n</span><span class="nv">$url</span><span class="s2">\n\n&#34;</span> &gt;&gt; <span class="nv">$ListPath</span>/ALL.m3u
-</span></span><span class="line"><span class="cl">    <span class="k">done</span>
-</span></span><span class="line"><span class="cl">  <span class="k">done</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">compress<span class="o">(){</span>
-</span></span><span class="line"><span class="cl">  <span class="nb">cd</span> <span class="nv">$ListPath</span>
-</span></span><span class="line"><span class="cl">  tar -czvf PlayList.tar.gz *.m3u
-</span></span><span class="line"><span class="cl">  zip -qr PlayList.zip *.m3u
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span><span class="line"><span class="cl">Backup
-</span></span><span class="line"><span class="cl">ListMovie
-</span></span><span class="line"><span class="cl">ListAlbum
-</span></span><span class="line"><span class="cl">compress
-</span></span><span class="line"><span class="cl"><span class="nb">unset</span> ListPath</span></span></code></pre></td></tr></table>
+</pre>
+<p>And all those files are published on the Internet, so they can be accessed by <strong>http://ipv4.bajzc.com:81/Music/...</strong> (use port 81 as the NSP blocked the default port: 80)</p>
 </div>
-</div><p>:::: note
-::: title
-Note
-:::</p>
-<p>You may need to install <code>ffmpeg</code>, <code>zip</code> on your host system.
-::::</p>
+<div class="section" id="script">
+<h3><a class="toc-backref" href="#toc-entry-4">3 Script</a></h3>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This script might fit for me, you can modify it by following the explanation for each function.</p>
+</div>
+<pre class="code bash literal-block">
+<span class="comment hashbang">#! /bin/bash
+</span><span class="name builtin">set</span><span class="whitespace"> </span>-e<span class="whitespace">
+</span><span class="name builtin">export</span><span class="whitespace"> </span><span class="name variable">ListPath</span><span class="operator">=</span>/var/www/html/PlayLists<span class="whitespace">
+</span>Backup<span class="operator">(){</span><span class="whitespace">
+  </span><span class="name builtin">cd</span><span class="whitespace"> </span><span class="name variable">$ListPath</span><span class="whitespace">
+  </span><span class="keyword">for</span><span class="whitespace"> </span>name<span class="whitespace"> </span><span class="keyword">in</span><span class="whitespace"> </span><span class="keyword">$(</span>ls<span class="whitespace"> </span>-c<span class="keyword">)</span><span class="whitespace">
+  </span><span class="keyword">do</span><span class="whitespace">
+        </span>mv<span class="whitespace"> </span><span class="name variable">$name</span><span class="whitespace"> </span>./.<span class="name variable">$name</span>.bak<span class="whitespace">
+  </span><span class="keyword">done</span><span class="whitespace">
+</span><span class="operator">}</span><span class="whitespace">
+
+</span>ListMovie<span class="operator">(){</span><span class="whitespace">
+</span><span class="name builtin">cd</span><span class="whitespace"> </span><span class="name variable">$ListPath</span>/../<span class="whitespace">
+</span><span class="name builtin">echo</span><span class="whitespace"> </span><span class="literal string double">&quot;#EXTM3U&quot;</span><span class="whitespace"> </span>&gt;&gt;<span class="whitespace"> </span><span class="name variable">$ListPath</span>/ALL.m3u<span class="whitespace">
+</span>find<span class="whitespace"> </span>Movie/<span class="whitespace"> </span>-mindepth<span class="whitespace"> </span><span class="literal number">1</span><span class="whitespace"> </span>-maxdepth<span class="whitespace"> </span><span class="literal number">2</span><span class="whitespace"> </span><span class="punctuation">|</span><span class="whitespace"> </span><span class="keyword">while</span><span class="whitespace"> </span><span class="name builtin">read</span><span class="whitespace"> </span>line<span class="whitespace">
+</span><span class="keyword">do</span><span class="whitespace">
+        </span><span class="keyword">if</span><span class="whitespace"> </span><span class="operator">[</span><span class="whitespace"> </span>-d<span class="whitespace"> </span><span class="literal string double">&quot;</span><span class="name variable">$line</span><span class="literal string double">&quot;</span><span class="whitespace"> </span><span class="operator">]</span><span class="punctuation">;</span><span class="whitespace"> </span><span class="keyword">then</span><span class="whitespace">
+        </span><span class="name builtin">echo</span><span class="whitespace"> </span>-n<span class="whitespace"> </span><span class="literal string double">&quot;#EXTGRP &quot;</span><span class="whitespace"> </span>&gt;&gt;<span class="whitespace"> </span><span class="name variable">$ListPath</span>/ALL.m3u<span class="whitespace">
+        </span><span class="name builtin">echo</span><span class="whitespace"> </span><span class="keyword">$(</span><span class="name builtin">echo</span><span class="whitespace"> </span><span class="literal string double">&quot;</span><span class="name variable">$line</span><span class="literal string double">&quot;</span><span class="whitespace"> </span><span class="punctuation">|</span><span class="whitespace"> </span>sed<span class="whitespace"> </span>-e<span class="whitespace"> </span><span class="literal string double">&quot;s/\([[:print:]]*\/\)*//g&quot;</span><span class="keyword">)</span><span class="whitespace"> </span>&gt;&gt;<span class="whitespace"> </span><span class="name variable">$ListPath</span>/ALL.m3u<span class="whitespace">
+  </span><span class="keyword">else</span><span class="whitespace">
+        </span><span class="name variable">duration</span><span class="operator">=</span><span class="keyword">$(</span>ffmpeg<span class="whitespace"> </span>-i<span class="whitespace"> </span><span class="literal string double">&quot;</span><span class="name variable">$line</span><span class="literal string double">&quot;</span><span class="whitespace"> </span><span class="literal number">2</span>&gt;<span class="punctuation">&amp;</span><span class="literal number">1</span><span class="whitespace"> </span><span class="punctuation">|</span><span class="whitespace"> </span>grep<span class="whitespace"> </span><span class="literal string double">&quot;Duration&quot;</span><span class="punctuation">|</span><span class="whitespace"> </span>cut<span class="whitespace"> </span>-d<span class="whitespace"> </span><span class="literal string single">' '</span><span class="whitespace"> </span>-f<span class="whitespace"> </span><span class="literal number">4</span><span class="whitespace"> </span><span class="punctuation">|</span><span class="whitespace"> </span>sed<span class="whitespace"> </span>s/,//<span class="whitespace"> </span><span class="punctuation">|</span><span class="whitespace"> </span>sed<span class="whitespace"> </span><span class="literal string single">'s&#64;\..*&#64;&#64;g'</span><span class="whitespace"> </span><span class="punctuation">|</span><span class="whitespace"> </span>awk<span class="whitespace"> </span><span class="literal string single">'{ split($1, A, &quot;:&quot;); split(A[3], B, &quot;.&quot;); print 3600*A[1] + 60*A[2] + B[1] }'</span><span class="keyword">)</span><span class="whitespace">
+        </span><span class="keyword">if</span><span class="whitespace"> </span><span class="operator">[</span><span class="whitespace"> </span><span class="literal string double">&quot;</span><span class="name variable">$duration</span><span class="literal string double">&quot;</span><span class="whitespace"> </span><span class="operator">==</span><span class="whitespace"> </span><span class="literal string double">&quot;0&quot;</span><span class="whitespace"> </span><span class="operator">]</span><span class="whitespace"> </span><span class="operator">||</span><span class="whitespace"> </span><span class="operator">[</span><span class="whitespace"> </span><span class="literal string double">&quot;</span><span class="name variable">$duration</span><span class="literal string double">&quot;</span><span class="whitespace"> </span><span class="operator">==</span><span class="whitespace"> </span><span class="literal string double">&quot;&quot;</span><span class="whitespace"> </span><span class="operator">]</span><span class="punctuation">;</span><span class="whitespace"> </span><span class="keyword">then</span><span class="whitespace">
+          </span><span class="name builtin">printf</span><span class="whitespace"> </span><span class="literal string double">&quot;</span><span class="name variable">$line</span><span class="literal string double"> is not a media file, duration: </span><span class="name variable">$duration</span><span class="literal string double">\n&quot;</span><span class="whitespace">
+          </span><span class="keyword">continue</span><span class="whitespace">
+        </span><span class="keyword">fi</span><span class="whitespace">
+                </span><span class="name builtin">echo</span><span class="whitespace"> </span>-n<span class="whitespace"> </span><span class="literal string double">&quot;#EXTINF:</span><span class="name variable">$duration</span><span class="literal string double">,&quot;</span><span class="whitespace"> </span>&gt;&gt;<span class="whitespace"> </span><span class="name variable">$ListPath</span>/ALL.m3u<span class="whitespace">
+        </span><span class="name builtin">echo</span><span class="whitespace"> </span><span class="keyword">$(</span><span class="name builtin">echo</span><span class="whitespace"> </span><span class="literal string double">&quot;</span><span class="name variable">$line</span><span class="literal string double">&quot;</span><span class="whitespace"> </span><span class="punctuation">|</span><span class="whitespace"> </span>sed<span class="whitespace"> </span>-e<span class="whitespace"> </span><span class="literal string double">&quot;s/\([[:print:]]*\/\)*//g&quot;</span><span class="keyword">)</span><span class="whitespace"> </span>&gt;&gt;<span class="whitespace"> </span><span class="name variable">$ListPath</span>/ALL.m3u<span class="whitespace">
+        </span><span class="name builtin">echo</span><span class="whitespace"> </span><span class="keyword">$(</span><span class="name builtin">echo</span><span class="whitespace"> </span><span class="literal string double">&quot;</span><span class="name variable">$line</span><span class="literal string double">&quot;</span><span class="whitespace"> </span><span class="punctuation">|</span><span class="whitespace"> </span>sed<span class="whitespace"> </span>-e<span class="whitespace"> </span><span class="literal string single">'s/^/http:\/\/ipv4.bajzc.com:81\//'</span><span class="keyword">)</span><span class="whitespace"> </span>&gt;&gt;<span class="whitespace"> </span><span class="name variable">$ListPath</span>/ALL.m3u<span class="whitespace">
+        </span><span class="name builtin">echo</span><span class="whitespace"> </span>&gt;&gt;<span class="whitespace"> </span><span class="name variable">$ListPath</span>/ALL.m3u<span class="whitespace">
+        </span><span class="keyword">fi</span><span class="whitespace">
+</span><span class="keyword">done</span><span class="whitespace">
+</span><span class="operator">}</span><span class="whitespace">
+
+</span>ListAlbum<span class="operator">(){</span><span class="whitespace">
+  </span><span class="name builtin">cd</span><span class="whitespace"> </span>/var/www/html/<span class="whitespace">
+  </span>find<span class="whitespace"> </span>Music/<span class="whitespace"> </span>-maxdepth<span class="whitespace"> </span><span class="literal number">1</span><span class="whitespace"> </span>-mindepth<span class="whitespace"> </span><span class="literal number">1</span><span class="whitespace"> </span>-type<span class="whitespace"> </span>d<span class="whitespace"> </span><span class="punctuation">|</span><span class="whitespace"> </span><span class="keyword">while</span><span class="whitespace"> </span><span class="name builtin">read</span><span class="whitespace"> </span>line<span class="whitespace">
+  </span><span class="keyword">do</span><span class="whitespace">
+        </span><span class="name variable">Album</span><span class="operator">=</span><span class="keyword">$(</span><span class="name builtin">echo</span><span class="whitespace"> </span><span class="literal string double">&quot;</span><span class="name variable">$line</span><span class="literal string double">&quot;</span><span class="whitespace"> </span><span class="punctuation">|</span><span class="whitespace"> </span>sed<span class="whitespace"> </span>-e<span class="whitespace"> </span><span class="literal string double">&quot;s/\([[:print:]]*\/\)*//g&quot;</span><span class="keyword">)</span><span class="whitespace">
+        </span><span class="name builtin">echo</span><span class="whitespace"> </span><span class="name variable">$Album</span><span class="whitespace">
+        </span><span class="name builtin">echo</span><span class="whitespace"> </span><span class="literal string double">&quot;#EXTM3U&quot;</span><span class="whitespace"> </span>&gt;<span class="whitespace"> </span><span class="name variable">$ListPath</span>/<span class="name variable">$Album</span>.m3u<span class="whitespace">
+        </span><span class="name builtin">echo</span><span class="whitespace"> </span><span class="literal string double">&quot;#EXTGRP&quot;</span><span class="whitespace"> </span>&gt;&gt;<span class="whitespace"> </span><span class="name variable">$ListPath</span>/<span class="name variable">$Album</span>.m3u<span class="whitespace">
+        </span><span class="name builtin">echo</span><span class="whitespace"> </span><span class="literal string double">&quot;#EXTGRP&quot;</span><span class="whitespace"> </span>&gt;&gt;<span class="whitespace"> </span><span class="name variable">$ListPath</span>/ALL.m3u<span class="whitespace">
+        </span>find<span class="whitespace"> </span><span class="name variable">$line</span><span class="whitespace"> </span>-type<span class="whitespace"> </span>f<span class="whitespace"> </span><span class="punctuation">|</span><span class="whitespace"> </span><span class="keyword">while</span><span class="whitespace"> </span><span class="name builtin">read</span><span class="whitespace"> </span>path<span class="whitespace">
+        </span><span class="keyword">do</span><span class="whitespace">
+          </span><span class="name variable">duration</span><span class="operator">=</span><span class="keyword">$(</span>ffmpeg<span class="whitespace"> </span>-i<span class="whitespace"> </span><span class="literal string double">&quot;</span><span class="name variable">$path</span><span class="literal string double">&quot;</span><span class="whitespace"> </span><span class="literal number">2</span>&gt;<span class="punctuation">&amp;</span><span class="literal number">1</span><span class="whitespace"> </span><span class="punctuation">|</span><span class="whitespace"> </span>grep<span class="whitespace"> </span><span class="literal string double">&quot;Duration&quot;</span><span class="punctuation">|</span><span class="whitespace"> </span>cut<span class="whitespace"> </span>-d<span class="whitespace"> </span><span class="literal string single">' '</span><span class="whitespace"> </span>-f<span class="whitespace"> </span><span class="literal number">4</span><span class="whitespace"> </span><span class="punctuation">|</span><span class="whitespace"> </span>sed<span class="whitespace"> </span>s/,//<span class="whitespace"> </span><span class="punctuation">|</span><span class="whitespace"> </span>sed<span class="whitespace"> </span><span class="literal string single">'s&#64;\..*&#64;&#64;g'</span><span class="whitespace"> </span><span class="punctuation">|</span><span class="whitespace"> </span>awk<span class="whitespace"> </span><span class="literal string single">'{ split($1, A, &quot;:&quot;); split(A[3], B, &quot;.&quot;); print 3600*A[1] + 60*A[2] + B[1] }'</span><span class="keyword">)</span><span class="whitespace">
+          </span><span class="keyword">if</span><span class="whitespace"> </span><span class="operator">[</span><span class="whitespace"> </span><span class="literal string double">&quot;</span><span class="name variable">$duration</span><span class="literal string double">&quot;</span><span class="whitespace"> </span><span class="operator">==</span><span class="whitespace"> </span><span class="literal string double">&quot;0&quot;</span><span class="whitespace"> </span><span class="operator">]</span><span class="whitespace"> </span><span class="operator">||</span><span class="whitespace"> </span><span class="operator">[</span><span class="whitespace"> </span><span class="literal string double">&quot;</span><span class="name variable">$duration</span><span class="literal string double">&quot;</span><span class="whitespace"> </span><span class="operator">==</span><span class="whitespace"> </span><span class="literal string double">&quot;&quot;</span><span class="whitespace"> </span><span class="operator">]</span><span class="punctuation">;</span><span class="whitespace"> </span><span class="keyword">then</span><span class="whitespace">
+            </span><span class="name builtin">printf</span><span class="whitespace"> </span><span class="literal string double">&quot;</span><span class="name variable">$path</span><span class="literal string double"> is not a media file, duration: </span><span class="name variable">$duration</span><span class="literal string double">\n&quot;</span><span class="whitespace">
+            </span><span class="keyword">continue</span><span class="whitespace">
+          </span><span class="keyword">fi</span><span class="whitespace">
+        </span><span class="name variable">header</span><span class="operator">=</span><span class="literal string double">&quot;#EXTINF:</span><span class="name variable">$duration</span><span class="literal string double">,</span><span class="keyword">$(</span><span class="name builtin">echo</span><span class="whitespace"> </span><span class="literal string double">&quot;</span><span class="name variable">$path</span><span class="literal string double">&quot;</span><span class="whitespace"> </span><span class="punctuation">|</span><span class="whitespace"> </span>sed<span class="whitespace"> </span>-e<span class="whitespace"> </span><span class="literal string double">&quot;s/\([[:print:]]*\/\)*//g&quot;</span><span class="keyword">)</span><span class="literal string double">&quot;</span><span class="whitespace">
+        </span><span class="name variable">url</span><span class="operator">=</span><span class="literal string double">&quot;</span><span class="keyword">$(</span><span class="name builtin">echo</span><span class="whitespace"> </span><span class="literal string double">&quot;</span><span class="name variable">$path</span><span class="literal string double">&quot;</span><span class="whitespace"> </span><span class="punctuation">|</span><span class="whitespace"> </span>sed<span class="whitespace"> </span>-e<span class="whitespace"> </span><span class="literal string single">'s/^/http:\/\/ipv4.bajzc.com:81\//'</span><span class="keyword">)</span><span class="literal string double">&quot;</span><span class="whitespace">
+        </span><span class="name builtin">printf</span><span class="whitespace"> </span><span class="literal string double">&quot;</span><span class="name variable">$header</span><span class="literal string double">\n</span><span class="name variable">$url</span><span class="literal string double">\n\n&quot;</span><span class="whitespace"> </span>&gt;&gt;<span class="whitespace"> </span><span class="name variable">$ListPath</span>/<span class="name variable">$Album</span>.m3u<span class="whitespace">
+        </span><span class="name builtin">printf</span><span class="whitespace"> </span><span class="literal string double">&quot;</span><span class="name variable">$header</span><span class="literal string double">\n</span><span class="name variable">$url</span><span class="literal string double">\n\n&quot;</span><span class="whitespace"> </span>&gt;&gt;<span class="whitespace"> </span><span class="name variable">$ListPath</span>/ALL.m3u<span class="whitespace">
+        </span><span class="keyword">done</span><span class="whitespace">
+  </span><span class="keyword">done</span><span class="whitespace">
+</span><span class="operator">}</span><span class="whitespace">
+
+</span>compress<span class="operator">(){</span><span class="whitespace">
+  </span><span class="name builtin">cd</span><span class="whitespace"> </span><span class="name variable">$ListPath</span><span class="whitespace">
+  </span>tar<span class="whitespace"> </span>-czvf<span class="whitespace"> </span>PlayList.tar.gz<span class="whitespace"> </span>*.m3u<span class="whitespace">
+  </span>zip<span class="whitespace"> </span>-qr<span class="whitespace"> </span>PlayList.zip<span class="whitespace"> </span>*.m3u<span class="whitespace">
+
+</span><span class="operator">}</span><span class="whitespace">
+</span>Backup<span class="whitespace">
+</span>ListMovie<span class="whitespace">
+</span>ListAlbum<span class="whitespace">
+</span>compress<span class="whitespace">
+</span><span class="name builtin">unset</span><span class="whitespace"> </span>ListPath
+</pre>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You may need to install <tt class="docutils literal">ffmpeg</tt>, <tt class="docutils literal">zip</tt> on your host system.</p>
+</div>
 <p>Backup()</p>
 <blockquote>
-<p>line 6-9: backup all files in <code>$ListPath</code></p>
-</blockquote>
+line 6-9: backup all files in <tt class="docutils literal">$ListPath</tt></blockquote>
 <p>ListMovie()</p>
 <blockquote>
-<p>line 13: change the directory to where the <code>Movie</code> is.</p>
-<p>line 14: print .m3u header to the output file <code>$ListPath/ALL.m3u</code></p>
-<p>line 15: list all the files and directories in <code>Movie/</code> and assign the
-path to <code>line</code></p>
-<p>line 17: whether <code>line</code> is a path to a directory</p>
+<p>line 13: change the directory to where the <tt class="docutils literal">Movie</tt> is.</p>
+<p>line 14: print .m3u header to the output file <tt class="docutils literal">$ListPath/ALL.m3u</tt></p>
+<p>line 15: list all the files and directories in <tt class="docutils literal">Movie/</tt> and assign the path to <tt class="docutils literal">line</tt></p>
+<p>line 17: whether <tt class="docutils literal">line</tt> is a path to a directory</p>
 <p>line 19: use regular expression to get the name of directory</p>
 <p>line 21: use ffmpeg to get the duration of a media file in seconds</p>
 <p>line 28: use regex again to convert the relative path into URL</p>
@@ -402,48 +313,31 @@ path to <code>line</code></p>
 <p>line 60: compress into .zip</p>
 <p>line 61: compress into .tar.gz</p>
 </blockquote>
-<p>The output can be seen <a href="http://ipv4.bajzc.com:81/PlayLists/"target="_blank" rel="external nofollow noopener noreferrer">here</a></p>
-<h2 id="4-summary" class="heading-element">
-  <a href="#4-summary" class="heading-mark"></a>4 Summary</h2><p>This script still has some limitations, such as it cannot deal with the
-<code>SPACE</code> in directories' name. Because <code>find</code> won't return the path in
-C-style (but <code>ls</code> can do it). For example:
-<code>The Music of Grand Theft Auto V [FLAC]</code>, should be
-<code>The\ Music\ of\ Grand\ Theft\ Auto\ V\ \[FLAC\]</code>. Otherwise <code>Bash</code>
-cannot locate it.</p>
-<p>However, if the file name contains those characters will be fine. Thanks
-to ffmpeg, path can be passed as a string. (Line 21)</p>
+<p>The output can be seen <a class="reference external" href="http://ipv4.bajzc.com:81/PlayLists/">here</a></p>
+</div>
+<div class="section" id="summary">
+<h3><a class="toc-backref" href="#toc-entry-5">4 Summary</a></h3>
+<p>This script still has some limitations, such as it cannot deal with the <tt class="docutils literal">SPACE</tt> in directories' name.
+Because <tt class="docutils literal">find</tt> won't return the path in C-style (while <tt class="docutils literal">ls</tt> can do it). For example: <tt class="docutils literal">The Music of Grand Theft Auto V</tt>, should be <tt class="docutils literal">The\ Music\ of\ Grand\ Theft\ Auto\ V</tt>.
+Otherwise <tt class="docutils literal">Bash</tt> cannot locate it.</p>
+<p>However, if the file name contains those characters will be fine. Thanks to ffmpeg, path can be passed as a string. (Line 21)</p>
 <p>After all, open a m3u file in VLC:</p>
-<p><img loading="lazy" src="/images/VLC-Playlist.png" alt="image" srcset="/images/VLC-Playlist.png?size=small, /images/VLC-Playlist.png?size=medium 1.5x, /images/VLC-Playlist.png?size=large 2x" data-title="image" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/>{.align-center}</p>
-<p>:::: note
-::: title
-Note
-:::</p>
-<p>Copyright (C) 2023 Jason Li</p>
-<p>License:</p>
-<p>This program is free software: you can redistribute it and/or modify it
-under the terms of the GNU General Public License as published by the
-Free Software Foundation, either version 3 of the License, or (at your
-option) any later version.</p>
-<p>This program is distributed in the hope that it will be useful, but
-WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
-Public License for more details.</p>
-<p>You should have received a copy of the GNU General Public License along
-with this program. If not, see &lt;<a href="https://www.gnu.org/licenses/"target="_blank" rel="external nofollow noopener noreferrer">https://www.gnu.org/licenses/</a>&gt;.
-::::</p>
-</div><div class="post-footer" id="post-footer">
+<img alt="/images/VLC-Playlist.png" class="align-center" src="/images/VLC-Playlist.png" />
+</div>
+</div>
+</div></div><div class="post-footer" id="post-footer">
   <div class="post-info">
     <div class="post-info-line">
       <div class="post-info-mod">
-        <span title="Updated on 0001-01-01 00:00:00">Updated on 0001-01-01&nbsp;</span>
+        <span title="Updated on 2023-08-12 16:42:50">Updated on 2023-08-12&nbsp;</span>
       </div><div class="post-info-license">
             <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a></span>
           </div></div><div class="post-info-line">
         <div class="post-info-md"><span><a href="/posts/vlc-how-to-generate-m3u-playlists/index.md" title="Read Markdown" class="link-to-markdown">Read Markdown</a></span></div>
         <div class="post-info-share">
-          <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://bajzc.org/posts/vlc-how-to-generate-m3u-playlists/" data-title="VLC: how to generate .m3u playlists" data-hashtags="VLC"><i class="fa-brands fa-twitter fa-fw" aria-hidden="true"></i></a>
-  <a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://bajzc.org/posts/vlc-how-to-generate-m3u-playlists/" data-hashtag="VLC"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
-  <a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://bajzc.org/posts/vlc-how-to-generate-m3u-playlists/" data-title="VLC: how to generate .m3u playlists"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
+          <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://localhost:1313/posts/vlc-how-to-generate-m3u-playlists/" data-title="VLC: how to generate .m3u playlists" data-hashtags="VLC"><i class="fa-brands fa-twitter fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://localhost:1313/posts/vlc-how-to-generate-m3u-playlists/" data-hashtag="VLC"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://localhost:1313/posts/vlc-how-to-generate-m3u-playlists/" data-title="VLC: how to generate .m3u playlists"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
   </span>
         </div>
       </div></div>
@@ -455,7 +349,7 @@ with this program. If not, see &lt;<a href="https://www.gnu.org/licenses/"target
     </section>
   </div>
 
-  <div class="post-nav">
+  <div class="post-nav"><a href="/posts/cachestat-in-kernel-65/" class="post-nav-item" rel="prev" title="Cachestat in Kernel-6.5"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>Cachestat in Kernel-6.5</a>
       <a href="/posts/lfs-gg/" class="post-nav-item" rel="next" title="LFS? GG!">LFS? GG!<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article>

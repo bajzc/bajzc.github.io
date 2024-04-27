@@ -1,59 +1,51 @@
 <!DOCTYPE html>
 <html itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
-  <head>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
     <meta name="robots" content="noodp" />
-    <title>在Windows 11上安装GTK4 - 随笔技 🚧 (rst格式转向md)</title><meta name="author" content="">
+    <title>在Windows上安装Gtk4 - 随笔技</title><meta name="author" content="">
 <meta name="author-link" content="">
-<meta name="description" content="一个关于在Win 11上使用Msys2安装Gtk4,并且使用makefile生成一个Hello
-world的demo的指北
-" /><meta name="keywords" content='GTK4, Msys2, Windows, Installation, GNU/make' /><meta itemprop="name" content="在Windows 11上安装GTK4">
-<meta itemprop="description" content="一个关于在Win 11上使用Msys2安装Gtk4,并且使用makefile生成一个Hello
-world的demo的指北
-">
-
-<meta itemprop="wordCount" content="1440">
-<meta itemprop="keywords" content="GTK4,Msys2,Windows,Installation,GNU/make," /><meta property="og:title" content="在Windows 11上安装GTK4" />
-<meta property="og:description" content="一个关于在Win 11上使用Msys2安装Gtk4,并且使用makefile生成一个Hello
-world的demo的指北
-" />
+<meta name="description" content="一个关于在Win 11上使用Msys2安装Gtk4,并且使用makefile生成一个Hello world的demo的指北" /><meta name="keywords" content='GTK4, Msys2, Windows, Installation, GNU/make' /><meta itemprop="name" content="在Windows上安装Gtk4">
+<meta itemprop="description" content="一个关于在Win 11上使用Msys2安装Gtk4,并且使用makefile生成一个Hello world的demo的指北"><meta itemprop="datePublished" content="2023-07-11T12:39:46+07:00" />
+<meta itemprop="dateModified" content="2023-07-11T12:39:46+07:00" />
+<meta itemprop="wordCount" content="1412">
+<meta itemprop="keywords" content="GTK4,Msys2,Windows,Installation,GNU/make," /><meta property="og:title" content="在Windows上安装Gtk4" />
+<meta property="og:description" content="一个关于在Win 11上使用Msys2安装Gtk4,并且使用makefile生成一个Hello world的demo的指北" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://bajzc.org/zh-cn/posts/install-gtk4-on-windows/" /><meta property="article:section" content="posts" />
-
-
-<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="在Windows 11上安装GTK4"/>
-<meta name="twitter:description" content="一个关于在Win 11上使用Msys2安装Gtk4,并且使用makefile生成一个Hello
-world的demo的指北
-"/>
+<meta property="og:url" content="http://localhost:1313/zh-cn/posts/install-gtk4-on-windows/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-07-11T12:39:46+07:00" />
+<meta property="article:modified_time" content="2023-07-11T12:39:46+07:00" />
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="在Windows上安装Gtk4"/>
+<meta name="twitter:description" content="一个关于在Win 11上使用Msys2安装Gtk4,并且使用makefile生成一个Hello world的demo的指北"/>
 <meta name="application-name" content="FixIt">
 <meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://bajzc.org/zh-cn/posts/install-gtk4-on-windows/" /><link rel="next" href="https://bajzc.org/zh-cn/posts/cachestat-in-kernel-65-rc1/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="http://localhost:1313/zh-cn/posts/install-gtk4-on-windows/" /><link rel="next" href="http://localhost:1313/zh-cn/posts/cachestat-in-kernel-65/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
   {
     "@context": "http://schema.org",
     "@type": "BlogPosting",
-    "headline": "在Windows 11上安装GTK4",
+    "headline": "在Windows上安装Gtk4",
     "inLanguage": "zh-CN",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": "https:\/\/bajzc.org\/zh-cn\/posts\/install-gtk4-on-windows\/"
-    },"genre": "posts","keywords": "GTK4, Msys2, Windows, Installation, GNU\/make","wordcount":  1440 ,
-    "url": "https:\/\/bajzc.org\/zh-cn\/posts\/install-gtk4-on-windows\/","publisher": {
+      "@id": "http:\/\/localhost:1313\/zh-cn\/posts\/install-gtk4-on-windows\/"
+    },"genre": "posts","keywords": "GTK4, Msys2, Windows, Installation, GNU\/make","wordcount":  1412 ,
+    "url": "http:\/\/localhost:1313\/zh-cn\/posts\/install-gtk4-on-windows\/","datePublished": "2023-07-11T12:39:46+07:00","dateModified": "2023-07-11T12:39:46+07:00","publisher": {
       "@type": "Organization",
       "name": ""},"author": {
         "@type": "Person",
         "name": "作者"
-      },"description": "一个关于在Win 11上使用Msys2安装Gtk4,并且使用makefile生成一个Hello\nworld的demo的指北\n"
+      },"description": "一个关于在Win 11上使用Msys2安装Gtk4,并且使用makefile生成一个Hello world的demo的指北"
   }
   </script></head>
   <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper" data-page-style="normal"><header class="desktop animate__faster" id="header-desktop">
   <div class="header-wrapper">
     <div class="header-title">
-      <a href="/zh-cn/" title="随笔技 🚧 (rst格式转向md)"><span class="header-title-text">随笔技 🚧 (rst格式转向md)</span></a><span class="header-subtitle"></span></div>
+      <a href="/zh-cn/" title="随笔技"><span class="header-title-text">随笔技</span></a><span class="header-subtitle"></span></div>
     <nav>
       <ul class="menu"><li class="menu-item">
               <a
@@ -89,7 +81,7 @@ world的demo的指北
   <div class="header-container">
     <div class="header-wrapper">
       <div class="header-title">
-        <a href="/zh-cn/" title="随笔技 🚧 (rst格式转向md)"><span class="header-title-text">随笔技 🚧 (rst格式转向md)</span></a><span class="header-subtitle"></span></div>
+        <a href="/zh-cn/" title="随笔技"><span class="header-title-text">随笔技</span></a><span class="header-subtitle"></span></div>
       <div class="menu-toggle" id="menu-toggle-mobile">
         <span></span><span></span><span></span>
       </div>
@@ -127,247 +119,195 @@ world的demo的指北
 </header><main class="container"><aside class="aside-collection animate__animated animate__fadeIn animate__faster" aria-label="合集"></aside>
 
   <article class="page single">
-    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>在Windows 11上安装GTK4</span>
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>在Windows上安装Gtk4</span>
       </h1></div><div class="post-meta">
       <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
-      Anonymous</span></span></div><div class="post-meta-line"><span title="发布于 0001-01-01 00:00:00"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="0001-01-01">0001-01-01</time></span>&nbsp;<span title="1440 字"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 1500 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 3 分钟</span>&nbsp;</div>
+      Anonymous</span></span><span class="post-included-in">&nbsp;收录于 <a href="/zh-cn/categories/tutorial/" class="post-category" title="分类 - Tutorial"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> Tutorial</a></span></div><div class="post-meta-line"><span title="发布于 2023-07-11 12:39:46"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2023-07-11">2023-07-11</time></span>&nbsp;<span title="1412 字"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 1500 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 3 分钟</span>&nbsp;</div>
     </div><div class="details toc" id="toc-static" data-kept="false">
         <div class="details-summary toc-title">
           <span>目录</span>
           <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
         </div>
-        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
-  <ul>
-    <li><a href="#安装过程">安装过程</a>
-      <ul>
-        <li><a href="#1-下载并安装msys2">1. 下载并安装Msys2</a></li>
-        <li><a href="#2-安装gtk4库和toolchain">2. 安装GTK4库和toolchain</a></li>
-        <li><a href="#3-设置path">3. 设置Path</a></li>
-        <li><a href="#4-hello-world">4. Hello World</a></li>
-      </ul>
-    </li>
-    <li><a href="#总结">总结</a></li>
-  </ul>
-</nav></div>
-      </div><div class="content" id="content"><p><img loading="lazy" src="https://docs.gtk.org/gtk4/hello-world.png" alt="https://docs.gtk.org/gtk4/hello-world.png" srcset="https://docs.gtk.org/gtk4/hello-world.png?size=small, https://docs.gtk.org/gtk4/hello-world.png?size=medium 1.5x, https://docs.gtk.org/gtk4/hello-world.png?size=large 2x" data-title="https://docs.gtk.org/gtk4/hello-world.png" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/>{.gtk .gtkalign-center}</p>
-<h1 id="在win11上安装gtk4" class="heading-element">
-  <a href="#%e5%9c%a8win11%e4%b8%8a%e5%ae%89%e8%a3%85gtk4" class="heading-mark"></a>在Win11上安装GTK4</h1><p>::: contents
-:::</p>
-<p>一个关于在Win 11上使用Msys2安装Gtk4,并且使用makefile生成一个Hello
-world的demo的指北</p>
+        <div class="details-content toc-content" id="toc-content-static"></div>
+      </div><div class="content" id="content"><div class="document">
+
+
+<div class="figure align-center">
+<a class="reference external image-reference" href="https://docs.gtk.org/gtk4/hello-world.png"><img alt="https://docs.gtk.org/gtk4/hello-world.png" class="gtk" src="https://docs.gtk.org/gtk4/hello-world.png" /></a>
+</div>
+<div class="section" id="win11gtk4">
+<h2><a class="toc-backref" href="#toc-entry-1">在Win11上安装GTK4</a></h2>
+<div class="contents topic" id="contents">
+<p class="topic-title">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#win11gtk4" id="toc-entry-1">在Win11上安装GTK4</a><ul>
+<li><a class="reference internal" href="#section-1" id="toc-entry-2">安装过程</a><ul>
+<li><a class="reference internal" href="#msys2" id="toc-entry-3">1. 下载并安装Msys2</a></li>
+<li><a class="reference internal" href="#gtk4toolchain" id="toc-entry-4">2. 安装GTK4库和toolchain</a></li>
+<li><a class="reference internal" href="#path" id="toc-entry-5">3. 设置Path</a></li>
+<li><a class="reference internal" href="#hello-world" id="toc-entry-6">4. Hello World</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#section-2" id="toc-entry-7">总结</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>一个关于在Win 11上使用Msys2安装Gtk4,并且使用makefile生成一个Hello world的demo的指北</p>
 <p>并且包括了作者在安装过程中遇到的坑...</p>
 <p>安装过程在的Sandbox里经过测试:</p>
 <blockquote>
-<p>:::: note
-::: title
-Note
-:::</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
 <p>Edition Windows 11 Enterprise</p>
 <p>Version 22H2</p>
-<p>OS build 22621.1848
-::::</p>
-<p>:::: hint
-::: title
-Hint
-:::</p>
-<p><a href="https://www.gtk.org/docs/installations/windows/#using-gtk-from-msys2-packages"target="_blank" rel="external nofollow noopener noreferrer">GTK官网的安装指南</a>
-::::</p>
+<p class="last">OS build        22621.1848</p>
+</div>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p class="last"><a class="reference external" href="https://www.gtk.org/docs/installations/windows/#using-gtk-from-msys2-packages">GTK官网的安装指南</a></p>
+</div>
 </blockquote>
-<h2 id="安装过程" class="heading-element">
-  <a href="#%e5%ae%89%e8%a3%85%e8%bf%87%e7%a8%8b" class="heading-mark"></a>安装过程</h2><h3 id="1-下载并安装msys2" class="heading-element">
-  <a href="#1-%e4%b8%8b%e8%bd%bd%e5%b9%b6%e5%ae%89%e8%a3%85msys2" class="heading-mark"></a>1. 下载并安装Msys2</h3><p><em>本教程使用默认安装路径，如使用自定义，在后文设置PATH时需要注意</em></p>
-<p>从官网下载 <a href="https://www.msys2.org/"target="_blank" rel="external nofollow noopener noreferrer">Msys2</a>，并安装</p>
+<div class="section" id="section-1">
+<h3><a class="toc-backref" href="#toc-entry-2">安装过程</a></h3>
+<div class="section" id="msys2">
+<h4><a class="toc-backref" href="#toc-entry-3">1. 下载并安装Msys2</a></h4>
+<p><em>本教程使用默认安装路径，如使用自定义，在后文设置PATH时需要注意</em></p>
+<p>从官网下载 <a class="reference external" href="https://www.msys2.org/">Msys2</a>，并安装</p>
 <p>点击Finish后弹出命令行界面，根据Msys2的文档，我们首先安装gcc</p>
 <blockquote>
-<p>:::: note
-::: title
-Note
-:::</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
 <p>国内用户可能需要更换国内源提升下载速度，</p>
-<p>这里我们使用
-<a href="https://mirrors.tuna.tsinghua.edu.cn/help/msys2/"target="_blank" rel="external nofollow noopener noreferrer">清华大学镜像站</a>
-,在终端输入</p>
-<p><code>sed -i &quot;s#https\?://mirror.msys2.org/#https://mirrors.tuna.tsinghua.edu.cn/msys2/#g&quot; /etc/pacman.d/mirrorlist*</code></p>
-<p>完成换源
-::::</p>
+<p>这里我们使用 <a class="reference external" href="https://mirrors.tuna.tsinghua.edu.cn/help/msys2/">清华大学镜像站</a> ,在终端输入</p>
+<p><tt class="docutils literal">sed <span class="pre">-i</span> <span class="pre">&quot;s#https\?://mirror.msys2.org/#https://mirrors.tuna.tsinghua.edu.cn/msys2/#g&quot;</span> /etc/pacman.d/mirrorlist*</tt></p>
+<p class="last">完成换源</p>
+</div>
 </blockquote>
-<p><code>pacman -S mingw-w64-ucrt-x86_64-gcc</code></p>
-<p><img loading="lazy" src="/images/Msys2_install.png" alt="image" srcset="/images/Msys2_install.png?size=small, /images/Msys2_install.png?size=medium 1.5x, /images/Msys2_install.png?size=large 2x" data-title="image" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/>{.align-center}</p>
-<dl>
+<p><tt class="docutils literal">pacman <span class="pre">-S</span> <span class="pre">mingw-w64-ucrt-x86_64-gcc</span></tt></p>
+<img alt="/images/Msys2_install.png" class="align-center" src="/images/Msys2_install.png" />
+<dl class="docutils">
 <dt>回车开始安装</dt>
-<dd>
-<p>:::: hint
-::: title
-Hint
-:::</p>
-<p>在Msys2 Shell里的复制可以快捷键Shift+Ins
-::::</p>
+<dd><div class="admonition hint first last">
+<p class="first admonition-title">Hint</p>
+<p class="last">在Msys2 Shell里的复制可以快捷键Shift+Ins</p>
+</div>
 </dd>
 </dl>
-<h3 id="2-安装gtk4库和toolchain" class="heading-element">
-  <a href="#2-%e5%ae%89%e8%a3%85gtk4%e5%ba%93%e5%92%8ctoolchain" class="heading-mark"></a>2. 安装GTK4库和toolchain</h3><p>要安装GTK4，在终端输入</p>
-<p><code>pacman -S mingw-w64-x86_64-gtk4</code></p>
+</div>
+<div class="section" id="gtk4toolchain">
+<h4><a class="toc-backref" href="#toc-entry-4">2. 安装GTK4库和toolchain</a></h4>
+<p>要安装GTK4，在终端输入</p>
+<p><tt class="docutils literal">pacman <span class="pre">-S</span> <span class="pre">mingw-w64-x86_64-gtk4</span></tt></p>
 <p>为了在windows上使用GNU/make，输入</p>
-<p><code>pacman -S mingw-w64-x86_64-toolchain base-devel</code></p>
+<p><tt class="docutils literal">pacman <span class="pre">-S</span> <span class="pre">mingw-w64-x86_64-toolchain</span> <span class="pre">base-devel</span></tt></p>
 <p>都是一路回车选择默认</p>
 <blockquote>
-<p><img loading="lazy" src="/images/Msys2_tool-chain.png" alt="image" srcset="/images/Msys2_tool-chain.png?size=small, /images/Msys2_tool-chain.png?size=medium 1.5x, /images/Msys2_tool-chain.png?size=large 2x" data-title="image" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/>{.align-center}</p>
+<img alt="/images/Msys2_tool-chain.png" class="align-center" src="/images/Msys2_tool-chain.png" />
 </blockquote>
-<h3 id="3-设置path" class="heading-element">
-  <a href="#3-%e8%ae%be%e7%bd%aepath" class="heading-mark"></a>3. 设置Path</h3><p>打开
-<a href="https://www.baidu.com/baidu?ie=utf-8&amp;wd=path%E8%AE%BE%E7%BD%AE"target="_blank" rel="external nofollow noopener noreferrer">Path设置</a>
-细节不赘述</p>
-<p>在系统变量里找到Path,打开后加上你的安装路径 <em>mingw64bin</em>
-，（对我来说就是 <code>C:\msys64\mingw64\bin</code> ）</p>
-<p>再新建一个 <code>C:\msys64\usr\bin</code>，点击确定保存。</p>
+</div>
+<div class="section" id="path">
+<h4><a class="toc-backref" href="#toc-entry-5">3. 设置Path</a></h4>
+<p>打开 <a class="reference external" href="https://www.baidu.com/baidu?ie=utf-8&amp;wd=path%E8%AE%BE%E7%BD%AE">Path设置</a>  细节不赘述</p>
+<p>在系统变量里找到Path,打开后加上你的安装路径 <em>mingw64bin</em> ，（对我来说就是 <tt class="docutils literal"><span class="pre">C:\msys64\mingw64\bin</span></tt> ）</p>
+<p>再新建一个 <tt class="docutils literal"><span class="pre">C:\msys64\usr\bin</span></tt>，点击确定保存。</p>
 <blockquote>
-<p>:::: note
-::: title
-Note
-:::</p>
-<p>这里千万要注意顺序，因为Windows会依照PATH从前到后扫描。这对之后的
-<code>pkg-config</code> 以及 <code>mkdir</code> 都有影响
-::::</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">这里千万要注意顺序，因为Windows会依照PATH从前到后扫描。这对之后的 <tt class="docutils literal"><span class="pre">pkg-config</span></tt> 以及 <tt class="docutils literal">mkdir</tt> 都有影响</p>
+</div>
 </blockquote>
-<p>由于我们要使用 <code>make</code>
-命令,而Msys2默认把它命名为&quot;mingw32-make&quot;。所以我们进入刚刚输入的目录（C:/msys64/mingw64/bin），找到
-<em>mingw32-make</em> 重命名（或者ctrl+c,ctrl+v生成一个副本），命名为make。</p>
-<p>此时我们再打开cmd(Win+R)，输入 <code>make -v</code> ,发现已经可以运行了。</p>
-<p>接着再在cmd中试一下命令 <code>pkg-config --cflags --libs gtk4</code>
-，如果有类似下面的输出，就说明成功了：</p>
+<p>由于我们要使用 <tt class="docutils literal">make</tt> 命令,而Msys2默认把它命名为&quot;mingw32-make&quot;。所以我们进入刚刚输入的目录（C:/msys64/mingw64/bin），找到 <em>mingw32-make</em> 重命名（或者ctrl+c,ctrl+v生成一个副本），命名为make。</p>
+<p>此时我们再打开cmd(Win+R)，输入 <tt class="docutils literal">make <span class="pre">-v</span></tt> ,发现已经可以运行了。</p>
+<p>接着再在cmd中试一下命令 <tt class="docutils literal"><span class="pre">pkg-config</span> <span class="pre">--cflags</span> <span class="pre">--libs</span> gtk4</tt> ，如果有类似下面的输出，就说明成功了：</p>
 <blockquote>
-<p><img loading="lazy" src="/images/cmd_pkg-config.png" alt="image" srcset="/images/cmd_pkg-config.png?size=small, /images/cmd_pkg-config.png?size=medium 1.5x, /images/cmd_pkg-config.png?size=large 2x" data-title="image" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/>{.align-center}</p>
-<p>:::: hint
-::: title
-Hint
-:::</p>
+<img alt="/images/cmd_pkg-config.png" class="align-center" src="/images/cmd_pkg-config.png" />
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
 <p>如果没有，那么可以说你不幸遇到了第一个坑,和作者一样（</p>
-<p>首先给MS扣
-<a href="https://img.devrant.com/devrant/rant/r_1093122_83dS9.jpg"target="_blank" rel="external nofollow noopener noreferrer">666</a> （菜</p>
+<p>首先给MS扣 <a class="reference external" href="https://img.devrant.com/devrant/rant/r_1093122_83dS9.jpg">666</a> （菜</p>
 <p>打开Msys2 Shell，运行</p>
-<p><code>cp -r /mingw64/lib/pkgconfig/* /usr/share/pkgconfig/</code></p>
-<p>这就会把它提示的&quot;gtk4.pc&quot;以及其他一系列依赖，复制到 <code>pkg-config</code>
-会自动扫描的文件夹下。
-::::</p>
+<p><tt class="docutils literal">cp <span class="pre">-r</span> /mingw64/lib/pkgconfig/* /usr/share/pkgconfig/</tt></p>
+<p class="last">这就会把它提示的&quot;gtk4.pc&quot;以及其他一系列依赖，复制到 <tt class="docutils literal"><span class="pre">pkg-config</span></tt> 会自动扫描的文件夹下。</p>
+</div>
 </blockquote>
-<h3 id="4-hello-world" class="heading-element">
-  <a href="#4-hello-world" class="heading-mark"></a>4. Hello World</h3><p>新建一个文件夹，这里就叫demo,在里面创建demo.c
-(Shift+右键文件资源管理器，在该目录下打开powershell，输入
-<code>notepad demo.c</code> )</p>
+</div>
+<div class="section" id="hello-world">
+<h4><a class="toc-backref" href="#toc-entry-6">4. Hello World</a></h4>
+<p>新建一个文件夹，这里就叫demo,在里面创建demo.c (Shift+右键文件资源管理器，在该目录下打开powershell，输入 <tt class="docutils literal">notepad demo.c</tt> )</p>
 <p>这里使用GTK官方的实例：</p>
 <blockquote>
-<div class="highlight" id="id-1"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;gtk/gtk.h&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
-</span></span><span class="line"><span class="cl"><span class="k">static</span> <span class="kt">void</span> <span class="nf">activate</span><span class="p">(</span><span class="n">GtkApplication</span><span class="o">*</span> <span class="n">app</span><span class="p">,</span> <span class="n">gpointer</span> <span class="n">user_data</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="n">GtkWidget</span><span class="o">*</span> <span class="n">window</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="n">window</span> <span class="o">=</span> <span class="nf">gtk_application_window_new</span><span class="p">(</span><span class="n">app</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">gtk_window_set_title</span><span class="p">(</span><span class="nf">GTK_WINDOW</span><span class="p">(</span><span class="n">window</span><span class="p">),</span> <span class="s">&#34;Window&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">gtk_window_set_default_size</span><span class="p">(</span><span class="nf">GTK_WINDOW</span><span class="p">(</span><span class="n">window</span><span class="p">),</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">200</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">gtk_widget_show</span><span class="p">(</span><span class="n">window</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span><span class="o">**</span> <span class="n">argv</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="n">GtkApplication</span><span class="o">*</span> <span class="n">app</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">status</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="n">app</span> <span class="o">=</span> <span class="nf">gtk_application_new</span><span class="p">(</span><span class="s">&#34;org.gtk.example&#34;</span><span class="p">,</span> <span class="n">G_APPLICATION_DEFAULT_FLAGS</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">g_signal_connect</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="s">&#34;activate&#34;</span><span class="p">,</span> <span class="nf">G_CALLBACK</span><span class="p">(</span><span class="n">activate</span><span class="p">),</span> <span class="nb">NULL</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="n">status</span> <span class="o">=</span> <span class="nf">g_application_run</span><span class="p">(</span><span class="nf">G_APPLICATION</span><span class="p">(</span><span class="n">app</span><span class="p">),</span> <span class="n">argc</span><span class="p">,</span> <span class="n">argv</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">g_object_unref</span><span class="p">(</span><span class="n">app</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">status</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
-</div>
-</div></blockquote>
-<dl>
+<pre class="code C literal-block">
+<span class="comment preproc">#include</span><span class="whitespace"> </span><span class="comment preprocfile">&lt;gtk/gtk.h&gt;</span><span class="comment preproc">
+</span><span class="whitespace">
+</span><span class="keyword">static</span><span class="whitespace"> </span><span class="keyword type">void</span><span class="whitespace"> </span><span class="name function">activate</span><span class="punctuation">(</span><span class="name">GtkApplication</span><span class="operator">*</span><span class="whitespace"> </span><span class="name">app</span><span class="punctuation">,</span><span class="whitespace"> </span><span class="name">gpointer</span><span class="whitespace"> </span><span class="name">user_data</span><span class="punctuation">)</span><span class="whitespace"> </span><span class="punctuation">{</span><span class="whitespace">
+        </span><span class="name">GtkWidget</span><span class="operator">*</span><span class="whitespace"> </span><span class="name">window</span><span class="punctuation">;</span><span class="whitespace">
+
+        </span><span class="name">window</span><span class="whitespace"> </span><span class="operator">=</span><span class="whitespace"> </span><span class="name">gtk_application_window_new</span><span class="punctuation">(</span><span class="name">app</span><span class="punctuation">);</span><span class="whitespace">
+        </span><span class="name">gtk_window_set_title</span><span class="punctuation">(</span><span class="name">GTK_WINDOW</span><span class="punctuation">(</span><span class="name">window</span><span class="punctuation">),</span><span class="whitespace"> </span><span class="literal string">&quot;Window&quot;</span><span class="punctuation">);</span><span class="whitespace">
+        </span><span class="name">gtk_window_set_default_size</span><span class="punctuation">(</span><span class="name">GTK_WINDOW</span><span class="punctuation">(</span><span class="name">window</span><span class="punctuation">),</span><span class="whitespace"> </span><span class="literal number integer">200</span><span class="punctuation">,</span><span class="whitespace"> </span><span class="literal number integer">200</span><span class="punctuation">);</span><span class="whitespace">
+        </span><span class="name">gtk_widget_show</span><span class="punctuation">(</span><span class="name">window</span><span class="punctuation">);</span><span class="whitespace">
+</span><span class="punctuation">}</span><span class="whitespace">
+
+</span><span class="keyword type">int</span><span class="whitespace"> </span><span class="name function">main</span><span class="punctuation">(</span><span class="keyword type">int</span><span class="whitespace"> </span><span class="name">argc</span><span class="punctuation">,</span><span class="whitespace"> </span><span class="keyword type">char</span><span class="operator">**</span><span class="whitespace"> </span><span class="name">argv</span><span class="punctuation">)</span><span class="whitespace"> </span><span class="punctuation">{</span><span class="whitespace">
+        </span><span class="name">GtkApplication</span><span class="operator">*</span><span class="whitespace"> </span><span class="name">app</span><span class="punctuation">;</span><span class="whitespace">
+        </span><span class="keyword type">int</span><span class="whitespace"> </span><span class="name">status</span><span class="punctuation">;</span><span class="whitespace">
+
+        </span><span class="name">app</span><span class="whitespace"> </span><span class="operator">=</span><span class="whitespace"> </span><span class="name">gtk_application_new</span><span class="punctuation">(</span><span class="literal string">&quot;org.gtk.example&quot;</span><span class="punctuation">,</span><span class="whitespace"> </span><span class="name">G_APPLICATION_DEFAULT_FLAGS</span><span class="punctuation">);</span><span class="whitespace">
+        </span><span class="name">g_signal_connect</span><span class="punctuation">(</span><span class="name">app</span><span class="punctuation">,</span><span class="whitespace"> </span><span class="literal string">&quot;activate&quot;</span><span class="punctuation">,</span><span class="whitespace"> </span><span class="name">G_CALLBACK</span><span class="punctuation">(</span><span class="name">activate</span><span class="punctuation">),</span><span class="whitespace"> </span><span class="name builtin">NULL</span><span class="punctuation">);</span><span class="whitespace">
+        </span><span class="name">status</span><span class="whitespace"> </span><span class="operator">=</span><span class="whitespace"> </span><span class="name">g_application_run</span><span class="punctuation">(</span><span class="name">G_APPLICATION</span><span class="punctuation">(</span><span class="name">app</span><span class="punctuation">),</span><span class="whitespace"> </span><span class="name">argc</span><span class="punctuation">,</span><span class="whitespace"> </span><span class="name">argv</span><span class="punctuation">);</span><span class="whitespace">
+        </span><span class="name">g_object_unref</span><span class="punctuation">(</span><span class="name">app</span><span class="punctuation">);</span><span class="whitespace">
+
+        </span><span class="keyword">return</span><span class="whitespace"> </span><span class="name">status</span><span class="punctuation">;</span><span class="whitespace">
+</span><span class="punctuation">}</span>
+</pre>
+</blockquote>
+<dl class="docutils">
 <dt>保存后回到命令行，再创建一个名为 <em>makefile</em> 的文件，输入以下内容：</dt>
-<dd>
-<div class="highlight" id="id-2"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nv">CC</span> <span class="o">=</span> gcc
-</span></span><span class="line"><span class="cl"><span class="nv">CFLAGS</span> <span class="o">=</span> -O2 -Wall
-</span></span><span class="line"><span class="cl"><span class="nv">GTK_CFLAGS</span> <span class="o">=</span> <span class="sb">`</span>pkg-config --cflags gtk4<span class="sb">`</span>
-</span></span><span class="line"><span class="cl"><span class="nv">GTK_LIBS</span> <span class="o">=</span> <span class="sb">`</span>pkg-config --libs gtk4<span class="sb">`</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nf">all</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">    @mkdir -p ./out
-</span></span><span class="line"><span class="cl">    <span class="k">$(</span>CC<span class="k">)</span> <span class="k">$(</span>GTK_CFLAGS<span class="k">)</span> -o ./out/demo.exe demo.c <span class="k">$(</span>GTK_LIBS<span class="k">)</span>
-</span></span></code></pre></td></tr></table>
+<dd><pre class="code makefile first literal-block">
+<span class="name variable">CC</span><span class="whitespace"> </span><span class="operator">=</span><span class="whitespace"> </span>gcc<span class="whitespace">
+</span><span class="name variable">CFLAGS</span><span class="whitespace"> </span><span class="operator">=</span><span class="whitespace"> </span>-O2<span class="whitespace"> </span>-Wall<span class="whitespace">
+</span><span class="name variable">GTK_CFLAGS</span><span class="whitespace"> </span><span class="operator">=</span><span class="whitespace"> </span><span class="literal string backtick">`</span>pkg-config<span class="whitespace"> </span>--cflags<span class="whitespace"> </span>gtk4<span class="literal string backtick">`</span><span class="whitespace">
+</span><span class="name variable">GTK_LIBS</span><span class="whitespace"> </span><span class="operator">=</span><span class="whitespace"> </span><span class="literal string backtick">`</span>pkg-config<span class="whitespace"> </span>--libs<span class="whitespace"> </span>gtk4<span class="literal string backtick">`</span><span class="whitespace">
+
+</span><span class="name function">all</span><span class="operator">:</span><span class="whitespace">
+        </span>&#64;mkdir<span class="whitespace"> </span>-p<span class="whitespace"> </span>./out<span class="whitespace">
+        </span><span class="keyword">$(</span>CC<span class="keyword">)</span><span class="whitespace"> </span><span class="keyword">$(</span>GTK_CFLAGS<span class="keyword">)</span><span class="whitespace"> </span>-o<span class="whitespace"> </span>./out/demo.exe<span class="whitespace"> </span>demo.c<span class="whitespace"> </span><span class="keyword">$(</span>GTK_LIBS<span class="keyword">)</span>
+</pre>
+<div class="admonition note last">
+<p class="first admonition-title">Note</p>
+<p>这里的 <tt class="docutils literal">mkdir</tt> 又是一个坑，安装Msys2后，在 <em>usr/bin</em> 下会有一个mkdir.exe，它是从linux移植来的，支持linux的一些参数。而powersehll的mkdir则 <a class="reference external" href="https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/mkdir#syntax">不支持参数</a> 。所以我们将 <em>C:msys64usrbin</em> 加入Path。</p>
+<p class="last">但这可能又会造成一些问题，比如在 <em>usr/bin</em> 目录下可能会有 <em>python.exe</em> ，这就可能会影响你使用 <tt class="docutils literal">pip</tt> 安装。所以，PATH的顺序很重要，你可以将python的 <em>/bin</em> 目录放在最上面。</p>
 </div>
-</div><p>:::: note
-::: title
-Note
-:::</p>
-<p>这里的 <code>mkdir</code> 又是一个坑，安装Msys2后，在 <em>usr/bin</em>
-下会有一个mkdir.exe，它是从linux移植来的，支持linux的一些参数。而powersehll的mkdir则
-<a href="https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/mkdir#syntax"target="_blank" rel="external nofollow noopener noreferrer">不支持参数</a>
-。所以我们将 <em>C:msys64usrbin</em> 加入Path。</p>
-<p>但这可能又会造成一些问题，比如在 <em>usr/bin</em> 目录下可能会有
-<em>python.exe</em> ，这就可能会影响你使用 <code>pip</code>
-安装。所以，PATH的顺序很重要，你可以将python的 <em>/bin</em>
-目录放在最上面。
-::::</p>
 </dd>
 </dl>
-<p>保存后运行 <code>make</code> 命令，exe文件就会再 <em>./out</em> 文件夹下生成。</p>
+<p>保存后运行 <tt class="docutils literal">make</tt> 命令，exe文件就会再 <em>./out</em> 文件夹下生成。</p>
 <blockquote>
-<p><img loading="lazy" src="/images/GTK_hello_world.png" alt="image" srcset="/images/GTK_hello_world.png?size=small, /images/GTK_hello_world.png?size=medium 1.5x, /images/GTK_hello_world.png?size=large 2x" data-title="image" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/>{.align-center}</p>
+<img alt="/images/GTK_hello_world.png" class="align-center" src="/images/GTK_hello_world.png" />
 </blockquote>
-<h2 id="总结" class="heading-element">
-  <a href="#%e6%80%bb%e7%bb%93" class="heading-mark"></a>总结</h2><p>到这里，安装已经基本结束了。可以发现在Windows下安装配置C语言的环境相比Linux来说，体验上差很多。</p>
-<p>所以在这里推荐大家使用Gentoo，并使用 <code>emerge -a gui-libs/gtk</code> 终结本文（</p>
+</div>
+</div>
+<div class="section" id="section-2">
+<h3><a class="toc-backref" href="#toc-entry-7">总结</a></h3>
+<p>到这里，安装已经基本结束了。可以发现在Windows下安装配置C语言的环境相比Linux来说，体验上差很多。</p>
+<p>所以在这里推荐大家使用Gentoo，并使用 <tt class="docutils literal">emerge <span class="pre">-a</span> <span class="pre">gui-libs/gtk</span></tt> 终结本文（</p>
 <p>如果还有其他问题，欢迎在此讨论，有能力者自行Google(Baidu)。</p>
 <p>至于使用 <em>Vcpkg</em> 安装以及对 <em>Vistual Studio</em> 的支持，以后会再补充。</p>
-</div><div class="post-footer" id="post-footer">
+</div>
+</div>
+</div></div><div class="post-footer" id="post-footer">
   <div class="post-info">
     <div class="post-info-line">
       <div class="post-info-mod">
-        <span title="更新于 0001-01-01 00:00:00">更新于 0001-01-01&nbsp;</span>
+        <span title="更新于 2023-07-11 12:39:46">更新于 2023-07-11&nbsp;</span>
       </div><div class="post-info-license">
             <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a></span>
           </div></div><div class="post-info-line">
         <div class="post-info-md"><span><a href="/zh-cn/posts/install-gtk4-on-windows/index.md" title="阅读原始文档" class="link-to-markdown">阅读原始文档</a></span></div>
         <div class="post-info-share">
-          <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://bajzc.org/zh-cn/posts/install-gtk4-on-windows/" data-title="在Windows 11上安装GTK4" data-hashtags="GTK4,Msys2,Windows,Installation,GNU/make"><i class="fa-brands fa-twitter fa-fw" aria-hidden="true"></i></a>
-  <a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://bajzc.org/zh-cn/posts/install-gtk4-on-windows/" data-hashtag="GTK4"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
-  <a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://bajzc.org/zh-cn/posts/install-gtk4-on-windows/" data-title="在Windows 11上安装GTK4"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
+          <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="http://localhost:1313/zh-cn/posts/install-gtk4-on-windows/" data-title="在Windows上安装Gtk4" data-hashtags="GTK4,Msys2,Windows,Installation,GNU/make"><i class="fa-brands fa-twitter fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="http://localhost:1313/zh-cn/posts/install-gtk4-on-windows/" data-hashtag="GTK4"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="http://localhost:1313/zh-cn/posts/install-gtk4-on-windows/" data-title="在Windows上安装Gtk4"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
   </span>
         </div>
       </div></div>
@@ -380,7 +320,7 @@ Note
   </div>
 
   <div class="post-nav">
-      <a href="/zh-cn/posts/cachestat-in-kernel-65-rc1/" class="post-nav-item" rel="next" title="初探cachestat接口------kernel 6.5-rc1">初探cachestat接口------kernel 6.5-rc1<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+      <a href="/zh-cn/posts/cachestat-in-kernel-65/" class="post-nav-item" rel="next" title="浅析Kernel-6.5新系统调用">浅析Kernel-6.5新系统调用<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article>
 

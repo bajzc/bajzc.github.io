@@ -1116,7 +1116,7 @@ enableEmoji = true
 [languages]
   [languages.en]
     weight = 1
-    title = "Random Geek 🚧 (merging rst files to md)"
+    title = "Random Geek"
     languageCode = "en"
     languageName = "English"
     [[languages.en.menu.main]]
@@ -1146,7 +1146,7 @@ enableEmoji = true
 
   [languages.zh-cn]
     weight = 2
-    title = "随笔技 🚧 (rst格式转向md)"
+    title = "随笔技"
     # 网站语言，仅在这里 CN 大写
     languageCode = "zh-CN"
     languageName = "简体中文"

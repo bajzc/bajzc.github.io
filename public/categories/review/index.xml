@@ -1,0 +1,65 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>Review - Category - Random Geek</title>
+    <link>http://localhost:1313/categories/review/</link>
+    <description>Review - Category | Random Geek</description>
+    <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 03 Feb 2024 19:37:45 &#43;0700</lastBuildDate><atom:link href="http://localhost:1313/categories/review/" rel="self" type="application/rss+xml" /><item>
+  <title>Home NAS deploment</title>
+  <link>http://localhost:1313/posts/home-nas-deployment/</link>
+  <pubDate>Sat, 03 Feb 2024 19:37:45 &#43;0700</pubDate>
+  <author>Author</author>
+  <guid>http://localhost:1313/posts/home-nas-deployment/</guid>
+  <description><![CDATA[Contents
+Part I - Basic Before All... Choice of Operating System About File System How to install Linux Part II - Network Part III - Docker Docker Network: Frpc Nginx Proxy manager Nextcloud Docker Compose Part IV - Finish? Part I - Basic Before All... What is a home NAS? A typical home NAS is used for storing and sharing photos and files. As an extension to traditional NAS, the server config followed by this article would include more applications like offline downloader, media server, and printer server.]]></description>
+</item>
+<item>
+  <title>Let&#39;s encrypt! (Gentoo)</title>
+  <link>http://localhost:1313/posts/lets-encrypt-gentoo/</link>
+  <pubDate>Sat, 11 Nov 2023 12:29:09 &#43;0700</pubDate>
+  <author>Author</author>
+  <guid>http://localhost:1313/posts/lets-encrypt-gentoo/</guid>
+  <description><![CDATA[Note
+My domain is provided from Google, the method of getting the API token could be different for other provider
+Contents
+Get certificates Apache Config Get certificates emerge -a app-crypt/acme-sh emerge --ask dcron, acme-sh need this to set cron job to renew the certs automatically Get your domain access token from the provider (Google Domain) For Google Domains: export GOOGLEDOMAINS_ACCESS_TOKEN=&quot;&lt;generated-access-token&gt;&quot; run acme-sh as root acme.sh --issue --dns dns_googledomains -d bajzc.]]></description>
+</item>
+<item>
+  <title>LFS? GG!</title>
+  <link>http://localhost:1313/posts/lfs-gg/</link>
+  <pubDate>Sat, 02 Sep 2023 16:27:13 &#43;0700</pubDate>
+  <author>Author</author>
+  <guid>http://localhost:1313/posts/lfs-gg/</guid>
+  <description><![CDATA[Contents
+NVME support in kernel was not set as it should be: SYSV or INIT error And finally, after 3 days struggling: Here are some problems you may find even if you follow the LFS (Linux From Scratch) book LINE BY LINE:
+Use Google wisely, you will find the solution!
+NVME support in kernel was not set as it should be: Device Drivers-&gt;NVME Support
+SYSV or INIT error And finally, after 3 days struggling: Note]]></description>
+</item>
+<item>
+  <title>VLC: how to generate .m3u playlists</title>
+  <link>http://localhost:1313/posts/vlc-how-to-generate-m3u-playlists/</link>
+  <pubDate>Sat, 12 Aug 2023 16:42:50 &#43;0700</pubDate>
+  <author>Author</author>
+  <guid>http://localhost:1313/posts/vlc-how-to-generate-m3u-playlists/</guid>
+  <description><![CDATA[VLC: how to generate .m3u playlists Contents
+VLC: how to generate .m3u playlists 1 Syntax of .m3u 2 My file system 3 Script 4 Summary Note
+The new C language version can be found here: (30.12.2023 update)
+It's 6x faster than the bash script (1:52/11:08)
+VLC is a free and open-source media player, and it is PORTABLE and CROSS-PLATFORM.
+In order to have a better user experience, without paying a penny, it is the best choice.]]></description>
+</item>
+<item>
+  <title>Cachestat in Kernel-6.5</title>
+  <link>http://localhost:1313/posts/cachestat-in-kernel-65/</link>
+  <pubDate>Fri, 14 Jul 2023 12:19:35 &#43;0700</pubDate>
+  <author>Author</author>
+  <guid>http://localhost:1313/posts/cachestat-in-kernel-65/</guid>
+  <description><![CDATA[Note
+The environment we are in:
+Linux gentoo 6.5.0-rc1
+Contents
+1. How to use it? 2. Problem 3. Use cachestat() to solve it 4. Summary If you want to try those demos below, you need to know:
+generate random files for test #signle random file &quot;a&quot; dd if=/dev/urandom of=a bs=1M count=128 # random files &quot;f1&quot;-&quot;f8&quot; for i in {1..8} do dd if=/dev/urandom of=f${i} bs=1M count=128 done clean all the cache: # echo 3 &gt; /proc/sys/vm/drop_caches]]></description>
+</item>
+</channel>
+</rss>

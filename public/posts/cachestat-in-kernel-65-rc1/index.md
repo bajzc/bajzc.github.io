@@ -411,5 +411,5 @@ int cachestat(unsigned int fd, struct cachestat_range *cstat_range,
 ---
 
 > Author:   
-> URL: https://bajzc.org/posts/cachestat-in-kernel-65-rc1/  
+> URL: http://localhost:1313/posts/cachestat-in-kernel-65-rc1/  
 

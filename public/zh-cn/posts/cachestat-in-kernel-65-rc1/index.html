@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
-  <head>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -14,7 +14,7 @@
 <meta itemprop="keywords" content="kernel,sys_call,linux," /><meta property="og:title" content="初探cachestat接口------kernel 6.5-rc1" />
 <meta property="og:description" content="{.align-center} :::: note ::: title Note ::: 本文系统环境： Linux gentoo 6.5.0-rc1 :::: 如果你想自己尝试，你需要知道的几个命令： 创建随机文件用于测试 : ``` bash #signle random file &quot;a&quot; dd if=/dev/urandom of=a bs=1M count=128 # random files &quot;f1&quot;-&quot;f8&quot; for i in {1..8} do dd" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://bajzc.org/zh-cn/posts/cachestat-in-kernel-65-rc1/" /><meta property="article:section" content="posts" />
+<meta property="og:url" content="http://localhost:1313/zh-cn/posts/cachestat-in-kernel-65-rc1/" /><meta property="article:section" content="posts" />
 
 
 <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="初探cachestat接口------kernel 6.5-rc1"/>
@@ -22,7 +22,7 @@
 <meta name="application-name" content="FixIt">
 <meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://bajzc.org/zh-cn/posts/cachestat-in-kernel-65-rc1/" /><link rel="prev" href="https://bajzc.org/zh-cn/posts/install-gtk4-on-windows/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="http://localhost:1313/zh-cn/posts/cachestat-in-kernel-65-rc1/" /><link rel="prev" href="http://localhost:1313/zh-cn/posts/install-gtk4-on-windows/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
   {
@@ -32,9 +32,9 @@
     "inLanguage": "zh-CN",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": "https:\/\/bajzc.org\/zh-cn\/posts\/cachestat-in-kernel-65-rc1\/"
+      "@id": "http:\/\/localhost:1313\/zh-cn\/posts\/cachestat-in-kernel-65-rc1\/"
     },"genre": "posts","keywords": "kernel, sys_call, linux","wordcount":  1783 ,
-    "url": "https:\/\/bajzc.org\/zh-cn\/posts\/cachestat-in-kernel-65-rc1\/","publisher": {
+    "url": "http:\/\/localhost:1313\/zh-cn\/posts\/cachestat-in-kernel-65-rc1\/","publisher": {
       "@type": "Organization",
       "name": ""},"author": {
         "@type": "Person",
@@ -758,9 +758,9 @@ Note
           </div></div><div class="post-info-line">
         <div class="post-info-md"><span><a href="/zh-cn/posts/cachestat-in-kernel-65-rc1/index.md" title="阅读原始文档" class="link-to-markdown">阅读原始文档</a></span></div>
         <div class="post-info-share">
-          <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://bajzc.org/zh-cn/posts/cachestat-in-kernel-65-rc1/" data-title="初探cachestat接口------kernel 6.5-rc1" data-hashtags="kernel,sys_call,linux"><i class="fa-brands fa-twitter fa-fw" aria-hidden="true"></i></a>
-  <a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://bajzc.org/zh-cn/posts/cachestat-in-kernel-65-rc1/" data-hashtag="kernel"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
-  <a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://bajzc.org/zh-cn/posts/cachestat-in-kernel-65-rc1/" data-title="初探cachestat接口------kernel 6.5-rc1"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
+          <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="http://localhost:1313/zh-cn/posts/cachestat-in-kernel-65-rc1/" data-title="初探cachestat接口------kernel 6.5-rc1" data-hashtags="kernel,sys_call,linux"><i class="fa-brands fa-twitter fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="http://localhost:1313/zh-cn/posts/cachestat-in-kernel-65-rc1/" data-hashtag="kernel"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="http://localhost:1313/zh-cn/posts/cachestat-in-kernel-65-rc1/" data-title="初探cachestat接口------kernel 6.5-rc1"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
   </span>
         </div>
       </div></div>

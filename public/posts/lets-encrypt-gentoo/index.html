@@ -1,56 +1,52 @@
 <!DOCTYPE html>
 <html itemscope itemtype="http://schema.org/WebPage" lang="en">
-  <head>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
     <meta name="robots" content="noodp" />
-    <title>Let\&#39;s Encrypt - Random Geek 🚧 (merging rst files to md)</title><meta name="author" content="">
+    <title>Let&#39;s encrypt! (Gentoo) - Random Geek</title><meta name="author" content="">
 <meta name="author-link" content="">
-<meta name="description" content="{.align-center}
-:::: note ::: title Note :::
-My domain is provided from Google, the method of getting the API token could be different for other provider ::::
-::: contents :::
-Get certificates emerge -a app-crypt/acme-sh emerge --ask dcron, acme-sh need this to set cron job to renew the certs automatically Get your domain access token from the provider (Google Domain) For Google Domains: 1 export GOOGLEDOMAINS_ACCESS_TOKEN=&#34;&lt;generated-access-token&gt;&#34; run acme-sh as root 1 acme." /><meta name="keywords" content='SSL, acme, Gentoo' /><meta itemprop="name" content="Let\&#39;s Encrypt">
-<meta itemprop="description" content="{.align-center}
-:::: note ::: title Note :::
-My domain is provided from Google, the method of getting the API token could be different for other provider ::::
-::: contents :::
-Get certificates emerge -a app-crypt/acme-sh emerge --ask dcron, acme-sh need this to set cron job to renew the certs automatically Get your domain access token from the provider (Google Domain) For Google Domains: 1 export GOOGLEDOMAINS_ACCESS_TOKEN=&#34;&lt;generated-access-token&gt;&#34; run acme-sh as root 1 acme.">
-
-<meta itemprop="wordCount" content="708">
-<meta itemprop="keywords" content="SSL,acme,Gentoo," /><meta property="og:title" content="Let\&#39;s Encrypt" />
-<meta property="og:description" content="{.align-center}
-:::: note ::: title Note :::
-My domain is provided from Google, the method of getting the API token could be different for other provider ::::
-::: contents :::
-Get certificates emerge -a app-crypt/acme-sh emerge --ask dcron, acme-sh need this to set cron job to renew the certs automatically Get your domain access token from the provider (Google Domain) For Google Domains: 1 export GOOGLEDOMAINS_ACCESS_TOKEN=&#34;&lt;generated-access-token&gt;&#34; run acme-sh as root 1 acme." />
+<meta name="description" content="Note
+My domain is provided from Google, the method of getting the API token could be different for other provider
+Contents
+Get certificates Apache Config Get certificates emerge -a app-crypt/acme-sh emerge --ask dcron, acme-sh need this to set cron job to renew the certs automatically Get your domain access token from the provider (Google Domain) For Google Domains: export GOOGLEDOMAINS_ACCESS_TOKEN=&quot;&lt;generated-access-token&gt;&quot; run acme-sh as root acme.sh --issue --dns dns_googledomains -d bajzc." /><meta name="keywords" content='SSL, acme, Gentoo' /><meta itemprop="name" content="Let&#39;s encrypt! (Gentoo)">
+<meta itemprop="description" content="Note
+My domain is provided from Google, the method of getting the API token could be different for other provider
+Contents
+Get certificates Apache Config Get certificates emerge -a app-crypt/acme-sh emerge --ask dcron, acme-sh need this to set cron job to renew the certs automatically Get your domain access token from the provider (Google Domain) For Google Domains: export GOOGLEDOMAINS_ACCESS_TOKEN=&quot;&lt;generated-access-token&gt;&quot; run acme-sh as root acme.sh --issue --dns dns_googledomains -d bajzc."><meta itemprop="datePublished" content="2023-11-11T12:29:09+07:00" />
+<meta itemprop="dateModified" content="2023-11-11T12:29:09+07:00" />
+<meta itemprop="wordCount" content="690">
+<meta itemprop="keywords" content="SSL,acme,Gentoo," /><meta property="og:title" content="Let&#39;s encrypt! (Gentoo)" />
+<meta property="og:description" content="Note
+My domain is provided from Google, the method of getting the API token could be different for other provider
+Contents
+Get certificates Apache Config Get certificates emerge -a app-crypt/acme-sh emerge --ask dcron, acme-sh need this to set cron job to renew the certs automatically Get your domain access token from the provider (Google Domain) For Google Domains: export GOOGLEDOMAINS_ACCESS_TOKEN=&quot;&lt;generated-access-token&gt;&quot; run acme-sh as root acme.sh --issue --dns dns_googledomains -d bajzc." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://bajzc.org/posts/lets-encrypt-gentoo/" /><meta property="article:section" content="posts" />
-
-
-<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Let\&#39;s Encrypt"/>
-<meta name="twitter:description" content="{.align-center}
-:::: note ::: title Note :::
-My domain is provided from Google, the method of getting the API token could be different for other provider ::::
-::: contents :::
-Get certificates emerge -a app-crypt/acme-sh emerge --ask dcron, acme-sh need this to set cron job to renew the certs automatically Get your domain access token from the provider (Google Domain) For Google Domains: 1 export GOOGLEDOMAINS_ACCESS_TOKEN=&#34;&lt;generated-access-token&gt;&#34; run acme-sh as root 1 acme."/>
+<meta property="og:url" content="http://localhost:1313/posts/lets-encrypt-gentoo/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-11-11T12:29:09+07:00" />
+<meta property="article:modified_time" content="2023-11-11T12:29:09+07:00" />
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Let&#39;s encrypt! (Gentoo)"/>
+<meta name="twitter:description" content="Note
+My domain is provided from Google, the method of getting the API token could be different for other provider
+Contents
+Get certificates Apache Config Get certificates emerge -a app-crypt/acme-sh emerge --ask dcron, acme-sh need this to set cron job to renew the certs automatically Get your domain access token from the provider (Google Domain) For Google Domains: export GOOGLEDOMAINS_ACCESS_TOKEN=&quot;&lt;generated-access-token&gt;&quot; run acme-sh as root acme.sh --issue --dns dns_googledomains -d bajzc."/>
 <meta name="application-name" content="FixIt">
 <meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://bajzc.org/posts/lets-encrypt-gentoo/" /><link rel="prev" href="https://bajzc.org/posts/lfs-gg/" /><link rel="next" href="https://bajzc.org/posts/install-gtk4-on-windows/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="http://localhost:1313/posts/lets-encrypt-gentoo/" /><link rel="prev" href="http://localhost:1313/posts/lfs-gg/" /><link rel="next" href="http://localhost:1313/posts/home-nas-deployment/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
   {
     "@context": "http://schema.org",
     "@type": "BlogPosting",
-    "headline": "Let\\'s Encrypt",
+    "headline": "Let's encrypt! (Gentoo)",
     "inLanguage": "en",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": "https:\/\/bajzc.org\/posts\/lets-encrypt-gentoo\/"
-    },"genre": "posts","keywords": "SSL, acme, Gentoo","wordcount":  708 ,
-    "url": "https:\/\/bajzc.org\/posts\/lets-encrypt-gentoo\/","publisher": {
+      "@id": "http:\/\/localhost:1313\/posts\/lets-encrypt-gentoo\/"
+    },"genre": "posts","keywords": "SSL, acme, Gentoo","wordcount":  690 ,
+    "url": "http:\/\/localhost:1313\/posts\/lets-encrypt-gentoo\/","datePublished": "2023-11-11T12:29:09+07:00","dateModified": "2023-11-11T12:29:09+07:00","publisher": {
       "@type": "Organization",
       "name": ""},"author": {
         "@type": "Person",
@@ -61,7 +57,7 @@ Get certificates emerge -a app-crypt/acme-sh emerge --ask dcron, acme-sh need th
   <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper" data-page-style="normal"><header class="desktop animate__faster" id="header-desktop">
   <div class="header-wrapper">
     <div class="header-title">
-      <a href="/" title="Random Geek 🚧 (merging rst files to md)"><span class="header-title-text">Random Geek 🚧 (merging rst files to md)</span></a><span class="header-subtitle"></span></div>
+      <a href="/" title="Random Geek"><span class="header-title-text">Random Geek</span></a><span class="header-subtitle"></span></div>
     <nav>
       <ul class="menu"><li class="menu-item">
               <a
@@ -93,7 +89,7 @@ Get certificates emerge -a app-crypt/acme-sh emerge --ask dcron, acme-sh need th
   <div class="header-container">
     <div class="header-wrapper">
       <div class="header-title">
-        <a href="/" title="Random Geek 🚧 (merging rst files to md)"><span class="header-title-text">Random Geek 🚧 (merging rst files to md)</span></a><span class="header-subtitle"></span></div>
+        <a href="/" title="Random Geek"><span class="header-title-text">Random Geek</span></a><span class="header-subtitle"></span></div>
       <div class="menu-toggle" id="menu-toggle-mobile">
         <span></span><span></span><span></span>
       </div>
@@ -131,48 +127,53 @@ Get certificates emerge -a app-crypt/acme-sh emerge --ask dcron, acme-sh need th
 </header><main class="container"><aside class="aside-collection animate__animated animate__fadeIn animate__faster" aria-label="Collections"></aside>
 
   <article class="page single">
-    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>Let\&#39;s Encrypt</span>
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>Let&#39;s encrypt! (Gentoo)</span>
       </h1></div><div class="post-meta">
       <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
-      Anonymous</span></span></div><div class="post-meta-line"><span title="published on 0001-01-01 00:00:00"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="0001-01-01">0001-01-01</time></span>&nbsp;<span title="708 words"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>About 800 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>4 minutes</span>&nbsp;</div>
-    </div><div class="content" id="content"><p><img loading="lazy" src="/images/https.png" alt="/images/https.png" srcset="/images/https.png?size=small, /images/https.png?size=medium 1.5x, /images/https.png?size=large 2x" data-title="/images/https.png" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/>{.align-center}</p>
-<p>:::: note
-::: title
-Note
-:::</p>
-<p>My domain is provided from Google, the method of getting the API token
-could be different for other provider
-::::</p>
-<p>::: contents
-:::</p>
-<h1 id="get-certificates" class="heading-element">
-  <a href="#get-certificates" class="heading-mark"></a>Get certificates</h1><ol>
-<li><code>emerge -a app-crypt/acme-sh</code></li>
-<li><code>emerge --ask dcron</code>, acme-sh need this to set cron job to renew the
-certs automatically</li>
-<li>Get your domain access token from the provider (<a href="https://domains.google.com/registrar/"target="_blank" rel="external nofollow noopener noreferrer">Google
-Domain</a>)</li>
+      Anonymous</span></span><span class="post-included-in">&nbsp;included in <a href="/categories/review/" class="post-category" title="Category - Review"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> Review</a></span></div><div class="post-meta-line"><span title="published on 2023-11-11 12:29:09"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2023-11-11">2023-11-11</time></span>&nbsp;<span title="690 words"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>About 700 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>4 minutes</span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>Contents</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"></div>
+      </div><div class="content" id="content"><div class="document">
+
+
+<div class="figure align-center">
+<img alt="/images/https.png" src="/images/https.png" />
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">My domain is provided from Google, the method of getting the API token could be different for other provider</p>
+</div>
+<div class="contents topic" id="contents">
+<p class="topic-title">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#get-certificates" id="toc-entry-1">Get certificates</a></li>
+<li><a class="reference internal" href="#apache-config" id="toc-entry-2">Apache Config</a></li>
+</ul>
+</div>
+<div class="section" id="get-certificates">
+<h2><a class="toc-backref" href="#toc-entry-1">Get certificates</a></h2>
+<ol class="arabic simple">
+<li><tt class="docutils literal">emerge <span class="pre">-a</span> <span class="pre">app-crypt/acme-sh</span></tt></li>
+<li><tt class="docutils literal">emerge <span class="pre">--ask</span> dcron</tt>, acme-sh need this to set cron job to renew the certs automatically</li>
+<li>Get your domain access token from the provider (<a class="reference external" href="https://domains.google.com/registrar/">Google Domain</a>)</li>
 <li>For Google Domains:</li>
 </ol>
-<div class="highlight" id="id-1"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">GOOGLEDOMAINS_ACCESS_TOKEN</span><span class="o">=</span><span class="s2">&#34;&lt;generated-access-token&gt;&#34;</span></span></span></code></pre></td></tr></table>
-</div>
-</div><ol start="5">
+<pre class="code bash literal-block">
+<span class="name builtin">export</span><span class="whitespace"> </span><span class="name variable">GOOGLEDOMAINS_ACCESS_TOKEN</span><span class="operator">=</span><span class="literal string double">&quot;&lt;generated-access-token&gt;&quot;</span>
+</pre>
+<ol class="arabic simple" start="5">
 <li>run acme-sh as <strong>root</strong></li>
 </ol>
-<div class="highlight" id="id-2"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">acme.sh --issue --dns dns_googledomains -d bajzc.com -d ipv4.bajzc.com -k ec-384 --ecc</span></span></code></pre></td></tr></table>
-</div>
-</div><p>Log:</p>
-<pre><code>[Sat Nov 11 13:58:34 CST 2023] Using CA: https://acme.zerossl.com/v2/DV90
+<pre class="code bash literal-block">
+acme.sh<span class="whitespace"> </span>--issue<span class="whitespace"> </span>--dns<span class="whitespace"> </span>dns_googledomains<span class="whitespace"> </span>-d<span class="whitespace"> </span>bajzc.com<span class="whitespace"> </span>-d<span class="whitespace"> </span>ipv4.bajzc.com<span class="whitespace"> </span>-k<span class="whitespace"> </span>ec-384<span class="whitespace"> </span>--ecc
+</pre>
+<p>Log:</p>
+<pre class="literal-block">
+[Sat Nov 11 13:58:34 CST 2023] Using CA: https://acme.zerossl.com/v2/DV90
 [Sat Nov 11 13:58:34 CST 2023] Creating domain key
 [Sat Nov 11 13:58:34 CST 2023] The domain key is here: /etc/acme-sh//bajzc.com_ecc/bajzc.com.key
 [Sat Nov 11 13:58:34 CST 2023] Multi domain='DNS:bajzc.com,DNS:ipv4.bajzc.com'
@@ -230,56 +231,44 @@ Domain</a>)</li>
 [Sat Nov 11 14:00:00 CST 2023] Your cert key is in: /etc/acme-sh//bajzc.com_ecc/bajzc.com.key
 [Sat Nov 11 14:00:00 CST 2023] The intermediate CA cert is in: /etc/acme-sh//bajzc.com_ecc/ca.cer
 [Sat Nov 11 14:00:00 CST 2023] And the full chain certs is there: /etc/acme-sh//bajzc.com_ecc/fullchain.cer
-</code></pre>
-<h1 id="apache-config" class="heading-element">
-  <a href="#apache-config" class="heading-mark"></a>Apache Config</h1><p>/etc/apache2/vhost.d/ssl.conf:</p>
-<div class="highlight" id="id-3"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cfg" data-lang="cfg"><span class="line"><span class="cl"><span class="na">Listen 443</span>
-</span></span><span class="line"><span class="cl"><span class="na">&lt;VirtualHost *:443&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="na">ServerName bajzc.com</span>
-</span></span><span class="line"><span class="cl">  <span class="na">Include /etc/apache2/vhosts.d/default_vhost.include</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="na">SSLCertificateFile /etc/acme-sh/bajzc.com_ecc/bajzc.com.cer</span>
-</span></span><span class="line"><span class="cl">  <span class="na">SSLCertificateKeyFile /etc/acme-sh/bajzc.com_ecc/bajzc.com.key</span>
-</span></span><span class="line"><span class="cl">  <span class="na">SSLCertificateChainFile /etc/acme-sh//bajzc.com_ecc/ca.cer</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="na">...</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="na">&lt;/VirtualHost&gt;</span></span></span></code></pre></td></tr></table>
+</pre>
 </div>
-</div><p>Reference:</p>
-<ol>
-<li><a href="https://support.google.com/domains/answer/7630973"target="_blank" rel="external nofollow noopener noreferrer">Google Docs</a></li>
-<li><a href="https://wiki.gentoo.org/wiki/Let%27s_Encrypt"target="_blank" rel="external nofollow noopener noreferrer">Gentoo Docs</a></li>
+<div class="section" id="apache-config">
+<h2><a class="toc-backref" href="#toc-entry-2">Apache Config</a></h2>
+<p>/etc/apache2/vhost.d/ssl.conf:</p>
+<pre class="code cfg literal-block">
+<span class="name attribute">Listen 443</span><span class="whitespace">
+</span><span class="name attribute">&lt;VirtualHost *</span><span class="operator">:</span><span class="literal string">443&gt;</span><span class="whitespace">
+  </span><span class="name attribute">ServerName bajzc.com</span><span class="whitespace">
+  </span><span class="name attribute">Include /etc/apache2/vhosts.d/default_vhost.include</span><span class="whitespace">
+
+  </span><span class="name attribute">SSLCertificateFile /etc/acme-sh/bajzc.com_ecc/bajzc.com.cer</span><span class="whitespace">
+  </span><span class="name attribute">SSLCertificateKeyFile /etc/acme-sh/bajzc.com_ecc/bajzc.com.key</span><span class="whitespace">
+  </span><span class="name attribute">SSLCertificateChainFile /etc/acme-sh//bajzc.com_ecc/ca.cer</span><span class="whitespace">
+
+  </span><span class="name attribute">...</span><span class="whitespace">
+
+</span><span class="name attribute">&lt;/VirtualHost&gt;</span>
+</pre>
+<p>Reference:</p>
+<ol class="arabic simple">
+<li><a class="reference external" href="https://support.google.com/domains/answer/7630973">Google Docs</a></li>
+<li><a class="reference external" href="https://wiki.gentoo.org/wiki/Let%27s_Encrypt">Gentoo Docs</a></li>
 </ol>
-</div><div class="post-footer" id="post-footer">
+</div>
+</div></div><div class="post-footer" id="post-footer">
   <div class="post-info">
     <div class="post-info-line">
       <div class="post-info-mod">
-        <span title="Updated on 0001-01-01 00:00:00">Updated on 0001-01-01&nbsp;</span>
+        <span title="Updated on 2023-11-11 12:29:09">Updated on 2023-11-11&nbsp;</span>
       </div><div class="post-info-license">
             <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a></span>
           </div></div><div class="post-info-line">
         <div class="post-info-md"><span><a href="/posts/lets-encrypt-gentoo/index.md" title="Read Markdown" class="link-to-markdown">Read Markdown</a></span></div>
         <div class="post-info-share">
-          <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://bajzc.org/posts/lets-encrypt-gentoo/" data-title="Let\&#39;s Encrypt" data-hashtags="SSL,acme,Gentoo"><i class="fa-brands fa-twitter fa-fw" aria-hidden="true"></i></a>
-  <a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://bajzc.org/posts/lets-encrypt-gentoo/" data-hashtag="SSL"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
-  <a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://bajzc.org/posts/lets-encrypt-gentoo/" data-title="Let\&#39;s Encrypt"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
+          <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://localhost:1313/posts/lets-encrypt-gentoo/" data-title="Let&#39;s encrypt! (Gentoo)" data-hashtags="SSL,acme,Gentoo"><i class="fa-brands fa-twitter fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://localhost:1313/posts/lets-encrypt-gentoo/" data-hashtag="SSL"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://localhost:1313/posts/lets-encrypt-gentoo/" data-title="Let&#39;s encrypt! (Gentoo)"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
   </span>
         </div>
       </div></div>
@@ -292,11 +281,12 @@ Domain</a>)</li>
   </div>
 
   <div class="post-nav"><a href="/posts/lfs-gg/" class="post-nav-item" rel="prev" title="LFS? GG!"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>LFS? GG!</a>
-      <a href="/posts/install-gtk4-on-windows/" class="post-nav-item" rel="next" title="Install GTK4 on Windows">Install GTK4 on Windows<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+      <a href="/posts/home-nas-deployment/" class="post-nav-item" rel="next" title="Home NAS deploment">Home NAS deploment<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article>
 
-  <aside class="toc" id="toc-auto" aria-label="Contents"></aside></main><footer class="footer">
+  <aside class="toc" id="toc-auto" aria-label="Contents"><h2 class="toc-title">Contents&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside></main><footer class="footer">
     <div class="footer-container"><div class="footer-line powered">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.124.1"><img class="hugo-icon" src="/images/hugo.min.svg" alt="Hugo logo" /> Hugo</a> | Theme - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.3.2"><img class="fixit-icon" src="/images/fixit.min.svg" alt="FixIt logo" /> FixIt</a>
         </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
             <span itemprop="copyrightYear">2024</span><span class="author" itemprop="copyrightHolder">

@@ -2,138 +2,156 @@
   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml"
   ><url>
-      <loc>https://bajzc.org/zh-cn/categories/</loc><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+      <loc>http://localhost:1313/zh-cn/categories/</loc><lastmod>2023-07-14T12:19:35&#43;07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
             rel="alternate"
             hreflang="en"
-            href="https://bajzc.org/categories/"
+            href="http://localhost:1313/categories/"
             /><xhtml:link
           rel="alternate"
           hreflang="zh-cn"
-          href="https://bajzc.org/zh-cn/categories/"
+          href="http://localhost:1313/zh-cn/categories/"
           /></url><url>
-      <loc>https://bajzc.org/zh-cn/collections/</loc><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+      <loc>http://localhost:1313/zh-cn/tags/kernel/</loc><lastmod>2023-07-14T12:19:35&#43;07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
             rel="alternate"
             hreflang="en"
-            href="https://bajzc.org/collections/"
+            href="http://localhost:1313/tags/kernel/"
             /><xhtml:link
           rel="alternate"
           hreflang="zh-cn"
-          href="https://bajzc.org/zh-cn/collections/"
+          href="http://localhost:1313/zh-cn/tags/kernel/"
           /></url><url>
-      <loc>https://bajzc.org/zh-cn/tags/gnu/make/</loc><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+      <loc>http://localhost:1313/zh-cn/tags/linux/</loc><lastmod>2023-07-14T12:19:35&#43;07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
             rel="alternate"
             hreflang="en"
-            href="https://bajzc.org/tags/gnu/make/"
+            href="http://localhost:1313/tags/linux/"
             /><xhtml:link
           rel="alternate"
           hreflang="zh-cn"
-          href="https://bajzc.org/zh-cn/tags/gnu/make/"
+          href="http://localhost:1313/zh-cn/tags/linux/"
           /></url><url>
-      <loc>https://bajzc.org/zh-cn/tags/gtk4/</loc><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+      <loc>http://localhost:1313/zh-cn/posts/</loc><lastmod>2023-07-14T12:19:35&#43;07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
             rel="alternate"
             hreflang="en"
-            href="https://bajzc.org/tags/gtk4/"
+            href="http://localhost:1313/posts/"
             /><xhtml:link
           rel="alternate"
           hreflang="zh-cn"
-          href="https://bajzc.org/zh-cn/tags/gtk4/"
+          href="http://localhost:1313/zh-cn/posts/"
           /></url><url>
-      <loc>https://bajzc.org/zh-cn/tags/installation/</loc><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+      <loc>http://localhost:1313/zh-cn/categories/review/</loc><lastmod>2023-07-14T12:19:35&#43;07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
             rel="alternate"
             hreflang="en"
-            href="https://bajzc.org/tags/installation/"
+            href="http://localhost:1313/categories/review/"
             /><xhtml:link
           rel="alternate"
           hreflang="zh-cn"
-          href="https://bajzc.org/zh-cn/tags/installation/"
+          href="http://localhost:1313/zh-cn/categories/review/"
           /></url><url>
-      <loc>https://bajzc.org/zh-cn/tags/kernel/</loc><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+      <loc>http://localhost:1313/zh-cn/tags/sys_call/</loc><lastmod>2023-07-14T12:19:35&#43;07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
             rel="alternate"
             hreflang="en"
-            href="https://bajzc.org/tags/kernel/"
+            href="http://localhost:1313/tags/sys_call/"
             /><xhtml:link
           rel="alternate"
           hreflang="zh-cn"
-          href="https://bajzc.org/zh-cn/tags/kernel/"
+          href="http://localhost:1313/zh-cn/tags/sys_call/"
           /></url><url>
-      <loc>https://bajzc.org/zh-cn/tags/linux/</loc><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+      <loc>http://localhost:1313/zh-cn/tags/</loc><lastmod>2023-07-14T12:19:35&#43;07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
             rel="alternate"
             hreflang="en"
-            href="https://bajzc.org/tags/linux/"
+            href="http://localhost:1313/tags/"
             /><xhtml:link
           rel="alternate"
           hreflang="zh-cn"
-          href="https://bajzc.org/zh-cn/tags/linux/"
+          href="http://localhost:1313/zh-cn/tags/"
           /></url><url>
-      <loc>https://bajzc.org/zh-cn/tags/msys2/</loc><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+      <loc>http://localhost:1313/zh-cn/posts/cachestat-in-kernel-65/</loc><lastmod>2023-07-14T12:19:35&#43;07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
             rel="alternate"
             hreflang="en"
-            href="https://bajzc.org/tags/msys2/"
+            href="http://localhost:1313/posts/cachestat-in-kernel-65/"
             /><xhtml:link
           rel="alternate"
           hreflang="zh-cn"
-          href="https://bajzc.org/zh-cn/tags/msys2/"
+          href="http://localhost:1313/zh-cn/posts/cachestat-in-kernel-65/"
           /></url><url>
-      <loc>https://bajzc.org/zh-cn/posts/</loc><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+      <loc>http://localhost:1313/zh-cn/</loc><lastmod>2023-07-14T12:19:35&#43;07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
             rel="alternate"
             hreflang="en"
-            href="https://bajzc.org/posts/"
+            href="http://localhost:1313/"
             /><xhtml:link
           rel="alternate"
           hreflang="zh-cn"
-          href="https://bajzc.org/zh-cn/posts/"
+          href="http://localhost:1313/zh-cn/"
           /></url><url>
-      <loc>https://bajzc.org/zh-cn/tags/sys_call/</loc><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+      <loc>http://localhost:1313/zh-cn/tags/gnu/make/</loc><lastmod>2023-07-11T12:39:46&#43;07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
             rel="alternate"
             hreflang="en"
-            href="https://bajzc.org/tags/sys_call/"
+            href="http://localhost:1313/tags/gnu/make/"
             /><xhtml:link
           rel="alternate"
           hreflang="zh-cn"
-          href="https://bajzc.org/zh-cn/tags/sys_call/"
+          href="http://localhost:1313/zh-cn/tags/gnu/make/"
           /></url><url>
-      <loc>https://bajzc.org/zh-cn/tags/</loc><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+      <loc>http://localhost:1313/zh-cn/tags/gtk4/</loc><lastmod>2023-07-11T12:39:46&#43;07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
             rel="alternate"
             hreflang="en"
-            href="https://bajzc.org/tags/"
+            href="http://localhost:1313/tags/gtk4/"
             /><xhtml:link
           rel="alternate"
           hreflang="zh-cn"
-          href="https://bajzc.org/zh-cn/tags/"
+          href="http://localhost:1313/zh-cn/tags/gtk4/"
           /></url><url>
-      <loc>https://bajzc.org/zh-cn/tags/windows/</loc><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+      <loc>http://localhost:1313/zh-cn/tags/installation/</loc><lastmod>2023-07-11T12:39:46&#43;07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
             rel="alternate"
             hreflang="en"
-            href="https://bajzc.org/tags/windows/"
+            href="http://localhost:1313/tags/installation/"
             /><xhtml:link
           rel="alternate"
           hreflang="zh-cn"
-          href="https://bajzc.org/zh-cn/tags/windows/"
+          href="http://localhost:1313/zh-cn/tags/installation/"
           /></url><url>
-      <loc>https://bajzc.org/zh-cn/posts/cachestat-in-kernel-65-rc1/</loc><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+      <loc>http://localhost:1313/zh-cn/tags/msys2/</loc><lastmod>2023-07-11T12:39:46&#43;07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
             rel="alternate"
             hreflang="en"
-            href="https://bajzc.org/posts/cachestat-in-kernel-65-rc1/"
+            href="http://localhost:1313/tags/msys2/"
             /><xhtml:link
           rel="alternate"
           hreflang="zh-cn"
-          href="https://bajzc.org/zh-cn/posts/cachestat-in-kernel-65-rc1/"
+          href="http://localhost:1313/zh-cn/tags/msys2/"
           /></url><url>
-      <loc>https://bajzc.org/zh-cn/</loc><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+      <loc>http://localhost:1313/zh-cn/categories/tutorial/</loc><lastmod>2023-07-11T12:39:46&#43;07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
             rel="alternate"
             hreflang="en"
-            href="https://bajzc.org/"
+            href="http://localhost:1313/categories/tutorial/"
             /><xhtml:link
           rel="alternate"
           hreflang="zh-cn"
-          href="https://bajzc.org/zh-cn/"
+          href="http://localhost:1313/zh-cn/categories/tutorial/"
           /></url><url>
-      <loc>https://bajzc.org/zh-cn/posts/install-gtk4-on-windows/</loc><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+      <loc>http://localhost:1313/zh-cn/tags/windows/</loc><lastmod>2023-07-11T12:39:46&#43;07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
             rel="alternate"
             hreflang="en"
-            href="https://bajzc.org/posts/install-gtk4-on-windows/"
+            href="http://localhost:1313/tags/windows/"
             /><xhtml:link
           rel="alternate"
           hreflang="zh-cn"
-          href="https://bajzc.org/zh-cn/posts/install-gtk4-on-windows/"
+          href="http://localhost:1313/zh-cn/tags/windows/"
+          /></url><url>
+      <loc>http://localhost:1313/zh-cn/posts/install-gtk4-on-windows/</loc><lastmod>2023-07-11T12:39:46&#43;07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+            rel="alternate"
+            hreflang="en"
+            href="http://localhost:1313/posts/install-gtk4-on-windows/"
+            /><xhtml:link
+          rel="alternate"
+          hreflang="zh-cn"
+          href="http://localhost:1313/zh-cn/posts/install-gtk4-on-windows/"
+          /></url><url>
+      <loc>http://localhost:1313/zh-cn/collections/</loc><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+            rel="alternate"
+            hreflang="en"
+            href="http://localhost:1313/collections/"
+            /><xhtml:link
+          rel="alternate"
+          hreflang="zh-cn"
+          href="http://localhost:1313/zh-cn/collections/"
           /></url></urlset>

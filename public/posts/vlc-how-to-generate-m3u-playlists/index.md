@@ -1,247 +1,203 @@
 # VLC: how to generate .m3u playlists
 
 
-![](https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/VLC_Icon.svg/1920px-VLC_Icon.svg.png){.align-center
-width=&#34;100px&#34;}
+.. figure:: https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/VLC_Icon.svg/1920px-VLC_Icon.svg.png
+   :target: https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/VLC_Icon.svg/1920px-VLC_Icon.svg.png
+   :align: center
+   :width: 100px
 
-# VLC: how to generate .m3u playlists {#vlc-how-to-generate-.m3u-playlists-1}
+===================================
+VLC: how to generate .m3u playlists
+===================================
 
-::: contents
-:::
+.. contents::
 
-:::: note
-::: title
-Note
-:::
+.. note::
+	The new C language version can be found here: (30.12.2023 update)
 
-The new C language version can be found here: (30.12.2023 update)
+	It&#39;s 6x faster than the bash script (1:52/11:08)
 
-It\&#39;s 6x faster than the bash script (1:52/11:08)
+		.. raw:: html
 
-&lt;script src=&#34;https://gist.github.com/bajzc/9f3d06154fee7c1f527654672b59a5cf.js&#34;&gt;&lt;/script&gt;
-::::
+			&lt;script src=&#34;https://gist.github.com/bajzc/9f3d06154fee7c1f527654672b59a5cf.js&#34;&gt;&lt;/script&gt;
 
-VLC is a free and open-source media player, and it is PORTABLE and
-CROSS-PLATFORM.
 
-In order to have a better user experience, without paying a penny, it is
-the best choice.
+VLC is a free and open-source media player, and it is PORTABLE and CROSS-PLATFORM.
 
-&gt; \&#34;M3U (MP3 URL or Moving Picture Experts Group Audio Layer 3 Uniform
-&gt; Resource Locator in full) is a computer file format for a multimedia
-&gt; playlist. One common use of the M3U file format is creating a
-&gt; single-entry playlist file pointing to a stream on the Internet. The
-&gt; created file provides easy access to that stream and is often used in
-&gt; downloads from a website, for emailing, and for listening to Internet
-&gt; radio.\&#34;
-&gt;
-&gt; \-\-- Wikipedia
+In order to have a better user experience, without paying a penny, it is the best choice.
 
-As .m3u is one of the playlist format that VLC supports, and its format
-can be easily followed by a shell script, I chose it to make a list of
-all my Internet media files.
+  &#34;M3U (MP3 URL or Moving Picture Experts Group Audio Layer 3 Uniform Resource Locator in full) is a computer file format for a multimedia playlist.
+  One common use of the M3U file format is creating a single-entry playlist file pointing to a stream on the Internet.
+  The created file provides easy access to that stream and is often used in downloads from a website, for emailing, and for listening to Internet radio.&#34;
 
-## 1 Syntax of .m3u
+  --- Wikipedia
 
-An .m3u file is a plain text file that specifies the locations of one or
-more media files. Each entry carries one specification, which can be:
+As .m3u is one of the playlist format that VLC supports, and its format can be easily followed by a shell script, I chose it to make a list of all my Internet media files.
 
-1.  an absolute local path:`C:\Music\I_love_this_one.mp3`
-2.  a relative path: `This_one_as_well.mp4`
-3.  an URL: `www.music.com/123.mkv`
+1 Syntax of .m3u
+================
 
-The extended .m3u syntax we will use in the script: 1. #EXTM3U: file
-header, should be the first line 2. #EXTINF: track information:
-`#EXTINF:123,Title`
+An .m3u file is a plain text file that specifies the locations of one or more media files. Each entry carries one specification, which can be:
 
-All the syntax for .m3u can be checked on
-[Wikipedia](https://en.wikipedia.org/wiki/M3U).
+1. an absolute local path:``C:\Music\I_love_this_one.mp3``
+2. a relative path: ``This_one_as_well.mp4``
+3. an URL: ``www.music.com/123.mkv``
 
-## 2 My file system
+The extended .m3u syntax we will use in the script:
+1. #EXTM3U: file header, should be the first line
+2. #EXTINF: track information: ``#EXTINF:123,Title``
 
-`tree Music -L 1`
+All the syntax for .m3u can be checked on `Wikipedia &lt;https://en.wikipedia.org/wiki/M3U&gt;`_.
 
-    Music/
-    ├── Dr._Dre
-    │   ├── 02 - Deep Cover.flac
-    │   ├── ...
-    ├── Imagine_Dragons
-    ├── LOL_BGM
-    ├── OneRepublic
-    ├── The_Fat_Rat
-    └── The_Music_of_Grand_Theft_Auto_V
+2 My file system
+========================
+``tree Music -L 1``
 
-And all those files are published on the Internet, so they can be
-accessed by **http://ipv4.bajzc.com:81/Music/\...** (use port 81 as the
-NSP blocked the default port: 80)
+::
 
-## 3 Script
+        Music/
+        ├── Dr._Dre
+        │   ├── 02 - Deep Cover.flac
+        │   ├── ...
+        ├── Imagine_Dragons
+        ├── LOL_BGM
+        ├── OneRepublic
+        ├── The_Fat_Rat
+        └── The_Music_of_Grand_Theft_Auto_V
 
-:::: note
-::: title
-Note
-:::
+And all those files are published on the Internet, so they can be accessed by **http://ipv4.bajzc.com:81/Music/...** (use port 81 as the NSP blocked the default port: 80)
 
-This script is only fit for my needs, you can modify it by following the
-explanation for each function.
-::::
+3 Script
+========
 
-``` bash
-#! /bin/bash
-set -e
-export ListPath=/var/www/html/PlayLists
-Backup(){
-  cd $ListPath
-  for name in $(ls -c)
-  do
-    mv $name ./.$name.bak
-  done
-}
+.. note::
+	This script might fit for me, you can modify it by following the explanation for each function.
 
-ListMovie(){
-cd $ListPath/../
-echo &#34;#EXTM3U&#34; &gt;&gt; $ListPath/ALL.m3u
-find Movie/ -mindepth 1 -maxdepth 2 | while read line
-do
-    if [ -d &#34;$line&#34; ]; then
-    echo -n &#34;#EXTGRP &#34; &gt;&gt; $ListPath/ALL.m3u
-    echo $(echo &#34;$line&#34; | sed -e &#34;s/\([[:print:]]*\/\)*//g&#34;) &gt;&gt; $ListPath/ALL.m3u
-  else
-    duration=$(ffmpeg -i &#34;$line&#34; 2&gt;&amp;1 | grep &#34;Duration&#34;| cut -d &#39; &#39; -f 4 | sed s/,// | sed &#39;s@\..*@@g&#39; | awk &#39;{ split($1, A, &#34;:&#34;); split(A[3], B, &#34;.&#34;); print 3600*A[1] &#43; 60*A[2] &#43; B[1] }&#39;)
-    if [ &#34;$duration&#34; == &#34;0&#34; ] || [ &#34;$duration&#34; == &#34;&#34; ]; then
-      printf &#34;$line is not a media file, duration: $duration\n&#34;
-      continue
-    fi
-        echo -n &#34;#EXTINF:$duration,&#34; &gt;&gt; $ListPath/ALL.m3u
-    echo $(echo &#34;$line&#34; | sed -e &#34;s/\([[:print:]]*\/\)*//g&#34;) &gt;&gt; $ListPath/ALL.m3u
-    echo $(echo &#34;$line&#34; | sed -e &#39;s/^/http:\/\/ipv4.bajzc.com:81\//&#39;) &gt;&gt; $ListPath/ALL.m3u
-    echo &gt;&gt; $ListPath/ALL.m3u
-    fi
-done
-}
+.. code-block:: bash
+	
+	#! /bin/bash
+	set -e
+	export ListPath=/var/www/html/PlayLists
+	Backup(){
+	  cd $ListPath
+	  for name in $(ls -c)
+	  do
+		mv $name ./.$name.bak
+	  done
+	}
 
-ListAlbum(){
-  cd /var/www/html/
-  find Music/ -maxdepth 1 -mindepth 1 -type d | while read line
-  do
-    Album=$(echo &#34;$line&#34; | sed -e &#34;s/\([[:print:]]*\/\)*//g&#34;)
-    echo $Album
-    echo &#34;#EXTM3U&#34; &gt; $ListPath/$Album.m3u
-    echo &#34;#EXTGRP&#34; &gt;&gt; $ListPath/$Album.m3u
-    echo &#34;#EXTGRP&#34; &gt;&gt; $ListPath/ALL.m3u
-    find $line -type f | while read path
-    do
-      duration=$(ffmpeg -i &#34;$path&#34; 2&gt;&amp;1 | grep &#34;Duration&#34;| cut -d &#39; &#39; -f 4 | sed s/,// | sed &#39;s@\..*@@g&#39; | awk &#39;{ split($1, A, &#34;:&#34;); split(A[3], B, &#34;.&#34;); print 3600*A[1] &#43; 60*A[2] &#43; B[1] }&#39;)
-      if [ &#34;$duration&#34; == &#34;0&#34; ] || [ &#34;$duration&#34; == &#34;&#34; ]; then
-        printf &#34;$path is not a media file, duration: $duration\n&#34;
-        continue
-      fi
-    header=&#34;#EXTINF:$duration,$(echo &#34;$path&#34; | sed -e &#34;s/\([[:print:]]*\/\)*//g&#34;)&#34;
-    url=&#34;$(echo &#34;$path&#34; | sed -e &#39;s/^/http:\/\/ipv4.bajzc.com:81\//&#39;)&#34;
-    printf &#34;$header\n$url\n\n&#34; &gt;&gt; $ListPath/$Album.m3u
-    printf &#34;$header\n$url\n\n&#34; &gt;&gt; $ListPath/ALL.m3u
-    done
-  done
-}
+	ListMovie(){
+	cd $ListPath/../
+	echo &#34;#EXTM3U&#34; &gt;&gt; $ListPath/ALL.m3u
+	find Movie/ -mindepth 1 -maxdepth 2 | while read line
+	do
+		if [ -d &#34;$line&#34; ]; then
+		echo -n &#34;#EXTGRP &#34; &gt;&gt; $ListPath/ALL.m3u
+		echo $(echo &#34;$line&#34; | sed -e &#34;s/\([[:print:]]*\/\)*//g&#34;) &gt;&gt; $ListPath/ALL.m3u
+	  else
+		duration=$(ffmpeg -i &#34;$line&#34; 2&gt;&amp;1 | grep &#34;Duration&#34;| cut -d &#39; &#39; -f 4 | sed s/,// | sed &#39;s@\..*@@g&#39; | awk &#39;{ split($1, A, &#34;:&#34;); split(A[3], B, &#34;.&#34;); print 3600*A[1] &#43; 60*A[2] &#43; B[1] }&#39;)
+		if [ &#34;$duration&#34; == &#34;0&#34; ] || [ &#34;$duration&#34; == &#34;&#34; ]; then
+		  printf &#34;$line is not a media file, duration: $duration\n&#34;
+		  continue
+		fi
+			echo -n &#34;#EXTINF:$duration,&#34; &gt;&gt; $ListPath/ALL.m3u
+		echo $(echo &#34;$line&#34; | sed -e &#34;s/\([[:print:]]*\/\)*//g&#34;) &gt;&gt; $ListPath/ALL.m3u
+		echo $(echo &#34;$line&#34; | sed -e &#39;s/^/http:\/\/ipv4.bajzc.com:81\//&#39;) &gt;&gt; $ListPath/ALL.m3u
+		echo &gt;&gt; $ListPath/ALL.m3u
+		fi
+	done
+	}
 
-compress(){
-  cd $ListPath
-  tar -czvf PlayList.tar.gz *.m3u
-  zip -qr PlayList.zip *.m3u
+	ListAlbum(){
+	  cd /var/www/html/
+	  find Music/ -maxdepth 1 -mindepth 1 -type d | while read line
+	  do
+		Album=$(echo &#34;$line&#34; | sed -e &#34;s/\([[:print:]]*\/\)*//g&#34;)
+		echo $Album
+		echo &#34;#EXTM3U&#34; &gt; $ListPath/$Album.m3u
+		echo &#34;#EXTGRP&#34; &gt;&gt; $ListPath/$Album.m3u
+		echo &#34;#EXTGRP&#34; &gt;&gt; $ListPath/ALL.m3u
+		find $line -type f | while read path
+		do
+		  duration=$(ffmpeg -i &#34;$path&#34; 2&gt;&amp;1 | grep &#34;Duration&#34;| cut -d &#39; &#39; -f 4 | sed s/,// | sed &#39;s@\..*@@g&#39; | awk &#39;{ split($1, A, &#34;:&#34;); split(A[3], B, &#34;.&#34;); print 3600*A[1] &#43; 60*A[2] &#43; B[1] }&#39;)
+		  if [ &#34;$duration&#34; == &#34;0&#34; ] || [ &#34;$duration&#34; == &#34;&#34; ]; then
+		    printf &#34;$path is not a media file, duration: $duration\n&#34;
+		    continue
+		  fi
+		header=&#34;#EXTINF:$duration,$(echo &#34;$path&#34; | sed -e &#34;s/\([[:print:]]*\/\)*//g&#34;)&#34;
+		url=&#34;$(echo &#34;$path&#34; | sed -e &#39;s/^/http:\/\/ipv4.bajzc.com:81\//&#39;)&#34;
+		printf &#34;$header\n$url\n\n&#34; &gt;&gt; $ListPath/$Album.m3u
+		printf &#34;$header\n$url\n\n&#34; &gt;&gt; $ListPath/ALL.m3u
+		done
+	  done
+	}
 
-}
-Backup
-ListMovie
-ListAlbum
-compress
-unset ListPath
-```
+	compress(){
+	  cd $ListPath
+	  tar -czvf PlayList.tar.gz *.m3u
+	  zip -qr PlayList.zip *.m3u
 
-:::: note
-::: title
-Note
-:::
+	}
+	Backup
+	ListMovie
+	ListAlbum
+	compress
+	unset ListPath
 
-You may need to install `ffmpeg`, `zip` on your host system.
-::::
+.. note::
+	You may need to install ``ffmpeg``, ``zip`` on your host system.
+	
 
 Backup()
 
-&gt; line 6-9: backup all files in `$ListPath`
+   line 6-9: backup all files in ``$ListPath``
 
 ListMovie()
 
-&gt; line 13: change the directory to where the `Movie` is.
-&gt;
-&gt; line 14: print .m3u header to the output file `$ListPath/ALL.m3u`
-&gt;
-&gt; line 15: list all the files and directories in `Movie/` and assign the
-&gt; path to `line`
-&gt;
-&gt; line 17: whether `line` is a path to a directory
-&gt;
-&gt; line 19: use regular expression to get the name of directory
-&gt;
-&gt; line 21: use ffmpeg to get the duration of a media file in seconds
-&gt;
-&gt; line 28: use regex again to convert the relative path into URL
+   line 13: change the directory to where the ``Movie`` is.
+   
+   line 14: print .m3u header to the output file ``$ListPath/ALL.m3u``
+
+   line 15: list all the files and directories in ``Movie/`` and assign the path to ``line``
+
+   line 17: whether ``line`` is a path to a directory
+
+   line 19: use regular expression to get the name of directory
+
+   line 21: use ffmpeg to get the duration of a media file in seconds
+
+   line 28: use regex again to convert the relative path into URL
 
 ListAlbum()
 
-&gt; line 36: only search for directories in one depth
-&gt;
-&gt; line 38: use regex to get the name of album
+   line 36: only search for directories in one depth
+
+   line 38: use regex to get the name of album
 
 compress()
 
-&gt; line 60: compress into .zip
-&gt;
-&gt; line 61: compress into .tar.gz
+   line 60: compress into .zip
 
-The output can be seen [here](http://ipv4.bajzc.com:81/PlayLists/)
+   line 61: compress into .tar.gz
 
-## 4 Summary
+The output can be seen `here &lt;http://ipv4.bajzc.com:81/PlayLists/&gt;`_
 
-This script still has some limitations, such as it cannot deal with the
-`SPACE` in directories\&#39; name. Because `find` won\&#39;t return the path in
-C-style (but `ls` can do it). For example:
-`The Music of Grand Theft Auto V [FLAC]`, should be
-`The\ Music\ of\ Grand\ Theft\ Auto\ V\ \[FLAC\]`. Otherwise `Bash`
-cannot locate it.
+4 Summary
+=========
 
-However, if the file name contains those characters will be fine. Thanks
-to ffmpeg, path can be passed as a string. (Line 21)
+This script still has some limitations, such as it cannot deal with the ``SPACE`` in directories&#39; name. 
+Because ``find`` won&#39;t return the path in C-style (while ``ls`` can do it). For example: ``The Music of Grand Theft Auto V``, should be ``The\ Music\ of\ Grand\ Theft\ Auto\ V``.
+Otherwise ``Bash`` cannot locate it.
+
+However, if the file name contains those characters will be fine. Thanks to ffmpeg, path can be passed as a string. (Line 21)
 
 After all, open a m3u file in VLC:
 
-![image](/images/VLC-Playlist.png){.align-center}
-
-:::: note
-::: title
-Note
-:::
-
-Copyright (C) 2023 Jason Li
-
-License:
-
-This program is free software: you can redistribute it and/or modify it
-under the terms of the GNU General Public License as published by the
-Free Software Foundation, either version 3 of the License, or (at your
-option) any later version.
-
-This program is distributed in the hope that it will be useful, but
-WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
-Public License for more details.
-
-You should have received a copy of the GNU General Public License along
-with this program. If not, see \&lt;&lt;https://www.gnu.org/licenses/&gt;\&gt;.
-::::
-
+.. image:: /images/VLC-Playlist.png
+	:align: center
 
 ---
 
 > Author:   
-> URL: https://bajzc.org/posts/vlc-how-to-generate-m3u-playlists/  
+> URL: http://localhost:1313/posts/vlc-how-to-generate-m3u-playlists/  
 
