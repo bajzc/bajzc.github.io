@@ -34,5 +34,5 @@ $n^2&#43;1$
 ---
 
 > 作者:   
-> URL: https://bajzc.org/posts/583bc6c/  
+> URL: http://localhost:1313/posts/583bc6c/  
 

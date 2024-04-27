@@ -122,6 +122,6 @@ Reference:
 
 ---
 
-> 作者:   
+> Author:   
 > URL: https://bajzc.org/posts/lets-encrypt-gentoo/  
 

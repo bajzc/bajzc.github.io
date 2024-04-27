@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>Installation - 标签 - 随笔技 🚧 (rst格式转向md)</title>
+    <link>https://bajzc.org/zh-cn/tags/installation/</link>
+    <description>Installation - 标签 | 随笔技 🚧 (rst格式转向md)</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><atom:link href="https://bajzc.org/zh-cn/tags/installation/" rel="self" type="application/rss+xml" /><item>
+  <title>在Windows 11上安装GTK4</title>
+  <link>https://bajzc.org/zh-cn/posts/install-gtk4-on-windows/</link>
+  <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate>
+  <author>作者</author>
+  <guid>https://bajzc.org/zh-cn/posts/install-gtk4-on-windows/</guid>
+  <description><![CDATA[{.gtk .gtkalign-center} 在Win11上安装GTK4::: contents ::: 一个关于在Win 11上使用Msys2安装Gtk4,并且使用makefile生成一个Hello worl]]></description>
+</item>
+</channel>
+</rss>

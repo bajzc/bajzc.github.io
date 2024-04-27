@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>Home NAS deployment - Random Geek</title><meta name="author" content="">
+<meta name="author-link" content="">
+<meta name="description" content="A general guide to build your NAS!" /><meta name="keywords" content='NAS, docker, linux' /><meta itemprop="name" content="Home NAS deployment">
+<meta itemprop="description" content="A general guide to build your NAS!"><meta itemprop="datePublished" content="2024-02-03T19:37:45+07:00" />
+<meta itemprop="dateModified" content="2024-02-03T19:37:45+07:00" />
+<meta itemprop="wordCount" content="1272">
+<meta itemprop="keywords" content="NAS,docker,linux," /><meta property="og:title" content="Home NAS deployment" />
+<meta property="og:description" content="A general guide to build your NAS!" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/en/posts/home-nas-deployment/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-02-03T19:37:45+07:00" />
+<meta property="article:modified_time" content="2024-02-03T19:37:45+07:00" />
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Home NAS deployment"/>
+<meta name="twitter:description" content="A general guide to build your NAS!"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="http://localhost:1313/en/posts/home-nas-deployment/" /><link rel="prev" href="http://localhost:1313/en/posts/cachestat-in-kernel-65-rc1/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Home NAS deployment",
+    "inLanguage": "en",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http:\/\/localhost:1313\/en\/posts\/home-nas-deployment\/"
+    },"genre": "posts","keywords": "NAS, docker, linux","wordcount":  1272 ,
+    "url": "http:\/\/localhost:1313\/en\/posts\/home-nas-deployment\/","datePublished": "2024-02-03T19:37:45+07:00","dateModified": "2024-02-03T19:37:45+07:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "Author"
+      },"description": ""
+  }
+  </script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper" data-page-style="normal"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/en/" title="Random Geek"><span class="header-title-text">Random Geek</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/en/posts/"
+                
+                
+              >Posts</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/en/tags/"
+                
+                
+              >Tags</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/en/categories/"
+                
+                
+              >Categories</a></li><li class="menu-item delimiter"></li><li class="menu-item theme-switch" title="Switch Theme">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li><li class="menu-item language-switch">
+            <span role="button" aria-label="Select Language" title="Select Language"><i class="fa-solid fa-language fa-fw" aria-hidden="true"></i></span>
+            <ul class="sub-menu"><li class="menu-item">No more translations</li></ul>
+          </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/en/" title="Random Geek"><span class="header-title-text">Random Geek</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/en/posts/"
+                  
+                  
+                >Posts</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/en/tags/"
+                  
+                  
+                >Tags</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/en/categories/"
+                  
+                  
+                >Categories</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="Switch Theme"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span><span class="menu-system-item language-switch">
+              <span role="button" aria-label="Select Language" title="Select Language">English<i class="dropdown-icon fa-solid fa-chevron-down" aria-hidden="true"></i></span>
+              <select class="language-select" onchange="location = this.value;"><option disabled>No more translations</option></select>
+            </span></li>
+      </ul>
+    </nav>
+  </div>
+</header><main class="container"><aside class="aside-collection animate__animated animate__fadeIn animate__faster" aria-label="Collections"></aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>Home NAS deployment</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      Anonymous</span></span></div><div class="post-meta-line"><span title="published on 2024-02-03 19:37:45"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2024-02-03">2024-02-03</time></span>&nbsp;<span title="1272 words"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>About 1300 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>6 minutes</span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>Contents</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#before-all">Before All...</a></li>
+    <li><a href="#choice-of-operating-system">Choice of Operating System</a></li>
+    <li><a href="#about-file-system">About File System</a></li>
+    <li><a href="#how-to-install-linux">How to install Linux</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#docker-network">Docker Network:</a></li>
+    <li><a href="#frpc">Frpc</a></li>
+    <li><a href="#nginx-proxy-manager">Nginx Proxy manager</a></li>
+    <li><a href="#nextcloud">Nextcloud</a></li>
+    <li><a href="#docker-compose">Docker Compose</a></li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><h1 id="part-i---basic" class="heading-element">
+  <a href="#part-i---basic" class="heading-mark"></a><strong>Part I - Basic</strong></h1><h2 id="before-all" class="heading-element">
+  <a href="#before-all" class="heading-mark"></a>Before All...</h2><ol>
+<li>What is a home NAS?</li>
+</ol>
+<p>A typical home NAS is used for storing and sharing photos and files. As
+an extension to traditional NAS, the server config followed by this
+article would include more applications like offline downloader, media
+server, and printer server...</p>
+<ol start="2">
+<li>Hardware requirement:</li>
+</ol>
+<p>Any kind of popular architecture (x86, amd64, arm64) CPU, with
+high-speed network (ethernet, WIFI) and disk (USB3.<em>, SATA, NVME)
+interface. I'm not going to stop you from using an Android phone with a
+type-C to 4</em>USB (with PD backwards charging) as your cherished server.</p>
+<p>Because technically I used such a server for more than 6 months, a
+Raspberry Pi 4. I had developed a habit to reboot it regularly every 2
+days and bear the risk of losing all data.</p>
+<p>So, be kind to yourself at this stage. Power and noise worth be
+considered as part of the budget, and also extension capability.</p>
+<p>This is my current hardware, just for reference:</p>
+<pre><code>cpu:
+                      Intel(R) Celeron(R) N5105 @ 2.00GHz, 2800 MHz
+graphics card:
+                      Intel JasperLake [UHD Graphics]
+disk:
+  /dev/nvme0n1         KIOXIA NVMe SSD  # root disk
+  /dev/sda             TOSHIBA MG08ADA8 # data disk
+memory:
+                      Memory Size: 15 GB
+</code></pre>
+<h2 id="choice-of-operating-system" class="heading-element">
+  <a href="#choice-of-operating-system" class="heading-mark"></a>Choice of Operating System</h2><p><strong>Linux</strong></p>
+<p>Not a nerd? Go for <a href="https://www.synology.com"target="_blank" rel="external nofollow noopener noreferrer">Synology NAS</a></p>
+<h2 id="about-file-system" class="heading-element">
+  <a href="#about-file-system" class="heading-mark"></a>About File System</h2><p>I'm currently using btrfs, which is a native Linux file system that has
+lots of modern features attracts me:</p>
+<ol>
+<li>CoW (copy on write): File won't be overwritten partially and then
+broken after a sudden power outage</li>
+<li>Compression: save your disk and money</li>
+<li>Subvolume and snapshot: save your data from accident such as you
+deleted your system (you won't, right?)</li>
+</ol>
+<h2 id="how-to-install-linux" class="heading-element">
+  <a href="#how-to-install-linux" class="heading-mark"></a>How to install Linux</h2><p>I believe there are thousands of tutorials for beginners.</p>
+<p><a href="https://wiki.archlinux.org/title/Installation_guide"target="_blank" rel="external nofollow noopener noreferrer">Join the Arch
+&quot;cult&quot;</a></p>
+<p><a href="https://wiki.gentoo.org/wiki/Handbook:Main_Page"target="_blank" rel="external nofollow noopener noreferrer">I don't trust any binary distro, I want to compile everything, where
+should I start?</a></p>
+<p><a href="https://www.debian.org/releases/stable/installmanual"target="_blank" rel="external nofollow noopener noreferrer">I just want a normal and stable
+one</a></p>
+<h1 id="part-ii---network" class="heading-element">
+  <a href="#part-ii---network" class="heading-mark"></a><strong>Part II - Network</strong></h1><figure>
+<img src="/images/NAS-network.svg" class="align-center"
+alt="/images/NAS-network.svg" />
+<figcaption>Network structure</figcaption>
+</figure>
+<p>As far as I know, many ISPs (Internet Service Provider) block <strong>Port</strong>
+80 and 443, which basically means you can not access directly to the web
+page. There are many workarounds: use another port instead and specify
+it when you access; use IPv6 instead but 80 and 443 may still be
+blocked; use a reverse proxy server but with higher delay.</p>
+<p>I'm using <a href="https://github.com/fatedier/frp"target="_blank" rel="external nofollow noopener noreferrer">frp</a> as my reverse proxy
+software. A reverse proxy server means all your data will pass through a
+server held by others, so for those highly concerned about security,
+check out my previous post
+<a href="https://bajzc.com/posts/lets-encrypt-gentoo/"target="_blank" rel="external nofollow noopener noreferrer">here</a></p>
+<p><strong>Frpc</strong> (client side) listens to a server at a specific port, your DNS
+record should point to that server. Once a request is made, the server
+will pass it to you according to the domain name, then frpc will forward
+it to the right application.</p>
+<p>To be clear, frpc is still an application behind the firewall and inside
+docker. So if you are using IPv4 only, you can block all ports other
+than the one frpc is using. (only TCP)</p>
+<p>Here is my frpc config file:</p>
+<pre><code>[common]
+server_addr = frp2.freefrp.net  # proxy server you are using
+server_port = 7000              # port given by the server holder, default: 7000
+token = freefrp.net             # password, here the server is for public: https://freefrp.net/
+
+[ipv4_bajzc_com_http]           # a unique entity
+type = http                     # proxy type
+local_ip = 10.5.0.3             # local server address
+local_port = 80                 # local server port
+custom_domains = ipv4.bajzc.com # URL you use to access this application
+
+[ipv4_bajzc_com_https]
+type = https
+local_ip = 10.5.0.3
+local_port = 443
+custom_domains = ipv4.bajzc.com
+
+......
+</code></pre>
+<p>A single frpc cannot stand, you need a <strong>frps</strong> (server) and correct DNS
+records. A frp server could be a VPS you buy from big cloud computing
+company, or from <strong>&quot;kind&quot;</strong> people share their resources. (Again,
+people concerned about security should check out my previous post
+<a href="https://bajzc.com/posts/lets-encrypt-gentoo/"target="_blank" rel="external nofollow noopener noreferrer">here</a>)</p>
+<p>My DNS records as reference:</p>
+<figure>
+<img src="/images/DNS-records.png" class="align-center"
+alt="/images/DNS-records.png" />
+<figcaption>DNS-records</figcaption>
+</figure>
+<p>:::: note
+::: title
+Note
+:::</p>
+<p>2024.2.11 Update:</p>
+<p>I switched to use <strong>cloudflare</strong> as my domain host, they provided some
+useful features: I can create a tunnel between cloudflare server and my
+server, which means when I enable cloudflare WARP on my client, the
+delay can very much reduce to 50ms.</p>
+<p>DDoS-protection, although I don't think there is any point to attract a
+personal Blog.
+::::</p>
+<h1 id="part-iii---docker" class="heading-element">
+  <a href="#part-iii---docker" class="heading-mark"></a><strong>Part III - Docker</strong></h1><p>Suppose you overcome all difficulties and get your network and disk
+working now.</p>
+<p>This article is mainly focusing on a Linux environment. Thanks to the
+portability of <a href="https://www.docker.com/"target="_blank" rel="external nofollow noopener noreferrer">Docker</a>, it could also apply to
+a Windows server, but comes at the expense of performance.</p>
+<figure>
+<img src="/images/Docker-structure.svg" class="align-center"
+alt="/images/Docker-structure.svg" />
+<figcaption>Docker applications structures</figcaption>
+</figure>
+<p>Here, address in yellow show the IP behind local subnet, which can only
+be access by local applications. The NPM (nginx proxy manager) is used
+to handle all access for all domains and warp them with HTTPS.</p>
+<h2 id="docker-network" class="heading-element">
+  <a href="#docker-network" class="heading-mark"></a>Docker Network:</h2><div class="highlight" id="id-1"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">networks</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">redisnet</span><span class="p">:</span><span class="w">                         </span><span class="c"># cache for Nextcloud</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">NPM</span><span class="p">:</span><span class="w">                              </span><span class="c"># all apps should be under this subnet</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l">bridge</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ipam</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">config</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="nt">subnet</span><span class="p">:</span><span class="w"> </span><span class="m">10.5.0.0</span><span class="l">/16</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">qb-ipv6</span><span class="p">:</span><span class="w">                          </span><span class="c"># for IPv6 download</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">enable_ipv6</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l">bridge</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ipam</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l">default</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">config</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="nt">subnet</span><span class="p">:</span><span class="w"> </span><span class="m">2001</span><span class="p">:</span><span class="m">3200</span><span class="p">:</span><span class="m">3200</span><span class="p">::</span><span class="l">/64</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">gateway</span><span class="p">:</span><span class="w"> </span><span class="m">2001</span><span class="p">:</span><span class="m">3200</span><span class="p">:</span><span class="m">3200</span><span class="p">::</span><span class="m">1</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="frpc" class="heading-element">
+  <a href="#frpc" class="heading-mark"></a>Frpc</h2><div class="highlight" id="id-2"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">frp</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l">always                          </span><span class="w"> </span><span class="c"># auto start after a reboot</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">snowdreamtech/frpc:0.51.0</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l">frpc</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">network_mode</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;host&#34;</span><span class="w">                      </span><span class="c"># use the host network</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># mount the config file dir into docker container (read only)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="l">/all-docker-data/frp:/etc/frp:ro</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="nginx-proxy-manager" class="heading-element">
+  <a href="#nginx-proxy-manager" class="heading-mark"></a>Nginx Proxy manager</h2><div class="highlight" id="id-3"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">NPM</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">jc21/nginx-proxy-manager:latest</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l">nginx-proxy-manager</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l">unless-stopped</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">networks</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">NPM</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">ipv4_address</span><span class="p">:</span><span class="w"> </span><span class="m">10.5.0.3</span><span class="w">                        </span><span class="c"># address frpc should point to</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">#      - &#34;0.0.0.0:81:81&#34;                            # Admin WebUI, disable after setup</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="s2">&#34;[::]:81:80&#34;</span><span class="w">                                  </span><span class="c"># For IPv6 access (The default is block byb 3BB -_-)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="s2">&#34;[::]:444:443&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="l">/.../NPM/data:/data                          </span><span class="w"> </span><span class="c"># WebUI data</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="l">/.../NPM/letsencrypt:/etc/letsencrypt        </span><span class="w"> </span><span class="c"># https certificates</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p><a href="https://nginxproxymanager.com/"target="_blank" rel="external nofollow noopener noreferrer">Offical website</a></p>
+<p>After you login to the WebUI, setup a proxy like this:</p>
+<p><img loading="lazy" src="/images/NPM-sample.png" alt="image" srcset="/images/NPM-sample.png?size=small, /images/NPM-sample.png?size=medium 1.5x, /images/NPM-sample.png?size=large 2x" data-title="image" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/>{.align-center width=&ldquo;400px&rdquo;}</p>
+<p>HTTPS:</p>
+<p><img loading="lazy" src="/images/NPM-SSL.png" alt="image" srcset="/images/NPM-SSL.png?size=small, /images/NPM-SSL.png?size=medium 1.5x, /images/NPM-SSL.png?size=large 2x" data-title="image" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/>{.align-center width=&ldquo;400px&rdquo;}</p>
+<h2 id="nextcloud" class="heading-element">
+  <a href="#nextcloud" class="heading-mark"></a>Nextcloud</h2><p><a href="https://nextcloud.com"target="_blank" rel="external nofollow noopener noreferrer">Nextcloud</a>: It is a suite of client-server
+software for creating and using file hosting services.</p>
+<div class="highlight" id="id-4"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">db</span><span class="p">:</span><span class="w">                                         </span><span class="c"># database</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">mariadb:10.6</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l">always</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span>--<span class="l">transaction-isolation=READ-COMMITTED --log-bin=binlog --binlog-format=ROW</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">/.../nextcloud/db:/var/lib/mysql</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">MYSQL_ROOT_PASSWORD=CHANGEME</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">MYSQL_PASSWORD=CHANGEME</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">MYSQL_DATABASE=nextcloud</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">MYSQL_USER=nextcloud</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">redis</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">redis:alpine</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l">always</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">networks</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">redisnet</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">expose</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="m">6379</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">nextcloud</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">nextcloud</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l">always</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">db</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">redis</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">links</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">db</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">/.../nextcloud/html:/var/www/html            </span><span class="w"> </span><span class="c"># all your files</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">REDIS_HOST=redis</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">MYSQL_PASSWORD=CHANGEME            </span><span class="w"> </span><span class="c"># same password as in db</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">MYSQL_DATABASE=nextcloud</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">MYSQL_USER=nextcloud</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">MYSQL_HOST=db</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">PHP_MEMORY_LIMIT=1024M</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">PHP_UPLOAD_LIMIT=1024M</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">networks</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">redisnet</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">default</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">NPM</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">ipv4_address</span><span class="p">:</span><span class="w"> </span><span class="m">10.5.0.5</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p><a href="https://github.com/nextcloud/docker/tree/master/.examples"target="_blank" rel="external nofollow noopener noreferrer">Offical
+examples</a></p>
+<p>Nextcloud requires some small tuning, check out the auto health-check in
+setting (click your account icon), and edit
+<code>/.../nextcloud/html/config/config.php</code> according to the document.</p>
+<p>If Nextcloud is behind NPM, you need to add its address to
+<code>trusted_domains</code> and <code>trusted_proxies</code>, for me:</p>
+<div class="highlight" id="id-5"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="s1">&#39;trusted_domains&#39;</span> <span class="o">=&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="k">array</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="mi">0</span> <span class="o">=&gt;</span> <span class="s1">&#39;cloud.bajzc.com&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="mi">1</span> <span class="o">=&gt;</span> <span class="s1">&#39;10.5.0.5&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="mi">2</span> <span class="o">=&gt;</span> <span class="s1">&#39;10.5.0.3&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="mi">3</span> <span class="o">=&gt;</span> <span class="s1">&#39;cloud6.bajzc.com&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">),</span>
+</span></span><span class="line"><span class="cl"><span class="s1">&#39;trusted_proxies&#39;</span> <span class="o">=&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="k">array</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="mi">0</span> <span class="o">=&gt;</span> <span class="s1">&#39;10.5.0.0/16&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">),</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>As NPM is using HTTP to communicate with Nextcloud:</p>
+<div class="highlight" id="id-6"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="s1">&#39;overwriteprotocol&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;https&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="s1">&#39;overwritecondaddr&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;^10\\.5\\.0\\.3$&#39;</span><span class="p">,</span>   <span class="c1">// NPM address here
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="s1">&#39;forwarded-for-headers&#39;</span> <span class="o">=&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="k">array</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="mi">0</span> <span class="o">=&gt;</span> <span class="s1">&#39;X-Forwarded-For&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="mi">1</span> <span class="o">=&gt;</span> <span class="s1">&#39;HTTP_X_FORWARDED_FOR&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">),</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="docker-compose" class="heading-element">
+  <a href="#docker-compose" class="heading-mark"></a>Docker Compose</h2><p>All the config chunks I showed are part of the final
+<code>docker-compose.yml</code> file.</p>
+<p>Install <strong>docker</strong> and
+<a href="https://docs.docker.com/compose/install/linux/"target="_blank" rel="external nofollow noopener noreferrer">docker-compose</a>, edit
+your <code>docker-compose.yml</code> and run <code>docker compose up -d</code> under the same
+folder to start all the applications.</p>
+<p>My config <a href="https://ipv4.bajzc.com/compose.yml"target="_blank" rel="external nofollow noopener noreferrer">file</a></p>
+<h1 id="part-iv---finish" class="heading-element">
+  <a href="#part-iv---finish" class="heading-mark"></a><strong>Part IV - Finish?</strong></h1><p>To be continued...</p>
+</div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="Updated on 2024-02-03 19:37:45">Updated on 2024-02-03&nbsp;</span>
+      </div><div class="post-info-license">
+            <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a></span>
+          </div></div><div class="post-info-line">
+        <div class="post-info-md"><span><a href="/en/posts/home-nas-deployment/index.md" title="Read Markdown" class="link-to-markdown">Read Markdown</a></span></div>
+        <div class="post-info-share">
+          <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://localhost:1313/en/posts/home-nas-deployment/" data-title="Home NAS deployment" data-hashtags="NAS,docker,linux"><i class="fa-brands fa-twitter fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://localhost:1313/en/posts/home-nas-deployment/" data-hashtag="NAS"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://localhost:1313/en/posts/home-nas-deployment/" data-title="Home NAS deployment"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
+  </span>
+        </div>
+      </div></div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href="/en/tags/nas/" class="post-tag" title="Tags - NAS">NAS</a><a href="/en/tags/docker/" class="post-tag" title="Tags - Docker">Docker</a><a href="/en/tags/linux/" class="post-tag" title="Tags - Linux">Linux</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/en/">Home</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/en/posts/cachestat-in-kernel-65-rc1/" class="post-nav-item" rel="prev" title="cachestat(), a new syscall in Kernel 6.5-rc1"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>cachestat(), a new syscall in Kernel 6.5-rc1</a></div>
+</div>
+</article>
+
+  <aside class="toc" id="toc-auto" aria-label="Contents"><h2 class="toc-title">Contents&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line powered">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.124.1"><img class="hugo-icon" src="/images/hugo.min.svg" alt="Hugo logo" /> Hugo</a> | Theme - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.3.2"><img class="fixit-icon" src="/images/fixit.min.svg" alt="FixIt logo" /> FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2024</span><span class="author" itemprop="copyrightHolder">
+              <a href="/en/"></a></span></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="Back to Top"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">Theme FixIt works best with JavaScript enabled.</div>
+  </noscript>
+</div><link rel="preload" href="/lib/katex/katex.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/katex/katex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","editLockTitle":"Lock editable code block","editUnLockTitle":"Unlock editable code block","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script src="/js/theme.min.js" defer></script></body>
+</html>

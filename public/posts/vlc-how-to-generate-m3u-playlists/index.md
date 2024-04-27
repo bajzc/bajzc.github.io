@@ -242,6 +242,6 @@ with this program. If not, see \&lt;&lt;https://www.gnu.org/licenses/&gt;\&gt;.
 
 ---
 
-> 作者:   
+> Author:   
 > URL: https://bajzc.org/posts/vlc-how-to-generate-m3u-playlists/  
 

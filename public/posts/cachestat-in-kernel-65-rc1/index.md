@@ -410,6 +410,6 @@ int cachestat(unsigned int fd, struct cachestat_range *cstat_range,
 
 ---
 
-> 作者:   
+> Author:   
 > URL: https://bajzc.org/posts/cachestat-in-kernel-65-rc1/  
 

@@ -1,34 +1,16 @@
-<urlset
-  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-  xmlns:xhtml="http://www.w3.org/1999/xhtml"
-  ><url>
-      <loc>https://bajzc.org/categories/</loc><lastmod>2024-04-06T20:47:58&#43;07:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-      <loc>https://bajzc.org/tags/draft/</loc><lastmod>2024-04-06T20:47:58&#43;07:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-      <loc>https://bajzc.org/categories/draft/</loc><lastmod>2024-04-06T20:47:58&#43;07:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-      <loc>https://bajzc.org/posts/583bc6c/</loc><lastmod>2024-04-06T20:47:58&#43;07:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-      <loc>https://bajzc.org/posts/</loc><lastmod>2024-04-06T20:47:58&#43;07:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-      <loc>https://bajzc.org/</loc><lastmod>2024-04-06T20:47:58&#43;07:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-      <loc>https://bajzc.org/tags/</loc><lastmod>2024-04-06T20:47:58&#43;07:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-      <loc>https://bajzc.org/tags/docker/</loc><lastmod>2024-02-03T19:37:45&#43;07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-      <loc>https://bajzc.org/posts/home-nas-deployment/</loc><lastmod>2024-02-03T19:37:45&#43;07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-      <loc>https://bajzc.org/tags/linux/</loc><lastmod>2024-02-03T19:37:45&#43;07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-      <loc>https://bajzc.org/tags/nas/</loc><lastmod>2024-02-03T19:37:45&#43;07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-      <loc>https://bajzc.org/tags/acme/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-      <loc>https://bajzc.org/posts/cachestat-in-kernel-65-rc1/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-      <loc>https://bajzc.org/collections/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-      <loc>https://bajzc.org/tags/gentoo/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-      <loc>https://bajzc.org/tags/gnu/make/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-      <loc>https://bajzc.org/tags/gtk4/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-      <loc>https://bajzc.org/posts/install-gtk4-on-windows/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-      <loc>https://bajzc.org/tags/installation/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-      <loc>https://bajzc.org/tags/kernel/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-      <loc>https://bajzc.org/posts/lets-encrypt-gentoo/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-      <loc>https://bajzc.org/posts/lfs-gg/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-      <loc>https://bajzc.org/tags/msys2/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-      <loc>https://bajzc.org/tags/ssl/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-      <loc>https://bajzc.org/tags/sys_call/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-      <loc>https://bajzc.org/tags/vlc/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-      <loc>https://bajzc.org/posts/vlc-how-to-generate-m3u-playlists/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-      <loc>https://bajzc.org/tags/windows/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-      <loc>https://bajzc.org/posts/cachestat-in-kernel-65-rc1/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-      <loc>https://bajzc.org/posts/install-gtk4-on-windows/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url></urlset>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <sitemap>
+    <loc>https://bajzc.org/en/sitemap.xml</loc>
+    
+      <lastmod>2024-02-03T19:37:45+07:00</lastmod>
+    
+  </sitemap>
+  
+  <sitemap>
+    <loc>https://bajzc.org/zh-cn/sitemap.xml</loc>
+    
+  </sitemap>
+  
+</sitemapindex>

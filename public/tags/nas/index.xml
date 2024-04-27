@@ -1,13 +1,13 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
   <channel>
-    <title>NAS - 标签 - Random Geek</title>
+    <title>NAS - Tag - Random Geek 🚧 (merging rst files to md)</title>
     <link>https://bajzc.org/tags/nas/</link>
-    <description>NAS - 标签 | Random Geek</description>
-    <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 03 Feb 2024 19:37:45 &#43;0700</lastBuildDate><atom:link href="https://bajzc.org/tags/nas/" rel="self" type="application/rss+xml" /><item>
+    <description>NAS - Tag | Random Geek 🚧 (merging rst files to md)</description>
+    <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 03 Feb 2024 19:37:45 &#43;0700</lastBuildDate><atom:link href="https://bajzc.org/tags/nas/" rel="self" type="application/rss+xml" /><item>
   <title>Home NAS deployment</title>
   <link>https://bajzc.org/posts/home-nas-deployment/</link>
   <pubDate>Sat, 03 Feb 2024 19:37:45 &#43;0700</pubDate>
-  <author>作者</author>
+  <author>Author</author>
   <guid>https://bajzc.org/posts/home-nas-deployment/</guid>
   <description><![CDATA[A general guide to build your NAS!]]></description>
 </item>

@@ -1,13 +1,13 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
   <channel>
-    <title>VLC - 标签 - Random Geek</title>
+    <title>VLC - Tag - Random Geek 🚧 (merging rst files to md)</title>
     <link>https://bajzc.org/tags/vlc/</link>
-    <description>VLC - 标签 | Random Geek</description>
-    <generator>Hugo -- gohugo.io</generator><language>en-us</language><atom:link href="https://bajzc.org/tags/vlc/" rel="self" type="application/rss+xml" /><item>
+    <description>VLC - Tag | Random Geek 🚧 (merging rst files to md)</description>
+    <generator>Hugo -- gohugo.io</generator><language>en</language><atom:link href="https://bajzc.org/tags/vlc/" rel="self" type="application/rss+xml" /><item>
   <title>VLC: how to generate .m3u playlists</title>
   <link>https://bajzc.org/posts/vlc-how-to-generate-m3u-playlists/</link>
   <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate>
-  <author>作者</author>
+  <author>Author</author>
   <guid>https://bajzc.org/posts/vlc-how-to-generate-m3u-playlists/</guid>
   <description><![CDATA[{.align-center width=&ldquo;100px&rdquo;}
 VLC: how to generate .m3u playlists::: contents :::

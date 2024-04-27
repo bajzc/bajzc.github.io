@@ -2,7 +2,6 @@ baseURL = 'https://bajzc.org/'
 languageCode = 'en-us'
 title = 'Random Geek'
 theme = 'FixIt'
-defaultContentLanguage = 'zh-cn'
 
 [secyruty]
   [security.exec]
@@ -10,9 +9,9 @@ defaultContentLanguage = 'zh-cn'
     osEnv = ['(?i)^((HTTPS?|NO)_PROXY|PATH(EXT)?|APPDATA|TE?MP|TERM|GO\w+|(XDG_CONFIG_)?HOME|USERPROFILE|SSH_AUTH_SOCK|DISPLAY|LANG)$']
 
 defaultContentLanguage = "en"
-# language code ["en", "zh-CN", "fr", "pl", ...]
+# language code ["en", "zh-CN"]
 languageCode = "en"
-# language name ["English", "简体中文", "Français", "Polski", ...]
+# language name ["English", "简体中文"]
 languageName = "English"
 # whether to include Chinese/Japanese/Korean
 hasCJKLanguage = true
@@ -1113,3 +1112,67 @@ enableEmoji = true
       enable = false
       # "vConsole", "eruda" supported
       type = "vConsole"
+
+[languages]
+  [languages.en]
+    weight = 1
+    title = "Random Geek 🚧 (merging rst files to md)"
+    languageCode = "en"
+    languageName = "English"
+    [[languages.en.menu.main]]
+      identifier = "posts"
+      pre = ""
+      post = ""
+      name = "Posts"
+      url = "/posts/"
+      title = ""
+      weight = 1
+    [[languages.en.menu.main]]
+      identifier = "tags"
+      pre = ""
+      post = ""
+      name = "Tags"
+      url = "/tags/"
+      title = ""
+      weight = 2
+    [[languages.en.menu.main]]
+      identifier = "categories"
+      pre = ""
+      post = ""
+      name = "Categories"
+      url = "/categories/"
+      title = ""
+      weight = 3
+
+  [languages.zh-cn]
+    weight = 2
+    title = "随笔技 🚧 (rst格式转向md)"
+    # 网站语言，仅在这里 CN 大写
+    languageCode = "zh-CN"
+    languageName = "简体中文"
+    # 是否包括中日韩文字
+    hasCJKLanguage = true
+    [[languages.zh-cn.menu.main]]
+      identifier = "posts"
+      pre = ""
+      post = ""
+      name = "文章"
+      url = "/posts/"
+      title = ""
+      weight = 1
+    [[languages.zh-cn.menu.main]]
+      identifier = "tags"
+      pre = ""
+      post = ""
+      name = "标签"
+      url = "/tags/"
+      title = ""
+      weight = 2
+    [[languages.zh-cn.menu.main]]
+      identifier = "categories"
+      pre = ""
+      post = ""
+      name = "分类"
+      url = "/categories/"
+      title = ""
+      weight = 3

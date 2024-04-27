@@ -54,6 +54,6 @@ the use of the bash environment(sed echo bc).
 
 ---
 
-> 作者:   
+> Author:   
 > URL: https://bajzc.org/posts/lfs-gg/  
 

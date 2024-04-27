@@ -1,14 +1,14 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
   <channel>
-    <title>draft - 分类 - Random Geek</title>
-    <link>https://bajzc.org/categories/draft/</link>
-    <description>draft - 分类 | Random Geek</description>
-    <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 06 Apr 2024 20:47:58 &#43;0700</lastBuildDate><atom:link href="https://bajzc.org/categories/draft/" rel="self" type="application/rss+xml" /><item>
+    <title>Draft - 分类 - 随笔技</title>
+    <link>http://localhost:1313/categories/draft/</link>
+    <description>Draft - 分类 | 随笔技</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 06 Apr 2024 20:47:58 &#43;0700</lastBuildDate><atom:link href="http://localhost:1313/categories/draft/" rel="self" type="application/rss+xml" /><item>
   <title>My First Post</title>
-  <link>https://bajzc.org/posts/583bc6c/</link>
+  <link>http://localhost:1313/posts/583bc6c/</link>
   <pubDate>Sat, 06 Apr 2024 20:47:58 &#43;0700</pubDate>
   <author>作者</author>
-  <guid>https://bajzc.org/posts/583bc6c/</guid>
+  <guid>http://localhost:1313/posts/583bc6c/</guid>
   <description><![CDATA[test $n^2+1$
 &amp; A M S i o i q f b B x u j o e a ( - x d r a &gt; e f R &gt; c o C n u o b ( n r ) ) d n e e J d r o s i n N o R D t o i u a a n g d d l o i t n e D i a g o n a l s C V u e r r v t e i d c a l n o t A N C : o u l d r r i A a / I v n s i n e e h s t d - e - t r l B i h i i s i o n ' s r e q n .]]></description>
 </item>

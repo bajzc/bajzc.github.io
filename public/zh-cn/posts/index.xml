@@ -1,0 +1,23 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>所有文章 - 随笔技 🚧 (rst格式转向md)</title>
+    <link>https://bajzc.org/zh-cn/posts/</link>
+    <description>所有文章 | 随笔技 🚧 (rst格式转向md)</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><atom:link href="https://bajzc.org/zh-cn/posts/" rel="self" type="application/rss+xml" /><item>
+  <title>初探cachestat接口------kernel 6.5-rc1</title>
+  <link>https://bajzc.org/zh-cn/posts/cachestat-in-kernel-65-rc1/</link>
+  <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate>
+  <author>作者</author>
+  <guid>https://bajzc.org/zh-cn/posts/cachestat-in-kernel-65-rc1/</guid>
+  <description><![CDATA[{.align-center} :::: note ::: title Note ::: 本文系统环境： Linux gentoo 6.5.0-rc1 :::: 如果你想自己尝试，你需要知道的几个命令： 创建随机文件用于测试 : ``` bash #signle random file &quot;a&quot; dd if=/dev/urandom of=a bs=1M count=128 # random files &quot;f1&quot;-&quot;f8&quot; for i in {1..8} do dd]]></description>
+</item>
+<item>
+  <title>在Windows 11上安装GTK4</title>
+  <link>https://bajzc.org/zh-cn/posts/install-gtk4-on-windows/</link>
+  <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate>
+  <author>作者</author>
+  <guid>https://bajzc.org/zh-cn/posts/install-gtk4-on-windows/</guid>
+  <description><![CDATA[{.gtk .gtkalign-center} 在Win11上安装GTK4::: contents ::: 一个关于在Win 11上使用Msys2安装Gtk4,并且使用makefile生成一个Hello worl]]></description>
+</item>
+</channel>
+</rss>

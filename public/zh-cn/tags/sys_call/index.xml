@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>Sys_call - 标签 - 随笔技 🚧 (rst格式转向md)</title>
+    <link>https://bajzc.org/zh-cn/tags/sys_call/</link>
+    <description>Sys_call - 标签 | 随笔技 🚧 (rst格式转向md)</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><atom:link href="https://bajzc.org/zh-cn/tags/sys_call/" rel="self" type="application/rss+xml" /><item>
+  <title>初探cachestat接口------kernel 6.5-rc1</title>
+  <link>https://bajzc.org/zh-cn/posts/cachestat-in-kernel-65-rc1/</link>
+  <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate>
+  <author>作者</author>
+  <guid>https://bajzc.org/zh-cn/posts/cachestat-in-kernel-65-rc1/</guid>
+  <description><![CDATA[{.align-center} :::: note ::: title Note ::: 本文系统环境： Linux gentoo 6.5.0-rc1 :::: 如果你想自己尝试，你需要知道的几个命令： 创建随机文件用于测试 : ``` bash #signle random file &quot;a&quot; dd if=/dev/urandom of=a bs=1M count=128 # random files &quot;f1&quot;-&quot;f8&quot; for i in {1..8} do dd]]></description>
+</item>
+</channel>
+</rss>

@@ -1,22 +1,13 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
   <channel>
-    <title>所有文章 - Random Geek</title>
+    <title>All Posts - Random Geek 🚧 (merging rst files to md)</title>
     <link>https://bajzc.org/posts/</link>
-    <description>所有文章 | Random Geek</description>
-    <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 06 Apr 2024 20:47:58 &#43;0700</lastBuildDate><atom:link href="https://bajzc.org/posts/" rel="self" type="application/rss+xml" /><item>
-  <title>My First Post</title>
-  <link>https://bajzc.org/posts/583bc6c/</link>
-  <pubDate>Sat, 06 Apr 2024 20:47:58 &#43;0700</pubDate>
-  <author>作者</author>
-  <guid>https://bajzc.org/posts/583bc6c/</guid>
-  <description><![CDATA[test $n^2+1$
-&amp; A M S i o i q f b B x u j o e a ( - x d r a &gt; e f R &gt; c o C n u o b ( n r ) ) d n e e J d r o s i n N o R D t o i u a a n g d d l o i t n e D i a g o n a l s C V u e r r v t e i d c a l n o t A N C : o u l d r r i A a / I v n s i n e e h s t d - e - t r l B i h i i s i o n ' s r e q n .]]></description>
-</item>
-<item>
+    <description>All Posts | Random Geek 🚧 (merging rst files to md)</description>
+    <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 03 Feb 2024 19:37:45 &#43;0700</lastBuildDate><atom:link href="https://bajzc.org/posts/" rel="self" type="application/rss+xml" /><item>
   <title>Home NAS deployment</title>
   <link>https://bajzc.org/posts/home-nas-deployment/</link>
   <pubDate>Sat, 03 Feb 2024 19:37:45 &#43;0700</pubDate>
-  <author>作者</author>
+  <author>Author</author>
   <guid>https://bajzc.org/posts/home-nas-deployment/</guid>
   <description><![CDATA[A general guide to build your NAS!]]></description>
 </item>
@@ -24,7 +15,7 @@
   <title>cachestat(), a new syscall in Kernel 6.5-rc1</title>
   <link>https://bajzc.org/posts/cachestat-in-kernel-65-rc1/</link>
   <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate>
-  <author>作者</author>
+  <author>Author</author>
   <guid>https://bajzc.org/posts/cachestat-in-kernel-65-rc1/</guid>
   <description><![CDATA[{.align-center}
 :::: note ::: title Note :::
@@ -38,7 +29,7 @@ generate random files for test 1 2 3 4 5 6 7 8 #signle random file &#34;a&#34; d
   <title>Install GTK4 on Windows</title>
   <link>https://bajzc.org/posts/install-gtk4-on-windows/</link>
   <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate>
-  <author>作者</author>
+  <author>Author</author>
   <guid>https://bajzc.org/posts/install-gtk4-on-windows/</guid>
   <description><![CDATA[{.gtk .gtkalign-center}
 Install GTK4 on Windows11::: contents :::
@@ -56,7 +47,7 @@ GTK official guide ::::
   <title>Let\&#39;s Encrypt</title>
   <link>https://bajzc.org/posts/lets-encrypt-gentoo/</link>
   <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate>
-  <author>作者</author>
+  <author>Author</author>
   <guid>https://bajzc.org/posts/lets-encrypt-gentoo/</guid>
   <description><![CDATA[{.align-center}
 :::: note ::: title Note :::
@@ -68,7 +59,7 @@ Get certificates emerge -a app-crypt/acme-sh emerge --ask dcron, acme-sh need th
   <title>LFS? GG!</title>
   <link>https://bajzc.org/posts/lfs-gg/</link>
   <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate>
-  <author>作者</author>
+  <author>Author</author>
   <guid>https://bajzc.org/posts/lfs-gg/</guid>
   <description><![CDATA[::: contents :::
 Here are some problems you may find even if you follow the LFS (Linux From Scratch) book LINE BY LINE:
@@ -83,7 +74,7 @@ If you are not an expert on *nix, start from other Linux distributions but not L
   <title>VLC: how to generate .m3u playlists</title>
   <link>https://bajzc.org/posts/vlc-how-to-generate-m3u-playlists/</link>
   <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate>
-  <author>作者</author>
+  <author>Author</author>
   <guid>https://bajzc.org/posts/vlc-how-to-generate-m3u-playlists/</guid>
   <description><![CDATA[{.align-center width=&ldquo;100px&rdquo;}
 VLC: how to generate .m3u playlists::: contents :::
@@ -94,51 +85,6 @@ It's 6x faster than the bash script (1:52/11:08)
 VLC is a free and open-source media player, and it is PORTABLE and CROSS-PLATFORM.
 In order to have a better user experience, without paying a penny, it is the best choice.
 &quot;M3U (MP3 URL or Moving Picture Experts Group Audio Layer 3 Uniform Resource Locator in full) is a computer file format for a multimedia playlist.]]></description>
-</item>
-<item>
-  <title>初探cachestat接口------kernel 6.5-rc1</title>
-  <link>https://bajzc.org/posts/cachestat-in-kernel-65-rc1/</link>
-  <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate>
-  <author>作者</author>
-  <guid>https://bajzc.org/posts/cachestat-in-kernel-65-rc1/</guid>
-  <description><![CDATA[{.align-center}
-:::: note ::: title Note :::
-本文系统环境：
-Linux gentoo 6.5.0-rc1 ::::
-如果你想自己尝试，你需要知道的几个命令：
-创建随机文件用于测试 : ``` bash #signle random file &quot;a&quot; dd if=/dev/urandom of=a bs=1M count=128 # random files &quot;f1&quot;-&quot;f8&quot; for i in {1..8} do dd if=/dev/urandom of=f${i} bs=1M count=128 done ``` 清除系统cache： root# echo 3 &gt; /proc/sys/vm/drop_caches :::: warning ::: title Warning :::
-在每一次运行测试程序之前都应该清除缓存，因为在生成文件时，它其实已经被写入cache了！同时，在运行过一次程序后，可能会有文件残留的cache ::::
-#. 限制内存： root# echo 1073741824 &gt; /sys/fs/cgroup/user.slice/memory.max :::: caution ::: title Caution :::]]></description>
-</item>
-<item>
-  <title>在Windows 11上安装GTK4</title>
-  <link>https://bajzc.org/posts/install-gtk4-on-windows/</link>
-  <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate>
-  <author>作者</author>
-  <guid>https://bajzc.org/posts/install-gtk4-on-windows/</guid>
-  <description><![CDATA[{.gtk .gtkalign-center}
-在Win11上安装GTK4::: contents :::
-一个关于在Win 11上使用Msys2安装Gtk4,并且使用makefile生成一个Hello world的demo的指北
-并且包括了作者在安装过程中遇到的坑...
-安装过程在的Sandbox里经过测试:
-:::: note ::: title Note :::
-Edition Windows 11 Enterprise
-Version 22H2
-OS build 22621.1848 ::::
-:::: hint ::: title Hint :::
-GTK官网的安装指南 ::::
-安装过程 1. 下载并安装Msys2本教程使用默认安装路径，如使用自定义，在后文设置PATH时需要注意
-从官网下载 Msys2，并安装
-点击Finish后弹出命令行界面，根据Msys2的文档，我们首先安装gcc
-:::: note ::: title Note :::
-国内用户可能需要更换国内源提升下载速度，
-这里我们使用 清华大学镜像站 ,在终端输入
-sed -i &quot;s#https\?://mirror.msys2.org/#https://mirrors.tuna.tsinghua.edu.cn/msys2/#g&quot; /etc/pacman.d/mirrorlist*
-完成换源 ::::
-pacman -S mingw-w64-ucrt-x86_64-gcc
-{.align-center}
-回车开始安装 :::: hint ::: title Hint :::
-在Msys2 Shell里的复制可以快捷键Shift+Ins ::::]]></description>
 </item>
 </channel>
 </rss>

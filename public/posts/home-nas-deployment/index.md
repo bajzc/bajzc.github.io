@@ -335,6 +335,6 @@ To be continued\...
 
 ---
 
-> 作者:   
+> Author:   
 > URL: https://bajzc.org/posts/home-nas-deployment/  
 
