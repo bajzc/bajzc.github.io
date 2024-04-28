@@ -7,18 +7,18 @@
     <meta name="robots" content="noodp" />
     <title>xv6学习笔记 - 随笔技</title><meta name="author" content="Jason Li">
 <meta name="author-link" content="">
-<meta name="description" content="注：标题所指的xv6是MIT的计算机操作系统课程S.081。 LEC 1: util 环境部署上来就在环境部署上遇到了点小问题，虽然别人不太可能复现，但仍记录在" /><meta name="keywords" content='Linux, Debug' /><meta itemprop="name" content="xv6学习笔记">
-<meta itemprop="description" content="注：标题所指的xv6是MIT的计算机操作系统课程S.081。 LEC 1: util 环境部署上来就在环境部署上遇到了点小问题，虽然别人不太可能复现，但仍记录在"><meta itemprop="datePublished" content="2024-04-27T08:48:00+07:00" />
+<meta name="description" content="注：标题所指的xv6是MIT的计算机操作系统课程S.081。 LEC 1: util 环境部署上来就在环境部署上遇到了点小问题，虽然别人不太可能遇到，但仍记录在" /><meta name="keywords" content='Linux, Debug' /><meta itemprop="name" content="xv6学习笔记">
+<meta itemprop="description" content="注：标题所指的xv6是MIT的计算机操作系统课程S.081。 LEC 1: util 环境部署上来就在环境部署上遇到了点小问题，虽然别人不太可能遇到，但仍记录在"><meta itemprop="datePublished" content="2024-04-27T08:48:00+07:00" />
 <meta itemprop="dateModified" content="2024-04-27T08:48:00+07:00" />
-<meta itemprop="wordCount" content="1236">
+<meta itemprop="wordCount" content="1238">
 <meta itemprop="keywords" content="Linux,Debug," /><meta property="og:title" content="xv6学习笔记" />
-<meta property="og:description" content="注：标题所指的xv6是MIT的计算机操作系统课程S.081。 LEC 1: util 环境部署上来就在环境部署上遇到了点小问题，虽然别人不太可能复现，但仍记录在" />
+<meta property="og:description" content="注：标题所指的xv6是MIT的计算机操作系统课程S.081。 LEC 1: util 环境部署上来就在环境部署上遇到了点小问题，虽然别人不太可能遇到，但仍记录在" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://localhost:1313/zh-cn/posts/2296229/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2024-04-27T08:48:00+07:00" />
 <meta property="article:modified_time" content="2024-04-27T08:48:00+07:00" />
 <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="xv6学习笔记"/>
-<meta name="twitter:description" content="注：标题所指的xv6是MIT的计算机操作系统课程S.081。 LEC 1: util 环境部署上来就在环境部署上遇到了点小问题，虽然别人不太可能复现，但仍记录在"/>
+<meta name="twitter:description" content="注：标题所指的xv6是MIT的计算机操作系统课程S.081。 LEC 1: util 环境部署上来就在环境部署上遇到了点小问题，虽然别人不太可能遇到，但仍记录在"/>
 <meta name="application-name" content="FixIt">
 <meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -33,7 +33,7 @@
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "http:\/\/localhost:1313\/zh-cn\/posts\/2296229\/"
-    },"genre": "posts","keywords": "Linux, Debug","wordcount":  1236 ,
+    },"genre": "posts","keywords": "Linux, Debug","wordcount":  1238 ,
     "url": "http:\/\/localhost:1313\/zh-cn\/posts\/2296229\/","datePublished": "2024-04-27T08:48:00+07:00","dateModified": "2024-04-27T08:48:00+07:00","publisher": {
       "@type": "Organization",
       "name": ""},"author": {
@@ -115,10 +115,10 @@
 </header><main class="container"><aside class="aside-collection animate__animated animate__fadeIn animate__faster" aria-label="合集"></aside>
 
   <article class="page single">
-    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span title="转载" class="icon-repost"><i class="fa-solid fa-share fa-fw" aria-hidden="true"></i></span><span>xv6学习笔记</span>
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>xv6学习笔记</span>
       </h1></div><div class="post-meta">
       <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
-      Jason Li</span></span><span class="post-included-in">&nbsp;收录于 <a href="/zh-cn/categories/review/" class="post-category" title="分类 - Review"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> Review</a></span></div><div class="post-meta-line"><span title="发布于 2024-04-27 08:48:00"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2024-04-27">2024-04-27</time></span>&nbsp;<span title="1236 字"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 1300 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 3 分钟</span>&nbsp;</div>
+      Jason Li</span></span><span class="post-included-in">&nbsp;收录于 <a href="/zh-cn/categories/review/" class="post-category" title="分类 - Review"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> Review</a></span></div><div class="post-meta-line"><span title="发布于 2024-04-27 08:48:00"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2024-04-27">2024-04-27</time></span>&nbsp;<span title="1238 字"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 1300 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 3 分钟</span>&nbsp;</div>
     </div><div class="details toc" id="toc-static" data-kept="false">
         <div class="details-summary toc-title">
           <span>目录</span>
@@ -148,19 +148,19 @@
       </div><div class="content" id="content"><p><strong>注：标题所指的xv6是MIT的计算机操作系统课程<a href="https://pdos.csail.mit.edu/6.828/2020/schedule.html"target="_blank" rel="external nofollow noopener noreferrer">S.081</a>。</strong></p>
 <h3 id="lec-1-util" class="heading-element">
   <a href="#lec-1-util" class="heading-mark"></a>LEC 1: util</h3><h4 id="环境部署" class="heading-element">
-  <a href="#%e7%8e%af%e5%a2%83%e9%83%a8%e7%bd%b2" class="heading-mark"></a>环境部署</h4><p>上来就在环境部署上遇到了点小问题，虽然别人不太可能复现，但仍记录在此，仅作参考。</p>
-<p>我用的是Gentoo Linux，通过<a href="https://wiki.gentoo.org/wiki/Crossdev"target="_blank" rel="external nofollow noopener noreferrer">crossdev</a>编译的<code>riscv64-unkown-linux-gnu</code>是不可用的（链接错误），个人猜测是因为它链接了Linux的一些库，而xv6是裸二进制的elf环境。（对于toolchain并不熟悉，欢迎指正）。</p>
-<p>Gentoo官方编译出的<a href="https://packages.gentoo.org/packages/app-emulation/qemu"target="_blank" rel="external nofollow noopener noreferrer">qemu</a>对于xv6也是不可用的状态,没有任何输出（QEMU_SOFTMMU_TARGETS=&ldquo;riscv64&rdquo;），可能是版本太高了导致不兼容&hellip;</p>
+  <a href="#%e7%8e%af%e5%a2%83%e9%83%a8%e7%bd%b2" class="heading-mark"></a>环境部署</h4><p>上来就在环境部署上遇到了点小问题，虽然别人不太可能遇到，但仍记录在此，仅作参考。</p>
+<p>我用的是Gentoo Linux，通过<a href="https://wiki.gentoo.org/wiki/Crossdev"target="_blank" rel="external nofollow noopener noreferrer">crossdev</a>编译出的<code>riscv64-unkown-linux-gnu</code>是不可用的，个人猜测是因为它链接了Linux的一些库，而xv6是裸二进制的elf环境。（对于toolchain并不熟悉，欢迎指正）。</p>
+<p>Gentoo官方配置编译出的<a href="https://packages.gentoo.org/packages/app-emulation/qemu"target="_blank" rel="external nofollow noopener noreferrer">qemu</a>对于xv6也是不可用的状态,没有任何输出（QEMU_SOFTMMU_TARGETS=&ldquo;riscv64&rdquo;），可能是版本太高了导致不兼容&hellip;</p>
 <p>二者的解决方案是一样的，就是按照课程的教程下载编译安装对应的软件。安装位置可以选在<code>/opt</code>,最后在<code>.[zsh,bash]rc</code>里加上:<code>export PATH=&quot;/opt/qemu/bin:/opt/riscv-gcc/bin:%PATH&quot;</code></p>
 <h4 id="xargsc" class="heading-element">
-  <a href="#xargsc" class="heading-mark"></a>xargs.c</h4><p>一开使有一个小问题没主意到，xv6要求的xargs是将每一行的输入都与argv单独合并。</p>
-<p>比如假设xv6的echo支持转义符，<code>echo &quot;hello\nworld&quot; | xargs echo print:</code>，应该打印出两行两个<code>print:</code>，而非两行一个<code>print:</code></p>
+  <a href="#xargsc" class="heading-mark"></a>xargs.c</h4><p>一开使有一个小问题没注意到，xv6要求的xargs是将每一行的输入都与argv单独合并。</p>
+<p>比如，假设xv6的echo支持转义符，<code>echo &quot;hello\nworld&quot; | xargs echo print:</code>，应该打印出两行两个<code>print:</code>，而非两行一个<code>print:</code></p>
 <p>所以最后执行<code>exec</code>的时候，应该维护一个<code>*xargv[]</code>,将<code>argv[1:]</code>与<code>stdin</code>的一行输入进行合并。</p>
 <p>同时，应该注意到<code>read()</code>读取到<code>\n</code>的时候应该在字符串末尾写入<code>\0</code>而非<code>\n</code>。</p>
 <h4 id="primesc" class="heading-element">
   <a href="#primesc" class="heading-mark"></a>primes.c</h4><p>这个程序难就难在debug环节上，很难仅靠程序本身打印log的方式纠错。我的解决方案是替换掉头文件(<em>unistd.h</em>)然后在本地环境下编译调试。</p>
-<p>需要注意到如果在父进程中关闭了管道(pipe)，管道里的缓存会被清空。所以父进程可以在输出完后再写入一个<strong>0(EOF)</strong>，并交由子进程关闭管道。</p>
-<p>在编写的时候<strong>不宜过早优化</strong>，可以在确定算法正确后再优化管道数的问题。可以用一个栈(stack)来管理可用的管道，至于要不要给栈上锁，我觉得在这个例子里是不需要的：唯一的问题就是栈可能为空。</p>
+<p>需要注意到如果在父进程中关闭了管道(pipe)，管道里的缓存会被同时清空。所以父进程可以在输出完后再写入一个<strong>0(EOF)</strong>，并交由子进程关闭管道。</p>
+<p>在编写的时候<strong>不宜过早优化</strong>，可以在确定算法正确性后再优化管道数使用的问题。可以用一个栈(stack)来管理可用的管道，至于要不要给栈上锁，我觉得在这个例子里是不需要的：唯一的问题就是栈可能为空。</p>
 <h3 id="lec-2-syscall" class="heading-element">
   <a href="#lec-2-syscall" class="heading-mark"></a>LEC 2: syscall</h3><h4 id="trace" class="heading-element">
   <a href="#trace" class="heading-mark"></a>trace</h4><p>这题本身不难，只要想到用类似<code>p-&gt;mask &amp; 1 &lt;&lt; num</code>来判定flag，就解决了一半。</p>
@@ -212,14 +212,16 @@
 <p><img loading="lazy" src="/images/syscall-trace.png" alt="大概是这样" srcset="/images/syscall-trace.png?size=small, /images/syscall-trace.png?size=medium 1.5x, /images/syscall-trace.png?size=large 2x" data-title="大概是这样" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/></p>
 <p>在继约半个小时的撸码后的两个小时debug里，我一度怀疑人生。心里想着再不行就睡觉了的最后一次尝试，结果洗完澡回来就有输出了。
 最后发现bug在电脑上，所有<code>fork()</code>执行完需要5min，而测试的时限是30s&hellip;</p>
-<p>换成7900x跑了一下，只要1.3s，不得不感叹芯片的发展之快。</p>
+<p>换成7900x跑了一下只要1.3s，不得不感叹芯片的发展之快。</p>
 <h3 id="to-be-continue" class="heading-element">
   <a href="#to-be-continue" class="heading-mark"></a>To be continue&hellip;</h3></div><div class="post-footer" id="post-footer">
   <div class="post-info">
     <div class="post-info-line">
       <div class="post-info-mod">
         <span title="更新于 2024-04-27 08:48:00">更新于 2024-04-27&nbsp;</span>
-      </div></div><div class="post-info-line">
+      </div><div class="post-info-license">
+            <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a></span>
+          </div></div><div class="post-info-line">
         <div class="post-info-md"><span><a href="/zh-cn/posts/2296229/index.md" title="阅读原始文档" class="link-to-markdown">阅读原始文档</a></span></div>
         <div class="post-info-share">
           <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="http://localhost:1313/zh-cn/posts/2296229/" data-title="xv6学习笔记" data-hashtags="Linux,Debug"><i class="fa-brands fa-twitter fa-fw" aria-hidden="true"></i></a>
@@ -250,5 +252,6 @@
         </div></div><div id="mask"></div><noscript>
     <div class="noscript-warning">FixIt 主题在启用 JavaScript 的情况下效果最佳。</div>
   </noscript>
-</div><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"复制到剪贴板","editLockTitle":"锁定可编辑代码块","editUnLockTitle":"解锁可编辑代码块","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验。"},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"}};</script><script src="/js/theme.min.js" defer></script></body>
+</div><link rel="preload" href="/lib/katex/katex.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/katex/katex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"复制到剪贴板","editLockTitle":"锁定可编辑代码块","editUnLockTitle":"解锁可编辑代码块","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验。"},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script src="/js/theme.min.js" defer></script></body>
 </html>

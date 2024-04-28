@@ -783,32 +783,7 @@ enableEmoji = true
       Mix = false
     # FixIt 0.2.15 | CHANGED Comment config
     [params.page.comment]
-      enable = false
-      # FixIt 0.2.13 | NEW Artalk comment config (https://artalk.js.org/)
-      [params.page.comment.artalk]
-        enable = false
-        server = "https://yourdomain"
-        site = "默认站点"
-        placeholder = ""
-        noComment = ""
-        sendBtn = ""
-        editorTravel = true
-        flatMode = "auto"
-        # FixIt 0.2.17 | CHANGED enable lightgallery support
-        lightgallery = false
-        locale = "" # FixIt 0.2.15 | NEW
-        # FixIt 0.2.18 | NEW
-        emoticons = ""
-        nestMax = 2
-        nestSort = "DATE_ASC" # ["DATE_ASC", "DATE_DESC", "VOTE_UP_DESC"]
-        vote = true
-        voteDown = false
-        uaBadge = true
-        listSort = true
-        imgUpload = true
-        preview = true
-        versionCheck = true
-      # Disqus comment config (https://disqus.com)
+      enable = true
       [params.page.comment.disqus]
         enable = true
         # Disqus shortname to use Disqus in posts

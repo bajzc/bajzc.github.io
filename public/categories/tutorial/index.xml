@@ -11,7 +11,7 @@
   <author>Jason Li</author>
   <guid>http://localhost:1313/posts/home-nas-deployment/</guid>
   <description><![CDATA[Contents
-Part I - Basic Before All... Choice of Operating System About File System How to install Linux Part II - Network Part III - Docker Docker Network: Frpc Nginx Proxy manager Nextcloud Docker Compose Part IV - Finish? Part I - Basic Before All... What is a home NAS? A typical home NAS is used for storing and sharing photos and files. As an extension to traditional NAS, the server config followed by this article would include more applications like offline downloader, media server, and printer server.]]></description>
+Part I - Basic Before All... Choice of Operating System About File System How to install Linux Part II - Network Part III - Docker Docker Network: Frpc Nginx Proxy manager Nextcloud Docker Compose Part IV - Backup Part I - Basic Before All... What is a home NAS? A typical home NAS is used for storing and sharing photos and files. As an extension to traditional NAS, the server config followed by this article would include more applications like offline downloader, media server, and printer server.]]></description>
 </item>
 <item>
   <title>Install GTK4 on Windows</title>

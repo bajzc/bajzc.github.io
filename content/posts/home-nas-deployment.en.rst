@@ -8,6 +8,7 @@ tags:
 - linux
 categories: 
 - Tutorial
+- Review
 ---
 
 .. contents::
@@ -56,7 +57,7 @@ Not a nerd? Go for `Synology NAS <https://www.synology.com>`_
 About File System
 =================
 
-I'm currently using btrfs, which is a native Linux file system that has lots of modern features attracts me:
+I'm currently using Btrfs, which is a native Linux file system that has lots of modern features attracts me:
 
 1. CoW (copy on write): File won't be overwritten partially and then broken after a sudden power outage
 2. Compression: save your disk and money
@@ -78,10 +79,17 @@ I believe there are thousands of tutorials for beginners.
 **Part II - Network**
 =====================
 
-.. figure:: /images/NAS-network.svg
-  :align: center
+ .. note::
+ 
+	2024.2.11 Update:
 
-  Network structure
+	I switched to use **cloudflare** as my domain host, they provided some useful features:
+	
+	1. I can create a tunnel between cloudflare server and my server, which means when I enable cloudflare WARP on my client, the delay can very much reduce to 50ms.
+
+	2. DDoS-protection, although I don't think there is any point to attract a personal Blog.
+
+.. image:: /images/NAS-network.svg
 
 As far as I know, many ISPs (Internet Service Provider) block **Port** 80 and 443, which basically means you can not access directly to the web page.
 There are many workarounds: use another port instead and specify it when you access; use IPv6 instead but 80 and 443 may still be blocked; use a reverse proxy server but with higher delay.
@@ -125,14 +133,6 @@ My DNS records as reference:
   :align: center
 
   DNS-records
-
-.. note::
-  2024.2.11 Update:
-
-  I switched to use **cloudflare** as my domain host, they provided some useful features:
-  I can create a tunnel between cloudflare server and my server, which means when I enable cloudflare WARP on my client, the delay can very much reduce to 50ms.
-
-  DDoS-protection, although I don't think there is any point to attract a personal Blog.
 
 =====================
 **Part III - Docker**
@@ -307,14 +307,18 @@ As NPM is using HTTP to communicate with Nextcloud:
 Docker Compose
 ==============
 
-All the config chunks I showed are part of the final ``docker-compose.yml`` file.
+All the config scripts I shared are part of the final ``docker-compose.yml`` file.
 
 Install **docker** and `docker-compose <https://docs.docker.com/compose/install/linux/>`_, edit your ``docker-compose.yml`` and run ``docker compose up -d`` under the same folder to start all the applications.
 
-My config `file <https://ipv4.bajzc.com/compose.yml>`_
-
 =====================
-**Part IV - Finish?**
+**Part IV - Backup**
 =====================
 
-To be continued...
+Considering that you may store lots of personal data, such as photos and documents remotely on this server, you should carefully consider the backup issue.
+
+Tools like snapper could be use to prevent from typing something wrong: ``rm -r /`` instead of ``rm -r ./``. Unfortunately，these tools can not help you save data when a hard disk fault happened.
+
+So, build a RAID array or LVM RAID would be nice, but this require you to have have two or more disks with same size, which are usually more expensive than your server...
+
+Use cold backup, instead, allow you backup with disk with different size. For example, I use an 8TB HDD for the online storage and two 2TB disks for cold backup (offline).

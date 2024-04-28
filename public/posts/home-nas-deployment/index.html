@@ -8,21 +8,21 @@
     <title>Home NAS deploment - Random Geek</title><meta name="author" content="Jason Li">
 <meta name="author-link" content="">
 <meta name="description" content="Contents
-Part I - Basic Before All... Choice of Operating System About File System How to install Linux Part II - Network Part III - Docker Docker Network: Frpc Nginx Proxy manager Nextcloud Docker Compose Part IV - Finish? Part I - Basic Before All... What is a home NAS? A typical home NAS is used for storing and sharing photos and files. As an extension to traditional NAS, the server config followed by this article would include more applications like offline downloader, media server, and printer server." /><meta name="keywords" content='NAS, docker, linux' /><meta itemprop="name" content="Home NAS deploment">
+Part I - Basic Before All... Choice of Operating System About File System How to install Linux Part II - Network Part III - Docker Docker Network: Frpc Nginx Proxy manager Nextcloud Docker Compose Part IV - Backup Part I - Basic Before All... What is a home NAS? A typical home NAS is used for storing and sharing photos and files. As an extension to traditional NAS, the server config followed by this article would include more applications like offline downloader, media server, and printer server." /><meta name="keywords" content='NAS, docker, linux' /><meta itemprop="name" content="Home NAS deploment">
 <meta itemprop="description" content="Contents
-Part I - Basic Before All... Choice of Operating System About File System How to install Linux Part II - Network Part III - Docker Docker Network: Frpc Nginx Proxy manager Nextcloud Docker Compose Part IV - Finish? Part I - Basic Before All... What is a home NAS? A typical home NAS is used for storing and sharing photos and files. As an extension to traditional NAS, the server config followed by this article would include more applications like offline downloader, media server, and printer server."><meta itemprop="datePublished" content="2024-02-03T19:37:45+07:00" />
+Part I - Basic Before All... Choice of Operating System About File System How to install Linux Part II - Network Part III - Docker Docker Network: Frpc Nginx Proxy manager Nextcloud Docker Compose Part IV - Backup Part I - Basic Before All... What is a home NAS? A typical home NAS is used for storing and sharing photos and files. As an extension to traditional NAS, the server config followed by this article would include more applications like offline downloader, media server, and printer server."><meta itemprop="datePublished" content="2024-02-03T19:37:45+07:00" />
 <meta itemprop="dateModified" content="2024-02-03T19:37:45+07:00" />
-<meta itemprop="wordCount" content="1212">
+<meta itemprop="wordCount" content="1327">
 <meta itemprop="keywords" content="NAS,docker,linux," /><meta property="og:title" content="Home NAS deploment" />
 <meta property="og:description" content="Contents
-Part I - Basic Before All... Choice of Operating System About File System How to install Linux Part II - Network Part III - Docker Docker Network: Frpc Nginx Proxy manager Nextcloud Docker Compose Part IV - Finish? Part I - Basic Before All... What is a home NAS? A typical home NAS is used for storing and sharing photos and files. As an extension to traditional NAS, the server config followed by this article would include more applications like offline downloader, media server, and printer server." />
+Part I - Basic Before All... Choice of Operating System About File System How to install Linux Part II - Network Part III - Docker Docker Network: Frpc Nginx Proxy manager Nextcloud Docker Compose Part IV - Backup Part I - Basic Before All... What is a home NAS? A typical home NAS is used for storing and sharing photos and files. As an extension to traditional NAS, the server config followed by this article would include more applications like offline downloader, media server, and printer server." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://localhost:1313/posts/home-nas-deployment/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2024-02-03T19:37:45+07:00" />
 <meta property="article:modified_time" content="2024-02-03T19:37:45+07:00" />
 <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Home NAS deploment"/>
 <meta name="twitter:description" content="Contents
-Part I - Basic Before All... Choice of Operating System About File System How to install Linux Part II - Network Part III - Docker Docker Network: Frpc Nginx Proxy manager Nextcloud Docker Compose Part IV - Finish? Part I - Basic Before All... What is a home NAS? A typical home NAS is used for storing and sharing photos and files. As an extension to traditional NAS, the server config followed by this article would include more applications like offline downloader, media server, and printer server."/>
+Part I - Basic Before All... Choice of Operating System About File System How to install Linux Part II - Network Part III - Docker Docker Network: Frpc Nginx Proxy manager Nextcloud Docker Compose Part IV - Backup Part I - Basic Before All... What is a home NAS? A typical home NAS is used for storing and sharing photos and files. As an extension to traditional NAS, the server config followed by this article would include more applications like offline downloader, media server, and printer server."/>
 <meta name="application-name" content="FixIt">
 <meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -37,7 +37,7 @@ Part I - Basic Before All... Choice of Operating System About File System How to
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "http:\/\/localhost:1313\/posts\/home-nas-deployment\/"
-    },"genre": "posts","keywords": "NAS, docker, linux","wordcount":  1212 ,
+    },"genre": "posts","keywords": "NAS, docker, linux","wordcount":  1327 ,
     "url": "http:\/\/localhost:1313\/posts\/home-nas-deployment\/","datePublished": "2024-02-03T19:37:45+07:00","dateModified": "2024-02-03T19:37:45+07:00","publisher": {
       "@type": "Organization",
       "name": ""},"author": {
@@ -122,7 +122,7 @@ Part I - Basic Before All... Choice of Operating System About File System How to
     <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>Home NAS deploment</span>
       </h1></div><div class="post-meta">
       <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
-      Jason Li</span></span><span class="post-included-in">&nbsp;included in <a href="/categories/tutorial/" class="post-category" title="Category - Tutorial"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> Tutorial</a></span></div><div class="post-meta-line"><span title="published on 2024-02-03 19:37:45"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2024-02-03">2024-02-03</time></span>&nbsp;<span title="1212 words"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>About 1300 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>6 minutes</span>&nbsp;</div>
+      Jason Li</span></span><span class="post-included-in">&nbsp;included in <a href="/categories/tutorial/" class="post-category" title="Category - Tutorial"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> Tutorial</a>&ensp;<a href="/categories/review/" class="post-category" title="Category - Review"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> Review</a></span></div><div class="post-meta-line"><span title="published on 2024-02-03 19:37:45"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2024-02-03">2024-02-03</time></span>&nbsp;<span title="1327 words"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>About 1400 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>7 minutes</span>&nbsp;</div>
     </div><div class="details toc" id="toc-static" data-kept="false">
         <div class="details-summary toc-title">
           <span>Contents</span>
@@ -151,7 +151,7 @@ Part I - Basic Before All... Choice of Operating System About File System How to
 <li><a class="reference internal" href="#docker-compose" id="toc-entry-12">Docker Compose</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#part-iv-finish" id="toc-entry-13"><strong>Part IV - Finish?</strong></a></li>
+<li><a class="reference internal" href="#part-iv-backup" id="toc-entry-13"><strong>Part IV - Backup</strong></a></li>
 </ul>
 </div>
 <div class="section" id="part-i-basic">
@@ -189,7 +189,7 @@ memory:
 </div>
 <div class="section" id="about-file-system">
 <h3><a class="toc-backref" href="#toc-entry-4">About File System</a></h3>
-<p>I'm currently using btrfs, which is a native Linux file system that has lots of modern features attracts me:</p>
+<p>I'm currently using Btrfs, which is a native Linux file system that has lots of modern features attracts me:</p>
 <ol class="arabic simple">
 <li>CoW (copy on write): File won't be overwritten partially and then broken after a sudden power outage</li>
 <li>Compression: save your disk and money</li>
@@ -206,10 +206,18 @@ memory:
 </div>
 <div class="section" id="part-ii-network">
 <h2><a class="toc-backref" href="#toc-entry-6"><strong>Part II - Network</strong></a></h2>
-<div class="figure align-center">
-<object data="/images/NAS-network.svg" type="image/svg+xml">/images/NAS-network.svg</object>
-<p class="caption">Network structure</p>
+<blockquote>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>2024.2.11 Update:</p>
+<p>I switched to use <strong>cloudflare</strong> as my domain host, they provided some useful features:</p>
+<ol class="last arabic simple">
+<li>I can create a tunnel between cloudflare server and my server, which means when I enable cloudflare WARP on my client, the delay can very much reduce to 50ms.</li>
+<li>DDoS-protection, although I don't think there is any point to attract a personal Blog.</li>
+</ol>
 </div>
+</blockquote>
+<object data="/images/NAS-network.svg" type="image/svg+xml">/images/NAS-network.svg</object>
 <p>As far as I know, many ISPs (Internet Service Provider) block <strong>Port</strong> 80 and 443, which basically means you can not access directly to the web page.
 There are many workarounds: use another port instead and specify it when you access; use IPv6 instead but 80 and 443 may still be blocked; use a reverse proxy server but with higher delay.</p>
 <p>I'm using <a class="reference external" href="https://github.com/fatedier/frp">frp</a> as my reverse proxy software. A reverse proxy server means all your data will pass through a server held by others, so for those highly concerned about security, check out my previous post <a class="reference external" href="https://bajzc.com/posts/lets-encrypt-gentoo/">here</a></p>
@@ -243,13 +251,6 @@ A frp server could be a VPS you buy from big cloud computing company, or from <s
 <div class="figure align-center">
 <img alt="/images/DNS-records.png" src="/images/DNS-records.png" />
 <p class="caption">DNS-records</p>
-</div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p>2024.2.11 Update:</p>
-<p>I switched to use <strong>cloudflare</strong> as my domain host, they provided some useful features:
-I can create a tunnel between cloudflare server and my server, which means when I enable cloudflare WARP on my client, the delay can very much reduce to 50ms.</p>
-<p class="last">DDoS-protection, although I don't think there is any point to attract a personal Blog.</p>
 </div>
 </div>
 <div class="section" id="part-iii-docker">
@@ -396,14 +397,16 @@ array (
 </div>
 <div class="section" id="docker-compose">
 <h3><a class="toc-backref" href="#toc-entry-12">Docker Compose</a></h3>
-<p>All the config chunks I showed are part of the final <tt class="docutils literal"><span class="pre">docker-compose.yml</span></tt> file.</p>
+<p>All the config scripts I shared are part of the final <tt class="docutils literal"><span class="pre">docker-compose.yml</span></tt> file.</p>
 <p>Install <strong>docker</strong> and <a class="reference external" href="https://docs.docker.com/compose/install/linux/">docker-compose</a>, edit your <tt class="docutils literal"><span class="pre">docker-compose.yml</span></tt> and run <tt class="docutils literal">docker compose up <span class="pre">-d</span></tt> under the same folder to start all the applications.</p>
-<p>My config <a class="reference external" href="https://ipv4.bajzc.com/compose.yml">file</a></p>
 </div>
 </div>
-<div class="section" id="part-iv-finish">
-<h2><a class="toc-backref" href="#toc-entry-13"><strong>Part IV - Finish?</strong></a></h2>
-<p>To be continued...</p>
+<div class="section" id="part-iv-backup">
+<h2><a class="toc-backref" href="#toc-entry-13"><strong>Part IV - Backup</strong></a></h2>
+<p>Considering that you may store lots of personal data, such as photos and documents remotely on this server, you should carefully consider the backup issue.</p>
+<p>Tools like snapper could be use to prevent from typing something wrong: <tt class="docutils literal">rm <span class="pre">-r</span> /</tt> instead of <tt class="docutils literal">rm <span class="pre">-r</span> ./</tt>. Unfortunately，these tools can not help you save data when a hard disk fault happened.</p>
+<p>So, build a RAID array or LVM RAID would be nice, but this require you to have have two or more disks with same size, which are usually more expensive than your server...</p>
+<p>Use cold backup, instead, allow you backup with disk with different size. For example, I use an 8TB HDD for the online storage and two 2TB disks for cold backup (offline).</p>
 </div>
 </div></div><div class="post-footer" id="post-footer">
   <div class="post-info">
