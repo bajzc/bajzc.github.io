@@ -66,7 +66,16 @@ forkforkfork(char *s)
 在继约半个小时的撸码后的两个小时debug里，我一度怀疑人生。心里想着再不行就睡觉了的最后一次尝试，结果洗完澡回来就有输出了。
 最后发现bug在电脑上，所有`fork()`执行完需要5min，而测试的时限是30s...
 
-换成7900x跑了一下只要1.3s，不得不感叹芯片的发展之快。
+换成7900x跑了一下只要1.3s...
+
+### LEC 3: pgtbl
+
+这里的三道题都要求你看懂与其相关的大部分函数，也或多或少都是可以通过魔改现有函数来解题的。
+比如`copyin`里，要在`exec()`里将对进程页表的修改同时也映射到私有的内核页表里。直接修改`uvmalloc()`应该也是可行的，
+但是也可以借鉴一下`uvmcopy()`来一次性的映射所有内存。
+
+题目有的指示比较隐晦，比如*You&#39;ll need a way to free a page table without also freeing the leaf physical memory pages*
+看上去似乎要找出什么小trick，但实际上只要看一眼`freewalk()`的代码就明白了（结果还是调试了很久...）
 
 ### To be continue...
 

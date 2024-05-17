@@ -83,7 +83,7 @@ forkforkfork(char *s)
 比如`copyin`里，要在`exec()`里将对进程页表的修改同时也映射到私有的内核页表里。直接修改`uvmalloc()`应该也是可行的，
 但是也可以借鉴一下`uvmcopy()`来一次性的映射所有内存。
 
-题目有的指示比较隐晦，比如*"You'll need a way to free a page table without also freeing the leaf physical memory pages."*，
-看上去似乎要找出什么小trick，但实际上只要看一眼`freewalk()`的代码就明白了（结果我调试了半个小时...）
+题目有的指示比较隐晦，比如*You'll need a way to free a page table without also freeing the leaf physical memory pages*
+看上去似乎要找出什么小trick，但实际上只要看一眼`freewalk()`的代码就明白了（结果还是调试了很久...）
 
 ### To be continue...

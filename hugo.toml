@@ -76,6 +76,12 @@ enableEmoji = true
     weight = 3
     [menu.main.params]
       icon = "fa-solid fa-tags"
+  [[menu.main]]
+    identifier = "gallery"
+    parent = ""
+    title = "Photo Gallery"
+    url = "https://gallery.bajzc.com/"
+    weight = 4
 
 # -------------------------------------------------------------------------------------
 # Related content Configuration
@@ -1116,6 +1122,13 @@ enableEmoji = true
       url = "/categories/"
       title = ""
       weight = 3
+    [[languages.en.menu.main]]
+      identifier = "gallery"
+      parent = ""
+      name = "Photo Gallery"
+      url = "https://gallery.bajzc.com/"
+      weight = 4
+
 
   [languages.zh-cn]
     weight = 2
@@ -1149,3 +1162,10 @@ enableEmoji = true
       url = "/categories/"
       title = ""
       weight = 3
+    [[languages.zh-cn.menu.main]]
+      identifier = "gallery"
+      parent = ""
+      title = ""
+      name = "摄影"
+      url = "https://gallery.bajzc.com/"
+      weight = 4
