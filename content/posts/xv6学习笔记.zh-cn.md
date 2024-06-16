@@ -1,6 +1,6 @@
 ---
 title: xv6学习笔记
-date: 2024-04-27T08:48:00+07:00
+date: 2024-06-16
 slug: 2296229
 draft: false
 tags:
@@ -72,18 +72,28 @@ forkforkfork(char *s)
 
 ![大概是这样](/images/syscall-trace.png)
 
-在继约半个小时的撸码后的两个小时debug里，我一度怀疑人生。心里想着再不行就睡觉了的最后一次尝试，结果洗完澡回来就有输出了。
+在继约半小时撸码后的两个小时debug时间里，一度怀疑人生。
 最后发现bug在电脑上，所有`fork()`执行完需要5min，而测试的时限是30s...
 
 换成7900x跑了一下只要1.3s...
 
-### LEC 3: pgtbl
+### LEC 4: pgtbl
 
 这里的三道题都要求你看懂与其相关的大部分函数，也或多或少都是可以通过魔改现有函数来解题的。
 比如`copyin`里，要在`exec()`里将对进程页表的修改同时也映射到私有的内核页表里。直接修改`uvmalloc()`应该也是可行的，
 但是也可以借鉴一下`uvmcopy()`来一次性的映射所有内存。
 
 题目有的指示比较隐晦，比如*You'll need a way to free a page table without also freeing the leaf physical memory pages*
-看上去似乎要找出什么小trick，但实际上只要看一眼`freewalk()`的代码就明白了（结果还是调试了很久...）
+看上去似乎要找出什么小trick，但实际上只要看一眼`freewalk()`的代码就明白了。
+
+### LEC 8 lazy:
+
+题目相对比较简单，也是因为主要思路和代码已经在课上给出。
+
+但还有一些小坑：第三问第四小条——
+*Handle the case in which a process passes a valid address from sbrk() to a system call such as read or write, but the memory for that address has not yet been allocated.*
+简单阅读源代码后可以定位到`syscall.c`里的`argaddr()`函数，简单的复制`trap.c`里的修改是通过不了`validatetest`的。
+首先需要调用`walkaddr`函数验证`*ip`是否已经分配过了。然后很重要的一点来了：
+如果地址不合法，`p->killed = 1`并不会像在`usertrap()`里那样使进程正确的退出，应直接`return -1`交由对应的SYS_*函数处理。
 
 ### To be continue...

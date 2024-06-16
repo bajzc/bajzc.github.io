@@ -8,15 +8,15 @@
     <title>xv6学习笔记 - 随笔技</title><meta name="author" content="Jason Li">
 <meta name="author-link" content="">
 <meta name="description" content="注：标题所指的xv6是MIT的计算机操作系统课程S.081。 LEC 1: util 环境部署上来就在环境部署上遇到了点小问题，虽然别人不太可能遇到，但仍记录在" /><meta name="keywords" content='Linux, Debug' /><meta itemprop="name" content="xv6学习笔记">
-<meta itemprop="description" content="注：标题所指的xv6是MIT的计算机操作系统课程S.081。 LEC 1: util 环境部署上来就在环境部署上遇到了点小问题，虽然别人不太可能遇到，但仍记录在"><meta itemprop="datePublished" content="2024-04-27T08:48:00+07:00" />
-<meta itemprop="dateModified" content="2024-04-27T08:48:00+07:00" />
-<meta itemprop="wordCount" content="1482">
+<meta itemprop="description" content="注：标题所指的xv6是MIT的计算机操作系统课程S.081。 LEC 1: util 环境部署上来就在环境部署上遇到了点小问题，虽然别人不太可能遇到，但仍记录在"><meta itemprop="datePublished" content="2024-06-16T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2024-06-16T00:00:00+00:00" />
+<meta itemprop="wordCount" content="1702">
 <meta itemprop="keywords" content="Linux,Debug," /><meta property="og:title" content="xv6学习笔记" />
 <meta property="og:description" content="注：标题所指的xv6是MIT的计算机操作系统课程S.081。 LEC 1: util 环境部署上来就在环境部署上遇到了点小问题，虽然别人不太可能遇到，但仍记录在" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://localhost:1313/zh-cn/posts/2296229/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2024-04-27T08:48:00+07:00" />
-<meta property="article:modified_time" content="2024-04-27T08:48:00+07:00" />
+<meta property="article:published_time" content="2024-06-16T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-06-16T00:00:00+00:00" />
 <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="xv6学习笔记"/>
 <meta name="twitter:description" content="注：标题所指的xv6是MIT的计算机操作系统课程S.081。 LEC 1: util 环境部署上来就在环境部署上遇到了点小问题，虽然别人不太可能遇到，但仍记录在"/>
 <meta name="application-name" content="FixIt">
@@ -33,8 +33,8 @@
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "http:\/\/localhost:1313\/zh-cn\/posts\/2296229\/"
-    },"genre": "posts","keywords": "Linux, Debug","wordcount":  1482 ,
-    "url": "http:\/\/localhost:1313\/zh-cn\/posts\/2296229\/","datePublished": "2024-04-27T08:48:00+07:00","dateModified": "2024-04-27T08:48:00+07:00","publisher": {
+    },"genre": "posts","keywords": "Linux, Debug","wordcount":  1702 ,
+    "url": "http:\/\/localhost:1313\/zh-cn\/posts\/2296229\/","datePublished": "2024-06-16T00:00:00+00:00","dateModified": "2024-06-16T00:00:00+00:00","publisher": {
       "@type": "Organization",
       "name": ""},"author": {
         "@type": "Person",
@@ -131,7 +131,7 @@
     <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>xv6学习笔记</span>
       </h1></div><div class="post-meta">
       <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
-      Jason Li</span></span><span class="post-included-in">&nbsp;收录于 <a href="/zh-cn/categories/review/" class="post-category" title="分类 - Review"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> Review</a></span></div><div class="post-meta-line"><span title="发布于 2024-04-27 08:48:00"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2024-04-27">2024-04-27</time></span>&nbsp;<span title="1482 字"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 1500 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 3 分钟</span>&nbsp;</div>
+      Jason Li</span></span><span class="post-included-in">&nbsp;收录于 <a href="/zh-cn/categories/review/" class="post-category" title="分类 - Review"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> Review</a></span></div><div class="post-meta-line"><span title="发布于 2024-06-16 00:00:00"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2024-06-16">2024-06-16</time></span>&nbsp;<span title="1702 字"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 1800 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 4 分钟</span>&nbsp;</div>
     </div><div class="details toc" id="toc-static" data-kept="false">
         <div class="details-summary toc-title">
           <span>目录</span>
@@ -153,7 +153,8 @@
             <li><a href="#trace">trace</a></li>
           </ul>
         </li>
-        <li><a href="#lec-3-pgtbl">LEC 3: pgtbl</a></li>
+        <li><a href="#lec-4-pgtbl">LEC 4: pgtbl</a></li>
+        <li><a href="#lec-8-lazy">LEC 8 lazy:</a></li>
         <li><a href="#to-be-continue">To be continue&hellip;</a></li>
       </ul>
     </li>
@@ -224,21 +225,28 @@
 </div>
 </div><p>由于<code>fork()</code>本身的特性，它的返回时间依赖它的所有子进程。所以在通过了所有其他测试样例的大前提下，这个测试却没有任何输出：</p>
 <p><img loading="lazy" src="/images/syscall-trace.png" alt="大概是这样" srcset="/images/syscall-trace.png?size=small, /images/syscall-trace.png?size=medium 1.5x, /images/syscall-trace.png?size=large 2x" data-title="大概是这样" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/></p>
-<p>在继约半个小时的撸码后的两个小时debug里，我一度怀疑人生。心里想着再不行就睡觉了的最后一次尝试，结果洗完澡回来就有输出了。
+<p>在继约半小时撸码后的两个小时debug时间里，一度怀疑人生。
 最后发现bug在电脑上，所有<code>fork()</code>执行完需要5min，而测试的时限是30s&hellip;</p>
 <p>换成7900x跑了一下只要1.3s&hellip;</p>
-<h3 id="lec-3-pgtbl" class="heading-element">
-  <a href="#lec-3-pgtbl" class="heading-mark"></a>LEC 3: pgtbl</h3><p>这里的三道题都要求你看懂与其相关的大部分函数，也或多或少都是可以通过魔改现有函数来解题的。
+<h3 id="lec-4-pgtbl" class="heading-element">
+  <a href="#lec-4-pgtbl" class="heading-mark"></a>LEC 4: pgtbl</h3><p>这里的三道题都要求你看懂与其相关的大部分函数，也或多或少都是可以通过魔改现有函数来解题的。
 比如<code>copyin</code>里，要在<code>exec()</code>里将对进程页表的修改同时也映射到私有的内核页表里。直接修改<code>uvmalloc()</code>应该也是可行的，
 但是也可以借鉴一下<code>uvmcopy()</code>来一次性的映射所有内存。</p>
 <p>题目有的指示比较隐晦，比如<em>You&rsquo;ll need a way to free a page table without also freeing the leaf physical memory pages</em>
-看上去似乎要找出什么小trick，但实际上只要看一眼<code>freewalk()</code>的代码就明白了（结果还是调试了很久&hellip;）</p>
+看上去似乎要找出什么小trick，但实际上只要看一眼<code>freewalk()</code>的代码就明白了。</p>
+<h3 id="lec-8-lazy" class="heading-element">
+  <a href="#lec-8-lazy" class="heading-mark"></a>LEC 8 lazy:</h3><p>题目相对比较简单，也是因为主要思路和代码已经在课上给出。</p>
+<p>但还有一些小坑：第三问第四小条——
+<em>Handle the case in which a process passes a valid address from sbrk() to a system call such as read or write, but the memory for that address has not yet been allocated.</em>
+简单阅读源代码后可以定位到<code>syscall.c</code>里的<code>argaddr()</code>函数，简单的复制<code>trap.c</code>里的修改是通过不了<code>validatetest</code>的。
+首先需要调用<code>walkaddr</code>函数验证<code>*ip</code>是否已经分配过了。然后很重要的一点来了：
+如果地址不合法，<code>p-&gt;killed = 1</code>并不会像在<code>usertrap()</code>里那样使进程正确的退出，应直接<code>return -1</code>交由对应的SYS_*函数处理。</p>
 <h3 id="to-be-continue" class="heading-element">
   <a href="#to-be-continue" class="heading-mark"></a>To be continue&hellip;</h3></div><div class="post-footer" id="post-footer">
   <div class="post-info">
     <div class="post-info-line">
       <div class="post-info-mod">
-        <span title="更新于 2024-04-27 08:48:00">更新于 2024-04-27&nbsp;</span>
+        <span title="更新于 2024-06-16 00:00:00">更新于 2024-06-16&nbsp;</span>
       </div><div class="post-info-license">
             <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a></span>
           </div></div><div class="post-info-line">

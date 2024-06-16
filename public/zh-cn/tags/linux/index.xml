@@ -4,10 +4,10 @@
     <link>http://localhost:1313/zh-cn/tags/linux/</link>
     <description>Linux - 标签 | 随笔技</description>
     <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>lzecheng98@gmail.com (Jason Li)</managingEditor>
-      <webMaster>lzecheng98@gmail.com (Jason Li)</webMaster><lastBuildDate>Sat, 27 Apr 2024 08:48:00 &#43;0700</lastBuildDate><atom:link href="http://localhost:1313/zh-cn/tags/linux/" rel="self" type="application/rss+xml" /><item>
+      <webMaster>lzecheng98@gmail.com (Jason Li)</webMaster><lastBuildDate>Sun, 16 Jun 2024 00:00:00 &#43;0000</lastBuildDate><atom:link href="http://localhost:1313/zh-cn/tags/linux/" rel="self" type="application/rss+xml" /><item>
   <title>xv6学习笔记</title>
   <link>http://localhost:1313/zh-cn/posts/2296229/</link>
-  <pubDate>Sat, 27 Apr 2024 08:48:00 &#43;0700</pubDate>
+  <pubDate>Sun, 16 Jun 2024 00:00:00 &#43;0000</pubDate>
   <author>Jason Li</author>
   <guid>http://localhost:1313/zh-cn/posts/2296229/</guid>
   <description><![CDATA[注：标题所指的xv6是MIT的计算机操作系统课程S.081。 LEC 1: util 环境部署上来就在环境部署上遇到了点小问题，虽然别人不太可能遇到，但仍记录在]]></description>
