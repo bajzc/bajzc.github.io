@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
   <channel>
     <title>Docker - Tag - Random Geek</title>
-    <link>https://bajzc.org/tags/docker/</link>
+    <link>http://localhost:1313/tags/docker/</link>
     <description>Docker - Tag | Random Geek</description>
     <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>lzecheng98@gmail.com (Jason Li)</managingEditor>
-      <webMaster>lzecheng98@gmail.com (Jason Li)</webMaster><lastBuildDate>Sat, 03 Feb 2024 19:37:45 &#43;0700</lastBuildDate><atom:link href="https://bajzc.org/tags/docker/" rel="self" type="application/rss+xml" /><item>
+      <webMaster>lzecheng98@gmail.com (Jason Li)</webMaster><lastBuildDate>Sat, 03 Feb 2024 19:37:45 &#43;0700</lastBuildDate><atom:link href="http://localhost:1313/tags/docker/" rel="self" type="application/rss+xml" /><item>
   <title>Home NAS deploment</title>
-  <link>https://bajzc.org/posts/home-nas-deployment/</link>
+  <link>http://localhost:1313/posts/home-nas-deployment/</link>
   <pubDate>Sat, 03 Feb 2024 19:37:45 &#43;0700</pubDate>
   <author>Jason Li</author>
-  <guid>https://bajzc.org/posts/home-nas-deployment/</guid>
+  <guid>http://localhost:1313/posts/home-nas-deployment/</guid>
   <description><![CDATA[Contents
 Part I - Basic Before All... Choice of Operating System About File System How to install Linux Part II - Network Part III - Docker Docker Network: Frpc Nginx Proxy manager Nextcloud Docker Compose Part IV - Backup Part I - Basic Before All... What is a home NAS? A typical home NAS is used for storing and sharing photos and files. As an extension to traditional NAS, the server config followed by this article would include more applications like offline downloader, media server, and printer server.]]></description>
 </item>

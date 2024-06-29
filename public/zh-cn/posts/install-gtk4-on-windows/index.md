@@ -184,5 +184,5 @@
 ---
 
 > 作者: Jason Li  
-> URL: https://bajzc.org/zh-cn/posts/install-gtk4-on-windows/  
+> URL: http://localhost:1313/zh-cn/posts/install-gtk4-on-windows/  
 
