@@ -22,6 +22,9 @@ categories:
 
 Gentoo官方配置编译出的[qemu](https://packages.gentoo.org/packages/app-emulation/qemu)对于xv6也是不可用的状态,没有任何输出（QEMU_SOFTMMU_TARGETS="riscv64"），可能是版本太高了导致不兼容...
 
+> 2024.7.4更新：
+> 关于qemu没有输出的问题，可以换用2023版的xv6(**git clone git://g.csail.mit.edu/xv6-labs-2023**)。
+
 二者的解决方案是一样的，就是按照课程的教程下载编译安装对应的软件。安装位置可以选在`/opt`,最后在`.[zsh,bash]rc`里加上:`export PATH="/opt/qemu/bin:/opt/riscv-gcc/bin:%PATH"`
 
 #### xargs.c
@@ -109,4 +112,25 @@ forkforkfork(char *s)
 说明复制COW页面的时候缺少了检查`pa`和`va`的步骤。这些条件在`usertrap()`和`copyout()`里都要用到。
 
 这里也发现了一个使用gdb调试的小技巧——要想跳转到`memmove`在内核崩溃前的最后一次（接近）执行，可以先加载用户程序的符号，在测试函数那里断下。再加载内核符号，在`memmove`断下，这样就不用一步一步跳转了。
+
+### LEC 11 thread:
+
+这一个lab比较简单，唯一一个卡住的点在第一题。在`thread_create()`里忘记了栈是向上增长的，把寄存器`sp`直接指向了`t->stack`。
+这里导致了一个很有意思的结果，`uthread`只会运行c的循环，输出类似于：
+```
+$ uthread
+thread_a started
+thread_b started
+thread_c started
+thread_c 0
+thread_c 1
+thread_c 2
+...
+thread_c 99
+thread_c: exit after 100
+thread_schedule: no runnable threads
+$ 
+```
+这是因为stack在向下生长的时候把内存里相邻的上一个`thread`结构体改写了，其中的`state`如果被改写成别的，那么`thread_schedule`就可能永远不会切换到它。
+
 ### To be continue...

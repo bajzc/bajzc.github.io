@@ -10,7 +10,7 @@
 <meta name="description" content="注：标题所指的xv6是MIT的计算机操作系统课程S.081。 LEC 1: util 环境部署上来就在环境部署上遇到了点小问题，虽然别人不太可能遇到，但仍记录在" /><meta name="keywords" content='Linux, Debug' /><meta itemprop="name" content="xv6学习笔记">
 <meta itemprop="description" content="注：标题所指的xv6是MIT的计算机操作系统课程S.081。 LEC 1: util 环境部署上来就在环境部署上遇到了点小问题，虽然别人不太可能遇到，但仍记录在"><meta itemprop="datePublished" content="2024-06-16T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2024-06-16T00:00:00+00:00" />
-<meta itemprop="wordCount" content="2162">
+<meta itemprop="wordCount" content="2487">
 <meta itemprop="keywords" content="Linux,Debug," /><meta property="og:title" content="xv6学习笔记" />
 <meta property="og:description" content="注：标题所指的xv6是MIT的计算机操作系统课程S.081。 LEC 1: util 环境部署上来就在环境部署上遇到了点小问题，虽然别人不太可能遇到，但仍记录在" />
 <meta property="og:type" content="article" />
@@ -33,7 +33,7 @@
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "http:\/\/localhost:1313\/zh-cn\/posts\/2296229\/"
-    },"genre": "posts","keywords": "Linux, Debug","wordcount":  2162 ,
+    },"genre": "posts","keywords": "Linux, Debug","wordcount":  2487 ,
     "url": "http:\/\/localhost:1313\/zh-cn\/posts\/2296229\/","datePublished": "2024-06-16T00:00:00+00:00","dateModified": "2024-06-16T00:00:00+00:00","publisher": {
       "@type": "Organization",
       "name": ""},"author": {
@@ -131,7 +131,7 @@
     <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>xv6学习笔记</span>
       </h1></div><div class="post-meta">
       <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
-      Jason Li</span></span><span class="post-included-in">&nbsp;收录于 <a href="/zh-cn/categories/review/" class="post-category" title="分类 - Review"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> Review</a></span></div><div class="post-meta-line"><span title="发布于 2024-06-16 00:00:00"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2024-06-16">2024-06-16</time></span>&nbsp;<span title="2162 字"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 2200 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 5 分钟</span>&nbsp;</div>
+      Jason Li</span></span><span class="post-included-in">&nbsp;收录于 <a href="/zh-cn/categories/review/" class="post-category" title="分类 - Review"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> Review</a></span></div><div class="post-meta-line"><span title="发布于 2024-06-16 00:00:00"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2024-06-16">2024-06-16</time></span>&nbsp;<span title="2487 字"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 2500 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 5 分钟</span>&nbsp;</div>
     </div><div class="details toc" id="toc-static" data-kept="false">
         <div class="details-summary toc-title">
           <span>目录</span>
@@ -156,6 +156,7 @@
         <li><a href="#lec-4-pgtbl">LEC 4: pgtbl</a></li>
         <li><a href="#lec-8-lazy">LEC 8 lazy:</a></li>
         <li><a href="#lec-10-cow">LEC 10 COW:</a></li>
+        <li><a href="#lec-11-thread">LEC 11 thread:</a></li>
         <li><a href="#to-be-continue">To be continue&hellip;</a></li>
       </ul>
     </li>
@@ -167,6 +168,10 @@
   <a href="#%e7%8e%af%e5%a2%83%e9%83%a8%e7%bd%b2" class="heading-mark"></a>环境部署</h4><p>上来就在环境部署上遇到了点小问题，虽然别人不太可能遇到，但仍记录在此，仅作参考。</p>
 <p>我用的是Gentoo Linux，通过<a href="https://wiki.gentoo.org/wiki/Crossdev"target="_blank" rel="external nofollow noopener noreferrer">crossdev</a>编译出的<code>riscv64-unkown-linux-gnu</code>是不可用的，个人猜测是因为它链接了Linux的一些库，而xv6是裸二进制的elf环境。（对于toolchain并不熟悉，欢迎指正）。</p>
 <p>Gentoo官方配置编译出的<a href="https://packages.gentoo.org/packages/app-emulation/qemu"target="_blank" rel="external nofollow noopener noreferrer">qemu</a>对于xv6也是不可用的状态,没有任何输出（QEMU_SOFTMMU_TARGETS=&ldquo;riscv64&rdquo;），可能是版本太高了导致不兼容&hellip;</p>
+<blockquote>
+<p>2024.7.4更新：
+关于qemu没有输出的问题，可以换用2023版的xv6(<strong>git clone git://g.csail.mit.edu/xv6-labs-2023</strong>)。</p>
+</blockquote>
 <p>二者的解决方案是一样的，就是按照课程的教程下载编译安装对应的软件。安装位置可以选在<code>/opt</code>,最后在<code>.[zsh,bash]rc</code>里加上:<code>export PATH=&quot;/opt/qemu/bin:/opt/riscv-gcc/bin:%PATH&quot;</code></p>
 <h4 id="xargsc" class="heading-element">
   <a href="#xargsc" class="heading-mark"></a>xargs.c</h4><p>一开使有一个小问题没注意到，xv6要求的xargs是将每一行的输入都与argv单独合并。</p>
@@ -225,7 +230,7 @@
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>由于<code>fork()</code>本身的特性，它的返回时间依赖它的所有子进程。所以在通过了所有其他测试样例的大前提下，这个测试却没有任何输出：</p>
-<p><img loading="lazy" src="/images/syscall-trace.png" alt="大概是这样" srcset="/images/syscall-trace.png?size=small, /images/syscall-trace.png?size=medium 1.5x, /images/syscall-trace.png?size=large 2x" data-title="大概是这样" style="--width: 1028px;--aspect-ratio: 1028 / 677;background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/></p>
+<p><img loading="lazy" src="/images/syscall-trace.png" alt="大概是这样" srcset="/images/syscall-trace.png?size=small, /images/syscall-trace.png?size=medium 1.5x, /images/syscall-trace.png?size=large 2x" data-title="大概是这样" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/></p>
 <p>在继约半小时撸码后的两个小时debug时间里，一度怀疑人生。
 最后发现bug在电脑上，所有<code>fork()</code>执行完需要5min，而测试的时限是30s&hellip;</p>
 <p>换成7900x跑了一下只要1.3s&hellip;</p>
@@ -250,6 +255,39 @@
 <p>最麻烦的是要通过<code>usertests</code>，很多组测试都会在<code>memmove</code>上触发<code>kerneltrap</code>。用gdb看了一下，参数<code>src</code>，和<code>dst</code>都会出现为0的情况，
 说明复制COW页面的时候缺少了检查<code>pa</code>和<code>va</code>的步骤。这些条件在<code>usertrap()</code>和<code>copyout()</code>里都要用到。</p>
 <p>这里也发现了一个使用gdb调试的小技巧——要想跳转到<code>memmove</code>在内核崩溃前的最后一次（接近）执行，可以先加载用户程序的符号，在测试函数那里断下。再加载内核符号，在<code>memmove</code>断下，这样就不用一步一步跳转了。</p>
+<h3 id="lec-11-thread" class="heading-element">
+  <a href="#lec-11-thread" class="heading-mark"></a>LEC 11 thread:</h3><p>这一个lab比较简单，唯一一个卡住的点在第一题。在<code>thread_create()</code>里忘记了栈是向上增长的，把寄存器<code>sp</code>直接指向了<code>t-&gt;stack</code>。
+这里导致了一个很有意思的结果，<code>uthread</code>只会运行c的循环，输出类似于：</p>
+<div class="highlight" id="id-2"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">$ uthread
+</span></span><span class="line"><span class="cl">thread_a started
+</span></span><span class="line"><span class="cl">thread_b started
+</span></span><span class="line"><span class="cl">thread_c started
+</span></span><span class="line"><span class="cl">thread_c 0
+</span></span><span class="line"><span class="cl">thread_c 1
+</span></span><span class="line"><span class="cl">thread_c 2
+</span></span><span class="line"><span class="cl">...
+</span></span><span class="line"><span class="cl">thread_c 99
+</span></span><span class="line"><span class="cl">thread_c: exit after 100
+</span></span><span class="line"><span class="cl">thread_schedule: no runnable threads
+</span></span><span class="line"><span class="cl">$ </span></span></code></pre></td></tr></table>
+</div>
+</div><p>这是因为stack在向下生长的时候把内存里相邻的上一个<code>thread</code>结构体改写了，其中的<code>state</code>如果被改写成别的，那么<code>thread_schedule</code>就可能永远不会切换到它。</p>
 <h3 id="to-be-continue" class="heading-element">
   <a href="#to-be-continue" class="heading-mark"></a>To be continue&hellip;</h3></div><div class="post-footer" id="post-footer">
   <div class="post-info">
