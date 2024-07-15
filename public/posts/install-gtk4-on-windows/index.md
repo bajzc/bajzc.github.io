@@ -165,5 +165,5 @@ So, life is short, I choose Linux :)
 ---
 
 > Author: Jason Li  
-> URL: http://localhost:1313/posts/install-gtk4-on-windows/  
+> URL: https://bajzc.org/posts/install-gtk4-on-windows/  
 

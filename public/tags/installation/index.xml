@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
   <channel>
     <title>Installation - Tag - Random Geek</title>
-    <link>http://localhost:1313/tags/installation/</link>
+    <link>https://bajzc.org/tags/installation/</link>
     <description>Installation - Tag | Random Geek</description>
     <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>lzecheng98@gmail.com (Jason Li)</managingEditor>
-      <webMaster>lzecheng98@gmail.com (Jason Li)</webMaster><lastBuildDate>Tue, 11 Jul 2023 12:39:46 &#43;0700</lastBuildDate><atom:link href="http://localhost:1313/tags/installation/" rel="self" type="application/rss+xml" /><item>
+      <webMaster>lzecheng98@gmail.com (Jason Li)</webMaster><lastBuildDate>Tue, 11 Jul 2023 12:39:46 &#43;0700</lastBuildDate><atom:link href="https://bajzc.org/tags/installation/" rel="self" type="application/rss+xml" /><item>
   <title>Install GTK4 on Windows</title>
-  <link>http://localhost:1313/posts/install-gtk4-on-windows/</link>
+  <link>https://bajzc.org/posts/install-gtk4-on-windows/</link>
   <pubDate>Tue, 11 Jul 2023 12:39:46 &#43;0700</pubDate>
   <author>Jason Li</author>
-  <guid>http://localhost:1313/posts/install-gtk4-on-windows/</guid>
+  <guid>https://bajzc.org/posts/install-gtk4-on-windows/</guid>
   <description><![CDATA[Install GTK4 on Windows11 Contents
 Install GTK4 on Windows11 1. Download and install Msys2 2. Install GTK4 and Mingw-toolchain 3. Setting Path 4. Hello world Summary This is a guide to install and config GTK4 on Windows 11.
 Note

@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
   <channel>
     <title>Tutorial - 分类 - 随笔技</title>
-    <link>http://localhost:1313/zh-cn/categories/tutorial/</link>
+    <link>https://bajzc.org/zh-cn/categories/tutorial/</link>
     <description>Tutorial - 分类 | 随笔技</description>
     <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>lzecheng98@gmail.com (Jason Li)</managingEditor>
-      <webMaster>lzecheng98@gmail.com (Jason Li)</webMaster><lastBuildDate>Tue, 11 Jul 2023 12:39:46 &#43;0700</lastBuildDate><atom:link href="http://localhost:1313/zh-cn/categories/tutorial/" rel="self" type="application/rss+xml" /><item>
+      <webMaster>lzecheng98@gmail.com (Jason Li)</webMaster><lastBuildDate>Tue, 11 Jul 2023 12:39:46 &#43;0700</lastBuildDate><atom:link href="https://bajzc.org/zh-cn/categories/tutorial/" rel="self" type="application/rss+xml" /><item>
   <title>在Windows上安装Gtk4</title>
-  <link>http://localhost:1313/zh-cn/posts/install-gtk4-on-windows/</link>
+  <link>https://bajzc.org/zh-cn/posts/install-gtk4-on-windows/</link>
   <pubDate>Tue, 11 Jul 2023 12:39:46 &#43;0700</pubDate>
   <author>Jason Li</author>
-  <guid>http://localhost:1313/zh-cn/posts/install-gtk4-on-windows/</guid>
+  <guid>https://bajzc.org/zh-cn/posts/install-gtk4-on-windows/</guid>
   <description><![CDATA[在Win11上安装GTK4 Contents 在Win11上安装GTK4 安装过程 1. 下载并安装Msys2 2. 安装GTK4库和toolchain 3. 设置Path 4. Hello World]]></description>
 </item>
 </channel>
