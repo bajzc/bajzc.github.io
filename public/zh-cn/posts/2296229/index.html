@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
-  <head>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
     <meta name="robots" content="noodp" />
-    <title>xv6学习笔记 - 随笔技</title><meta name="author" content="Jason Li">
+    <title>xv6-lab学习笔记 - 随笔技</title><meta name="author" content="Jason Li">
 <meta name="author-link" content="">
 <meta name="description" content="注：标题所指的xv6是MIT的计算机操作系统课程S.081。 LEC 1: util 环境部署上来就在环境部署上遇到了点小问题，虽然别人不太可能遇到，但仍记录在" /><meta name="keywords" content='Linux, Debug' />
-  <meta itemprop="name" content="xv6学习笔记">
+  <meta itemprop="name" content="xv6-lab学习笔记">
   <meta itemprop="description" content="注：标题所指的xv6是MIT的计算机操作系统课程S.081。 LEC 1: util 环境部署上来就在环境部署上遇到了点小问题，虽然别人不太可能遇到，但仍记录在">
   <meta itemprop="datePublished" content="2024-06-16T00:00:00+00:00">
   <meta itemprop="dateModified" content="2024-06-16T00:00:00+00:00">
-  <meta itemprop="wordCount" content="2898">
-  <meta itemprop="keywords" content="Linux,Debug"><meta property="og:url" content="https://bajzc.org/zh-cn/posts/2296229/">
+  <meta itemprop="wordCount" content="3471">
+  <meta itemprop="keywords" content="Linux,Debug"><meta property="og:url" content="http://localhost:1313/zh-cn/posts/2296229/">
   <meta property="og:site_name" content="随笔技">
-  <meta property="og:title" content="xv6学习笔记">
+  <meta property="og:title" content="xv6-lab学习笔记">
   <meta property="og:description" content="注：标题所指的xv6是MIT的计算机操作系统课程S.081。 LEC 1: util 环境部署上来就在环境部署上遇到了点小问题，虽然别人不太可能遇到，但仍记录在">
   <meta property="og:locale" content="zh_CN">
   <meta property="og:type" content="article">
@@ -26,24 +26,24 @@
     <meta property="article:tag" content="Debug">
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="xv6学习笔记">
+  <meta name="twitter:title" content="xv6-lab学习笔记">
   <meta name="twitter:description" content="注：标题所指的xv6是MIT的计算机操作系统课程S.081。 LEC 1: util 环境部署上来就在环境部署上遇到了点小问题，虽然别人不太可能遇到，但仍记录在">
 <meta name="application-name" content="FixIt">
 <meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://bajzc.org/zh-cn/posts/2296229/" /><link rel="prev" href="https://bajzc.org/zh-cn/posts/cachestat-in-kernel-65/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="http://localhost:1313/zh-cn/posts/2296229/" /><link rel="prev" href="http://localhost:1313/zh-cn/posts/cachestat-in-kernel-65/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
   {
     "@context": "http://schema.org",
     "@type": "BlogPosting",
-    "headline": "xv6学习笔记",
+    "headline": "xv6-lab学习笔记",
     "inLanguage": "zh-CN",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": "https:\/\/bajzc.org\/zh-cn\/posts\/2296229\/"
-    },"genre": "posts","keywords": "Linux, Debug","wordcount":  2898 ,
-    "url": "https:\/\/bajzc.org\/zh-cn\/posts\/2296229\/","datePublished": "2024-06-16T00:00:00+00:00","dateModified": "2024-06-16T00:00:00+00:00","publisher": {
+      "@id": "http:\/\/localhost:1313\/zh-cn\/posts\/2296229\/"
+    },"genre": "posts","keywords": "Linux, Debug","wordcount":  3471 ,
+    "url": "http:\/\/localhost:1313\/zh-cn\/posts\/2296229\/","datePublished": "2024-06-16T00:00:00+00:00","dateModified": "2024-06-16T00:00:00+00:00","publisher": {
       "@type": "Organization",
       "name": ""},"author": {
         "@type": "Person",
@@ -137,10 +137,10 @@
 </header><main class="container"><aside class="aside-collection animate__animated animate__fadeIn animate__faster" aria-label="合集"></aside>
 
   <article class="page single">
-    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>xv6学习笔记</span>
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>xv6-lab学习笔记</span>
       </h1></div><div class="post-meta">
       <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
-      Jason Li</span></span><span class="post-included-in">&nbsp;收录于 <a href="/zh-cn/categories/review/" class="post-category" title="分类 - Review"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> Review</a></span></div><div class="post-meta-line"><span title="发布于 2024-06-16 00:00:00"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2024-06-16">2024-06-16</time></span>&nbsp;<span title="2898 字"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 2900 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 6 分钟</span>&nbsp;</div>
+      Jason Li</span></span><span class="post-included-in">&nbsp;收录于 <a href="/zh-cn/categories/review/" class="post-category" title="分类 - Review"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> Review</a></span></div><div class="post-meta-line"><span title="发布于 2024-06-16 00:00:00"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2024-06-16">2024-06-16</time></span>&nbsp;<span title="3471 字"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 3500 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 7 分钟</span>&nbsp;</div>
     </div><div class="details toc" id="toc-static" data-kept="false">
         <div class="details-summary toc-title">
           <span>目录</span>
@@ -167,6 +167,8 @@
         <li><a href="#lec-10-cow">LEC 10 COW:</a></li>
         <li><a href="#lec-11-thread">LEC 11 thread:</a></li>
         <li><a href="#lec-13-lock">LEC 13 lock:</a></li>
+        <li><a href="#lec-15-fs">LEC 15 FS:</a></li>
+        <li><a href="#lec-17-mmap">LEC 17 mmap:</a></li>
         <li><a href="#to-be-continue">To be continue&hellip;</a></li>
       </ul>
     </li>
@@ -240,7 +242,7 @@
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>由于<code>fork()</code>本身的特性，它的返回时间依赖它的所有子进程。所以在通过了所有其他测试样例的大前提下，这个测试却没有任何输出：</p>
-<p><img loading="lazy" src="/images/syscall-trace.png" alt="大概是这样" srcset="/images/syscall-trace.png?size=small, /images/syscall-trace.png?size=medium 1.5x, /images/syscall-trace.png?size=large 2x" data-title="大概是这样" style="--width: 1028px;--aspect-ratio: 1028 / 677;background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/></p>
+<p><img loading="lazy" src="/images/syscall-trace.png" alt="大概是这样" srcset="/images/syscall-trace.png?size=small, /images/syscall-trace.png?size=medium 1.5x, /images/syscall-trace.png?size=large 2x" data-title="大概是这样" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/></p>
 <p>在继约半小时撸码后的两个小时debug时间里，一度怀疑人生。
 最后发现bug在电脑上，所有<code>fork()</code>执行完需要5min，而测试的时限是30s&hellip;</p>
 <p>换成7900x跑了一下只要1.3s&hellip;</p>
@@ -307,6 +309,16 @@
 <p>至于hash table的实现，我借用了上一个lab里<code>ph.c</code>的实现，开了13个<code>bucket</code>，都初始化为空的链配上一个锁。
 <code>bget()</code>如果在哈希表里搜不到就会直接去<code>buf</code>里找<code>refcnt == 0</code>，<code>buf</code>就是原本的<code>bcache</code>结构体里的<code>buf[NBUF]</code>。
 这样实现可以直接复用<code>buf</code>结构体里的链表，比较简单。</p>
+<h3 id="lec-15-fs" class="heading-element">
+  <a href="#lec-15-fs" class="heading-mark"></a>LEC 15 FS:</h3><p>两个lab标定的难度都是中等，看文档的难度却是困难：几层封装下来十几个重要的函数加上“若隐若现”的locks可以说是隐藏难度的巅峰之作了。</p>
+<p>第一个：支持大文件，报错<strong>panic: virtio_disk_intr status</strong>，查了半天发现是<code>inode</code>结构体没改，导致<code>addrs</code>大小变成12了。但想了半天也没明白为什么会是在这里panic</p>
+<p>第二个：软连接，提示说把<code>target</code>存到一个地方，可以是“inode&rsquo;s data blocks”，我理解成在<code>inode</code>结构体里加一个字符串存储。
+又专门写了个函数去递归找原始文件。写的时候才发现还有这么个函数<code>writei</code>，才明白“data blocks”就是字面意思……</p>
+<p>总之就是多看看文档，关注一下关键函数。</p>
+<h3 id="lec-17-mmap" class="heading-element">
+  <a href="#lec-17-mmap" class="heading-mark"></a>LEC 17 mmap:</h3><p>大杂烩lab，文件系统、页表和中断都涉及到了。工程量比较大，但难度不大。</p>
+<p>实现完<code>mmap</code>后遇到一个问题：<code>mmaptest</code>在test1报错读不到0。看了一下test1的代码，它只往文件里写了3/2个<code>PGSIZE</code>（6144）的&rsquo;A&rsquo;，所以应该是期望出发page fault后惰性分配的时候先把页初始化成0。</p>
+<p>还有个问题就是<code>filewrite</code>函数会导致调用<code>sched</code>，所以不能在持有锁的情况下调用它。以及一些<code>vm.c</code>里的函数会检查<code>PTE_V</code>，都可以忽略掉，因为我们是lazy alloc，会出现这种情况。</p>
 <h3 id="to-be-continue" class="heading-element">
   <a href="#to-be-continue" class="heading-mark"></a>To be continue&hellip;</h3></div><div class="post-footer" id="post-footer">
   <div class="post-info">
@@ -318,9 +330,9 @@
           </div></div><div class="post-info-line">
         <div class="post-info-md"><span><a href="/zh-cn/posts/2296229/index.md" title="阅读原始文档" class="link-to-markdown">阅读原始文档</a></span></div>
         <div class="post-info-share">
-          <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://bajzc.org/zh-cn/posts/2296229/" data-title="xv6学习笔记" data-hashtags="Linux,Debug"><i class="fa-brands fa-twitter fa-fw" aria-hidden="true"></i></a>
-  <a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://bajzc.org/zh-cn/posts/2296229/" data-hashtag="Linux"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
-  <a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://bajzc.org/zh-cn/posts/2296229/" data-title="xv6学习笔记"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
+          <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="http://localhost:1313/zh-cn/posts/2296229/" data-title="xv6-lab学习笔记" data-hashtags="Linux,Debug"><i class="fa-brands fa-twitter fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="http://localhost:1313/zh-cn/posts/2296229/" data-hashtag="Linux"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="http://localhost:1313/zh-cn/posts/2296229/" data-title="xv6-lab学习笔记"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
   </span>
         </div>
       </div></div>
@@ -334,20 +346,18 @@
 
   <div class="post-nav"><a href="/zh-cn/posts/cachestat-in-kernel-65/" class="post-nav-item" rel="prev" title="浅析Kernel-6.5新系统调用"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>浅析Kernel-6.5新系统调用</a></div>
 </div>
-<div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
-        Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript" rel="external nofollow noopener noreferrer">Disqus</a>.
-      </noscript></div></article>
+</article>
 
   <aside class="toc" id="toc-auto" aria-label="目录"><h2 class="toc-title">目录&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
       <div class="toc-content" id="toc-content-auto"></div></aside></main><footer class="footer">
-    <div class="footer-container"><div class="footer-line powered">由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.128.2"><img class="hugo-icon" src="/images/hugo.min.svg" alt="Hugo logo" /> Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.3.2"><img class="fixit-icon" src="/images/fixit.min.svg" alt="FixIt logo" /> FixIt</a>
+    <div class="footer-container"><div class="footer-line powered">由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.129.0"><img class="hugo-icon" src="/images/hugo.min.svg" alt="Hugo logo" /> Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.3.2"><img class="fixit-icon" src="/images/fixit.min.svg" alt="FixIt logo" /> FixIt</a>
         </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
             <span itemprop="copyrightYear">2024</span><span class="author" itemprop="copyrightHolder">
               <a href="/zh-cn/">Jason Li</a></span></div></div>
   </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="回到顶部"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
-        </div><div class="fixed-button view-comments d-none" role="button" aria-label="查看评论"><i class="fa-solid fa-comment fa-fw" aria-hidden="true"></i></div></div><div id="mask"></div><noscript>
+        </div></div><div id="mask"></div><noscript>
     <div class="noscript-warning">FixIt 主题在启用 JavaScript 的情况下效果最佳。</div>
   </noscript>
 </div><link rel="preload" href="/lib/katex/katex.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="/lib/katex/katex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="https://bajzc.disqus.com/embed.js" defer></script><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"复制到剪贴板","editLockTitle":"锁定可编辑代码块","editUnLockTitle":"解锁可编辑代码块","editable":true,"maxShownLines":10},"comment":{"enable":true,"expired":false},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验。"},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script src="/js/theme.min.js" defer></script></body>
+    <noscript><link rel="stylesheet" href="/lib/katex/katex.min.css"></noscript><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script>window.config={"code":{"copyTitle":"复制到剪贴板","editLockTitle":"锁定可编辑代码块","editUnLockTitle":"解锁可编辑代码块","editable":true,"maxShownLines":10},"comment":{"enable":false},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script src="/js/theme.min.js" defer></script></body>
 </html>

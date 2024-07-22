@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
   <channel>
     <title>Kernel - 标签 - 随笔技</title>
-    <link>https://bajzc.org/zh-cn/tags/kernel/</link>
+    <link>http://localhost:1313/zh-cn/tags/kernel/</link>
     <description>Kernel - 标签 | 随笔技</description>
     <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>lzecheng98@gmail.com (Jason Li)</managingEditor>
-      <webMaster>lzecheng98@gmail.com (Jason Li)</webMaster><lastBuildDate>Fri, 14 Jul 2023 12:19:35 &#43;0700</lastBuildDate><atom:link href="https://bajzc.org/zh-cn/tags/kernel/" rel="self" type="application/rss+xml" /><item>
+      <webMaster>lzecheng98@gmail.com (Jason Li)</webMaster><lastBuildDate>Fri, 14 Jul 2023 12:19:35 &#43;0700</lastBuildDate><atom:link href="http://localhost:1313/zh-cn/tags/kernel/" rel="self" type="application/rss+xml" /><item>
   <title>浅析Kernel-6.5新系统调用</title>
-  <link>https://bajzc.org/zh-cn/posts/cachestat-in-kernel-65/</link>
+  <link>http://localhost:1313/zh-cn/posts/cachestat-in-kernel-65/</link>
   <pubDate>Fri, 14 Jul 2023 12:19:35 &#43;0700</pubDate>
   <author>Jason Li</author>
-  <guid>https://bajzc.org/zh-cn/posts/cachestat-in-kernel-65/</guid>
+  <guid>http://localhost:1313/zh-cn/posts/cachestat-in-kernel-65/</guid>
   <description><![CDATA[Note 本文系统环境： Linux gentoo 6.5.0-rc1 如果你想自己尝试，你需要知道的几个命令： 创建随机文件用于测试 #signle random file &quot;a&quot; dd if=/dev/urandom of=a bs=1M count=128 # random files &quot;f1&quot;-&quot;f8&quot; for i in {1..8} do dd if=/dev/urandom of=f${i} bs=1M count=128 done 清除系统c]]></description>
 </item>
 </channel>

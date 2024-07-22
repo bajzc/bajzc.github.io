@@ -371,5 +371,5 @@
 ---
 
 > 作者: Jason Li  
-> URL: https://bajzc.org/zh-cn/posts/cachestat-in-kernel-65/  
+> URL: http://localhost:1313/zh-cn/posts/cachestat-in-kernel-65/  
 

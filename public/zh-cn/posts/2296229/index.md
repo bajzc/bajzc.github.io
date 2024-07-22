@@ -1,4 +1,4 @@
-# xv6学习笔记
+# xv6-lab学习笔记
 
 
 **注：标题所指的xv6是MIT的计算机操作系统课程[S.081](https://pdos.csail.mit.edu/6.828/2020/schedule.html)。**
@@ -137,11 +137,30 @@ $
 `bget()`如果在哈希表里搜不到就会直接去`buf`里找`refcnt == 0`，`buf`就是原本的`bcache`结构体里的`buf[NBUF]`。
 这样实现可以直接复用`buf`结构体里的链表，比较简单。
 
+### LEC 15 FS:
+
+两个lab标定的难度都是中等，看文档的难度却是困难：几层封装下来十几个重要的函数加上“若隐若现”的locks可以说是隐藏难度的巅峰之作了。
+
+第一个：支持大文件，报错**panic: virtio_disk_intr status**，查了半天发现是`inode`结构体没改，导致`addrs`大小变成12了。但想了半天也没明白为什么会是在这里panic
+
+第二个：软连接，提示说把`target`存到一个地方，可以是“inode&#39;s data blocks”，我理解成在`inode`结构体里加一个字符串存储。
+又专门写了个函数去递归找原始文件。写的时候才发现还有这么个函数`writei`，才明白“data blocks”就是字面意思……
+
+总之就是多看看文档，关注一下关键函数。
+
+### LEC 17 mmap:
+
+大杂烩lab，文件系统、页表和中断都涉及到了。工程量比较大，但难度不大。
+
+实现完`mmap`后遇到一个问题：`mmaptest`在test1报错读不到0。看了一下test1的代码，它只往文件里写了3/2个`PGSIZE`（6144）的&#39;A&#39;，所以应该是期望出发page fault后惰性分配的时候先把页初始化成0。
+
+还有个问题就是`filewrite`函数会导致调用`sched`，所以不能在持有锁的情况下调用它。以及一些`vm.c`里的函数会检查`PTE_V`，都可以忽略掉，因为我们是lazy alloc，会出现这种情况。
+
 ### To be continue...
 
 
 ---
 
 > 作者: Jason Li  
-> URL: https://bajzc.org/zh-cn/posts/2296229/  
+> URL: http://localhost:1313/zh-cn/posts/2296229/  
 
