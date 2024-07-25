@@ -46,5 +46,5 @@ the configuration of some important software(ssh init grub) and kernel, and the 
 ---
 
 > Author: Jason Li  
-> URL: http://localhost:1313/posts/lfs-gg/  
+> URL: https://bajzc.org/posts/lfs-gg/  
 

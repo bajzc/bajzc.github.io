@@ -317,5 +317,5 @@ Use cold backup, instead, allow you backup with disk with different size. For ex
 ---
 
 > Author: Jason Li  
-> URL: http://localhost:1313/posts/home-nas-deployment/  
+> URL: https://bajzc.org/posts/home-nas-deployment/  
 

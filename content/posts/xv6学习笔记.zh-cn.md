@@ -1,16 +1,22 @@
 ---
-title: xv6-lab学习笔记
+title: xv6学习笔记
 date: 2024-06-16
 slug: 2296229
 draft: false
 tags:
-  - Linux
+  - OS
   - Debug
 categories:
   - Review
 ---
 
-**注：标题所指的xv6是MIT的计算机操作系统课程[S.081](https://pdos.csail.mit.edu/6.828/2020/schedule.html)。**
+## 前言
+
+标题所指的xv6是MIT的计算机操作系统课程[S.081](https://pdos.csail.mit.edu/6.828/2020/schedule.html)
+
+> Q: **为什么没有代码，只有解析？**
+
+> A: 网上有本课程的代码解析，而且作者很懒，这点很重要！
 
 ### LEC 1: util
 
@@ -23,6 +29,7 @@ categories:
 Gentoo官方配置编译出的[qemu](https://packages.gentoo.org/packages/app-emulation/qemu)对于xv6也是不可用的状态,没有任何输出（QEMU_SOFTMMU_TARGETS="riscv64"），可能是版本太高了导致不兼容...
 
 > 2024.7.4更新：
+
 > 关于qemu没有输出的问题，可以换用2023版的xv6(**git clone git://g.csail.mit.edu/xv6-labs-2023**)。
 
 二者的解决方案是一样的，就是按照课程的教程下载编译安装对应的软件。安装位置可以选在`/opt`,最后在`.[zsh,bash]rc`里加上:`export PATH="/opt/qemu/bin:/opt/riscv-gcc/bin:%PATH"`
@@ -161,8 +168,26 @@ $
 
 大杂烩lab，文件系统、页表和中断都涉及到了。工程量比较大，但难度不大。
 
-实现完`mmap`后遇到一个问题：`mmaptest`在test1报错读不到0。看了一下test1的代码，它只往文件里写了3/2个`PGSIZE`（6144）的'A'，所以应该是期望出发page fault后惰性分配的时候先把页初始化成0。
+实现完`mmap`后遇到一个问题：`mmaptest`在test1报错读不到0。看了一下test1的代码，它只往文件里写了3/2个`PGSIZE`（6144）的'A'，所以触发page fault后惰性分配的时候要把页初始化成0。
 
-还有个问题就是`filewrite`函数会导致调用`sched`，所以不能在持有锁的情况下调用它。以及一些`vm.c`里的函数会检查`PTE_V`，都可以忽略掉，因为我们是lazy alloc，会出现这种情况。
+还有个问题就是`filewrite`函数会导致调用`sched`，所以不能在持有锁的情况下调用它。以及一些`vm.c`里的函数会检查`PTE_V`，都可以忽略掉，因为我们是lazy allocation，会出现这种情况。
 
-### To be continue...
+### LEC 20 net:
+
+终于来到最后一个lab了，但是上来就是一头雾水：410页的pdf，一堆没有注释的结构体、宏定义，还好老师给我们圈了一个范围，虽然是整个黑板。。。
+仔细看了一眼`e1000_init()`，大概弄明白了结构体里每一个值的作用，直接秒杀了`e1000_transmit()`。
+
+然而在`e1000_recv()`出了问题，**panic: acquire**，很明显是`e1000_lock`有问题。gdb看了一眼，发现`net_rx()`对于某些包又会调用`e1000_transmit()`来应答，再次要持有同一个锁，然后就“内核恐慌”了。
+这里有两个办法，一个是在调用`net_rx()`前释放掉锁，或者就直接上锁了。考虑到我可能在我不知道的情况下“维护”着某些不变量，所以用的是前者。
+
+又在**multi-process pings**卡死了，我一开以为是遇到了题目中所说的溢出了的情况(*At some point the total number of packets that have ever arrived will exceed the ring size (16)*)。
+又是一番debug发现是因为之前`e1000_transmit()`上锁的时候一下子发了10个包，也至少收到了一个，但是我的`e1000_recv()`一次只处理了一个包，其他的中断信号在上锁的时候被忽略了，改成一个while循环就好了。
+
+## 总结
+
+在xv6这门课上断断续续花了正好3个月(Apr 27-Jul 27)，期间有近一个月在备考。跨度之大，让我在**5**台不同的电脑上安装了qemu。
+这门可的难度对于只是完成lab作业来说要求并不是很高，但是自问对于每一个小细节的思考和理解我认为自己还有远有不足：
+对于进程的理解有些含糊、最后的几篇paper看的也比较不走心。但是总的来说收获很大，绝对称得上是我对计算机理解的一个突破。
+同时，这对于即将到来的大学学习必定也有着巨大的帮助，让我更加清楚自己的研究方向，也给了我信心去研究其他操作系统的代码。
+
+故事并没有完结，这篇文章还会被翻译成英文发布，所有“附加题”也都还没有被探索呢！

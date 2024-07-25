@@ -122,5 +122,5 @@ Reference:
 ---
 
 > Author: Jason Li  
-> URL: http://localhost:1313/posts/lets-encrypt-gentoo/  
+> URL: https://bajzc.org/posts/lets-encrypt-gentoo/  
 
