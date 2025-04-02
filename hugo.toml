@@ -2,6 +2,11 @@ baseURL = 'https://bajzc.org/'
 languageCode = 'en-us'
 title = 'Random Geek'
 theme = 'FixIt'
+PygmentsCodeFences = true
+
+[services]
+  [services.disqus]
+    shortname = 'bajzc'
 
 [secyruty]
   [security.exec]
@@ -720,7 +725,7 @@ enableEmoji = true
       # FixIt 0.2.13 | NEW whether to show the edit button of the code block
       edit = true
       # the maximum number of lines of displayed code by default
-      maxShownLines = 10
+      maxShownLines = -1
     # Mapbox GL JS config (https://docs.mapbox.com/mapbox-gl-js)
     [params.page.mapbox]
       # access token of Mapbox GL JS
@@ -778,7 +783,7 @@ enableEmoji = true
       Instapaper = false
       Pocket = false
       Flipboard = false
-      Weibo = true
+      Weibo = false
       Myspace = false
       Blogger = false
       Baidu = false
