@@ -17,7 +17,7 @@ and subexpressions within the actual arguments is unspecified, but there is a
 sequence point before the actual call."*
 [C99-6.5.2.2.10](https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1256.pdf#%5B%7B%22num%22%3A164%2C%22gen%22%3A0%7D%2C%7B%22name%22%3A%22XYZ%22%7D%2C-27%2C816%2Cnull%5D):
 
-所有依赖“求值顺序”的函数调用都是**“未定义行为”**。
+所有依赖“求值顺序”的函数调用都是**未定义行为**。
 
 # 案例 [See Commit](https://github.com/bajzc/tiger-in-c/commit/d2530a50ef6e0fa2eb50c4417f1421bd7cab7362)
 
